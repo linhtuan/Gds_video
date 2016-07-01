@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiaoDucSomVideo", "GiaoDucSomVideo\GiaoDucSomVideo.csproj", "{10482375-0DDB-482E-9D8C-77F8416E1058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcCornerstone", "MvcCornerstone\MvcCornerstone.csproj", "{EA65C0DD-A290-4335-9132-6DC1DA43052F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gds.BusinessObject", "Gds.BusinessObject\Gds.BusinessObject.csproj", "{79289834-3A34-4128-958E-E4F87394A407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdsVideoBackend", "GdsVideoBackend\GdsVideoBackend.csproj", "{6F9CBB1E-3876-4BA8-B2D4-FCC806BC4E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gds.Setting", "Gds.Setting\Gds.Setting.csproj", "{1E2B70E4-796F-4D44-8E3A-AF042A65895C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gds.ServiceModel", "Gds.ServiceModel\Gds.ServiceModel.csproj", "{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10482375-0DDB-482E-9D8C-77F8416E1058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10482375-0DDB-482E-9D8C-77F8416E1058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10482375-0DDB-482E-9D8C-77F8416E1058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10482375-0DDB-482E-9D8C-77F8416E1058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA65C0DD-A290-4335-9132-6DC1DA43052F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA65C0DD-A290-4335-9132-6DC1DA43052F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA65C0DD-A290-4335-9132-6DC1DA43052F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA65C0DD-A290-4335-9132-6DC1DA43052F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79289834-3A34-4128-958E-E4F87394A407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79289834-3A34-4128-958E-E4F87394A407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79289834-3A34-4128-958E-E4F87394A407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79289834-3A34-4128-958E-E4F87394A407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9CBB1E-3876-4BA8-B2D4-FCC806BC4E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9CBB1E-3876-4BA8-B2D4-FCC806BC4E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9CBB1E-3876-4BA8-B2D4-FCC806BC4E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9CBB1E-3876-4BA8-B2D4-FCC806BC4E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2B70E4-796F-4D44-8E3A-AF042A65895C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2B70E4-796F-4D44-8E3A-AF042A65895C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2B70E4-796F-4D44-8E3A-AF042A65895C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2B70E4-796F-4D44-8E3A-AF042A65895C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
