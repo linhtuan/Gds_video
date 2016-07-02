@@ -30,7 +30,7 @@ namespace MvcCornerstone.Services
 
         Task<TRecord> GetByIdAsync(object id);
 
-        IEnumerable<TRecord> GetRecords();
+        IQueryable<TRecord> GetRecords();
 
         Task<IEnumerable<TRecord>> GetRecordsAsync();
 
@@ -71,7 +71,6 @@ namespace MvcCornerstone.Services
             return key;
         }
 
-        protected abstract IOrderedQueryable<TRecord> ApplyDefaultSort(IQueryable<TRecord> queryable);
 
         #region IGenericService<TRecord> Members
 
@@ -129,15 +128,15 @@ namespace MvcCornerstone.Services
             return Task.FromResult(GetById(id));
         }
 
-        public virtual IEnumerable<TRecord> GetRecords()
+        public virtual IQueryable<TRecord> GetRecords()
         {
             var query = Repository.Table<TC>();
-            return ApplyDefaultSort(query);
+            return query;
         }
 
         public Task<IEnumerable<TRecord>> GetRecordsAsync()
         {
-            return Task.FromResult(GetRecords());
+            return Task.FromResult(GetRecords().AsEnumerable());
         }
 
         public Task<IEnumerable<TResult>> GetFromRecordsAsync<TResult>(Expression<Func<TRecord, bool>> predicate, Func<TRecord, TResult> selector)

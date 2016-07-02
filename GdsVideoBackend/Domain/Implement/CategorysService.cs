@@ -18,11 +18,6 @@ namespace GdsVideoBackend.Domain.Implement
             _categoryDetailRepository = categoryDetailRepository;
         }
 
-        protected override IOrderedQueryable<Categorys> ApplyDefaultSort(IQueryable<Categorys> queryable)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Categorys> GetCategory()
         {
             var test = _categoryDetailRepository.Table<DbContextBase>().ToList();

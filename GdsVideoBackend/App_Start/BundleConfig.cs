@@ -86,6 +86,7 @@ namespace GdsVideoBackend
                 .Include("~/Content/css/bootstrap.min.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/animate.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/style.css", new CssRewriteUrlTransform())
+                .Include("~/Content/css/main.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/plugins/footable/footable.core.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/plugins/iCheck/custom.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/plugins/blueimp/css/blueimp-gallery.min.css", new CssRewriteUrlTransform())

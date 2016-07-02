@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="Infrastructure\AutofacInstaller.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Models\CategoryTypeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Account\Index.generated.cs">
       <AutoGen>True</AutoGen>
@@ -176,6 +177,7 @@
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\main.css" />
     <Content Include="Content\css\patterns\congruent_pentagon.png" />
     <Content Include="Content\css\patterns\header-profile-skin-1.png" />
     <Content Include="Content\css\patterns\header-profile-skin-2.png" />
@@ -713,6 +715,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\mydropUpload.js" />
+    <Content Include="Scripts\gds.paging.control.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -734,8 +737,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\CategoryType\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -804,6 +805,12 @@
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Categorys\Index.cshtml" />
+    <Content Include="Views\CategoryType\Index.cshtml" />
+    <Content Include="Scripts\gds.categorytype.js" />
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenDialog.cshtml" />
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml" />
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.cshtml" />
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">

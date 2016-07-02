@@ -1,0 +1,9 @@
+﻿.paging-row input {
+    margin: 0 5px 0 0;
+    width: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    height: 24px;
+    text-align: center;
+    font-weight: bold;
+}
