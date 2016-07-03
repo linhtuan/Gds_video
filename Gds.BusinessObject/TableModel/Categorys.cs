@@ -15,5 +15,7 @@ namespace Gds.BusinessObject.TableModel
         public string CategoryDetail { get; set; }
 
         public DateTime? CreatedDate { get; set; }
+
+        public int Status { get; set; }
     }
 }

@@ -232,10 +232,10 @@ WriteLiteral(">\r\n                            <div");
 WriteLiteral(" class=\"pull-right\"");
 
 WriteLiteral(@">
-                                10GB of <strong>250GB</strong> Free.
+                               
                             </div>
                             <div>
-                                <strong>Copyright</strong> Example Company © 2014-2015
+                                <strong>Copyright</strong> 
                             </div>
                         </div>
                     </div>

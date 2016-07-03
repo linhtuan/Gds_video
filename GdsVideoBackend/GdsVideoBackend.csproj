@@ -152,6 +152,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Categorys\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryType\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryType\PatialView\_CategoryTypeChildrenDialog.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CategoryTypeChildrenDialog.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryType\PatialView\_CategoryTypeChildrenTemplate.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CategoryTypeChildrenTemplate.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryType\PatialView\_CategoryTypeParentDialog.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CategoryTypeParentDialog.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CategoryTypeParentTemplate.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -714,6 +744,8 @@
     <Content Include="Content\js\plugins\wow\wow.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\gds.category.js" />
+    <Content Include="Scripts\gds.js" />
     <Content Include="Scripts\mydropUpload.js" />
     <Content Include="Scripts\gds.paging.control.js" />
     <Content Include="Web.config" />
@@ -804,13 +836,31 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Categorys\Index.cshtml" />
-    <Content Include="Views\CategoryType\Index.cshtml" />
+    <Content Include="Views\Categorys\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\CategoryType\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\gds.categorytype.js" />
-    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenDialog.cshtml" />
-    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml" />
-    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.cshtml" />
-    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenTemplate.cshtml" />
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenDialog.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CategoryTypeChildrenDialog.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CategoryTypeParentDialog.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CategoryTypeParentTemplate.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CategoryTypeChildrenTemplate.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">

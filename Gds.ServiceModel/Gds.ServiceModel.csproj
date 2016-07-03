@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackEndModel\CategoryModel.cs" />
     <Compile Include="BackEndModel\CategoryTypesModel.cs" />
     <Compile Include="ControlObject\PagingResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -80,11 +80,11 @@ WriteLiteral(">\r\n                        <strong");
 
 WriteLiteral(" class=\"font-bold\"");
 
-WriteLiteral(">David Williams</strong>\r\n                    </span> <span");
+WriteLiteral(">Demo</strong>\r\n                    </span> <span");
 
 WriteLiteral(" class=\"text-muted text-xs block\"");
 
-WriteLiteral(">Art Director <b");
+WriteLiteral(">Action <b");
 
 WriteLiteral(" class=\"caret\"");
 
@@ -94,11 +94,11 @@ WriteLiteral(" class=\"dropdown-menu animated fadeInRight m-t-xs\"");
 
 WriteLiteral(">\r\n                <li><a");
 
-WriteLiteral(" href=\"profile.html\"");
+WriteLiteral(" href=\"#\"");
 
 WriteLiteral(">Profile</a></li>\r\n                <li><a");
 
-WriteLiteral(" href=\"contacts.html\"");
+WriteLiteral(" href=\"#\"");
 
 WriteLiteral(">Contacts</a></li>\r\n                <li><a");
 
@@ -118,7 +118,15 @@ WriteLiteral(" class=\"logo-element\"");
 
 WriteLiteral(">\r\n            IN+\r\n        </div>\r\n    </li>\r\n    \r\n    <li>\r\n        <a");
 
-WriteLiteral(" href=\"layouts.html\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 1087), Tuple.Create("\"", 1127)
+            
+            #line 28 "..\..\Views\PartialViews\_LeftMenuPartial.cshtml"
+, Tuple.Create(Tuple.Create("", 1094), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Categorys")
+            
+            #line default
+            #line hidden
+, 1094), false)
+);
 
 WriteLiteral("><i");
 
@@ -128,47 +136,7 @@ WriteLiteral("></i> <span");
 
 WriteLiteral(" class=\"nav-label\"");
 
-WriteLiteral(">Layouts</span></a>\r\n    </li>\r\n    \r\n    <li>\r\n        <a");
-
-WriteLiteral(" href=\"#\"");
-
-WriteLiteral("><i");
-
-WriteLiteral(" class=\"fa fa-edit\"");
-
-WriteLiteral("></i> <span");
-
-WriteLiteral(" class=\"nav-label\"");
-
-WriteLiteral(">Forms</span><span");
-
-WriteLiteral(" class=\"fa arrow\"");
-
-WriteLiteral("></span></a>\r\n        <ul");
-
-WriteLiteral(" class=\"nav nav-second-level collapse\"");
-
-WriteLiteral(">\r\n            <li><a");
-
-WriteLiteral(" href=\"form_basic.html\"");
-
-WriteLiteral(">Basic form</a></li>\r\n            <li><a");
-
-WriteLiteral(" href=\"form_advanced.html\"");
-
-WriteLiteral(">Advanced Plugins</a></li>\r\n            <li><a");
-
-WriteLiteral(" href=\"form_wizard.html\"");
-
-WriteLiteral(">Wizard</a></li>\r\n            <li><a");
-
-WriteLiteral(" href=\"form_file_upload.html\"");
-
-WriteLiteral(">File Upload</a></li>\r\n            <li><a");
-
-WriteLiteral(" href=\"form_editors.html\"");
-
-WriteLiteral(">Text Editor</a></li>\r\n        </ul>\r\n    </li>\r\n</ul>");
+WriteLiteral(">Category</span></a>\r\n    </li>\r\n    \r\n</ul>");
 
         }
     }

@@ -71,7 +71,8 @@ namespace GdsVideoBackend
 
             bundles.Add(new ScriptBundle("~/bundles/base-lib-js")
                 .Include("~/Content/js/jquery-2.1.4.min.js")
-                .Include("~/Content/js/bootstrap.min.js"));
+                .Include("~/Content/js/bootstrap.min.js")
+                .Include("~/Scripts/gds.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/base-inspinia")
                 .Include("~/Content/js/inspinia.js"));

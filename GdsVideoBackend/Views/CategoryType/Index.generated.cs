@@ -116,16 +116,7 @@ WriteLiteral("><a");
 
 WriteLiteral(" data-toggle=\"tab\"");
 
-WriteLiteral(">");
-
-            
-            #line 20 "..\..\Views\CategoryType\Index.cshtml"
-                                                               Write(string.Format("Category Type"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></li>\r\n            <li");
+WriteLiteral(">Khóa học</a></li>\r\n            <li");
 
 WriteLiteral(" id=\"children-tab\"");
 
@@ -135,16 +126,7 @@ WriteLiteral("><a");
 
 WriteLiteral(" data-toggle=\"tab\"");
 
-WriteLiteral(">");
-
-            
-            #line 21 "..\..\Views\CategoryType\Index.cshtml"
-                                                           Write(string.Format("Category Type Detail"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></li>\r\n        </ul>\r\n        <div");
+WriteLiteral(">Chi tiết khóa học</a></li>\r\n        </ul>\r\n        <div");
 
 WriteLiteral(" class=\"tab-content\"");
 
@@ -226,9 +208,9 @@ WriteLiteral(" class=\"btn btn-success btn-sm\"");
 
 WriteLiteral(" href=\"#add-new-category-type-parent\"");
 
-WriteLiteral(">Thêm mới gói học</a>\r\n                                            </div>\r\n      " +
-"                                  </div>\r\n                                      " +
-"  <div");
+WriteLiteral(">Thêm khóa học</a>\r\n                                            </div>\r\n         " +
+"                               </div>\r\n                                        <" +
+"div");
 
 WriteLiteral(" class=\"dataTables_filter\"");
 
@@ -381,9 +363,9 @@ WriteLiteral(" class=\"btn btn-success btn-sm\"");
 
 WriteLiteral(" href=\"#add-new-category-type-children\"");
 
-WriteLiteral(">Thêm mới gói học kèm theo</a>\r\n                                            </div" +
-">\r\n                                        </div>\r\n                             " +
-"           \r\n                                        <div");
+WriteLiteral(">Thêm khóa học con</a>\r\n                                            </div>\r\n     " +
+"                                   </div>\r\n                                     " +
+"   \r\n                                        <div");
 
 WriteLiteral(" class=\"dataTables_filter\"");
 
@@ -398,7 +380,7 @@ WriteLiteral(" placeholder=\"\"");
 WriteLiteral(" ></label>\r\n                                        </div>\r\n                     " +
 "                   <div");
 
-WriteLiteral(" id=\"categoryTypeParent_Div\"");
+WriteLiteral(" id=\"categoryTypeChildren_Div\"");
 
 WriteLiteral(">\r\n\r\n                                        </div>\r\n                            " +
 "            <div");
@@ -504,23 +486,23 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7572), Tuple.Create("\"", 7609)
-, Tuple.Create(Tuple.Create("", 7578), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 7578), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7519), Tuple.Create("\"", 7556)
+, Tuple.Create(Tuple.Create("", 7525), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 7525), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7633), Tuple.Create("\"", 7668)
-, Tuple.Create(Tuple.Create("", 7639), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
-, 7639), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7580), Tuple.Create("\"", 7615)
+, Tuple.Create(Tuple.Create("", 7586), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
+, 7586), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7692), Tuple.Create("\"", 7747)
-, Tuple.Create(Tuple.Create("", 7698), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
-, 7698), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7639), Tuple.Create("\"", 7694)
+, Tuple.Create(Tuple.Create("", 7645), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
+, 7645), false)
 );
 
 WriteLiteral(@"></script>

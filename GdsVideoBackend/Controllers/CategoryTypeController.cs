@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Gds.ServiceModel.BackEndModel;
 using Gds.ServiceModel.ControlObject;
 using GdsVideoBackend.Domain;
 using GdsVideoBackend.Models;
-using Newtonsoft.Json;
 
 namespace GdsVideoBackend.Controllers
 {
@@ -20,8 +18,7 @@ namespace GdsVideoBackend.Controllers
 
         //
         // GET: /CategoryType/
-        [Route("categorytype")]
-        public ActionResult Index()
+        public ActionResult Index(int categoryId)
         {
             return View();
         }
@@ -33,7 +30,7 @@ namespace GdsVideoBackend.Controllers
                 Id = x.CategoryTypePriceId,
                 x.Price
             });
-            return Json(new {isSuccess = false, data = result});
+            return Json(new { isSuccess = false, data = result }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetParentCategoryType()
@@ -43,19 +40,19 @@ namespace GdsVideoBackend.Controllers
                 Id = x.Key,
                 Name = x.Value
             });
-            return Json(new { isSuccess = false, data = result });
+            return Json(new { isSuccess = false, data = result }, JsonRequestBehavior.AllowGet);
         }
 
-        [Route("categorytype/getparents")]
-        public JsonResult GetParentCategoryTypes(int categoryId, int pageIndex, int pageSize)
+        [HttpPost]
+        public JsonResult GetParent(int categoryId, int pageIndex, int pageSize)
         {
             var result = _categoryTypeService.GetParentCategoryTypes(categoryId, pageIndex, pageSize);
             return result.Result.Any() ? Json(new { isSuccess = true, data = result }, JsonRequestBehavior.AllowGet)
                 : Json(new { isSuccess = false, data = new PagingResultModel<CategoryTypesModel>() }, JsonRequestBehavior.AllowGet);
         }
 
-        [Route("categorytype/getchildren")]
-        public JsonResult GetCategoryTypes(int categoryId, int pageIndex, int pageSize)
+        [HttpPost]
+        public JsonResult GetChildren(int categoryId, int pageIndex, int pageSize)
         {
             var result = _categoryTypeService.GetCategoryTypesByCategoryId(categoryId, pageIndex, pageSize);
             return result.Result.Any() ? Json(new {isSuccess = true, data = result}, JsonRequestBehavior.AllowGet)
@@ -66,7 +63,7 @@ namespace GdsVideoBackend.Controllers
         public JsonResult Insert(CategoryTypeViewModel item)
         {
             var result = _categoryTypeService.InsertCategoryType(item);
-            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false });
+            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost, ValidateInput(false)]
@@ -74,14 +71,14 @@ namespace GdsVideoBackend.Controllers
         {
             var model = new CategoryTypesModel();
             var result = _categoryTypeService.UpdateCategoryType(model);
-            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false });
+            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public JsonResult Delete()
         {
             var result = _categoryTypeService.DeleteCategoryType(0);
-            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false });
+            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 	}
 }

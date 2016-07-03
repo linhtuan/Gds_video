@@ -1,15 +1,40 @@
 ﻿
-var categoryTypeCtrl = function() {
-    var getCategoryTypeParent = function() {
+var categoryTypeCtrl = function () {
+    var parentPage = {
+        total: 0,
+        page: 1,
+        pageSize: 50,
+    };
+    var childrenPage = {        
+        total: 0,
+        page: 1,
+        pageSize: 50,
+    };
+    
+    var getCategoryTypeParent = function () {
+        var model = {
+            categoryId: parseInt(gds.getQueryVariable('categoryId')),
+            pageIndex: parentPage.page,
+            pageSize: parentPage.pageSize,
+        };
         return $.ajax({
-            url: '/categorytype/getprices',
-            type: 'GET',
+            url: '/categorytype/getparent',
+            type: 'Post',
+            dataType: 'json',
+            data: model
         });
     };
-    var getCategoryTypeChildren = function() {
+    var getCategoryTypeChildren = function () {
+        var model = {
+            categoryId: parseInt(gds.getQueryVariable('categoryId')),
+            pageIndex: childrenPage.page,
+            pageSize: childrenPage.pageSize,
+        };
         return $.ajax({
-            url: '/categorytype/getprices',
-            type: 'GET',
+            url: '/categorytype/getchildren',
+            type: 'Post',
+            dataType: 'json',
+            data: model
         });
     };
     
@@ -19,8 +44,32 @@ var categoryTypeCtrl = function() {
             type: 'GET',
         });
     };
+
+    var getParentPage = function () {
+        return parentPage;
+    };
     
-    var getParentCategoryType = function () {
+    var setParentPage = function (thisPage) {
+        parentPage = {
+            total: thisPage.total,
+            page: thisPage.page,
+            pageSize: thisPage.pageSize,
+        };
+    };
+
+    var getChildrenPage = function () {
+        return childrenPage;
+    };
+
+    var setChildrenPage = function (thisPage) {
+        childrenPage = {
+            total: thisPage.total,
+            page: thisPage.page,
+            pageSize: thisPage.pageSize,
+        };
+    };
+
+    var getParentCategoryTypeSelect = function () {
         return $.ajax({
             url: '/categorytype/getparentcategorytype',
             type: 'GET',
@@ -35,6 +84,7 @@ var categoryTypeCtrl = function() {
             data: model
         });
     };
+    
     return {
         getCategoryTypeParent: function() {
             return getCategoryTypeParent();
@@ -45,12 +95,24 @@ var categoryTypeCtrl = function() {
         getPrice: function () {
             return getPrice();
         },
-        getParentCategoryType: function () {
-            return getParentCategoryType();
+        getParentCategoryTypeSelect: function () {
+            return getParentCategoryTypeSelect();
         },
         saveCategoryTypeParent: function (model) {
             return saveCategoryTypeParent(model);
-        }
+        },
+        getParentPage: function () {
+            return getParentPage();
+        },
+        setParentPage: function (thisPage) {
+            return setParentPage(thisPage);
+        },
+        getChildrenPage: function () {
+            return getChildrenPage();
+        },
+        setChildrenPage: function (thisPage) {
+            return setChildrenPage(thisPage);
+        },
     };
 }(categoryTypeCtrl);
 
@@ -67,8 +129,8 @@ function getPrice() {
     });
 }
 
-function getParentCategoryType() {
-    var prices = categoryTypeCtrl.getParentCategoryType();
+function getParentCategoryTypeSelect() {
+    var prices = categoryTypeCtrl.getParentCategoryTypeSelect();
     $.when(prices).then(function (result) {
         var html = '';
         for (var i = 0; i < result.data.length - 1; i++) {
@@ -85,14 +147,25 @@ $(document).on('click', '#parent-tab', function (event) {
 
     $("#category-type-parent").addClass('active');
     $("#category-type-children").removeClass('active');
+    var parent = categoryTypeCtrl.getCategoryTypeParent();
+    $.when(parent).then(function (result) {
+        if (result.isSuccess) {
+            $('#categoryTypeParentTemplate').tmpl(result.data).appendTo('#categoryTypeParent_Div');
+        }
+    });
 });
 
 $(document).on('click', '#children-tab', function (event) {
     if ($("#category-type-children").hasClass('active')) return;
-
-    getParentCategoryType();
+    getParentCategoryTypeSelect();
     $("#category-type-parent").removeClass('active');
     $("#category-type-children").addClass('active');
+    var children = categoryTypeCtrl.getCategoryTypeChildren();
+    $.when(children).then(function (result) {
+        if (result.isSuccess) {
+            $('#categoryTypeChildrenTemplate').tmpl(result.data).appendTo('#categoryTypeChildren_Div');
+        }
+    });
 });
 
 $(document).on('click', '#save-parent', function (event) {
@@ -103,7 +176,6 @@ $(document).on('click', '#save-parent', function (event) {
         CategoryTypePriceId: 1,
         Content: $('#category-type-parent-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, "")
     };
-    //"'" + $('.cateogry-type-content').code().replace(/^\s+|\s+$/g, "") + "'" 
     var saveCategoryType = categoryTypeCtrl.saveCategoryTypeParent(model);
     $.when(saveCategoryType).then(function (result) {
         if (result) {
@@ -129,4 +201,7 @@ $(document).on('click', '#save-children', function (event) {
 
 $(document).ready(function () {
     getPrice();
+    categoryTypeCtrl.setParentPage(pageSetting);
+    categoryTypeCtrl.setChildrenPage(pageSetting);
+    categoryTypeCtrl.getCategoryTypeParent();
 });
