@@ -83,7 +83,7 @@ namespace GdsVideoBackend
         private static void RegisterInspiniaTheme(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/inspinia")
-                .Include("~/Content/font-awesome/css/font-awesome.css", new CssRewriteUrlTransform())
+                .Include("~/fonts/css/font-awesome.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/bootstrap.min.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/animate.css", new CssRewriteUrlTransform())
                 .Include("~/Content/css/style.css", new CssRewriteUrlTransform())

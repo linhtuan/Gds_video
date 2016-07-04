@@ -59,9 +59,11 @@ var category = function() {
 function bindingCategory() {
     var binding = category.getCategory();
     $.when(binding).then(function (result) {
-        $('#category_Div').html('');
-        callBackController.renderPaging(result.data.PageIndex, result.data.ItemCount);
-        $('#categoryTemplate').tmpl(result.data).appendTo('#category_Div');
+        if (result.isSuccess) {
+            $('#category_Div').html('');
+            callBackController.renderPaging(result.data.PageIndex, result.data.ItemCount);
+            $('#categoryTemplate').tmpl(result.data).appendTo('#category_Div');
+        }
     });
 }
 
