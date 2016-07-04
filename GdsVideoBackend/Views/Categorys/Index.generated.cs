@@ -149,7 +149,7 @@ WriteLiteral(" placeholder=\"\"");
 
 WriteLiteral("></label>\r\n                    </div>\r\n                    <div");
 
-WriteLiteral(" id=\"categoryTypeParent_Div\"");
+WriteLiteral(" id=\"category_Div\"");
 
 WriteLiteral(">\r\n\r\n                    </div>\r\n                    <div");
 
@@ -202,7 +202,7 @@ WriteLiteral("></i></a>\r\n                            </div>\r\n               
 WriteLiteral(" class=\"col-lg-4\"");
 
 WriteLiteral("></div>\r\n                        </div>\r\n                    </div>\r\n            " +
-"    </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div");
+"    </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div");
 
 WriteLiteral(" id=\"add-new-category\"");
 
@@ -238,7 +238,9 @@ WriteLiteral(" class=\"m-t-none m-b\"");
 
 WriteLiteral(">Thêm Chủ đề</h3>\r\n                        <form");
 
-WriteLiteral(" id=\"category-form row\"");
+WriteLiteral(" id=\"category-form\"");
+
+WriteLiteral(" class=\"row\"");
 
 WriteLiteral(" role=\"form\"");
 
@@ -277,28 +279,52 @@ WriteLiteral(" class=\"form-group col-sm-12\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteLiteral(" id=\"save-children\"");
+WriteLiteral(" id=\"save\"");
 
 WriteLiteral(" class=\"btn btn-sm btn-primary pull-right m-t-n-xs\"");
 
 WriteLiteral("><strong>Save</strong></a>\r\n                            </div>\r\n                 " +
-"       </form>\r\n                    </div>\r\n                </div>\r\n            " +
-"</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
+"           <input");
+
+WriteLiteral(" type=\"hidden\"");
+
+WriteLiteral(" id=\"category-id\"");
+
+WriteLiteral(" value=\"0\"");
+
+WriteLiteral("/>\r\n                        </form>\r\n                    </div>\r\n                " +
+"</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
+
+            
+            #line 82 "..\..\Views\Categorys\Index.cshtml"
+Write(Html.Partial("~/Views/Categorys/PatialView/_CategoryTemplate.cshtml"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n\r\n");
 
 DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3798), Tuple.Create("\"", 3835)
-, Tuple.Create(Tuple.Create("", 3804), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 3804), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3938), Tuple.Create("\"", 3968)
+, Tuple.Create(Tuple.Create("", 3944), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 3944), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3859), Tuple.Create("\"", 3890)
-, Tuple.Create(Tuple.Create("", 3865), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.category.js")
-, 3865), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3992), Tuple.Create("\"", 4029)
+, Tuple.Create(Tuple.Create("", 3998), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 3998), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 4053), Tuple.Create("\"", 4084)
+, Tuple.Create(Tuple.Create("", 4059), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.category.js")
+, 4059), false)
 );
 
 WriteLiteral("></script>\r\n");

@@ -143,20 +143,20 @@ namespace GdsVideoBackend.Domain.Implement
             }
         }
 
-        public bool UpdateCategoryType(CategoryTypesModel model)
+        public bool UpdateCategoryType(CategoryTypeViewModel model)
         {
             try
             {
                 var categoryType = new CategoryTypes
                 {
-                    CategoryTypeId = model.ChildrenId,
+                    CategoryTypeId = model.CategoryTypeId,
                     CategoryTypeParentId = model.ParentId,
                     CategoryId = model.CategoryId,
-                    CategoryTypeName = model.ChildrenName,
+                    CategoryTypeName = model.CategoryTypeName,
                     ContentType = null,
                     Content = model.Content,
                     CreatedDate = DateTime.UtcNow,
-                    CategoryTypePriceId = model.PriceId
+                    CategoryTypePriceId = model.CategoryTypePriceId == 0 || model.CategoryTypePriceId == null ? null : model.CategoryTypePriceId
                 };
                 Repository.Update<DbContextBase>(categoryType);
                 Repository.Commit<DbContextBase>();

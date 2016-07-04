@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using Gds.ServiceModel.BackEndModel;
+using Gds.ServiceModel.ControlObject;
 using MvcCornerstone.Data;
+using MvcCornerstone.Generic.Paging;
 using MvcCornerstone.Services;
+using WebGrease.Css.Extensions;
 
 namespace GdsVideoBackend.Domain.Implement
 {
@@ -15,10 +17,21 @@ namespace GdsVideoBackend.Domain.Implement
         {
         }
 
-        public List<Categorys> GetCategory()
+        public PagingResultModel<Categorys> GetCategory(int pageIndex, int pageSize)
         {
-            var result = Repository.DoQuery<DbContextBase>(x => x.Status == 1).ToList();
-            return result;
+            var query = Repository.DoQuery<DbContextBase>(x => x.Status == 1).OrderByDescending(x => x.CreatedDate);
+            var totalCount = query.Count();
+            var dataResult = query.ToPagedQueryable(pageIndex, pageSize, totalCount);
+            
+            var resultPaging = new PagingResultModel<Categorys>
+            {
+                Result = dataResult,
+                PageIndex = dataResult.PageIndex,
+                PageSize = dataResult.PageSize,
+                ItemCount = dataResult.ItemCount,
+                PageCount = dataResult.PageCount
+            };
+            return resultPaging;
         }
 
         public bool AddCategory(CategoryModel model)

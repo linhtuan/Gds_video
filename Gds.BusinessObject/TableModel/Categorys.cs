@@ -17,5 +17,11 @@ namespace Gds.BusinessObject.TableModel
         public DateTime? CreatedDate { get; set; }
 
         public int Status { get; set; }
+
+        [NotMapped]
+        public string DateTime { get; set; }
+
+        [NotMapped]
+        public string RouterDetail { get; set; }
     }
 }

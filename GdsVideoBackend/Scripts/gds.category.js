@@ -56,3 +56,59 @@ var category = function() {
     };
 }(category);
 
+function bindingCategory() {
+    var binding = category.getCategory();
+    $.when(binding).then(function (result) {
+        $('#category_Div').html('');
+        callBackController.renderPaging(result.data.PageIndex, result.data.ItemCount);
+        $('#categoryTemplate').tmpl(result.data).appendTo('#category_Div');
+    });
+}
+
+function bindingCategoryDetail(obj) {
+    var rowId = $(obj).attr("data-id");
+    $('#category-form .category-name').val($("#" + rowId + " .categorty").text());
+    $('#category-form .category-detail').val($("#" + rowId + " .detail").text());
+    $("#category-form #category-id").val(rowId);
+}
+
+function deleteCategory(obj) {
+    var rowId = $(obj).attr("data-id");
+    var model = {
+        categoryId: rowId
+    };
+    var deleteCate = category.deleteCategory(model);
+    $.when(deleteCate).then(function (result) {
+        bindingCategory();
+    });
+}
+
+$(document).on('click', '#save', function (event) {
+    var model = {
+        CategoryId: parseInt($("#category-form #category-id").val()),
+        CategoryName: $('#category-form .category-name').val(),
+        CategoryDetail: $('#category-form .category-detail').val(),
+    };
+    if (model.CategoryId == 0) {
+        var insert = category.insertCategory(model);
+        $.when(insert).then(function (result) {
+            if (result.isSuccess) {
+                bindingCategory();
+            }
+        });
+    } else {
+        var update = category.updateCategory(model);
+        $.when(update).then(function (result) {
+            if (result.isSuccess) {
+                bindingCategory();
+            }
+        });
+    }
+    $('#add-new-category').modal('hide');
+});
+
+
+$(document).ready(function () {
+    bindingCategory();
+});
+

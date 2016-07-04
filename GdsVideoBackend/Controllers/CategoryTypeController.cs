@@ -67,10 +67,9 @@ namespace GdsVideoBackend.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public JsonResult Update()
+        public JsonResult Update(CategoryTypeViewModel item)
         {
-            var model = new CategoryTypesModel();
-            var result = _categoryTypeService.UpdateCategoryType(model);
+            var result = _categoryTypeService.UpdateCategoryType(item);
             return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 

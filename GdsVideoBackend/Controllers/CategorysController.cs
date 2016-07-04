@@ -24,9 +24,14 @@ namespace GdsVideoBackend.Controllers
         [HttpPost]
         public JsonResult GetCategorys(int pageIndex, int pageSize)
         {
-            var result = _categorysService.GetCategory();
-            return result.Any()
-                ? Json(new {isSuccess = true, data = result})
+            var datas = _categorysService.GetCategory(pageIndex, pageSize);
+            foreach (var item in datas.Result)
+            {
+                item.DateTime = item.CreatedDate.Value.ToString("dd-MM-yyyy HH:mm");
+                item.RouterDetail = Url.Action("Index", "CategoryType", new { categoryId = item.CategoryId });
+            }
+            return datas.Result.Any()
+                ? Json(new { isSuccess = true, data = datas })
                 : Json(new {isSuccess = false});
         }
 

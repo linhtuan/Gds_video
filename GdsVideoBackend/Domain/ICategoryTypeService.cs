@@ -16,7 +16,7 @@ namespace GdsVideoBackend.Domain
 
         bool InsertCategoryType(CategoryTypeViewModel model);
 
-        bool UpdateCategoryType(CategoryTypesModel model);
+        bool UpdateCategoryType(CategoryTypeViewModel model);
 
         bool DeleteCategoryType(int categoryTypeId);
 

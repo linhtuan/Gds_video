@@ -478,23 +478,30 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7243), Tuple.Create("\"", 7280)
-, Tuple.Create(Tuple.Create("", 7249), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+WriteAttribute("src", Tuple.Create(" src=\"", 7243), Tuple.Create("\"", 7273)
+, Tuple.Create(Tuple.Create("", 7249), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
 , 7249), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7304), Tuple.Create("\"", 7339)
-, Tuple.Create(Tuple.Create("", 7310), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
-, 7310), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7297), Tuple.Create("\"", 7334)
+, Tuple.Create(Tuple.Create("", 7303), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 7303), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7363), Tuple.Create("\"", 7418)
-, Tuple.Create(Tuple.Create("", 7369), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
-, 7369), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7358), Tuple.Create("\"", 7393)
+, Tuple.Create(Tuple.Create("", 7364), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
+, 7364), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 7417), Tuple.Create("\"", 7472)
+, Tuple.Create(Tuple.Create("", 7423), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
+, 7423), false)
 );
 
 WriteLiteral(@"></script>

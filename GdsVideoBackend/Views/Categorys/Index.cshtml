@@ -31,7 +31,7 @@
                     <div class="dataTables_filter">
                         <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
                     </div>
-                    <div id="categoryTypeParent_Div">
+                    <div id="category_Div">
 
                     </div>
                     <div class="paging_simple_numbers">
@@ -51,7 +51,6 @@
     </div>
 </div>
 
-
 <div id="add-new-category" class="modal fade" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -59,7 +58,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="m-t-none m-b">Thêm Chủ đề</h3>
-                        <form id="category-form row" role="form">
+                        <form id="category-form" class="row" role="form">
                             <div class="form-group col-sm-12">
                                 <div class="col-sm-6">
                                     <label>Tên chủ đề</label> <input type="text" placeholder="Tên chủ đề" class="category-name form-control">
@@ -69,8 +68,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-12">
-                                <a id="save-children" class="btn btn-sm btn-primary pull-right m-t-n-xs"><strong>Save</strong></a>
+                                <a id="save" class="btn btn-sm btn-primary pull-right m-t-n-xs"><strong>Save</strong></a>
                             </div>
+                            <input type="hidden" id="category-id" value="0"/>
                         </form>
                     </div>
                 </div>
@@ -79,7 +79,10 @@
     </div>
 </div>
 
+@Html.Partial("~/Views/Categorys/PatialView/_CategoryTemplate.cshtml")
+
 @section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
     <script src="~/Scripts/gds.paging.control.js"></script>
     <script src="~/Scripts/gds.category.js"></script>
 }

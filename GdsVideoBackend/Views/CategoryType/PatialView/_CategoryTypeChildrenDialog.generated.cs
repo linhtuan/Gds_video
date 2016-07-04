@@ -119,7 +119,7 @@ WriteLiteral(">\r\n                                    <label>Khóa học</label
 
 WriteLiteral(" class=\"form-control m-b parent-category-type-select\"");
 
-WriteLiteral(" name=\"price\"");
+WriteLiteral(" name=\"category-type-parent-select\"");
 
 WriteLiteral("></select>\r\n                                </div>\r\n                            <" +
 "/div>\r\n\r\n                            <div");
@@ -180,8 +180,16 @@ WriteLiteral(" id=\"save-children\"");
 WriteLiteral(" class=\"btn btn-sm btn-primary pull-right m-t-n-xs\"");
 
 WriteLiteral("><strong>Save</strong></a>\r\n                            </div>\r\n                 " +
-"       </form>\r\n                    </div>\r\n                </div>\r\n            " +
-"</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
+"           <input");
+
+WriteLiteral(" type=\"hidden\"");
+
+WriteLiteral(" id=\"category-type-id\"");
+
+WriteLiteral(" value=\"0\"");
+
+WriteLiteral(" />\r\n                        </form>\r\n                    </div>\r\n               " +
+" </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
 
         }
     }
