@@ -861,6 +861,7 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTypeChildrenTemplate.generated.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\gds.backend.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">

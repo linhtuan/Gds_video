@@ -175,17 +175,9 @@ WriteLiteral(" class=\"col-sm-3\"");
 WriteLiteral(">\r\n                                                <label>\r\n                     " +
 "                               <select");
 
-WriteLiteral(" class=\"form-control input-sm\"");
+WriteLiteral(" class=\"form-control input-sm page-size\"");
 
 WriteLiteral(">\r\n                                                        <option");
-
-WriteLiteral(" value=\"10\"");
-
-WriteLiteral(">10</option>\r\n                                                        <option");
-
-WriteLiteral(" value=\"25\"");
-
-WriteLiteral(">25</option>\r\n                                                        <option");
 
 WriteLiteral(" value=\"50\"");
 
@@ -242,11 +234,11 @@ WriteLiteral(" class=\"col-lg-4\"");
 
 WriteLiteral("></div>\r\n                                                <div");
 
-WriteLiteral(" class=\"col-lg-4 paging-row paging-row-parent\"");
+WriteLiteral(" class=\"col-lg-4 paging-row hide\"");
 
 WriteLiteral(">\r\n                                                    <a");
 
-WriteLiteral(" class=\"btn btn-default btn-sm\"");
+WriteLiteral(" class=\"btn btn-default btn-sm prev\"");
 
 WriteLiteral(" href=\"#\"");
 
@@ -254,19 +246,23 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-angle-left\"");
 
-WriteLiteral("></i></a>\r\n                                                    <input");
+WriteLiteral("></i> Previous</a>\r\n                                                    <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" class=\"input-mini\"");
 
-WriteLiteral(">&nbsp;of&nbsp;<a>42</a>\r\n                                                    <a");
+WriteLiteral(">&nbsp;of&nbsp;<a");
 
-WriteLiteral(" class=\"btn btn-default btn-sm\"");
+WriteLiteral(" class=\"total-row\"");
+
+WriteLiteral(">0</a>\r\n                                                    <a");
+
+WriteLiteral(" class=\"btn btn-default btn-sm next\"");
 
 WriteLiteral(" href=\"#\"");
 
-WriteLiteral("><i");
+WriteLiteral(">Next <i");
 
 WriteLiteral(" class=\"fa fa-angle-right\"");
 
@@ -330,17 +326,9 @@ WriteLiteral(" class=\"col-sm-3\"");
 WriteLiteral(">\r\n                                                <label>\r\n                     " +
 "                               <select");
 
-WriteLiteral(" class=\"form-control input-sm\"");
+WriteLiteral(" class=\"form-control input-sm page-size\"");
 
 WriteLiteral(">\r\n                                                        <option");
-
-WriteLiteral(" value=\"10\"");
-
-WriteLiteral(">10</option>\r\n                                                        <option");
-
-WriteLiteral(" value=\"25\"");
-
-WriteLiteral(">25</option>\r\n                                                        <option");
 
 WriteLiteral(" value=\"50\"");
 
@@ -397,11 +385,11 @@ WriteLiteral(" class=\"col-lg-4\"");
 
 WriteLiteral("></div>\r\n                                                <div");
 
-WriteLiteral(" class=\"col-lg-4 paging-row paging-row-parent\"");
+WriteLiteral(" class=\"col-lg-4 paging-row hide\"");
 
 WriteLiteral(">\r\n                                                    <a");
 
-WriteLiteral(" class=\"btn btn-default btn-sm\"");
+WriteLiteral(" class=\"btn btn-default btn-sm prev\"");
 
 WriteLiteral(" href=\"#\"");
 
@@ -409,19 +397,23 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-angle-left\"");
 
-WriteLiteral("></i></a>\r\n                                                    <input");
+WriteLiteral("></i> Previous</a>\r\n                                                    <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" class=\"input-mini\"");
 
-WriteLiteral(">&nbsp;of&nbsp;<a>42</a>\r\n                                                    <a");
+WriteLiteral(">&nbsp;of&nbsp;<a");
 
-WriteLiteral(" class=\"btn btn-default btn-sm\"");
+WriteLiteral(" class=\"total-row\"");
+
+WriteLiteral(">0</a>\r\n                                                    <a");
+
+WriteLiteral(" class=\"btn btn-default btn-sm next\"");
 
 WriteLiteral(" href=\"#\"");
 
-WriteLiteral("><i");
+WriteLiteral(">Next <i");
 
 WriteLiteral(" class=\"fa fa-angle-right\"");
 
@@ -447,7 +439,7 @@ WriteLiteral(@"></div>
 ");
 
             
-            #line 123 "..\..\Views\CategoryType\Index.cshtml"
+            #line 119 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.cshtml"));
 
             
@@ -456,7 +448,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.
 WriteLiteral("\r\n");
 
             
-            #line 124 "..\..\Views\CategoryType\Index.cshtml"
+            #line 120 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplate.cshtml"));
 
             
@@ -465,7 +457,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplat
 WriteLiteral("\r\n");
 
             
-            #line 125 "..\..\Views\CategoryType\Index.cshtml"
+            #line 121 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml"));
 
             
@@ -474,7 +466,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cs
 WriteLiteral("\r\n");
 
             
-            #line 126 "..\..\Views\CategoryType\Index.cshtml"
+            #line 122 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentTemplate.cshtml"));
 
             
@@ -486,23 +478,23 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7519), Tuple.Create("\"", 7556)
-, Tuple.Create(Tuple.Create("", 7525), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 7525), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7243), Tuple.Create("\"", 7280)
+, Tuple.Create(Tuple.Create("", 7249), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 7249), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7580), Tuple.Create("\"", 7615)
-, Tuple.Create(Tuple.Create("", 7586), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
-, 7586), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7304), Tuple.Create("\"", 7339)
+, Tuple.Create(Tuple.Create("", 7310), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
+, 7310), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7639), Tuple.Create("\"", 7694)
-, Tuple.Create(Tuple.Create("", 7645), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
-, 7645), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7363), Tuple.Create("\"", 7418)
+, Tuple.Create(Tuple.Create("", 7369), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
+, 7369), false)
 );
 
 WriteLiteral(@"></script>

@@ -165,11 +165,11 @@ WriteLiteral(" class=\"col-lg-4\"");
 
 WriteLiteral("></div>\r\n                            <div");
 
-WriteLiteral(" class=\"col-lg-4 paging-row paging-row-parent\"");
+WriteLiteral(" class=\"col-lg-4 paging-row hide\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteLiteral(" class=\"btn btn-default btn-sm\"");
+WriteLiteral(" class=\"btn btn-default btn-sm prev\"");
 
 WriteLiteral(" href=\"#\"");
 
@@ -177,19 +177,23 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-angle-left\"");
 
-WriteLiteral("></i></a>\r\n                                <input");
+WriteLiteral("></i> Previous</a>\r\n                                <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" class=\"input-mini\"");
 
-WriteLiteral(">&nbsp;of&nbsp;<a>42</a>\r\n                                <a");
+WriteLiteral(">&nbsp;of&nbsp;<a");
 
-WriteLiteral(" class=\"btn btn-default btn-sm\"");
+WriteLiteral(" class=\"total-row\"");
+
+WriteLiteral(">0</a>\r\n                                <a");
+
+WriteLiteral(" class=\"btn btn-default btn-sm next\"");
 
 WriteLiteral(" href=\"#\"");
 
-WriteLiteral("><i");
+WriteLiteral(">Next <i");
 
 WriteLiteral(" class=\"fa fa-angle-right\"");
 
@@ -285,16 +289,16 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3770), Tuple.Create("\"", 3807)
-, Tuple.Create(Tuple.Create("", 3776), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 3776), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3798), Tuple.Create("\"", 3835)
+, Tuple.Create(Tuple.Create("", 3804), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 3804), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3831), Tuple.Create("\"", 3862)
-, Tuple.Create(Tuple.Create("", 3837), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.category.js")
-, 3837), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3859), Tuple.Create("\"", 3890)
+, Tuple.Create(Tuple.Create("", 3865), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.category.js")
+, 3865), false)
 );
 
 WriteLiteral("></script>\r\n");

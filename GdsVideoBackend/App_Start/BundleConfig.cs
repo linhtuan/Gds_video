@@ -65,12 +65,12 @@ namespace GdsVideoBackend
                     "~/Content/js/plugins/daterangepicker/daterangepicker.js",
                     "~/Content/js/plugins/daterangepicker/angular-daterangepicker.js",
                     "~/Content/js/plugins/sweetalert/sweetalert.min.js",
-                    "~/Content/js/plugins/footable/footable.all.min.js",
-                    "~/Content/js/plugins/jquery-ui/jquery-ui.min.js"
+                    "~/Content/js/plugins/footable/footable.all.min.js"
                 }));
 
             bundles.Add(new ScriptBundle("~/bundles/base-lib-js")
                 .Include("~/Content/js/jquery-2.1.4.min.js")
+                .Include("~/Content/js/plugins/jquery-ui/jquery-ui.min.js")
                 .Include("~/Content/js/bootstrap.min.js")
                 .Include("~/Scripts/gds.js"));
 

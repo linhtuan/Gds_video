@@ -7,16 +7,18 @@ var pageSetting = {
 };
 
 var callBackController = function() {
-    var renderPaging = function(page, total) {
+    var renderPaging = function (page, total) {
         $('.paging-row').show();
         $('.paging-row .input-mini').val(page);
-        $('.paging-row a').text(total);
-        $('.paging-row button').removeClass('disabled');
+        $('.paging-row .total-row').text(total);
+        $('.paging-row .prev').removeClass('disabled');
+        $('.paging-row .next').removeClass('disabled');
         if (page === 1)
-            $('.paging-row button.prev').addClass('disabled');
+            $('.paging-row .prev').addClass('disabled');
 
         if (page === total)
-            $('.paging-row button.next').addClass('disabled');
+            $('.paging-row .input-mini').attr("readonly", "true");
+            $('.paging-row .next').addClass('disabled');
     };
 
     var calculatePage = function(totalRecord, pageSize) {
@@ -46,7 +48,7 @@ var callBackController = function() {
     };
 }(callBackController);
 
-$(document).on('click', '.paging-row button.prev', function () {
+$(document).on('click', '.paging-row .prev', function () {
 	if (!$(this).hasClass('disabled')) {
 	    pageSetting.page = pageSetting.page - 1;
 	    $('html, body').animate({ scrollTop: 0 }, 0);
@@ -56,7 +58,7 @@ $(document).on('click', '.paging-row button.prev', function () {
 	}
 });
 
-$(document).on('click', '.paging-row button.next', function () {
+$(document).on('click', '.paging-row .next', function () {
 	if (!$(this).hasClass('disabled')) {
 	    pageSetting.page = pageSetting.page + 1;
 	    $('html, body').animate({ scrollTop: 0 }, 0);
