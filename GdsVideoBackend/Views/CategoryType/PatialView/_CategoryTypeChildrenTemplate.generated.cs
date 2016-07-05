@@ -60,16 +60,21 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "=\"width: 162px;\">Ngày tạo</th>\r\n                <th tabindex=\"0\" aria-controls=\"" +
 "categoryTypeChildren_Table\" rowspan=\"1\" colspan=\"1\" style=\"width: 115px;\"></th>\r" +
 "\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            {{each Result" +
-"}}\r\n            <tr class=\"gradeA odd\" role=\"row\">\r\n                <td class=\"c" +
-"ategorty-type-parent\" data-parentid=\"${$value.ParentId}\">${$value.ParentName}</t" +
-"d>\r\n                <td class=\"categorty-type-children\" data-childrenid=\"${$valu" +
-"e.ChildrenId}\">${$value.ChildrenName}</td>\r\n                <td>${$value.Content" +
-"}</td>\r\n                <td class=\"price\" data-priceid=\"${$value.PriceId}\">${$va" +
-"lue.Price}</td>\r\n                <td class=\"center\">${$value.DateTime}</td>\r\n   " +
-"             <td class=\"center\">\r\n                    <a class=\"btn btn-success " +
-"btn-rounded\" href=\"#\">Edit</a>\r\n                    <a class=\"btn btn-danger btn" +
-"-rounded\" href=\"#\">Delete</a>\r\n                </td>\r\n            </tr>\r\n       " +
-"     {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>\r\n");
+"}}\r\n            <tr class=\"gradeA odd\" role=\"row\" id=\"${$value.ChildrenId}\">\r\n  " +
+"              <td class=\"parent-name\" data-parentid=\"${$value.ParentId}\">${$valu" +
+"e.ParentName}</td>\r\n                <td class=\"category-type-name\" data-children" +
+"id=\"${$value.ChildrenId}\">${$value.ChildrenName}</td>\r\n                <td class" +
+"=\"content-detail\">{{html $value.Content}}</td>\r\n                <td class=\"price" +
+"\" data-priceid=\"${$value.PriceId}\">${$value.Price}</td>\r\n                <td cla" +
+"ss=\"center\">${$value.DateTime}</td>\r\n                <td class=\"center\">\r\n      " +
+"              <a class=\"btn btn-sm btn-success btn-rounded\" href=\"#\">Video</a>\r\n" +
+"                    <a class=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindi" +
+"ngCategoryTypeDetail(this)\" data-type=\"children\" data-id=\"${$value.ChildrenId}\" " +
+"data-toggle=\"modal\" href=\"#add-new-category-type-children\">Edit</a>\r\n           " +
+"         <a class=\"btn btn-sm btn-danger btn-rounded\" onclick=\"deleteCategoryTyp" +
+"e(this)\" data-type=\"children\" data-id=\"${$value.ChildrenId}\" href=\"#\">Delete</a>" +
+"\r\n                </td>\r\n            </tr>\r\n            {{/each}}\r\n        </tbo" +
+"dy>\r\n    </table>\r\n</script>\r\n");
 
         }
     }

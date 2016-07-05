@@ -105,25 +105,9 @@ WriteLiteral(" class=\"form-control m-b price\"");
 
 WriteLiteral(" name=\"price\"");
 
-WriteLiteral(">\r\n                                        <option");
-
-WriteLiteral(" value=\"1\"");
-
-WriteLiteral(">option 1</option>\r\n                                        <option");
-
-WriteLiteral(" value=\"2\"");
-
-WriteLiteral(">option 2</option>\r\n                                        <option");
-
-WriteLiteral(" value=\"3\"");
-
-WriteLiteral(">option 3</option>\r\n                                        <option");
-
-WriteLiteral(" value=\"4\"");
-
-WriteLiteral(">option 4</option>\r\n                                    </select>\r\n              " +
-"                  </div>\r\n                            </div>\r\n\r\n                " +
-"            <div");
+WriteLiteral(">\r\n                                        \r\n                                    " +
+"</select>\r\n                                </div>\r\n                            <" +
+"/div>\r\n\r\n                            <div");
 
 WriteLiteral(" class=\"wrapper wrapper-content row\"");
 
@@ -163,7 +147,7 @@ WriteLiteral(" class=\"ibox-content no-padding\"");
 
 WriteLiteral(">\r\n                                            <div");
 
-WriteLiteral(" class=\"click2edit wrapper p-md cateogry-type-content\"");
+WriteLiteral(" class=\"wrapper p-md cateogry-type-content\"");
 
 WriteLiteral(@">
 
@@ -185,7 +169,7 @@ WriteLiteral("><strong>Save</strong></a>\r\n                            </div>\r
 
 WriteLiteral(" type=\"hidden\"");
 
-WriteLiteral(" id=\"category-type-id\"");
+WriteLiteral(" class=\"category-type-id\"");
 
 WriteLiteral(" value=\"0\"");
 

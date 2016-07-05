@@ -15,9 +15,9 @@
                 <td class="detail">${$value.CategoryDetail}</td>
                 <td class="date">${$value.DateTime}</td>
                 <td class="actions">
-                    <a class="btn btn-success btn-rounded" href="${$value.RouterDetail}">Detail</a>
-                    <a class="btn btn-success btn-rounded" onclick="bindingCategoryDetail(this)" data-id="${$value.CategoryId}" data-toggle="modal">Edit</a>
-                    <a class="btn btn-danger btn-rounded" onclick="deleteCategory(this)" data-id="${$value.CategoryId}" href="#">Delete</a>
+                    <a class="btn btn-sm btn-success btn-rounded" href="${$value.RouterDetail}">Detail</a>
+                    <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryDetail(this)" data-id="${$value.CategoryId}" data-toggle="modal">Edit</a>
+                    <a class="btn btn-sm btn-danger btn-rounded" onclick="deleteCategory(this)" data-id="${$value.CategoryId}" href="#">Delete</a>
                 </td>
             </tr>
             {{/each}}

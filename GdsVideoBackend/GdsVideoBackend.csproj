@@ -131,6 +131,7 @@
     <Compile Include="Controllers\CategorysController.cs" />
     <Compile Include="Controllers\CategoryTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhysicalFilesController.cs" />
     <Compile Include="Domain\ICategorysService.cs" />
     <Compile Include="Domain\ICategoryTypeService.cs" />
     <Compile Include="Domain\Implement\CategorysService.cs" />
@@ -315,6 +316,7 @@
     <Content Include="Content\css\plugins\toastr\toastr.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
+    <Content Include="Content\js\inspinia.js" />
     <Content Include="fonts\css\font-awesome.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -765,6 +767,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
+    <Folder Include="Views\PhysicalFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -845,14 +848,11 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTypeParentDialog.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>_CategoryTypeParentTemplate.generated.cs</LastGenOutput>
-    </Content>
     <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenTemplate.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTypeChildrenTemplate.generated.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\gds-video.pubxml" />
     <None Include="Properties\PublishProfiles\gds.backend.pubxml" />
     <Content Include="Views\Categorys\PatialView\_CategoryTemplate.cshtml">
       <Generator>RazorGenerator</Generator>
@@ -861,6 +861,10 @@
     <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenDialog.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTypeChildrenDialog.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CategoryTypeParentTemplate.generated.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

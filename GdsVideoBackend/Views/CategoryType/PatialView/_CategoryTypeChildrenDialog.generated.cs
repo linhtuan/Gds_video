@@ -98,31 +98,17 @@ WriteLiteral(">\r\n                                </div>\r\n                   
 
 WriteLiteral(" class=\"col-sm-6\"");
 
-WriteLiteral(">\r\n                                    <label>Giá tiền</label>\r\n                 " +
-"                   <select");
-
-WriteLiteral(" class=\"form-control m-b price\"");
-
-WriteLiteral(" name=\"price\"");
-
-WriteLiteral("></select>\r\n                                </div>\r\n                            <" +
-"/div>\r\n                            <div");
-
-WriteLiteral(" class=\"form-group\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" class=\"col-sm-6\"");
-
 WriteLiteral(">\r\n                                    <label>Khóa học</label>\r\n                 " +
 "                   <select");
+
+WriteLiteral(" id=\"parent-category-type-select\"");
 
 WriteLiteral(" class=\"form-control m-b parent-category-type-select\"");
 
 WriteLiteral(" name=\"category-type-parent-select\"");
 
 WriteLiteral("></select>\r\n                                </div>\r\n                            <" +
-"/div>\r\n\r\n                            <div");
+"/div>\r\n                            <div");
 
 WriteLiteral(" class=\"wrapper wrapper-content row\"");
 
@@ -184,7 +170,7 @@ WriteLiteral("><strong>Save</strong></a>\r\n                            </div>\r
 
 WriteLiteral(" type=\"hidden\"");
 
-WriteLiteral(" id=\"category-type-id\"");
+WriteLiteral(" class=\"category-type-id\"");
 
 WriteLiteral(" value=\"0\"");
 

@@ -60,13 +60,13 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "ta-id=\"${$value.CategoryId}\">${$value.CategoryName}</td>\r\n                <td cl" +
 "ass=\"detail\">${$value.CategoryDetail}</td>\r\n                <td class=\"date\">${$" +
 "value.DateTime}</td>\r\n                <td class=\"actions\">\r\n                    " +
-"<a class=\"btn btn-success btn-rounded\" href=\"${$value.RouterDetail}\">Detail</a>\r" +
-"\n                    <a class=\"btn btn-success btn-rounded\" onclick=\"bindingCate" +
-"goryDetail(this)\" data-id=\"${$value.CategoryId}\" data-toggle=\"modal\">Edit</a>\r\n " +
-"                   <a class=\"btn btn-danger btn-rounded\" onclick=\"deleteCategory" +
-"(this)\" data-id=\"${$value.CategoryId}\" href=\"#\">Delete</a>\r\n                </td" +
-">\r\n            </tr>\r\n            {{/each}}\r\n        </tbody>\r\n    </table>\r\n</s" +
-"cript>\r\n");
+"<a class=\"btn btn-sm btn-success btn-rounded\" href=\"${$value.RouterDetail}\">Deta" +
+"il</a>\r\n                    <a class=\"btn btn-sm btn-success btn-rounded\" onclic" +
+"k=\"bindingCategoryDetail(this)\" data-id=\"${$value.CategoryId}\" data-toggle=\"moda" +
+"l\">Edit</a>\r\n                    <a class=\"btn btn-sm btn-danger btn-rounded\" on" +
+"click=\"deleteCategory(this)\" data-id=\"${$value.CategoryId}\" href=\"#\">Delete</a>\r" +
+"\n                </td>\r\n            </tr>\r\n            {{/each}}\r\n        </tbod" +
+"y>\r\n    </table>\r\n</script>\r\n");
 
         }
     }

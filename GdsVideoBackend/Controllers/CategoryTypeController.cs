@@ -74,10 +74,10 @@ namespace GdsVideoBackend.Controllers
         }
 
         [HttpPost]
-        public JsonResult Delete()
+        public JsonResult Delete(int categoryTypeId, string type)
         {
-            var result = _categoryTypeService.DeleteCategoryType(0);
-            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
+            var result = _categoryTypeService.DeleteCategoryType(categoryTypeId);
+            return result ? Json(new { isSuccess = true, type = type }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 	}
 }
