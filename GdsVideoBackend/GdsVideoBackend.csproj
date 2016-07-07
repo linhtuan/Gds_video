@@ -132,8 +132,10 @@
     <Compile Include="Controllers\CategoryTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhysicalFilesController.cs" />
+    <Compile Include="Domain\ICategoryDetailService.cs" />
     <Compile Include="Domain\ICategorysService.cs" />
     <Compile Include="Domain\ICategoryTypeService.cs" />
+    <Compile Include="Domain\Implement\CategoryDetailService.cs" />
     <Compile Include="Domain\Implement\CategorysService.cs" />
     <Compile Include="Domain\Implement\CategoryTypeService.cs" />
     <Compile Include="Global.asax.cs">
@@ -148,10 +150,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CategoryDetail\CategoryDetails.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CategoryDetails.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CategoryDetail\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryDetail\PatialView\_CategoryDetailsTemplate.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CategoryDetailsTemplate.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryDetail\PatialView\_PhysicalFileTemplate.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PhysicalFileTemplate.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\Categorys\Index.generated.cs">
       <AutoGen>True</AutoGen>
@@ -742,6 +759,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\gds.category.js" />
+    <Content Include="Scripts\gds.categoryDetail.js" />
     <Content Include="Scripts\gds.js" />
     <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\mydropUpload.js" />
@@ -767,7 +785,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
-    <Folder Include="Views\PhysicalFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -865,6 +882,20 @@
     <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTypeParentTemplate.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\PhysicalFiles\Index.cshtml" />
+    <Content Include="Views\CategoryDetail\PatialView\_CategoryDetailsTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CategoryDetailsTemplate.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\CategoryDetail\PatialView\_PhysicalFileTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PhysicalFileTemplate.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\CategoryDetail\CategoryDetails.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CategoryDetails.generated.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

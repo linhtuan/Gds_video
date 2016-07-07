@@ -67,7 +67,7 @@ function bindingCategory() {
     });
 }
 
-function bindingCategoryDetail(obj) {
+function bindingCategoryFrom(obj) {
     var rowId = $(obj).attr("data-id");
     $('#category-form .category-name').val($("#" + rowId + " .categorty").text());
     $('#category-form .category-detail').val($("#" + rowId + " .detail").text());

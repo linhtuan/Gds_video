@@ -31,21 +31,17 @@ namespace GdsVideoBackend.Domain.Implement
                         (cat, price) => new { cat, price.CategoryTypePriceId, price.Price, price.SalePrice, price.SaleTime }).OrderByDescending(x => x.cat.CreatedDate);
                 var totalCount = query.Count();
                 var dataResult = query.ToPagedQueryable(pageIndex, pageSize, totalCount);
-                var results = new List<CategoryTypesModel>();
-
-                foreach (var item in dataResult)
+                var results = dataResult.Select(item => new CategoryTypesModel
                 {
-                    results.Add(new CategoryTypesModel
-                    {
-                        CategoryId = item.cat.CategoryTypeId,
-                        ChildrenId = item.cat.CategoryTypeId,
-                        ChildrenName = item.cat.CategoryTypeName,
-                        Content = item.cat.Content,
-                        DateTime = item.cat.CreatedDate.HasValue ? item.cat.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
-                        Price = item.Price.Value,
-                        PriceId = item.CategoryTypePriceId
-                    });
-                }
+                    CategoryId = item.cat.CategoryTypeId,
+                    ChildrenId = item.cat.CategoryTypeId,
+                    ChildrenName = item.cat.CategoryTypeName,
+                    Content = item.cat.Content,
+                    DateTime = item.cat.CreatedDate.HasValue ? item.cat.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
+                    Price = item.Price.Value,
+                    PriceId = item.CategoryTypePriceId
+                }).ToList();
+
                 var resultPaging = new PagingResultModel<CategoryTypesModel>
                 {
                     Result = results,
@@ -147,9 +143,8 @@ namespace GdsVideoBackend.Domain.Implement
         {
             try
             {
-                var categoryType = new CategoryTypes
+                Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeId == model.CategoryTypeId, x => new CategoryTypes
                 {
-                    CategoryTypeId = model.CategoryTypeId,
                     CategoryTypeParentId = model.ParentId,
                     CategoryId = model.CategoryId,
                     CategoryTypeName = model.CategoryTypeName,
@@ -158,8 +153,7 @@ namespace GdsVideoBackend.Domain.Implement
                     CreatedDate = DateTime.UtcNow,
                     CategoryTypePriceId = model.CategoryTypePriceId == 0 || model.CategoryTypePriceId == null ? null : model.CategoryTypePriceId,
                     Status = 1,
-                };
-                Repository.Update<DbContextBase>(categoryType);
+                });
                 Repository.Commit<DbContextBase>();
                 return true;
             }
@@ -173,7 +167,7 @@ namespace GdsVideoBackend.Domain.Implement
         {
             try
             {
-                Repository.DeleteMany<DbContextBase>(x => x.CategoryTypeId == categoryTypeId);
+                Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeId == categoryTypeId, x => new CategoryTypes {Status = 0});
                 return true;
             }
             catch (Exception)

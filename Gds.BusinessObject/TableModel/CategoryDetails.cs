@@ -21,5 +21,7 @@ namespace Gds.BusinessObject.TableModel
         public DateTime? CreatedDate { get; set; }
 
         public DateTime? UpdatedDate { get; set; }
+
+        public int? Status { get; set; }
     }
 }

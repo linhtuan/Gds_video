@@ -30,25 +30,40 @@ namespace ASP
     using GdsVideoBackend;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Categorys/Index.cshtml")]
-    public partial class _Views_Categorys_Index_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/CategoryDetail/CategoryDetails.cshtml")]
+    public partial class _Views_CategoryDetail_CategoryDetails_cshtml : System.Web.Mvc.WebViewPage<dynamic>
     {
-        public _Views_Categorys_Index_cshtml()
+        public _Views_CategoryDetail_CategoryDetails_cshtml()
         {
         }
         public override void Execute()
         {
-WriteLiteral("\r\n");
-
             
-            #line 2 "..\..\Views\Categorys\Index.cshtml"
+            #line 1 "..\..\Views\CategoryDetail\CategoryDetails.cshtml"
   
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CategoryDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
             
             #line default
             #line hidden
+WriteLiteral("\r\n");
+
+DefineSection("style", () => {
+
+WriteLiteral("\r\n    <link");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 122), Tuple.Create("\"", 157)
+, Tuple.Create(Tuple.Create("", 129), Tuple.Create<System.Object, System.Int32>(Href("~/Content/Style/dropzone.css")
+, 129), false)
+);
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" />\r\n");
+
+});
+
 WriteLiteral("\r\n");
 
 DefineSection("left_menu", () => {
@@ -58,7 +73,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 8 "..\..\Views\Categorys\Index.cshtml"
+            #line 12 "..\..\Views\CategoryDetail\CategoryDetails.cshtml"
 Write(Html.Partial("~/Views/PartialViews/_LeftMenuPartial.cshtml"));
 
             
@@ -68,7 +83,7 @@ WriteLiteral("\r\n");
 
 });
 
-WriteLiteral("<div");
+WriteLiteral("\r\n<div");
 
 WriteLiteral(" class=\"col-lg-12\"");
 
@@ -122,12 +137,16 @@ WriteLiteral(">\r\n                            <a");
 
 WriteLiteral(" data-toggle=\"modal\"");
 
+WriteLiteral(" id=\"show-detail-box\"");
+
+WriteLiteral(" onclick=\"bindingCategoryDetailFrom(this, \'add\')\"");
+
 WriteLiteral(" class=\"btn btn-success btn-sm\"");
 
-WriteLiteral(" href=\"#add-new-category\"");
+WriteLiteral(" href=\"#add-new-category-detail\"");
 
-WriteLiteral(">Thêm chủ đề</a>\r\n                        </div>\r\n                    </div>\r\n   " +
-"                 <div");
+WriteLiteral(">Thêm bài học</a>\r\n                        </div>\r\n                    </div>\r\n  " +
+"                  <div");
 
 WriteLiteral(" class=\"dataTables_filter\"");
 
@@ -141,7 +160,7 @@ WriteLiteral(" placeholder=\"\"");
 
 WriteLiteral("></label>\r\n                    </div>\r\n                    <div");
 
-WriteLiteral(" id=\"category_Div\"");
+WriteLiteral(" id=\"category_detail_Div\"");
 
 WriteLiteral(">\r\n\r\n                    </div>\r\n                    <div");
 
@@ -196,7 +215,7 @@ WriteLiteral(" class=\"col-lg-4\"");
 WriteLiteral("></div>\r\n                        </div>\r\n                    </div>\r\n            " +
 "    </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div");
 
-WriteLiteral(" id=\"add-new-category\"");
+WriteLiteral(" id=\"add-new-category-detail\"");
 
 WriteLiteral(" class=\"modal fade\"");
 
@@ -230,7 +249,7 @@ WriteLiteral(" class=\"m-t-none m-b\"");
 
 WriteLiteral(">Thêm Chủ đề</h3>\r\n                        <form");
 
-WriteLiteral(" id=\"category-form\"");
+WriteLiteral(" id=\"category-detail-form\"");
 
 WriteLiteral(" class=\"row\"");
 
@@ -250,7 +269,7 @@ WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" placeholder=\"Tên chủ đề\"");
 
-WriteLiteral(" class=\"category-name form-control\"");
+WriteLiteral(" class=\"category-detail-name form-control\"");
 
 WriteLiteral(">\r\n                                </div>\r\n                                <div");
 
@@ -262,10 +281,32 @@ WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" placeholder=\"Chi tiết chủ đề\"");
 
-WriteLiteral(" class=\"category-detail form-control\"");
+WriteLiteral(" class=\"category-detail-content form-control\"");
 
 WriteLiteral(">\r\n                                </div>\r\n                            </div>\r\n  " +
 "                          <div");
+
+WriteLiteral(" class=\"form-group col-sm-12\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"file-upload-container dropzone needsclick dz-clickable\"");
+
+WriteLiteral(" style=\"display: none\"");
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteLiteral(" class=\"dz-message needsclick\"");
+
+WriteLiteral(">\r\n                                        Drop files here or click to upload.<br" +
+">\r\n                                        <span");
+
+WriteLiteral(" class=\"note needsclick\"");
+
+WriteLiteral(">(This is just a demo dropzone. Selected files are <strong>not</strong> actually " +
+"uploaded.)</span>\r\n                                    </div>\r\n                 " +
+"               </div>\r\n                            </div>\r\n                     " +
+"       <div");
 
 WriteLiteral(" class=\"form-group col-sm-12\"");
 
@@ -280,16 +321,25 @@ WriteLiteral("><strong>Save</strong></a>\r\n                            </div>\r
 
 WriteLiteral(" type=\"hidden\"");
 
-WriteLiteral(" id=\"category-id\"");
+WriteLiteral(" id=\"category-detail-id\"");
 
 WriteLiteral(" value=\"0\"");
 
-WriteLiteral("/>\r\n                        </form>\r\n                    </div>\r\n                " +
-"</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
+WriteLiteral(" />\r\n                        </form>\r\n                    </div>\r\n               " +
+" </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
 
             
-            #line 80 "..\..\Views\Categorys\Index.cshtml"
-Write(Html.Partial("~/Views/Categorys/PatialView/_CategoryTemplate.cshtml"));
+            #line 93 "..\..\Views\CategoryDetail\CategoryDetails.cshtml"
+Write(Html.Partial("~/Views/CategoryDetail/PatialView/_PhysicalFileTemplate.cshtml"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+            
+            #line 94 "..\..\Views\CategoryDetail\CategoryDetails.cshtml"
+Write(Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryDetailsTemplate.cshtml"));
 
             
             #line default
@@ -300,26 +350,75 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3802), Tuple.Create("\"", 3832)
-, Tuple.Create(Tuple.Create("", 3808), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
-, 3808), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 4749), Tuple.Create("\"", 4779)
+, Tuple.Create(Tuple.Create("", 4755), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 4755), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3856), Tuple.Create("\"", 3893)
-, Tuple.Create(Tuple.Create("", 3862), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 3862), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 4803), Tuple.Create("\"", 4840)
+, Tuple.Create(Tuple.Create("", 4809), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 4809), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3917), Tuple.Create("\"", 3948)
-, Tuple.Create(Tuple.Create("", 3923), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.category.js")
-, 3923), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 4864), Tuple.Create("\"", 4901)
+, Tuple.Create(Tuple.Create("", 4870), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categoryDetail.js")
+, 4870), false)
 );
 
-WriteLiteral("></script>\r\n");
+WriteLiteral("></script>\r\n    <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 4948), Tuple.Create("\"", 4975)
+, Tuple.Create(Tuple.Create("", 4954), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/dropzone.js")
+, 4954), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(@">
+        var setupDropzone = function setupDropzone() {
+            if ($('.file-upload-container').length === 0) {
+                return;
+            }
+            Dropzone.autoDiscover = false;
+            var myDropzone = new Dropzone("".file-upload-container"", {
+                previewTemplate: document.querySelector('#preview-template').innerHTML,
+                url: '");
+
+            
+            #line 109 "..\..\Views\CategoryDetail\CategoryDetails.cshtml"
+                 Write(Url.Action("UploadFile", "CategoryDetail"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\',\r\n                method: \"POST\",\r\n                autoProcessQueue: true,\r\n   " +
+"             clickable: [\'.file-upload-container\'],\r\n                parallelUpl" +
+"oads: 1,\r\n                maxFilesize: 100, // in mb\r\n                thumbnailW" +
+"idth: 150,\r\n                thumbnailHeight: 150,\r\n                thumbnail: fu" +
+"nction(file, dataUrl) {\r\n                    if (file.previewElement) {\r\n       " +
+"                 file.previewElement.classList.remove(\"dz-file-preview\");\r\n     " +
+"                   var images = file.previewElement.querySelectorAll(\"[data-dz-t" +
+"humbnail]\");\r\n                        for (var i = 0; i < images.length; i++) {\r" +
+"\n                            var thumbnailElement = images[i];\r\n                " +
+"            thumbnailElement.alt = file.name;\r\n                            thumb" +
+"nailElement.src = dataUrl;\r\n                        }\r\n                        s" +
+"etTimeout(function() { file.previewElement.classList.add(\"dz-image-preview\"); }," +
+" 1);\r\n                    }\r\n                },\r\n                queuecomplete: " +
+"function() {\r\n                    $(\'#add-new-category-detail\').modal(\'hide\');\r\n" +
+"                    bindingCategoryDetails();\r\n                },\r\n             " +
+"   sending: function(file, xhr, formData) {\r\n                    formData.append" +
+"(\'categoryTypeId\', parseInt(gds.getQueryVariable(\'categoryTypeId\')));\r\n         " +
+"           formData.append(\'categoryDetailId\', parseInt($(\"#category-detail-form" +
+" #category-detail-id\").val()));\r\n                }\r\n            });\r\n\r\n        }" +
+";\r\n        setupDropzone();\r\n    </script>\r\n    ");
 
 });
 
