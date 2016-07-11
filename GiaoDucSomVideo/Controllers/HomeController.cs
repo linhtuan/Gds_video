@@ -1,29 +1,30 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using GiaoDucSomVideo.Domain;
 using GiaoDucSomVideo.Infrastructure;
 
 namespace GiaoDucSomVideo.Controllers
 {
     public class HomeController : BaseController
     {
-        
+        private readonly ICategoryService _categoryService;
+
+        public HomeController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public JsonResult GetCategorys()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var result = _categoryService.GetCategoryHomePage();
+            return result.Any()
+                ? Json(new {isSuccess = true, data = result}, JsonRequestBehavior.AllowGet)
+                : Json(new {isSuccess = false}, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿
+<script id="coursesTemplateSM" type="text/x-jquery-tmpl">
+    <div class="course_element" id="wrap_${CategoryId}_courses">
+        {{each CategoryTypes}}
+        <div class="col-md-8 col-sm-6 col-xs-12 course-item fadeInDown rectangle wow">
+            <div class="img_wrap">
+                <img class="img-responsive" src="${$value.ThumbnailImage}">
+                <a class="shadow" href="${$value.CategoryTypeUrl}" title="${$value.CategoryTypeName}"></a>
+            </div>
+            <div class="info">
+                <h3>
+                    <a href="${$value.CategoryTypeUrl}" title="${$value.CategoryTypeName}">${$value.CategoryTypeName}</a>
+                </h3>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</script>

@@ -897,6 +897,8 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>CategoryDetails.generated.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\video_backend.pubxml" />
+    <Content Include="Views\CategoryDetail\PatialView\_MenuCoursesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">

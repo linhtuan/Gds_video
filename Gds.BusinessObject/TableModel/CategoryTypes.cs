@@ -24,6 +24,8 @@ namespace Gds.BusinessObject.TableModel
 
         public int? CategoryTypePriceId { get; set; }
 
+        public string ThumbnailImage { get; set; }
+
         public int Status { get; set; }
     }
 }
