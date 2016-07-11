@@ -13,6 +13,8 @@ namespace GdsVideoBackend.Models
 
         public int? CategoryTypePriceId { get; set; }
 
-        public string Content { get; set; }
+        public string FileThumbnail { get; set; }
+
+        public string Content { get; set; } 
     }
 }

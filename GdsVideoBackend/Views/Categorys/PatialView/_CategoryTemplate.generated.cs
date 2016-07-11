@@ -60,12 +60,14 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "ta-id=\"${$value.CategoryId}\">${$value.CategoryName}</td>\r\n                <td cl" +
 "ass=\"detail\">${$value.CategoryDetail}</td>\r\n                <td class=\"date\">${$" +
 "value.DateTime}</td>\r\n                <td class=\"actions\">\r\n                    " +
-"<a class=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryFrom(this)" +
-"\" data-id=\"${$value.CategoryId}\" data-toggle=\"modal\">Edit</a>\r\n                 " +
-"   <a class=\"btn btn-sm btn-danger btn-rounded\" onclick=\"deleteCategoryDetail(th" +
-"is)\" data-id=\"${$value.CategoryId}\" href=\"#\">Delete</a>\r\n                </td>\r\n" +
-"            </tr>\r\n            {{/each}}\r\n        </tbody>\r\n    </table>\r\n</scri" +
-"pt>\r\n");
+"<a class=\"btn btn-sm btn-success btn-rounded\" href=\"categorytype?categoryId=${$v" +
+"alue.CategoryId}\" target=\"_blank\">Category Types</a>\r\n                    <a cla" +
+"ss=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryFrom(this)\" data" +
+"-id=\"${$value.CategoryId}\" data-toggle=\"modal\" href=\"#add-new-category\">Edit</a>" +
+"\r\n                    <a class=\"btn btn-sm btn-danger btn-rounded\" onclick=\"dele" +
+"teCategoryDetail(this)\" data-id=\"${$value.CategoryId}\" href=\"#\">Delete</a>\r\n    " +
+"            </td>\r\n            </tr>\r\n            {{/each}}\r\n        </tbody>\r\n " +
+"   </table>\r\n</script>\r\n");
 
         }
     }

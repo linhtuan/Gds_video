@@ -78,6 +78,18 @@ WriteLiteral(" id=\"category-type-parent-form\"");
 
 WriteLiteral(" role=\"form\"");
 
+WriteAttribute("action", Tuple.Create(" action=\"", 426), Tuple.Create("\"", 472)
+            
+            #line 9 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+  , Tuple.Create(Tuple.Create("", 435), Tuple.Create<System.Object, System.Int32>(Url.Action("Insert", "CategoryType")
+            
+            #line default
+            #line hidden
+, 435), false)
+);
+
+WriteLiteral(" enctype=\"multipart/form-data\"");
+
 WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" class=\"form-group\"");
@@ -87,6 +99,8 @@ WriteLiteral(">\r\n                                <div");
 WriteLiteral(" class=\"col-sm-6\"");
 
 WriteLiteral(">\r\n                                    <label>Tên gói</label> <input");
+
+WriteLiteral(" name=\"CategoryTypeName\"");
 
 WriteLiteral(" type=\"text\"");
 
@@ -103,11 +117,59 @@ WriteLiteral(">\r\n                                    <label>Giá tiền</label
 
 WriteLiteral(" class=\"form-control m-b price\"");
 
-WriteLiteral(" name=\"price\"");
+WriteLiteral(" name=\"Price\"");
 
-WriteLiteral(">\r\n                                        \r\n                                    " +
-"</select>\r\n                                </div>\r\n                            <" +
-"/div>\r\n\r\n                            <div");
+WriteLiteral("></select>\r\n                                </div>\r\n                            <" +
+"/div>\r\n                            <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-6\"");
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteLiteral(" class=\"col-sm-8\"");
+
+WriteLiteral("><label>Ảnh đại diện</label></div>\r\n                                    <div");
+
+WriteLiteral(" class=\"col-sm-4\"");
+
+WriteLiteral("><button");
+
+WriteLiteral(" id=\"replace-photo\"");
+
+WriteLiteral(" class=\"btn btn-success btn-sm\"");
+
+WriteLiteral(">Thêm ảnh</button></div>\r\n                                    <input");
+
+WriteLiteral(" type=\"file\"");
+
+WriteLiteral(" id=\"replace-photo-tag\"");
+
+WriteLiteral(" style=\"display: none\"");
+
+WriteLiteral(" name=\"FileThumbnail\"");
+
+WriteLiteral(" accept=\"images/*\"");
+
+WriteLiteral(">\r\n                                </div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-6\"");
+
+WriteLiteral(">\r\n                                    <img");
+
+WriteLiteral(" id=\"image-photo\"");
+
+WriteLiteral(" src=\"\"");
+
+WriteLiteral(" width=\"300\"");
+
+WriteLiteral(" height=\"200\"");
+
+WriteLiteral(" />\r\n                                </div>\r\n                            </div>\r\n" +
+"                            <div");
 
 WriteLiteral(" class=\"wrapper wrapper-content row\"");
 
@@ -152,7 +214,6 @@ WriteLiteral(" class=\"wrapper p-md cateogry-type-content\"");
 WriteLiteral(@">
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -169,9 +230,31 @@ WriteLiteral("><strong>Save</strong></a>\r\n                            </div>\r
 
 WriteLiteral(" type=\"hidden\"");
 
+WriteLiteral(" name=\"CategoryTypeId\"");
+
 WriteLiteral(" class=\"category-type-id\"");
 
 WriteLiteral(" value=\"0\"");
+
+WriteLiteral(" />\r\n                            <input");
+
+WriteLiteral(" type=\"hidden\"");
+
+WriteLiteral(" name=\"CategoryId\"");
+
+WriteLiteral(" class=\"category-id\"");
+
+WriteLiteral(" value=\"0\"");
+
+WriteLiteral(" />\r\n                            <input");
+
+WriteLiteral(" type=\"hidden\"");
+
+WriteLiteral(" name=\"Content\"");
+
+WriteLiteral(" class=\"content\"");
+
+WriteLiteral(" value=\"\"");
 
 WriteLiteral(" />\r\n                        </form>\r\n                    </div>\r\n               " +
 " </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");

@@ -21,6 +21,8 @@ namespace GiaoDucSomVideo.Models
 
         public string ThumbnailImage { get; set; }
 
+        public string MimeTypeImage { get; set; }
+
         public string CategoryTypeUrl { get; set; }
     }
 }

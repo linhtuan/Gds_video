@@ -15,7 +15,8 @@
                 <td class="detail">${$value.CategoryDetail}</td>
                 <td class="date">${$value.DateTime}</td>
                 <td class="actions">
-                    <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryFrom(this)" data-id="${$value.CategoryId}" data-toggle="modal">Edit</a>
+                    <a class="btn btn-sm btn-success btn-rounded" href="categorytype?categoryId=${$value.CategoryId}" target="_blank">Category Types</a>
+                    <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryFrom(this)" data-id="${$value.CategoryId}" data-toggle="modal" href="#add-new-category">Edit</a>
                     <a class="btn btn-sm btn-danger btn-rounded" onclick="deleteCategoryDetail(this)" data-id="${$value.CategoryId}" href="#">Delete</a>
                 </td>
             </tr>

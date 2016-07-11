@@ -13,7 +13,7 @@
         <tbody>
             {{each Result}}
             <tr class="gradeA odd" role="row" id="${$value.ChildrenId}">
-                <td class="category-type-name" data-childrenid="${$value.ChildrenId}">${$value.ChildrenName}</td>
+                <td class="category-type-name" data-filetype="${$value.MimeTypeImage}" data-file="${$value.ThumbnailImage}" data-childrenid="${$value.ChildrenId}">${$value.ChildrenName}</td>
                 <td class="content-detail">{{html $value.Content}}</td>
                 <td class="price" data-priceId="${$value.PriceId}">${$value.Price}</td>
                 <td>${$value.DateTime}</td>

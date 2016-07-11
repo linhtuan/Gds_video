@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using Gds.ServiceModel.BackEndModel;
 using Gds.ServiceModel.ControlObject;
+using Gds.Setting;
 using GdsVideoBackend.Models;
 using MvcCornerstone.Data;
 using MvcCornerstone.Generic.Paging;
@@ -33,13 +36,15 @@ namespace GdsVideoBackend.Domain.Implement
                 var dataResult = query.ToPagedQueryable(pageIndex, pageSize, totalCount);
                 var results = dataResult.Select(item => new CategoryTypesModel
                 {
-                    CategoryId = item.cat.CategoryTypeId,
+                    CategoryId = item.cat.CategoryId,
                     ChildrenId = item.cat.CategoryTypeId,
                     ChildrenName = item.cat.CategoryTypeName,
                     Content = item.cat.Content,
                     DateTime = item.cat.CreatedDate.HasValue ? item.cat.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
                     Price = item.Price.Value,
-                    PriceId = item.CategoryTypePriceId
+                    PriceId = item.CategoryTypePriceId,
+                    ThumbnailImage = Convert.ToBase64String(File.ReadAllBytes(item.cat.ThumbnailImage)),
+                    MimeTypeImage = Regex.Replace(Path.GetExtension(item.cat.ThumbnailImage), @"\W", "")
                 }).ToList();
 
                 var resultPaging = new PagingResultModel<CategoryTypesModel>
@@ -109,7 +114,7 @@ namespace GdsVideoBackend.Domain.Implement
             }
         }
 
-        public bool InsertCategoryType(CategoryTypeViewModel model)
+        public bool InsertCategoryType(CategoryTypeViewModel model, string fileName, out int categoryTypeId)
         {
             try
             {
@@ -131,10 +136,20 @@ namespace GdsVideoBackend.Domain.Implement
                 }
                 Repository.Insert<DbContextBase>(categoryType);
                 Repository.Commit<DbContextBase>();
+                if (categoryType.CategoryTypeParentId == 0)
+                {
+                    var uploadFilesDir = string.Format(@"{0}\thumbnailImage\{1}\{2}", AppConfig.UploadFolder, model.CategoryId, categoryType.CategoryTypeId);
+                    Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeId == categoryType.CategoryTypeId, x => new CategoryTypes
+                    {
+                        ThumbnailImage = string.Format("{0}\\{1}", uploadFilesDir, fileName)
+                    });
+                }
+                categoryTypeId = categoryType.CategoryTypeId;
                 return true;
             }
             catch (Exception ex)
             {
+                categoryTypeId = 0;
                 return false;
             }
         }
@@ -148,11 +163,11 @@ namespace GdsVideoBackend.Domain.Implement
                     CategoryTypeParentId = model.ParentId,
                     CategoryId = model.CategoryId,
                     CategoryTypeName = model.CategoryTypeName,
-                    ContentType = null,
                     Content = model.Content,
                     CreatedDate = DateTime.UtcNow,
                     CategoryTypePriceId = model.CategoryTypePriceId == 0 || model.CategoryTypePriceId == null ? null : model.CategoryTypePriceId,
                     Status = 1,
+                    ThumbnailImage = model.FileThumbnail
                 });
                 Repository.Commit<DbContextBase>();
                 return true;

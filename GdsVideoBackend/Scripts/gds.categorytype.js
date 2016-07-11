@@ -76,18 +76,42 @@ var categoryTypeCtrl = function () {
         });
     };
     
-    var saveCategoryType = function (model) {
+    var saveCategoryType = function (form) {
+        var formData = new FormData(form[0]);
         return $.ajax({
             url: '/categorytype/insert',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+        });
+    };
+    
+    var updateCategoryType = function (form) {
+        var formData = new FormData(form[0]);
+        return $.ajax({
+            url: '/categorytype/update',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+        });
+    };
+    
+    var saveCategoryTypeChildren = function (model) {
+        return $.ajax({
+            url: '/categorytype/InsertChildren',
             type: 'POST',
             dataType: "json",
             data: model
         });
     };
-    
-    var updateCategoryType = function (model) {
+
+    var updateCategoryTypeChildren = function (model) {
         return $.ajax({
-            url: '/categorytype/Update',
+            url: '/categorytype/UpdateChildren',
             type: 'POST',
             dataType: "json",
             data: model
@@ -128,11 +152,17 @@ var categoryTypeCtrl = function () {
         setChildrenPage: function (thisPage) {
             return setChildrenPage(thisPage);
         },
-        saveCategoryType: function (model) {
-            return saveCategoryType(model);
+        saveCategoryType: function (form) {
+            return saveCategoryType(form);
         },
-        updateCategoryType: function (model) {
-            return updateCategoryType(model);
+        updateCategoryType: function (form) {
+            return updateCategoryType(form);
+        },
+        saveCategoryTypeChildren: function (model) {
+            return saveCategoryTypeChildren(model);
+        },
+        updateCategoryTypeChildren: function (model) {
+            return updateCategoryTypeChildren(model);
         },
         deleteCategoryType: function (model) {
             return deleteCategoryType(model);
@@ -214,6 +244,9 @@ function bindingCategoryTypeDetail(obj) {
         $('#category-type-parent-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
         $('#category-type-parent-form .price').val($("#" + rowId + " .price").attr('data-priceid'));
         $('#category-type-parent-form .cateogry-type-content').html($("#" + rowId + " .content-detail").html());
+        var fileType = $("#" + rowId + " .category-type-name").attr('data-filetype');
+        var file = $("#" + rowId + " .category-type-name").attr('data-file');
+        document.getElementById("image-photo").src = "data:image/" + fileType + ";base64," + file;
     } else {
         $('#category-type-children-form .category-type-id').val(rowId);
         $('#category-type-children-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
@@ -251,16 +284,11 @@ $(document).on('click', '#children-tab', function (event) {
 });
 
 $(document).on('click', '#save-parent', function (event) {
-    var model = {
-        ParentId: 0,
-        CategoryTypeId: $('#category-type-parent-form .category-type-id').val(),
-        CategoryId: parseInt(gds.getQueryVariable('categoryId')),
-        CategoryTypeName: $('#category-type-parent-form .category-type-name').val(),
-        CategoryTypePriceId: 1,
-        Content: $('#category-type-parent-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, "")
-    };
-    if (model.CategoryTypeId == 0) {
-        var saveCategoryType = categoryTypeCtrl.saveCategoryType(model);
+    var form = $('#category-type-parent-form');
+    $('#category-type-parent-form .category-id').val(parseInt(gds.getQueryVariable('categoryId')));
+    $('#category-type-parent-form .content').val($('#category-type-parent-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, ""));
+    if ($('#category-type-parent-form .category-type-id').val() == 0) {
+        var saveCategoryType = categoryTypeCtrl.saveCategoryType(form);
         $.when(saveCategoryType).then(function(result) {
             if (result) {
                 window.pageSetting = {
@@ -273,7 +301,7 @@ $(document).on('click', '#save-parent', function (event) {
             }
         });
     } else {
-        var updateCategoryType = categoryTypeCtrl.updateCategoryType(model);
+        var updateCategoryType = categoryTypeCtrl.updateCategoryType(form);
         $.when(updateCategoryType).then(function (result) {
             if (result) {
                 window.pageSetting = {
@@ -296,10 +324,10 @@ $(document).on('click', '#save-children', function (event) {
         CategoryId: parseInt(gds.getQueryVariable('categoryId')),
         CategoryTypeName: $('#category-type-children-form .category-type-name').val(),
         CategoryTypePriceId: 1,
-        Content: $('#category-type-children-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, "")
+        Content: $('#category-type-children-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, ""),
     };
     if (model.CategoryTypeId == 0) {
-        var saveCategoryType = categoryTypeCtrl.saveCategoryType(model);
+        var saveCategoryType = categoryTypeCtrl.saveCategoryTypeChildren(model);
         $.when(saveCategoryType).then(function(result) {
             if (result.isSuccess) {
                 window.pageSetting = {
@@ -312,7 +340,7 @@ $(document).on('click', '#save-children', function (event) {
             }
         });
     } else {
-        var upateCategoryType = categoryTypeCtrl.updateCategoryType(model);
+        var upateCategoryType = categoryTypeCtrl.updateCategoryTypeChildren(model);
         $.when(upateCategoryType).then(function (result) {
             if (result.isSuccess) {
                 window.pageSetting = {
@@ -342,10 +370,30 @@ $(document).on('click', '#category-type-children .page-size', function (event) {
     bindingChildren();
 });
 
+$('#replace-photo').on('click', function (event) {
+    event.preventDefault();
+    $('#replace-photo-tag').click();
+});
+
+$('#category-type-parent-form').on('change', '#replace-photo-tag', function () {
+    var thisUrl = this;
+    if (thisUrl.files && thisUrl.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image-photo').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(thisUrl.files[0]);
+    }
+});
+
+$(document).on('click', '#category-type-parent .category-type-box', function (event) {
+    
+});
+
 $(document).ready(function () {
     getPrice();
     categoryTypeCtrl.setParentPage(pageSetting);
     categoryTypeCtrl.setChildrenPage(pageSetting);
-    bindingParent();
     window.callback = bindingParent();
 });

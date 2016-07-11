@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using GiaoDucSomVideo.Models;
@@ -22,7 +25,7 @@ namespace GiaoDucSomVideo.Domain.Implement
         {
             var category = Repository.DoQuery<DbContextBase>(x => x.Status == 1).ToList();
             var categoryIds = category.Select(x=>x.CategoryId);
-            var query = _categoryTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId))
+            var query = _categoryTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId) && x.CategoryTypeParentId == 0)
                 .GroupBy(x => x.CategoryId)
                 .SelectMany(x => x.OrderBy(y => y.CreatedDate).Take(4)).ToList()
                 .Select(x=> new CategoryTypeHomeViewModel
@@ -30,11 +33,12 @@ namespace GiaoDucSomVideo.Domain.Implement
                     CategoryId = x.CategoryId,
                     CategoryTypeId = x.CategoryTypeId,
                     CategoryTypeName = x.CategoryTypeName,
-                    ThumbnailImage = x.ThumbnailImage,
                     CategoryTypeUrl = string.Empty,
-                });
+                    ThumbnailImage = Convert.ToBase64String(File.ReadAllBytes(x.ThumbnailImage)),
+                    MimeTypeImage = Regex.Replace(Path.GetExtension(x.ThumbnailImage), @"\W", "")
+                }).ToList();
 
-            var result = category.Select(x => new CategoryHomeViewModel
+            var result = category.Where(x => query.Select(y => y.CategoryId).Contains(x.CategoryId)).Select(x => new CategoryHomeViewModel
             {
                 CategoryId = x.CategoryId,
                 CategoryName = x.CategoryName,

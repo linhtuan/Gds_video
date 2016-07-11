@@ -59,17 +59,17 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "pan=\"1\" style=\"width: 115px;\"></th>\r\n            </tr>\r\n        </thead>\r\n      " +
 "  <tbody>\r\n            {{each Result}}\r\n            <tr class=\"gradeA odd\" role=" +
 "\"row\" id=\"${$value.ChildrenId}\">\r\n                <td class=\"category-type-name\"" +
-" data-childrenid=\"${$value.ChildrenId}\">${$value.ChildrenName}</td>\r\n           " +
-"     <td class=\"content-detail\">{{html $value.Content}}</td>\r\n                <t" +
-"d class=\"price\" data-priceId=\"${$value.PriceId}\">${$value.Price}</td>\r\n         " +
-"       <td>${$value.DateTime}</td>\r\n                <td>\r\n                    <a" +
-" class=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryTypeDetail(t" +
-"his)\" data-type=\"parent\" data-id=\"${$value.ChildrenId}\" data-toggle=\"modal\" href" +
-"=\"#add-new-category-type-parent\">Edit</a>\r\n                    <a class=\"btn btn" +
-"-sm btn-danger btn-rounded\" onclick=\"deleteCategoryType(this)\" data-type=\"parent" +
-"\" data-id=\"${$value.ChildrenId}\" href=\"#\">Delete</a>\r\n                </td>\r\n   " +
-"         </tr>\r\n            {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>" +
-"\r\n");
+" data-filetype=\"${$value.MimeTypeImage}\" data-file=\"${$value.ThumbnailImage}\" da" +
+"ta-childrenid=\"${$value.ChildrenId}\">${$value.ChildrenName}</td>\r\n              " +
+"  <td class=\"content-detail\">{{html $value.Content}}</td>\r\n                <td c" +
+"lass=\"price\" data-priceId=\"${$value.PriceId}\">${$value.Price}</td>\r\n            " +
+"    <td>${$value.DateTime}</td>\r\n                <td>\r\n                    <a cl" +
+"ass=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryTypeDetail(this" +
+")\" data-type=\"parent\" data-id=\"${$value.ChildrenId}\" data-toggle=\"modal\" href=\"#" +
+"add-new-category-type-parent\">Edit</a>\r\n                    <a class=\"btn btn-sm" +
+" btn-danger btn-rounded\" onclick=\"deleteCategoryType(this)\" data-type=\"parent\" d" +
+"ata-id=\"${$value.ChildrenId}\" href=\"#\">Delete</a>\r\n                </td>\r\n      " +
+"      </tr>\r\n            {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>\r\n");
 
         }
     }

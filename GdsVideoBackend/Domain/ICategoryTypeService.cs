@@ -14,7 +14,7 @@ namespace GdsVideoBackend.Domain
 
         PagingResultModel<CategoryTypesModel> GetCategoryTypesByCategoryId(int categoryId, int pageIndex, int pageSize);
 
-        bool InsertCategoryType(CategoryTypeViewModel model);
+        bool InsertCategoryType(CategoryTypeViewModel model, string fileName, out int categoryTypeId);
 
         bool UpdateCategoryType(CategoryTypeViewModel model);
 

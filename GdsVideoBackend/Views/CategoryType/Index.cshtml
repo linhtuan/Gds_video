@@ -1,12 +1,11 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section style
 {
-<link href="~/Content/css/plugins/summernote/summernote.css" rel="stylesheet" />
-<link href="~/Content/css/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+    <link href="~/Content/css/plugins/summernote/summernote.css" rel="stylesheet" />
+    <link href="~/Content/css/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
 }
 
 @section left_menu
@@ -27,7 +26,7 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-content">
                                 <div class="table-responsive">
-                                    <div  class="dataTables_wrapper form-inline">
+                                    <div class="dataTables_wrapper form-inline">
                                         <div class="clear"></div>
                                         <div class="dataTables_length">
                                             <div class="col-sm-3">
@@ -39,7 +38,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-sm-3">
-                                                <a data-toggle="modal" class="btn btn-success btn-sm" href="#add-new-category-type-parent">Thêm khóa học</a>
+                                                <a data-toggle="modal" class="btn btn-success btn-sm category-type-box" href="#add-new-category-type-parent">Thêm khóa học</a>
                                             </div>
                                         </div>
                                         <div class="dataTables_filter">
@@ -87,9 +86,9 @@
                                                 <a data-toggle="modal" class="btn btn-success btn-sm" href="#add-new-category-type-children">Thêm khóa học con</a>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="dataTables_filter">
-                                            <label>Search:<input type="search" class="form-control input-sm" placeholder="" ></label>
+                                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
                                         </div>
                                         <div id="categoryTypeChildren_Div">
 
@@ -130,12 +129,12 @@
         $(document).on('click', '#category-type-parent-form #edit', function (event) {
             $('#category-type-parent-form .cateogry-type-content').summernote({ focus: true });
         });
-        
+
         $(document).on('click', '#category-type-parent-form #save', function (event) {
             //var aHTML = $('.cateogry-type-content').code(); //save HTML If you need(aHTML: array).
             $('#category-type-parent-form .cateogry-type-content').destroy();
         });
-        
+
         $(document).on('click', '#category-type-children-form #edit', function (event) {
             $('#category-type-children-form .cateogry-type-content').summernote({ focus: true });
         });

@@ -19,5 +19,9 @@
         public decimal Price { get; set; }
 
         public string DateTime { get; set; }
+
+        public string ThumbnailImage { get; set; }
+
+        public string MimeTypeImage { get; set; }
     }
 }

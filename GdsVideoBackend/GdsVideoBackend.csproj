@@ -856,10 +856,6 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\CategoryType\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\gds.categorytype.js" />
     <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml">
       <Generator>RazorGenerator</Generator>
@@ -869,6 +865,7 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTypeChildrenTemplate.generated.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\gds-backend.pubxml" />
     <None Include="Properties\PublishProfiles\gds-video.pubxml" />
     <None Include="Properties\PublishProfiles\gds.backend.pubxml" />
     <Content Include="Views\Categorys\PatialView\_CategoryTemplate.cshtml">
@@ -899,6 +896,10 @@
     </Content>
     <None Include="Properties\PublishProfiles\video_backend.pubxml" />
     <Content Include="Views\CategoryDetail\PatialView\_MenuCoursesPartial.cshtml" />
+    <Content Include="Views\CategoryType\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">

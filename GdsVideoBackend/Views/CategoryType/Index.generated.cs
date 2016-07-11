@@ -38,10 +38,8 @@ namespace ASP
         }
         public override void Execute()
         {
-WriteLiteral("\r\n");
-
             
-            #line 2 "..\..\Views\CategoryType\Index.cshtml"
+            #line 1 "..\..\Views\CategoryType\Index.cshtml"
   
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -53,20 +51,20 @@ WriteLiteral("\r\n");
 
 DefineSection("style", () => {
 
-WriteLiteral("\r\n<link");
+WriteLiteral("\r\n    <link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 110), Tuple.Create("\"", 164)
-, Tuple.Create(Tuple.Create("", 117), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote.css")
-, 117), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 112), Tuple.Create("\"", 166)
+, Tuple.Create(Tuple.Create("", 119), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote.css")
+, 119), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
 
-WriteLiteral(" />\r\n<link");
+WriteLiteral(" />\r\n    <link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 192), Tuple.Create("\"", 250)
-, Tuple.Create(Tuple.Create("", 199), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote-bs3.css")
-, 199), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 198), Tuple.Create("\"", 256)
+, Tuple.Create(Tuple.Create("", 205), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote-bs3.css")
+, 205), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
@@ -84,7 +82,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 14 "..\..\Views\CategoryType\Index.cshtml"
+            #line 13 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/PartialViews/_LeftMenuPartial.cshtml"));
 
             
@@ -158,7 +156,7 @@ WriteLiteral(" class=\"table-responsive\"");
 
 WriteLiteral(">\r\n                                    <div");
 
-WriteLiteral("  class=\"dataTables_wrapper form-inline\"");
+WriteLiteral(" class=\"dataTables_wrapper form-inline\"");
 
 WriteLiteral(">\r\n                                        <div");
 
@@ -196,7 +194,7 @@ WriteLiteral(">\r\n                                                <a");
 
 WriteLiteral(" data-toggle=\"modal\"");
 
-WriteLiteral(" class=\"btn btn-success btn-sm\"");
+WriteLiteral(" class=\"btn btn-success btn-sm category-type-box\"");
 
 WriteLiteral(" href=\"#add-new-category-type-parent\"");
 
@@ -352,8 +350,8 @@ WriteLiteral(" class=\"btn btn-success btn-sm\"");
 WriteLiteral(" href=\"#add-new-category-type-children\"");
 
 WriteLiteral(">Thêm khóa học con</a>\r\n                                            </div>\r\n     " +
-"                                   </div>\r\n                                     " +
-"   \r\n                                        <div");
+"                                   </div>\r\n\r\n                                   " +
+"     <div");
 
 WriteLiteral(" class=\"dataTables_filter\"");
 
@@ -365,8 +363,8 @@ WriteLiteral(" class=\"form-control input-sm\"");
 
 WriteLiteral(" placeholder=\"\"");
 
-WriteLiteral(" ></label>\r\n                                        </div>\r\n                     " +
-"                   <div");
+WriteLiteral("></label>\r\n                                        </div>\r\n                      " +
+"                  <div");
 
 WriteLiteral(" id=\"categoryTypeChildren_Div\"");
 
@@ -439,7 +437,7 @@ WriteLiteral(@"></div>
 ");
 
             
-            #line 119 "..\..\Views\CategoryType\Index.cshtml"
+            #line 118 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.cshtml"));
 
             
@@ -448,7 +446,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.
 WriteLiteral("\r\n");
 
             
-            #line 120 "..\..\Views\CategoryType\Index.cshtml"
+            #line 119 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplate.cshtml"));
 
             
@@ -457,7 +455,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplat
 WriteLiteral("\r\n");
 
             
-            #line 121 "..\..\Views\CategoryType\Index.cshtml"
+            #line 120 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml"));
 
             
@@ -466,7 +464,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cs
 WriteLiteral("\r\n");
 
             
-            #line 122 "..\..\Views\CategoryType\Index.cshtml"
+            #line 121 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentTemplate.cshtml"));
 
             
@@ -478,30 +476,30 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7243), Tuple.Create("\"", 7273)
-, Tuple.Create(Tuple.Create("", 7249), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
-, 7249), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7225), Tuple.Create("\"", 7255)
+, Tuple.Create(Tuple.Create("", 7231), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 7231), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7297), Tuple.Create("\"", 7334)
-, Tuple.Create(Tuple.Create("", 7303), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 7303), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7279), Tuple.Create("\"", 7316)
+, Tuple.Create(Tuple.Create("", 7285), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 7285), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7358), Tuple.Create("\"", 7393)
-, Tuple.Create(Tuple.Create("", 7364), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
-, 7364), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7340), Tuple.Create("\"", 7375)
+, Tuple.Create(Tuple.Create("", 7346), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
+, 7346), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7417), Tuple.Create("\"", 7472)
-, Tuple.Create(Tuple.Create("", 7423), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
-, 7423), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7399), Tuple.Create("\"", 7454)
+, Tuple.Create(Tuple.Create("", 7405), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
+, 7405), false)
 );
 
 WriteLiteral(@"></script>
@@ -509,12 +507,12 @@ WriteLiteral(@"></script>
         $(document).on('click', '#category-type-parent-form #edit', function (event) {
             $('#category-type-parent-form .cateogry-type-content').summernote({ focus: true });
         });
-        
+
         $(document).on('click', '#category-type-parent-form #save', function (event) {
             //var aHTML = $('.cateogry-type-content').code(); //save HTML If you need(aHTML: array).
             $('#category-type-parent-form .cateogry-type-content').destroy();
         });
-        
+
         $(document).on('click', '#category-type-children-form #edit', function (event) {
             $('#category-type-children-form .cateogry-type-content').summernote({ focus: true });
         });
