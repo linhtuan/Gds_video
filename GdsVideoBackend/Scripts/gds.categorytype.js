@@ -323,7 +323,6 @@ $(document).on('click', '#save-children', function (event) {
         CategoryTypeId: $('#category-type-children-form .category-type-id').val(),
         CategoryId: parseInt(gds.getQueryVariable('categoryId')),
         CategoryTypeName: $('#category-type-children-form .category-type-name').val(),
-        CategoryTypePriceId: 1,
         Content: $('#category-type-children-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, ""),
     };
     if (model.CategoryTypeId == 0) {
@@ -388,7 +387,21 @@ $('#category-type-parent-form').on('change', '#replace-photo-tag', function () {
 });
 
 $(document).on('click', '#category-type-parent .category-type-box', function (event) {
-    
+    $('#category-type-parent-form .category-id').val('');
+    $('#category-type-parent-form .content').val('');
+    $('#category-type-parent-form .category-type-id').val(''),
+    $('#category-type-parent-form .category-type-name').val(''),
+    $("#category-type-parent-form .category-type-name option:first").attr('selected', 'selected');
+    $("#category-type-parent-form .price option:first").attr('selected', 'selected');
+    $('#category-type-parent-form .cateogry-type-content').html('');
+    $('#category-type-parent-form #image-photo').attr('src', '');
+});
+
+$(document).on('click', '#category-type-children .category-type-box', function (event) {
+    $('#category-type-children-form .category-type-name').val('');
+    $('#category-type-children-form .category-type-id').val('0'),
+    $("#category-type-children-form .parent-category-type-select option:first").attr('selected', 'selected');
+    $('#category-type-children-form .cateogry-type-content').html('');
 });
 
 $(document).ready(function () {
