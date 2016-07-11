@@ -6,7 +6,8 @@ namespace GiaoDucSomVideo.Controllers
     public class CourseController : Controller
     {
         // GET: Course
-        public ActionResult Index()
+        [Route("course/{categorytype?}")]
+        public ActionResult Index(string categorytype)
         {
             return View();
         }

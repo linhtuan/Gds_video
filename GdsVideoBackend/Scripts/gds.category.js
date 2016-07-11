@@ -111,6 +111,6 @@ $(document).on('click', '#save', function (event) {
 
 
 $(document).ready(function () {
-    bindingCategory();
+    window.callback = bindingCategory();
 });
 

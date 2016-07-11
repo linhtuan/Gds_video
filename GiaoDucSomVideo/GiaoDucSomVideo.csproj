@@ -347,7 +347,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\PartialView\_MenuHeader.cshtml" />
     <Content Include="Views\Home\PartialView\_BannerPartial.cshtml" />
     <Content Include="Views\Home\PartialView\_FeaturedPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
@@ -355,10 +354,11 @@
     <Content Include="Views\Home\PartialView\_ListCategorysTemplatePartial.cshtml" />
     <Content Include="Views\Home\PartialView\_CoursesTemplatePartial.cshtml" />
     <Content Include="Views\Home\PartialView\_ListCategorysTemplateSMPartial.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Shared\_MenuTopPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Category\" />
     <Folder Include="Views\Course\" />
   </ItemGroup>
   <ItemGroup>
