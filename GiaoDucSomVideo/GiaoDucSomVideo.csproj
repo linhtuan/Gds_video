@@ -59,6 +59,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,6 +71,14 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.0\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -168,6 +180,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\UpdateCategoryController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -179,8 +194,95 @@
     <Compile Include="Infrastructure\AutofacInstaller.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
     <Compile Include="Models\CategoryHomeViewModel.cs" />
+    <Compile Include="Models\CategoryLeftMenuViewModel.cs" />
+    <Compile Include="Models\CoursesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\Category\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\PartialView\_CouseHotPartialView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CouseHotPartialView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\PartialView\_CousesResult.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CousesResult.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\PartialView\_CouseHotSMPartialView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CouseHotSMPartialView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\PartialView\_BannerPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BannerPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\PartialView\_CoursesTemplatePartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CoursesTemplatePartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\PartialView\_CoursesTemplateSMPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CoursesTemplateSMPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\PartialView\_FeaturedPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_FeaturedPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\PartialView\_ListCategorysTemplatePartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ListCategorysTemplatePartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\PartialView\_ListCategorysTemplateSMPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ListCategorysTemplateSMPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutHome.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutHome.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LeftMenuContent.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LeftMenuContent.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LoginPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LoginPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_MenuTopPage.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MenuTopPage.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SiteAll.css" />
@@ -226,8 +328,11 @@
     <Content Include="fonts\scss\_stacked.scss" />
     <Content Include="fonts\scss\_variables.scss" />
     <Content Include="fonts\scss\font-awesome.scss" />
+    <Content Include="Scripts\gds\gds.category.js" />
     <Content Include="Scripts\gds\gds.home.js" />
+    <Content Include="Areas\Api\Views\web.config" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\gds\gds.paging.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\jquery-ui.custom.min.js" />
@@ -329,6 +434,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pagination.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -343,22 +449,79 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_BannerPartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_FeaturedPartial.cshtml" />
-    <Content Include="Views\Shared\_LayoutHome.cshtml" />
-    <Content Include="Views\Home\PartialView\_CoursesTemplateSMPartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_ListCategorysTemplatePartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_CoursesTemplatePartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_ListCategorysTemplateSMPartial.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Shared\_MenuTopPage.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LoginPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LoginPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\PartialView\_BannerPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BannerPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\PartialView\_FeaturedPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_FeaturedPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutHome.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutHome.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\PartialView\_CoursesTemplateSMPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CoursesTemplateSMPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\PartialView\_ListCategorysTemplatePartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ListCategorysTemplatePartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\PartialView\_CoursesTemplatePartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CoursesTemplatePartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\PartialView\_ListCategorysTemplateSMPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ListCategorysTemplateSMPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_MenuTopPage.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MenuTopPage.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Category\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LeftMenuContent.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LeftMenuContent.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Category\PartialView\_CouseHotPartialView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CouseHotPartialView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Category\PartialView\_CousesResult.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CousesResult.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Category\PartialView\_CouseHotSMPartialView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CouseHotSMPartialView.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Api\Models\" />
+    <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Views\Course\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using Gds.ServiceModel.BackEndModel;
 using Gds.ServiceModel.ControlObject;
 using MvcCornerstone.Data;
+using MvcCornerstone.Extension;
 using MvcCornerstone.Generic.Paging;
 using MvcCornerstone.Services;
 
@@ -37,12 +39,15 @@ namespace GdsVideoBackend.Domain.Implement
         {
             try
             {
+                var urlRouter = model.CategoryName.RemoveDiacritics();
+                urlRouter = Regex.Replace(urlRouter, @"\W", "-").ToLower();
                 var category = new Categorys
                 {
                     CategoryName = model.CategoryName,
                     CategoryDetail = model.CategoryDetail,
                     CreatedDate = DateTime.UtcNow,
-                    Status = 1
+                    Status = 1,
+                    UrlRouter = urlRouter
                 };
                 Repository.Insert<DbContextBase>(category);
                 Repository.Commit<DbContextBase>();
@@ -58,13 +63,16 @@ namespace GdsVideoBackend.Domain.Implement
         {
             try
             {
+                var urlRouter = model.CategoryName.RemoveDiacritics();
+                urlRouter = Regex.Replace(urlRouter, @"\W", "-").ToLower();
                 var category = new Categorys
                 {
                     CategoryId = model.CategoryId,
                     CategoryName = model.CategoryName,
                     CategoryDetail = model.CategoryDetail,
                     CreatedDate = DateTime.UtcNow,
-                    Status = 1
+                    Status = 1,
+                    UrlRouter = urlRouter
                 };
                 Repository.Update<DbContextBase>(category);
                 Repository.Commit<DbContextBase>();

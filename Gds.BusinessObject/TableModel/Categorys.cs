@@ -18,6 +18,8 @@ namespace Gds.BusinessObject.TableModel
 
         public int Status { get; set; }
 
+        public string UrlRouter { get; set; }
+
         [NotMapped]
         public string DateTime { get; set; }
 

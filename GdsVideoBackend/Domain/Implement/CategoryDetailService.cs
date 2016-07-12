@@ -24,7 +24,7 @@ namespace GdsVideoBackend.Domain.Implement
             _categoryTypeRepository = categoryTypeRepository;
         }
 
-        PagingResultModel<CategoryDetailModel> ICategoryDetailService.GetCategoryDetails(int? categoryTypeId, int pageIndex, int pageSize)
+        public PagingResultModel<CategoryDetailModel> GetCategoryDetails(int? categoryTypeId, int pageIndex, int pageSize)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace GdsVideoBackend.Domain.Implement
                     Content = model.Content,
                     CreatedDate = DateTime.UtcNow,
                     UpdatedDate = DateTime.UtcNow,
-                    Status = 1
+                    Status = 1,
                 };
                 Repository.Insert<DbContextBase>(detail);
                 Repository.Commit<DbContextBase>();

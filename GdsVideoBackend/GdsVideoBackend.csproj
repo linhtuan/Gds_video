@@ -165,6 +165,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_CategoryDetailsTemplate.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CategoryDetail\PatialView\_MenuCoursesPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MenuCoursesPartial.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CategoryDetail\PatialView\_PhysicalFileTemplate.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -895,7 +900,10 @@
       <LastGenOutput>CategoryDetails.generated.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\video_backend.pubxml" />
-    <Content Include="Views\CategoryDetail\PatialView\_MenuCoursesPartial.cshtml" />
+    <Content Include="Views\CategoryDetail\PatialView\_MenuCoursesPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MenuCoursesPartial.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\CategoryType\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>

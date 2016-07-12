@@ -10,6 +10,7 @@ using Gds.ServiceModel.ControlObject;
 using Gds.Setting;
 using GdsVideoBackend.Models;
 using MvcCornerstone.Data;
+using MvcCornerstone.Extension;
 using MvcCornerstone.Generic.Paging;
 using MvcCornerstone.Services;
 
@@ -43,8 +44,12 @@ namespace GdsVideoBackend.Domain.Implement
                     DateTime = item.cat.CreatedDate.HasValue ? item.cat.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
                     Price = item.Price.Value,
                     PriceId = item.CategoryTypePriceId,
-                    ThumbnailImage = Convert.ToBase64String(File.ReadAllBytes(item.cat.ThumbnailImage)),
-                    MimeTypeImage = Regex.Replace(Path.GetExtension(item.cat.ThumbnailImage), @"\W", "")
+                    ThumbnailImage = !string.IsNullOrEmpty(item.cat.ThumbnailImage)
+                        ? Convert.ToBase64String(File.ReadAllBytes(item.cat.ThumbnailImage))
+                        : string.Empty,
+                    MimeTypeImage = !string.IsNullOrEmpty(item.cat.ThumbnailImage)
+                        ? Regex.Replace(Path.GetExtension(item.cat.ThumbnailImage), @"\W", "")
+                        : string.Empty
                 }).ToList();
 
                 var resultPaging = new PagingResultModel<CategoryTypesModel>
@@ -94,7 +99,7 @@ namespace GdsVideoBackend.Domain.Implement
                         ChildrenName = item.CategoryTypeName,
                         Content = item.Content,
                         DateTime = item.CreatedDate.HasValue ? item.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
-                        Price = thisParent.Price.Value
+                        Price = thisParent.Price.Value,
                     });
                 }
                 var resultPaging = new PagingResultModel<CategoryTypesModel>
@@ -118,6 +123,8 @@ namespace GdsVideoBackend.Domain.Implement
         {
             try
             {
+                var urlRouter = model.CategoryTypeName.RemoveDiacritics();
+                urlRouter = Regex.Replace(urlRouter, @"\W", "-").ToLower();
                 var categoryType = new CategoryTypes
                 {
                     CategoryId = model.CategoryId,
@@ -125,6 +132,7 @@ namespace GdsVideoBackend.Domain.Implement
                     Content = model.Content,
                     CreatedDate = DateTime.UtcNow,
                     Status = 1,
+                    UrlRouter = urlRouter
                 };
                 if (model.ParentId != 0)
                 {
@@ -158,6 +166,8 @@ namespace GdsVideoBackend.Domain.Implement
         {
             try
             {
+                var urlRouter = model.CategoryTypeName.RemoveDiacritics();
+                urlRouter = Regex.Replace(urlRouter, @"\W", "-").ToLower();
                 Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeId == model.CategoryTypeId, x => new CategoryTypes
                 {
                     CategoryTypeParentId = model.ParentId,
@@ -167,7 +177,8 @@ namespace GdsVideoBackend.Domain.Implement
                     CreatedDate = DateTime.UtcNow,
                     CategoryTypePriceId = model.CategoryTypePriceId == 0 || model.CategoryTypePriceId == null ? null : model.CategoryTypePriceId,
                     Status = 1,
-                    ThumbnailImage = model.FileThumbnail
+                    ThumbnailImage = model.FileThumbnail,
+                    UrlRouter = urlRouter
                 });
                 Repository.Commit<DbContextBase>();
                 return true;

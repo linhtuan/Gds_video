@@ -129,6 +129,7 @@ namespace GdsVideoBackend.Controllers
             if (request.Files.AllKeys.Any() && request.Files[0] != null)
             {
                 var fileThumbnail = request.Files[0];
+                var fileName = string.Empty;
                 var uploadFilesDir = string.Format(@"{0}\thumbnailImage\{1}\{2}", AppConfig.UploadFolder, model.CategoryId, model.CategoryTypeId);
                 if (!Directory.Exists(uploadFilesDir))
                 {
@@ -139,10 +140,13 @@ namespace GdsVideoBackend.Controllers
                     var folder = new DirectoryInfo(uploadFilesDir);
                     foreach (var file in folder.GetFiles())
                     {
-                        file.Delete();
+                        if (string.IsNullOrEmpty(fileThumbnail.FileName))
+                            fileName = file.Name;
+                        else
+                            file.Delete();
                     }
                 }
-                var fileSavePath = Path.Combine(uploadFilesDir, fileThumbnail.FileName);
+                var fileSavePath = Path.Combine(uploadFilesDir, !string.IsNullOrEmpty(fileThumbnail.FileName) ? fileThumbnail.FileName : fileName);
 
                 fileThumbnail.SaveAs(fileSavePath);
                 model.FileThumbnail = string.Format("{0}\\{1}", uploadFilesDir, fileThumbnail.FileName);
