@@ -38,250 +38,65 @@ namespace ASP
         }
         public override void Execute()
         {
-WriteLiteral("<div");
-
-WriteLiteral(" class=\"search-card\"");
-
-WriteLiteral(">\r\n    <a");
-
-WriteLiteral(" href=\"https://edumall.vn/course/lam-the-nao-de-chua-benh-cham-noi-o-tre\"");
-
-WriteLiteral(">\r\n    </a><div");
-
-WriteLiteral(" class=\"row no-margin rel\"");
-
-WriteLiteral(">\r\n        <a");
-
-WriteLiteral(" href=\"https://edumall.vn/course/lam-the-nao-de-chua-benh-cham-noi-o-tre\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"image-course pull-left\"");
-
-WriteLiteral(" style=\"background-image: url(//static.edumall.vn/uploads/images/courses/course_i" +
-"mage_nmd02_230x130.png)\"");
-
-WriteLiteral("></div>\r\n            <div");
-
-WriteLiteral(" class=\"content-course\"");
-
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"name-course\"");
-
-WriteLiteral(">Làm thế nào để chữa bệnh chậm nói ở trẻ?</div>\r\n                <div");
-
-WriteLiteral(" class=\"about-author\"");
-
-WriteLiteral(">\r\n                    <span>Nguyễn Minh Đức</span>\r\n                    <span></" +
-"span>\r\n                </div>\r\n                <div");
-
-WriteLiteral(" class=\"info-course row no-margin\"");
-
-WriteLiteral(">\r\n                    <div");
-
-WriteLiteral(" class=\"real-price info-item\"");
-
-WriteLiteral(">\r\n                        499,000đ\r\n                    </div>\r\n                " +
-"    <div");
-
-WriteLiteral(" id=\"rating\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"search-rating\"");
-
-WriteLiteral(">\r\n                            <div");
-
-WriteLiteral(" class=\"search-rating-star\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" class=\"pull-left\"");
-
-WriteLiteral(" id=\"percent-rating\"");
-
-WriteLiteral(">\r\n                                    <i");
-
-WriteLiteral(" class=\"fa fa-star rated\"");
-
-WriteLiteral("></i>\r\n                                    <i");
-
-WriteLiteral(" class=\"fa fa-star rated\"");
-
-WriteLiteral("></i>\r\n                                    <i");
-
-WriteLiteral(" class=\"fa fa-star rated\"");
-
-WriteLiteral("></i>\r\n                                    <span");
-
-WriteLiteral(" class=\"rating-percent\"");
-
-WriteLiteral(">\r\n                                        <i");
-
-WriteLiteral(" class=\"fa fa-star\"");
-
-WriteLiteral("></i>\r\n                                        <i");
-
-WriteLiteral(" class=\"fa fa-star percent\"");
-
-WriteLiteral(" style=\"width: 39.99999999999999%\"");
-
-WriteLiteral("></i>\r\n                                    </span>\r\n                             " +
-"       <i");
-
-WriteLiteral(" class=\"fa fa-star\"");
-
-WriteLiteral("></i>\r\n                                </div>\r\n                            </div>" +
-"\r\n                        </div>\r\n                    </div>\r\n                  " +
-"  <div");
-
-WriteLiteral(" class=\"short-rating\"");
-
-WriteLiteral(">\r\n                        <i");
-
-WriteLiteral(" class=\"fa fa-star rated\"");
-
-WriteLiteral(">\r\n                            <span");
-
-WriteLiteral(" class=\"course-people-rating\"");
-
-WriteLiteral("> 3.4</span>\r\n                        </i>\r\n                    </div>\r\n         " +
-"       </div>\r\n            </div>\r\n        </a><div");
-
-WriteLiteral(" class=\"course-wishlist abs\"");
-
-WriteLiteral(">\r\n            <a");
-
-WriteLiteral(" href=\"https://edumall.vn/course/lam-the-nao-de-chua-benh-cham-noi-o-tre\"");
-
-WriteLiteral(">\r\n            </a><a");
-
-WriteLiteral(" class=\"wishlist-heart\"");
-
-WriteLiteral(" val=\"562ef71ed8b731249400004f\"");
-
-WriteLiteral(">\r\n                <svg");
-
-WriteLiteral(" height=\"18\"");
-
-WriteLiteral(" preserveAspectRatio=\"xMidYMid\"");
-
-WriteLiteral(" viewBox=\"0 0 20 18\"");
-
-WriteLiteral(" width=\"18\"");
-
-WriteLiteral(" xmlns:xlink=\"http://www.w3.org/1999/xlink\"");
-
-WriteLiteral(" xmlns=\"http://www.w3.org/2000/svg\"");
-
-WriteLiteral(@">
-                    <defs>
-                        <style>
-                            .heart {
-                                fill: #ffffff;
-                                stroke: #none;
-                                stroke-linejoin: round;
-                                stroke-width: 1px;
-                                fill-rule: evenodd;
-                            }
-
-                                .heart:hover {
-                                    fill: #ffffff;
-                                }
-
-                            .wishlist {
-                                fill: #ffffff;
-                            }
-                        </style>
-                    </defs>
-                    <path");
-
-WriteLiteral(" class=\"heart\"");
-
-WriteLiteral(@" d=""M10.000,17.000 L8.740,15.783 C4.060,11.783 1.000,9.087 1.000,5.783 C1.000,3.087 3.160,1.000 5.950,1.000 C7.480,1.000 9.010,1.696 10.000,2.826 C10.990,1.696 12.520,1.000 14.050,1.000 C16.840,1.000 19.000,3.087 19.000,5.783 C19.000,9.087 15.940,11.783 11.260,15.783 L10.000,17.000 Z""");
-
-WriteLiteral("></path>\r\n                </svg>\r\n                <div");
-
-WriteLiteral(" class=\"wishlist-tooltip\"");
-
-WriteLiteral(">\r\n                    <div");
-
-WriteLiteral(" class=\"wishlist-tooltip-bg\"");
-
-WriteLiteral(">\r\n                        <i");
-
-WriteLiteral(" class=\"fa fa-sort-asc wishlist-tooltip-arrow\"");
-
-WriteLiteral("></i>\r\n                    </div>\r\n                    <div");
-
-WriteLiteral(" class=\"wishlist-tooltip-inner\"");
-
-WriteLiteral(">\r\n                        <span");
-
-WriteLiteral(" style=\"font-size: 12px;\"");
-
-WriteLiteral(">Quan tâm</span>\r\n                    </div>\r\n                </div>\r\n           " +
-" </a>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n\r\n<script");
+WriteLiteral("<script");
 
 WriteLiteral(" id=\"cousesResultTemplate\"");
 
 WriteLiteral(" type=\"text/x-jquery-tmpl\"");
 
-WriteLiteral(">\r\n    <div class=\"search-card\">\r\n        <a href=\"https://edumall.vn/course/lam-" +
-"the-nao-de-chua-benh-cham-noi-o-tre\">\r\n        </a><div class=\"row no-margin rel" +
-"\">\r\n            <a href=\"https://edumall.vn/course/lam-the-nao-de-chua-benh-cham" +
-"-noi-o-tre\">\r\n                <div class=\"image-course pull-left\" style=\"backgro" +
-"und-image: url(//static.edumall.vn/uploads/images/courses/course_image_nmd02_230" +
-"x130.png)\"></div>\r\n                <div class=\"content-course\">\r\n               " +
-"     <div class=\"name-course\">Làm thế nào để chữa bệnh chậm nói ở trẻ?</div>\r\n  " +
-"                  <div class=\"about-author\">\r\n                        <span>Nguy" +
-"ễn Minh Đức</span>\r\n                        <span></span>\r\n                    <" +
-"/div>\r\n                    <div class=\"info-course row no-margin\">\r\n            " +
-"            <div class=\"real-price info-item\">\r\n                            499," +
-"000đ\r\n                        </div>\r\n                        <div id=\"rating\">\r" +
-"\n                            <div class=\"search-rating\">\r\n                      " +
-"          <div class=\"search-rating-star\">\r\n                                    " +
-"<div class=\"pull-left\" id=\"percent-rating\">\r\n                                   " +
-"     <i class=\"fa fa-star rated\"></i>\r\n                                        <" +
+WriteLiteral(">\r\n    {{each Result}}\r\n    <div class=\"search-card\">\r\n        <a href=\"${$value." +
+"UrlCourse}\">\r\n        </a>\r\n        <div class=\"row no-margin rel\">\r\n           " +
+" <a href=\"${$value.UrlCourse}\">\r\n                <div class=\"image-course pull-l" +
+"eft\" style=\"background-image: url(data:image/${$value.MimeTypeImage};base64,${$v" +
+"alue.ThumbnailImage})\"></div>\r\n                <div class=\"content-course\">\r\n   " +
+"                 <div class=\"name-course\">${$value.CourseName}</div>\r\n          " +
+"          <div class=\"about-author\">\r\n                        <span>Tuan Linh</s" +
+"pan>\r\n                        <span></span>\r\n                    </div>\r\n       " +
+"             <div class=\"info-course row no-margin\">\r\n                        <d" +
+"iv class=\"real-price info-item\">\r\n                            ${$value.Price}đ\r\n" +
+"                        </div>\r\n                        <div id=\"rating\">\r\n     " +
+"                       <div class=\"search-rating\">\r\n                            " +
+"    <div class=\"search-rating-star\">\r\n                                    <div c" +
+"lass=\"pull-left\" id=\"percent-rating\">\r\n                                        <" +
 "i class=\"fa fa-star rated\"></i>\r\n                                        <i clas" +
-"s=\"fa fa-star rated\"></i>\r\n                                        <span class=\"" +
-"rating-percent\">\r\n                                            <i class=\"fa fa-st" +
-"ar\"></i>\r\n                                            <i class=\"fa fa-star perce" +
-"nt\" style=\"width: 39.99999999999999%\"></i>\r\n                                    " +
-"    </span>\r\n                                        <i class=\"fa fa-star\"></i>\r" +
-"\n                                    </div>\r\n                                </d" +
-"iv>\r\n                            </div>\r\n                        </div>\r\n       " +
-"                 <div class=\"short-rating\">\r\n                            <i clas" +
-"s=\"fa fa-star rated\">\r\n                                <span class=\"course-peopl" +
-"e-rating\"> 3.4</span>\r\n                            </i>\r\n                       " +
-" </div>\r\n                    </div>\r\n                </div>\r\n            </a><di" +
-"v class=\"course-wishlist abs\">\r\n                <a href=\"https://edumall.vn/cour" +
-"se/lam-the-nao-de-chua-benh-cham-noi-o-tre\">\r\n                </a><a class=\"wish" +
-"list-heart\" val=\"562ef71ed8b731249400004f\">\r\n                    <svg height=\"18" +
-"\" preserveAspectRatio=\"xMidYMid\" viewBox=\"0 0 20 18\" width=\"18\" xmlns:xlink=\"htt" +
-"p://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                " +
-"        <defs>\r\n                            <style>\r\n                           " +
-"     .heart {\r\n                                    fill: #ffffff;\r\n             " +
-"                       stroke: #none;\r\n                                    strok" +
-"e-linejoin: round;\r\n                                    stroke-width: 1px;\r\n    " +
-"                                fill-rule: evenodd;\r\n                           " +
-"     }\r\n\r\n                                    .heart:hover {\r\n                  " +
-"                      fill: #ffffff;\r\n                                    }\r\n\r\n " +
-"                               .wishlist {\r\n                                    " +
-"fill: #ffffff;\r\n                                }\r\n                            <" +
-"/style>\r\n                        </defs>\r\n                        <path class=\"h" +
-"eart\" d=\"M10.000,17.000 L8.740,15.783 C4.060,11.783 1.000,9.087 1.000,5.783 C1.0" +
-"00,3.087 3.160,1.000 5.950,1.000 C7.480,1.000 9.010,1.696 10.000,2.826 C10.990,1" +
-".696 12.520,1.000 14.050,1.000 C16.840,1.000 19.000,3.087 19.000,5.783 C19.000,9" +
-".087 15.940,11.783 11.260,15.783 L10.000,17.000 Z\"></path>\r\n                    " +
-"</svg>\r\n                    <div class=\"wishlist-tooltip\">\r\n                    " +
-"    <div class=\"wishlist-tooltip-bg\">\r\n                            <i class=\"fa " +
-"fa-sort-asc wishlist-tooltip-arrow\"></i>\r\n                        </div>\r\n      " +
-"                  <div class=\"wishlist-tooltip-inner\">\r\n                        " +
-"    <span style=\"font-size: 12px;\">Quan tâm</span>\r\n                        </di" +
-"v>\r\n                    </div>\r\n                </a>\r\n            </div>\r\n      " +
-"  </div>\r\n\r\n    </div>\r\n</script>");
+"s=\"fa fa-star rated\"></i>\r\n                                        <i class=\"fa " +
+"fa-star rated\"></i>\r\n                                        <span class=\"rating" +
+"-percent\">\r\n                                            <i class=\"fa fa-star\"></" +
+"i>\r\n                                            <i class=\"fa fa-star percent\" st" +
+"yle=\"width: 39.99999999999999%\"></i>\r\n                                        </" +
+"span>\r\n                                        <i class=\"fa fa-star\"></i>\r\n     " +
+"                               </div>\r\n                                </div>\r\n " +
+"                           </div>\r\n                        </div>\r\n             " +
+"           <div class=\"short-rating\">\r\n                            <i class=\"fa " +
+"fa-star rated\">\r\n                                <span class=\"course-people-rati" +
+"ng\"> 3.4</span>\r\n                            </i>\r\n                        </div" +
+">\r\n                    </div>\r\n                </div>\r\n            </a>\r\n       " +
+"     <div class=\"course-wishlist abs\">\r\n                <a href=\"${$value.UrlCou" +
+"rse}\">\r\n                </a>\r\n                <a class=\"wishlist-heart\" val=\"562" +
+"ef71ed8b731249400004f\">\r\n                    <svg height=\"18\" preserveAspectRati" +
+"o=\"xMidYMid\" viewBox=\"0 0 20 18\" width=\"18\" xmlns:xlink=\"http://www.w3.org/1999/" +
+"xlink\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                        <defs>\r\n    " +
+"                        <style>\r\n                                .heart {\r\n     " +
+"                               fill: #ffffff;\r\n                                 " +
+"   stroke: #none;\r\n                                    stroke-linejoin: round;\r\n" +
+"                                    stroke-width: 1px;\r\n                        " +
+"            fill-rule: evenodd;\r\n                                }\r\n\r\n          " +
+"                      .heart:hover {\r\n                                    fill: " +
+"#ffffff;\r\n                                }\r\n\r\n                                ." +
+"wishlist {\r\n                                    fill: #ffffff;\r\n                " +
+"                }\r\n                            </style>\r\n                       " +
+" </defs>\r\n                        <path class=\"heart\" d=\"M10.000,17.000 L8.740,1" +
+"5.783 C4.060,11.783 1.000,9.087 1.000,5.783 C1.000,3.087 3.160,1.000 5.950,1.000" +
+" C7.480,1.000 9.010,1.696 10.000,2.826 C10.990,1.696 12.520,1.000 14.050,1.000 C" +
+"16.840,1.000 19.000,3.087 19.000,5.783 C19.000,9.087 15.940,11.783 11.260,15.783" +
+" L10.000,17.000 Z\"></path>\r\n                    </svg>\r\n                    <div" +
+" class=\"wishlist-tooltip\">\r\n                        <div class=\"wishlist-tooltip" +
+"-bg\">\r\n                            <i class=\"fa fa-sort-asc wishlist-tooltip-arr" +
+"ow\"></i>\r\n                        </div>\r\n                        <div class=\"wi" +
+"shlist-tooltip-inner\">\r\n                            <span style=\"font-size: 12px" +
+";\">Quan tâm</span>\r\n                        </div>\r\n                    </div>\r\n" +
+"                </a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    {{/eac" +
+"h}}\r\n</script>");
 
         }
     }

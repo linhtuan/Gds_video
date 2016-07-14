@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model GiaoDucSomVideo.Models.CategoryViewModel
 <div class="container-wrapper" style="overflow: hidden;">
     <main class="category">
         <div class="row no-margin category-header" style="background-color: background-color: #3a4f54;background: linear-gradient(-90deg, #577780, #36494e);">
@@ -17,10 +16,10 @@
                     <li class="breadcrumb-home">
                         <a href="https://edumall.vn/">Trang chủ</a>
                     </li>
-                    <li>Nuôi dạy con</li>
+                    <li>@Model.Title</li>
                 </ul>
                 <div class="row no-margin category-header-name">
-                    <h2>Nuôi dạy con</h2>
+                    <h2>@Model.Title</h2>
                 </div>
             </div>
         </div>
@@ -91,7 +90,7 @@
                             </div>
                         </form>
                     </div>
-                    @Html.Partial("~/Views/Shared/_LeftMenuContent.cshtml")
+                    @Html.Partial("~/Views/Shared/_LeftMenuContent.cshtml", Model.LeftMenu)
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 category-all-courses-main">
                     <div class="banner">
@@ -114,13 +113,13 @@
                                 </a>
                             </div>
                             <div class="category-inner clearfix" style="width:20000px;position:absolute;top:0;left:0;">
-                                @Html.Partial("~/Views/Category/PartialView/_CouseHotPartialView.cshtml")
+                                @Html.Partial("~/Views/Category/PartialView/_CouseHotPartialView.cshtml", Model.CoursesHot)
                             </div>
                         </div>
                     </div>
                     <!-- To be showed on mobile -->
                     <div class="row no-margin feature-course-in-list">
-                        @Html.Partial("~/Views/Category/PartialView/_CouseHotSMPartialView.cshtml")
+                        @Html.Partial("~/Views/Category/PartialView/_CouseHotSMPartialView.cshtml", Model.CoursesHot)
                     </div>
 
                     <h3>Tất cả các khóa học</h3>
@@ -150,15 +149,23 @@
                             </li>
                         </ul>
                     </div>
-
-                    <div class="row no-margin courses-result">
-                        @Html.Partial("~/Views/Category/PartialView/_CousesResult.cshtml")
+                    <div class="row no-margin courses-result" id="courses-result">
+                        
                     </div>
-                    <div class="row no-margin courses-pagination">
-                        <nav style="text-align: center"><ul class="pagination" style="margin: 0px"><li class="active"><a class="page" href="https://edumall.vn/nuoi-day-con#">1</a></li><li><a href="https://edumall.vn/nuoi-day-con?page=2">2</a></li><li><a href="https://edumall.vn/nuoi-day-con?page=2"><i class="material-icons">chevron_right</i></a></li></ul></nav>
+                    <div class="row no-margin courses-pagination paging-ctrl">
                     </div>
                 </div>
             </div>
         </div>
     </main>
 </div>
+@Html.Partial("~/Views/Category/PartialView/_CousesResult.cshtml")
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script type="text/javascript">
+        var categoryRouter = '@Model.CategoryRouter';
+    </script>
+    <script src="~/Scripts/bootstrap-pagination.js"></script>
+    <script src="~/Scripts/gds/gds.paging.control.js"></script>
+    <script src="~/Scripts/gds/gds.category.js"></script>
+}

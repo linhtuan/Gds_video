@@ -29,12 +29,6 @@ namespace ASP
     using System.Web.WebPages;
     using GiaoDucSomVideo;
     
-    #line 1 "..\..\Views\Shared\_LoginPartial.cshtml"
-    using Microsoft.AspNet.Identity;
-    
-    #line default
-    #line hidden
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/_LoginPartial.cshtml")]
     public partial class _Views_Shared__LoginPartial_cshtml : System.Web.Mvc.WebViewPage<dynamic>
@@ -44,93 +38,575 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 2 "..\..\Views\Shared\_LoginPartial.cshtml"
- if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    
-            
-            #line default
-            #line hidden
-            
-            #line 6 "..\..\Views\Shared\_LoginPartial.cshtml"
-Write(Html.AntiForgeryToken());
+WriteLiteral("<div");
 
-            
-            #line default
-            #line hidden
-            
-            #line 6 "..\..\Views\Shared\_LoginPartial.cshtml"
-                            
+WriteLiteral(" class=\"header-col text-right header-col-right\"");
 
+WriteLiteral(">\r\n    <div");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("    <ul");
+WriteLiteral(" class=\"hd-user\"");
 
-WriteLiteral(" class=\"nav navbar-nav navbar-right\"");
+WriteLiteral(">\r\n        <a");
 
-WriteLiteral(">\r\n        <li>\r\n");
+WriteLiteral(" class=\"btn-register hidden-xs hidden-sm\"");
 
-WriteLiteral("            ");
+WriteLiteral(" data-target=\"#register-modal\"");
 
-            
-            #line 10 "..\..\Views\Shared\_LoginPartial.cshtml"
-       Write(Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" }));
+WriteLiteral(" data-toggle=\"modal\"");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </li>\r\n        <li><a");
+WriteLiteral(" href=\"https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#\"");
 
-WriteLiteral(" href=\"javascript:document.getElementById(\'logoutForm\').submit()\"");
+WriteLiteral(">Đăng ký</a>\r\n        <a");
 
-WriteLiteral(">Log off</a></li>\r\n    </ul>\r\n");
+WriteLiteral(" class=\"btn-login\"");
 
-            
-            #line 14 "..\..\Views\Shared\_LoginPartial.cshtml"
-    }
-}
-else
-{
+WriteLiteral(" data-target=\"#login-modal\"");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("    <ul");
+WriteLiteral(" data-toggle=\"modal\"");
 
-WriteLiteral(" class=\"nav navbar-nav navbar-right\"");
+WriteLiteral(" href=\"https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#\"");
 
-WriteLiteral(">\r\n        <li>");
+WriteLiteral(">Đăng nhập</a>\r\n        <!-- Make it able to disable modal to use this modal in s" +
+"ignin page -->\r\n        <div");
 
-            
-            #line 19 "..\..\Views\Shared\_LoginPartial.cshtml"
-       Write(Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }));
+WriteLiteral(" class=\"modal fade\"");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("</li>\r\n        <li>");
+WriteLiteral(" id=\"register-modal\"");
 
-            
-            #line 20 "..\..\Views\Shared\_LoginPartial.cshtml"
-       Write(Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }));
+WriteLiteral(">\r\n            <div");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("</li>\r\n    </ul>\r\n");
+WriteLiteral(" class=\"modal-dialog\"");
 
-            
-            #line 22 "..\..\Views\Shared\_LoginPartial.cshtml"
-}
+WriteLiteral(">\r\n                <div");
 
-            
-            #line default
-            #line hidden
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"modal-header\"");
+
+WriteLiteral(">\r\n                        <button");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(" data-dismiss=\"modal\"");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(">×</button>\r\n                        <h3");
+
+WriteLiteral(" class=\"modal-title\"");
+
+WriteLiteral(">Đăng ký</h3>\r\n                    </div>\r\n                    <div");
+
+WriteLiteral(" class=\"modal-body\"");
+
+WriteLiteral(">\r\n                        <form");
+
+WriteLiteral(" action=\"https://edumall.vn/users\"");
+
+WriteLiteral(" method=\"post\"");
+
+WriteLiteral(">\r\n                            <p");
+
+WriteLiteral(" class=\"sub-title\"");
+
+WriteLiteral(">Đăng ký bằng email</p>\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" id=\"name\"");
+
+WriteLiteral(" name=\"user[name]\"");
+
+WriteLiteral(" placeholder=\"Họ và tên\"");
+
+WriteLiteral(" required=\"true\"");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" value=\"\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" id=\"email\"");
+
+WriteLiteral(" name=\"user[email]\"");
+
+WriteLiteral(" placeholder=\"Email\"");
+
+WriteLiteral(" required=\"true\"");
+
+WriteLiteral(" type=\"email\"");
+
+WriteLiteral(" value=\"\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" id=\"password\"");
+
+WriteLiteral(" name=\"user[password]\"");
+
+WriteLiteral(" placeholder=\"Mật khẩu\"");
+
+WriteLiteral(" required=\"true\"");
+
+WriteLiteral(" type=\"password\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                            <input");
+
+WriteLiteral(" type=\"hidden\"");
+
+WriteLiteral(" name=\"authenticity_token\"");
+
+WriteLiteral(" id=\"authenticity_token\"");
+
+WriteLiteral(" value=\"u3HrqfAr8BSYbEIF7fXyBqyaWU3V9kyFsUlxBSI/PFOfBArg9xKjjWtK/WuDPAvZ3WrBbGtJi" +
+"nsm0a1v0z19Zg==\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"btn btn-login-submit\"");
+
+WriteLiteral(" type=\"submit\"");
+
+WriteLiteral(" value=\"Đăng ký\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                        </form>\r\n         " +
+"           </div>\r\n                    <div");
+
+WriteLiteral(" class=\"modal-footer\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"forgot-password-link clearfix\"");
+
+WriteLiteral(">\r\n                            <a");
+
+WriteLiteral(" class=\"btn btn-link show-social-link\"");
+
+WriteLiteral(" href=\"https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#\"");
+
+WriteLiteral(">\r\n                                Đăng ký với tài khoản mạng xã hội\r\n           " +
+"                     <span>\r\n                                    <i");
+
+WriteLiteral(" class=\"fa fa-angle-down\"");
+
+WriteLiteral("></i>\r\n                                </span>\r\n                            </a>\r" +
+"\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper social-area\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteLiteral(" class=\"col-md-6\"");
+
+WriteLiteral(">\r\n                                        <a");
+
+WriteLiteral(" class=\"btn-facebook\"");
+
+WriteLiteral(" href=\"https://edumall.vn/users/auth/facebook\"");
+
+WriteLiteral(">\r\n                                            <i");
+
+WriteLiteral(" class=\"left fa fa-facebook\"");
+
+WriteLiteral("></i>\r\n                                            <span");
+
+WriteLiteral(" class=\"left\"");
+
+WriteLiteral(">Facebook</span>\r\n                                        </a>\r\n                 " +
+"                   </div>\r\n                                    <div");
+
+WriteLiteral(" class=\"col-md-6\"");
+
+WriteLiteral(">\r\n                                        <a");
+
+WriteLiteral(" class=\"btn-google\"");
+
+WriteLiteral(" href=\"https://edumall.vn/users/auth/google_oauth2\"");
+
+WriteLiteral(">\r\n                                            <i");
+
+WriteLiteral(" class=\"left fa fa-google-plus\"");
+
+WriteLiteral("></i>\r\n                                            <span");
+
+WriteLiteral(" class=\"left\"");
+
+WriteLiteral(">Google+</span>\r\n                                        </a>\r\n                  " +
+"                  </div>\r\n                                </div>\r\n              " +
+"              </div>\r\n                        </div>\r\n                        <p" +
+"");
+
+WriteLiteral(" class=\"bottom-text\"");
+
+WriteLiteral(">\r\n                            Đã có tài khoản?\r\n                            <a");
+
+WriteLiteral(" class=\"btn-link\"");
+
+WriteLiteral(" data-dismiss=\"modal\"");
+
+WriteLiteral(" data-target=\"#login-modal\"");
+
+WriteLiteral(" data-toggle=\"modal\"");
+
+WriteLiteral(" href=\"https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#\"");
+
+WriteLiteral(">Đăng nhập</a>\r\n                        </p>\r\n                    </div>\r\n       " +
+"         </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div");
+
+WriteLiteral(" class=\"modal fade\"");
+
+WriteLiteral(" id=\"fogot-password-dialog\"");
+
+WriteLiteral(" tabindex=\"-1\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"modal-dialog\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"modal-header\"");
+
+WriteLiteral(">\r\n                        <button");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(" data-dismiss=\"modal\"");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(">×</button>\r\n                        <h3");
+
+WriteLiteral(" class=\"modal-title\"");
+
+WriteLiteral(">Lấy lại mật khẩu</h3>\r\n                    </div>\r\n                    <div");
+
+WriteLiteral(" class=\"modal-body\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"forgot-password-content\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" id=\"email-reset\"");
+
+WriteLiteral(" name=\"email\"");
+
+WriteLiteral(" placeholder=\"Email đăng nhập\"");
+
+WriteLiteral(" required=\"true\"");
+
+WriteLiteral(" type=\"email\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <a");
+
+WriteLiteral(" class=\"btn reset-password-button\"");
+
+WriteLiteral(">Đặt lại mật khẩu</a>\r\n                            </div>\r\n                      " +
+"      <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <span>Hoặc</span>\r\n                           " +
+" </div>\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <a");
+
+WriteLiteral(" class=\"btn btn-link\"");
+
+WriteLiteral(" data-dismiss=\"modal\"");
+
+WriteLiteral(" data-target=\"#login-modal\"");
+
+WriteLiteral(" data-toggle=\"modal\"");
+
+WriteLiteral(">Đăng nhập</a>\r\n                            </div>\r\n                        </div" +
+">\r\n                        <div");
+
+WriteLiteral(" class=\"forgot-password-content-success\"");
+
+WriteLiteral(" style=\"display: none;\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <h5");
+
+WriteLiteral(" class=\"text-success\"");
+
+WriteLiteral(@">Vui lòng kiểm tra email để đặt lại mật khẩu</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Make it able to disable modal to use this modal in signin page -->
+        <div");
+
+WriteLiteral(" class=\"modal fade\"");
+
+WriteLiteral(" id=\"login-modal\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"modal-dialog\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"modal-header\"");
+
+WriteLiteral(">\r\n                        <button");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(" data-dismiss=\"modal\"");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(">×</button>\r\n                        <h3");
+
+WriteLiteral(" class=\"modal-title\"");
+
+WriteLiteral(">Đăng nhập</h3>\r\n                    </div>\r\n                    <div");
+
+WriteLiteral(" class=\"modal-body\"");
+
+WriteLiteral(">\r\n                        <form");
+
+WriteLiteral(" action=\"https://edumall.vn/users/sign_in\"");
+
+WriteLiteral(" method=\"post\"");
+
+WriteLiteral(">\r\n                            <p");
+
+WriteLiteral(" class=\"sub-title\"");
+
+WriteLiteral(">Đăng nhập bằng email</p>\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" id=\"email\"");
+
+WriteLiteral(" name=\"user[email]\"");
+
+WriteLiteral(" placeholder=\"Email\"");
+
+WriteLiteral(" required=\"true\"");
+
+WriteLiteral(" type=\"email\"");
+
+WriteLiteral(" value=\"\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" id=\"password\"");
+
+WriteLiteral(" name=\"user[password]\"");
+
+WriteLiteral(" placeholder=\"Mật khẩu\"");
+
+WriteLiteral(" required=\"true\"");
+
+WriteLiteral(" type=\"password\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                            <input");
+
+WriteLiteral(" type=\"hidden\"");
+
+WriteLiteral(" name=\"authenticity_token\"");
+
+WriteLiteral(" id=\"authenticity_token\"");
+
+WriteLiteral(" value=\"u3HrqfAr8BSYbEIF7fXyBqyaWU3V9kyFsUlxBSI/PFOfBArg9xKjjWtK/WuDPAvZ3WrBbGtJi" +
+"nsm0a1v0z19Zg==\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper\"");
+
+WriteLiteral(">\r\n                                <input");
+
+WriteLiteral(" class=\"btn btn-login-submit\"");
+
+WriteLiteral(" type=\"submit\"");
+
+WriteLiteral(" value=\"Đăng nhập\"");
+
+WriteLiteral(">\r\n                            </div>\r\n                        </form>\r\n         " +
+"               <p");
+
+WriteLiteral(" class=\"forgot-password-link\"");
+
+WriteLiteral(">\r\n                            <a");
+
+WriteLiteral(" class=\"btn-link\"");
+
+WriteLiteral(" data-dismiss=\"modal\"");
+
+WriteLiteral(" data-target=\"#fogot-password-dialog\"");
+
+WriteLiteral(" data-toggle=\"modal\"");
+
+WriteLiteral(" href=\"https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#\"");
+
+WriteLiteral(" id=\"forgot-password-button\"");
+
+WriteLiteral(">Quên mật khẩu đăng nhập?</a>\r\n                        </p>\r\n                    " +
+"</div>\r\n                    <div");
+
+WriteLiteral(" class=\"modal-footer\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"forgot-password-link clearfix\"");
+
+WriteLiteral(">\r\n                            <a");
+
+WriteLiteral(" class=\"btn btn-link show-social-link\"");
+
+WriteLiteral(" href=\"https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#\"");
+
+WriteLiteral(">\r\n                                Đăng nhập với tài khoản mạng xã hội\r\n         " +
+"                       <span>\r\n                                    <i");
+
+WriteLiteral(" class=\"fa fa-angle-down\"");
+
+WriteLiteral("></i>\r\n                                </span>\r\n                            </a>\r" +
+"\n                            <div");
+
+WriteLiteral(" class=\"form-control-wrapper social-area\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteLiteral(" class=\"col-md-6\"");
+
+WriteLiteral(">\r\n                                        <a");
+
+WriteLiteral(" class=\"btn-facebook\"");
+
+WriteLiteral(" href=\"https://edumall.vn/users/auth/facebook\"");
+
+WriteLiteral(">\r\n                                            <i");
+
+WriteLiteral(" class=\"left fa fa-facebook\"");
+
+WriteLiteral("></i>\r\n                                            <span");
+
+WriteLiteral(" class=\"left\"");
+
+WriteLiteral(">Facebook</span>\r\n                                        </a>\r\n                 " +
+"                   </div>\r\n                                    <div");
+
+WriteLiteral(" class=\"col-md-6\"");
+
+WriteLiteral(">\r\n                                        <a");
+
+WriteLiteral(" class=\"btn-google\"");
+
+WriteLiteral(" href=\"https://edumall.vn/users/auth/google_oauth2\"");
+
+WriteLiteral(">\r\n                                            <i");
+
+WriteLiteral(" class=\"left fa fa-google-plus\"");
+
+WriteLiteral("></i>\r\n                                            <span");
+
+WriteLiteral(" class=\"left\"");
+
+WriteLiteral(">Google+</span>\r\n                                        </a>\r\n                  " +
+"                  </div>\r\n                                </div>\r\n              " +
+"              </div>\r\n                        </div>\r\n                        <p" +
+"");
+
+WriteLiteral(" class=\"bottom-text\"");
+
+WriteLiteral(">\r\n                            Chưa có tài khoản?\r\n                            <a" +
+"");
+
+WriteLiteral(" class=\"btn-link\"");
+
+WriteLiteral(" data-dismiss=\"modal\"");
+
+WriteLiteral(" data-target=\"#register-modal\"");
+
+WriteLiteral(" data-toggle=\"modal\"");
+
+WriteLiteral(" href=\"https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#\"");
+
+WriteLiteral(">Đăng ký</a>\r\n                        </p>\r\n                    </div>\r\n         " +
+"       </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>");
+
         }
     }
 }

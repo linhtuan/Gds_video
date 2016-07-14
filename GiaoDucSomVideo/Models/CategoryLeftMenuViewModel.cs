@@ -1,4 +1,6 @@
-﻿namespace GiaoDucSomVideo.Models
+﻿using System.Collections.Generic;
+
+namespace GiaoDucSomVideo.Models
 {
     public class CategoryLeftMenuViewModel
     {

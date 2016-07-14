@@ -31,140 +31,207 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Category/PartialView/_CouseHotSMPartialView.cshtml")]
-    public partial class _Views_Category_PartialView__CouseHotSMPartialView_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class _Views_Category_PartialView__CouseHotSMPartialView_cshtml : System.Web.Mvc.WebViewPage<List<GiaoDucSomVideo.Models.CoursesViewModel>>
     {
         public _Views_Category_PartialView__CouseHotSMPartialView_cshtml()
         {
         }
         public override void Execute()
         {
-WriteLiteral("<div");
+            
+            #line 2 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+ foreach (var item in Model)
+{
+
+            
+            #line default
+            #line hidden
+WriteLiteral("    <div");
 
 WriteLiteral(" class=\"search-card\"");
 
-WriteLiteral(">\r\n    <a");
+WriteLiteral(">\r\n        <a");
 
-WriteLiteral(" href=\"https://edumall.vn/course/nhung-dieu-can-biet-ve-giao-duc-gioi-tinh-cho-tr" +
-"e-vi-thanh-nien\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 128), Tuple.Create("\"", 150)
+            
+            #line 5 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+, Tuple.Create(Tuple.Create("", 135), Tuple.Create<System.Object, System.Int32>(item.UrlCourse
+            
+            #line default
+            #line hidden
+, 135), false)
+);
 
-WriteLiteral(">\r\n    </a>\r\n    <div");
+WriteLiteral(">\r\n        </a>\r\n        <div");
 
 WriteLiteral(" class=\"row no-margin rel\"");
 
-WriteLiteral(">\r\n        <a");
+WriteLiteral(">\r\n            <a");
 
-WriteLiteral(" href=\"https://edumall.vn/course/nhung-dieu-can-biet-ve-giao-duc-gioi-tinh-cho-tr" +
-"e-vi-thanh-nien\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"image-course pull-left\"");
-
-WriteLiteral(" style=\"background-image: url(//static.edumall.vn/uploads/images/courses/course_i" +
-"mage_ttal01_230x130.1.png)\"");
-
-WriteLiteral("></div>\r\n            <div");
-
-WriteLiteral(" class=\"content-course\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 223), Tuple.Create("\"", 245)
+            
+            #line 8 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+, Tuple.Create(Tuple.Create("", 230), Tuple.Create<System.Object, System.Int32>(item.UrlCourse
+            
+            #line default
+            #line hidden
+, 230), false)
+);
 
 WriteLiteral(">\r\n                <div");
 
-WriteLiteral(" class=\"name-course\"");
+WriteLiteral(" class=\"image-course pull-left\"");
 
-WriteLiteral(">Giáo dục giới tính cho trẻ theo từng độ tuổi</div>\r\n                <div");
+WriteAttribute("style", Tuple.Create(" style=\"", 300), Tuple.Create("\"", 389)
+, Tuple.Create(Tuple.Create("", 308), Tuple.Create("background-image:", 308), true)
+, Tuple.Create(Tuple.Create(" ", 325), Tuple.Create("url(data:image/", 326), true)
+            
+            #line 9 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+             , Tuple.Create(Tuple.Create("", 341), Tuple.Create<System.Object, System.Int32>(item.MimeTypeImage
+            
+            #line default
+            #line hidden
+, 341), false)
+, Tuple.Create(Tuple.Create("", 360), Tuple.Create(";base64,", 360), true)
+            
+            #line 9 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+                                        , Tuple.Create(Tuple.Create("", 368), Tuple.Create<System.Object, System.Int32>(item.ThumbnailImage
+            
+            #line default
+            #line hidden
+, 368), false)
+, Tuple.Create(Tuple.Create("", 388), Tuple.Create(")", 388), true)
+);
 
-WriteLiteral(" class=\"about-author\"");
+WriteLiteral("></div>\r\n                <div");
 
-WriteLiteral(">\r\n                    <span>Trần Thị Ái Liên</span>\r\n                    <span><" +
-"/span>\r\n                </div>\r\n                <div");
-
-WriteLiteral(" class=\"info-course row no-margin\"");
+WriteLiteral(" class=\"content-course\"");
 
 WriteLiteral(">\r\n                    <div");
 
-WriteLiteral(" class=\"real-price info-item\"");
+WriteLiteral(" class=\"name-course\"");
 
-WriteLiteral(">\r\n                        599,000đ\r\n                    </div>\r\n                " +
-"    <div");
+WriteLiteral(">");
 
-WriteLiteral(" id=\"rating\"");
+            
+            #line 11 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+                                        Write(item.CourseName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</div>\r\n                    <div");
+
+WriteLiteral(" class=\"about-author\"");
+
+WriteLiteral(">\r\n                        <span>Tuan Linh</span>\r\n                        <span>" +
+"</span>\r\n                    </div>\r\n                    <div");
+
+WriteLiteral(" class=\"info-course row no-margin\"");
 
 WriteLiteral(">\r\n                        <div");
 
-WriteLiteral(" class=\"search-rating\"");
+WriteLiteral(" class=\"real-price info-item\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 18 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+                        Write(item.Price);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("đ\r\n                        </div>\r\n                        <div");
+
+WriteLiteral(" id=\"rating\"");
 
 WriteLiteral(">\r\n                            <div");
 
-WriteLiteral(" class=\"search-rating-star\"");
+WriteLiteral(" class=\"search-rating\"");
 
 WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"search-rating-star\"");
+
+WriteLiteral(">\r\n                                    <div");
 
 WriteLiteral(" class=\"pull-left\"");
 
 WriteLiteral(" id=\"percent-rating\"");
 
-WriteLiteral(">\r\n                                    <i");
+WriteLiteral(">\r\n                                        <i");
 
 WriteLiteral(" class=\"fa fa-star rated\"");
 
-WriteLiteral("></i>\r\n                                    <i");
+WriteLiteral("></i>\r\n                                        <i");
 
 WriteLiteral(" class=\"fa fa-star rated\"");
 
-WriteLiteral("></i>\r\n                                    <i");
+WriteLiteral("></i>\r\n                                        <i");
 
 WriteLiteral(" class=\"fa fa-star rated\"");
 
-WriteLiteral("></i>\r\n                                    <span");
+WriteLiteral("></i>\r\n                                        <span");
 
 WriteLiteral(" class=\"rating-percent\"");
 
-WriteLiteral(">\r\n                                        <i");
+WriteLiteral(">\r\n                                            <i");
 
 WriteLiteral(" class=\"fa fa-star\"");
 
-WriteLiteral("></i>\r\n                                        <i");
+WriteLiteral("></i>\r\n                                            <i");
 
 WriteLiteral(" class=\"fa fa-star percent\"");
 
 WriteLiteral(" style=\"width: 70.00000000000001%\"");
 
-WriteLiteral("></i>\r\n                                    </span>\r\n                             " +
-"       <i");
+WriteLiteral("></i>\r\n                                        </span>\r\n                         " +
+"               <i");
 
 WriteLiteral(" class=\"fa fa-star\"");
 
-WriteLiteral("></i>\r\n                                </div>\r\n                            </div>" +
-"\r\n                        </div>\r\n                    </div>\r\n                  " +
-"  <div");
+WriteLiteral("></i>\r\n                                    </div>\r\n                              " +
+"  </div>\r\n                            </div>\r\n                        </div>\r\n  " +
+"                      <div");
 
 WriteLiteral(" class=\"short-rating\"");
 
-WriteLiteral(">\r\n                        <i");
+WriteLiteral(">\r\n                            <i");
 
 WriteLiteral(" class=\"fa fa-star rated\"");
 
-WriteLiteral(">\r\n                            <span");
+WriteLiteral(">\r\n                                <span");
 
 WriteLiteral(" class=\"course-people-rating\"");
 
-WriteLiteral("> 3.7</span>\r\n                        </i>\r\n                    </div>\r\n         " +
-"       </div>\r\n            </div>\r\n        </a>\r\n        <div");
+WriteLiteral("> 3.7</span>\r\n                            </i>\r\n                        </div>\r\n " +
+"                   </div>\r\n                </div>\r\n            </a>\r\n           " +
+" <div");
 
 WriteLiteral(" class=\"course-wishlist abs\"");
 
-WriteLiteral(">\r\n            <a");
+WriteLiteral(">\r\n                <a");
 
-WriteLiteral(" href=\"https://edumall.vn/course/nhung-dieu-can-biet-ve-giao-duc-gioi-tinh-cho-tr" +
-"e-vi-thanh-nien\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 2260), Tuple.Create("\"", 2282)
+            
+            #line 45 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+, Tuple.Create(Tuple.Create("", 2267), Tuple.Create<System.Object, System.Int32>(item.UrlCourse
+            
+            #line default
+            #line hidden
+, 2267), false)
+);
 
-WriteLiteral(">\r\n            </a>\r\n            <a");
+WriteLiteral(">\r\n                </a>\r\n                <a");
 
 WriteLiteral(" class=\"wishlist-heart\"");
 
 WriteLiteral(" val=\"5627585fd8b7313836000002\"");
 
-WriteLiteral(">\r\n                <svg");
+WriteLiteral(">\r\n                    <svg");
 
 WriteLiteral(" height=\"18\"");
 
@@ -179,114 +246,61 @@ WriteLiteral(" xmlns:xlink=\"http://www.w3.org/1999/xlink\"");
 WriteLiteral(" xmlns=\"http://www.w3.org/2000/svg\"");
 
 WriteLiteral(@">
-                    <defs>
-                        <style>
-                            .heart {
-                                fill: #ffffff;
-                                stroke: #none;
-                                stroke-linejoin: round;
-                                stroke-width: 1px;
-                                fill-rule: evenodd;
-                            }
+                        <defs>
+                            <style>
+                                .heart {
+                                    fill: #ffffff;
+                                    stroke: # none;
+                                    stroke-linejoin: round;
+                                    stroke-width: 1px;
+                                    fill-rule: evenodd;
+                                }
 
-                            .heart:hover {
-                                fill: #ffffff;
-                            }
+                                .heart:hover {
+                                    fill: #ffffff;
+                                }
 
-                            .wishlist {
-                                fill: #ffffff;
-                            }
-                        </style>
-                    </defs>
-                    <path");
+                                .wishlist {
+                                    fill: #ffffff;
+                                }
+                            </style>
+                        </defs>
+                        <path");
 
 WriteLiteral(" class=\"heart\"");
 
 WriteLiteral(@" d=""M10.000,17.000 L8.740,15.783 C4.060,11.783 1.000,9.087 1.000,5.783 C1.000,3.087 3.160,1.000 5.950,1.000 C7.480,1.000 9.010,1.696 10.000,2.826 C10.990,1.696 12.520,1.000 14.050,1.000 C16.840,1.000 19.000,3.087 19.000,5.783 C19.000,9.087 15.940,11.783 11.260,15.783 L10.000,17.000 Z""");
 
-WriteLiteral("></path>\r\n                </svg>\r\n                <div");
+WriteLiteral("></path>\r\n                    </svg>\r\n                    <div");
 
 WriteLiteral(" class=\"wishlist-tooltip\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"wishlist-tooltip-bg\"");
 
-WriteLiteral(">\r\n                        <i");
+WriteLiteral(">\r\n                            <i");
 
 WriteLiteral(" class=\"fa fa-sort-asc wishlist-tooltip-arrow\"");
 
-WriteLiteral("></i>\r\n                    </div>\r\n                    <div");
+WriteLiteral("></i>\r\n                        </div>\r\n                        <div");
 
 WriteLiteral(" class=\"wishlist-tooltip-inner\"");
 
-WriteLiteral(">\r\n                        <span");
+WriteLiteral(">\r\n                            <span");
 
 WriteLiteral(" style=\"font-size: 12px;\"");
 
-WriteLiteral(">Quan tâm</span>\r\n                    </div>\r\n                </div>\r\n           " +
-" </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<script");
+WriteLiteral(">Quan tâm</span>\r\n                        </div>\r\n                    </div>\r\n   " +
+"             </a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
-WriteLiteral(" id=\"cousesHotSMTemplate\"");
+            
+            #line 82 "..\..\Views\Category\PartialView\_CouseHotSMPartialView.cshtml"
+}
 
-WriteLiteral(" type=\"text/x-jquery-tmpl\"");
-
-WriteLiteral(">\r\n    <div class=\"search-card\">\r\n        <a href=\"https://edumall.vn/course/nhun" +
-"g-dieu-can-biet-ve-giao-duc-gioi-tinh-cho-tre-vi-thanh-nien\">\r\n        </a>\r\n   " +
-"     <div class=\"row no-margin rel\">\r\n            <a href=\"https://edumall.vn/co" +
-"urse/nhung-dieu-can-biet-ve-giao-duc-gioi-tinh-cho-tre-vi-thanh-nien\">\r\n        " +
-"        <div class=\"image-course pull-left\" style=\"background-image: url(//stati" +
-"c.edumall.vn/uploads/images/courses/course_image_ttal01_230x130.1.png)\"></div>\r\n" +
-"                <div class=\"content-course\">\r\n                    <div class=\"na" +
-"me-course\">Giáo dục giới tính cho trẻ theo từng độ tuổi</div>\r\n                 " +
-"   <div class=\"about-author\">\r\n                        <span>Trần Thị Ái Liên</s" +
-"pan>\r\n                        <span></span>\r\n                    </div>\r\n       " +
-"             <div class=\"info-course row no-margin\">\r\n                        <d" +
-"iv class=\"real-price info-item\">\r\n                            599,000đ\r\n        " +
-"                </div>\r\n                        <div id=\"rating\">\r\n             " +
-"               <div class=\"search-rating\">\r\n                                <div" +
-" class=\"search-rating-star\">\r\n                                    <div class=\"pu" +
-"ll-left\" id=\"percent-rating\">\r\n                                        <i class=" +
-"\"fa fa-star rated\"></i>\r\n                                        <i class=\"fa fa" +
-"-star rated\"></i>\r\n                                        <i class=\"fa fa-star " +
-"rated\"></i>\r\n                                        <span class=\"rating-percent" +
-"\">\r\n                                            <i class=\"fa fa-star\"></i>\r\n    " +
-"                                        <i class=\"fa fa-star percent\" style=\"wid" +
-"th: 70.00000000000001%\"></i>\r\n                                        </span>\r\n " +
-"                                       <i class=\"fa fa-star\"></i>\r\n             " +
-"                       </div>\r\n                                </div>\r\n         " +
-"                   </div>\r\n                        </div>\r\n                     " +
-"   <div class=\"short-rating\">\r\n                            <i class=\"fa fa-star " +
-"rated\">\r\n                                <span class=\"course-people-rating\"> 3.7" +
-"</span>\r\n                            </i>\r\n                        </div>\r\n     " +
-"               </div>\r\n                </div>\r\n            </a>\r\n            <di" +
-"v class=\"course-wishlist abs\">\r\n                <a href=\"https://edumall.vn/cour" +
-"se/nhung-dieu-can-biet-ve-giao-duc-gioi-tinh-cho-tre-vi-thanh-nien\">\r\n          " +
-"      </a>\r\n                <a class=\"wishlist-heart\" val=\"5627585fd8b7313836000" +
-"002\">\r\n                    <svg height=\"18\" preserveAspectRatio=\"xMidYMid\" viewB" +
-"ox=\"0 0 20 18\" width=\"18\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http" +
-"://www.w3.org/2000/svg\">\r\n                        <defs>\r\n                      " +
-"      <style>\r\n                                .heart {\r\n                       " +
-"             fill: #ffffff;\r\n                                    stroke: #none;\r" +
-"\n                                    stroke-linejoin: round;\r\n                  " +
-"                  stroke-width: 1px;\r\n                                    fill-r" +
-"ule: evenodd;\r\n                                }\r\n\r\n                            " +
-"        .heart:hover {\r\n                                        fill: #ffffff;\r\n" +
-"                                    }\r\n\r\n                                .wishli" +
-"st {\r\n                                    fill: #ffffff;\r\n                      " +
-"          }\r\n                            </style>\r\n                        </def" +
-"s>\r\n                        <path class=\"heart\" d=\"M10.000,17.000 L8.740,15.783 " +
-"C4.060,11.783 1.000,9.087 1.000,5.783 C1.000,3.087 3.160,1.000 5.950,1.000 C7.48" +
-"0,1.000 9.010,1.696 10.000,2.826 C10.990,1.696 12.520,1.000 14.050,1.000 C16.840" +
-",1.000 19.000,3.087 19.000,5.783 C19.000,9.087 15.940,11.783 11.260,15.783 L10.0" +
-"00,17.000 Z\"></path>\r\n                    </svg>\r\n                    <div class" +
-"=\"wishlist-tooltip\">\r\n                        <div class=\"wishlist-tooltip-bg\">\r" +
-"\n                            <i class=\"fa fa-sort-asc wishlist-tooltip-arrow\"></" +
-"i>\r\n                        </div>\r\n                        <div class=\"wishlist" +
-"-tooltip-inner\">\r\n                            <span style=\"font-size: 12px;\">Qua" +
-"n tâm</span>\r\n                        </div>\r\n                    </div>\r\n      " +
-"          </a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</script>\r\n\r\n");
-
+            
+            #line default
+            #line hidden
         }
     }
 }

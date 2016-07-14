@@ -31,37 +31,14 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/_LeftMenuContent.cshtml")]
-    public partial class _Views_Shared__LeftMenuContent_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class _Views_Shared__LeftMenuContent_cshtml : System.Web.Mvc.WebViewPage<List<GiaoDucSomVideo.Models.CategoryLeftMenuViewModel>>
     {
         public _Views_Shared__LeftMenuContent_cshtml()
         {
         }
         public override void Execute()
         {
-WriteLiteral("<script");
-
-WriteLiteral(" id=\"otherCategoryLeftMenu\"");
-
-WriteLiteral(" type=\"text/x-jquery-tmpl\"");
-
-WriteLiteral(@">
-    <div class=""row no-margin other-category-container hidden-sm"">
-        <label style=""color: #338abc;"">Các lĩnh vực khác</label>
-        <div class=""row no-margin other-category"">
-            <a class=""other-category-item"" href=""https://edumall.vn/cong-nghe-thong-tin"">Công nghệ thông tin</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/nuoi-day-con"">Nuôi dạy con</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/ky-nang-mem"">Phát triển cá nhân</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/kinh-doanh-lam-giau"">Kinh doanh và khởi nghiệp</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/tieng-anh-nghe-thuat"">Tiếng Anh</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/thiet-ke"">Thiết kế</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/marketing"">Marketing</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/ung-dung-van-phong"">Ứng dụng văn phòng</a>
-            <a class=""other-category-item"" href=""https://edumall.vn/chu-de-khac"">Chủ đề khác</a>
-        </div>
-    </div>
-</script>
-
-<div");
+WriteLiteral("<div");
 
 WriteLiteral(" class=\"row no-margin other-category-container hidden-sm\"");
 
@@ -73,61 +50,55 @@ WriteLiteral(">Các lĩnh vực khác</label>\r\n    <div");
 
 WriteLiteral(" class=\"row no-margin other-category\"");
 
-WriteLiteral(">\r\n        <a");
+WriteLiteral(">\r\n");
+
+            
+            #line 6 "..\..\Views\Shared\_LeftMenuContent.cshtml"
+        
+            
+            #line default
+            #line hidden
+            
+            #line 6 "..\..\Views\Shared\_LeftMenuContent.cshtml"
+         foreach (var item in Model)
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <a");
 
 WriteLiteral(" class=\"other-category-item\"");
 
-WriteLiteral(" href=\"https://edumall.vn/cong-nghe-thong-tin\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 330), Tuple.Create("\"", 354)
+            
+            #line 8 "..\..\Views\Shared\_LeftMenuContent.cshtml"
+, Tuple.Create(Tuple.Create("", 337), Tuple.Create<System.Object, System.Int32>(item.UrlCategory
+            
+            #line default
+            #line hidden
+, 337), false)
+);
 
-WriteLiteral(">Công nghệ thông tin</a>\r\n        <a");
+WriteLiteral(">");
 
-WriteLiteral(" class=\"other-category-item\"");
+            
+            #line 8 "..\..\Views\Shared\_LeftMenuContent.cshtml"
+                                                               Write(item.CategoryName);
 
-WriteLiteral(" href=\"https://edumall.vn/nuoi-day-con\"");
+            
+            #line default
+            #line hidden
+WriteLiteral("</a>\r\n");
 
-WriteLiteral(">Nuôi dạy con</a>\r\n        <a");
+            
+            #line 9 "..\..\Views\Shared\_LeftMenuContent.cshtml"
+        }
 
-WriteLiteral(" class=\"other-category-item\"");
-
-WriteLiteral(" href=\"https://edumall.vn/ky-nang-mem\"");
-
-WriteLiteral(">Phát triển cá nhân</a>\r\n        <a");
-
-WriteLiteral(" class=\"other-category-item\"");
-
-WriteLiteral(" href=\"https://edumall.vn/kinh-doanh-lam-giau\"");
-
-WriteLiteral(">Kinh doanh và khởi nghiệp</a>\r\n        <a");
-
-WriteLiteral(" class=\"other-category-item\"");
-
-WriteLiteral(" href=\"https://edumall.vn/tieng-anh-nghe-thuat\"");
-
-WriteLiteral(">Tiếng Anh</a>\r\n        <a");
-
-WriteLiteral(" class=\"other-category-item\"");
-
-WriteLiteral(" href=\"https://edumall.vn/thiet-ke\"");
-
-WriteLiteral(">Thiết kế</a>\r\n        <a");
-
-WriteLiteral(" class=\"other-category-item\"");
-
-WriteLiteral(" href=\"https://edumall.vn/marketing\"");
-
-WriteLiteral(">Marketing</a>\r\n        <a");
-
-WriteLiteral(" class=\"other-category-item\"");
-
-WriteLiteral(" href=\"https://edumall.vn/ung-dung-van-phong\"");
-
-WriteLiteral(">Ứng dụng văn phòng</a>\r\n        <a");
-
-WriteLiteral(" class=\"other-category-item\"");
-
-WriteLiteral(" href=\"https://edumall.vn/chu-de-khac\"");
-
-WriteLiteral(">Chủ đề khác</a>\r\n    </div>\r\n</div>");
+            
+            #line default
+            #line hidden
+WriteLiteral("    </div>\r\n</div>");
 
         }
     }

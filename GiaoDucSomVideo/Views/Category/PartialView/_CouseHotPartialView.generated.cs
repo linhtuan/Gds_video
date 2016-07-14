@@ -31,124 +31,164 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Category/PartialView/_CouseHotPartialView.cshtml")]
-    public partial class _Views_Category_PartialView__CouseHotPartialView_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class _Views_Category_PartialView__CouseHotPartialView_cshtml : System.Web.Mvc.WebViewPage<List<GiaoDucSomVideo.Models.CoursesViewModel>>
     {
         public _Views_Category_PartialView__CouseHotPartialView_cshtml()
         {
         }
         public override void Execute()
         {
-WriteLiteral("<div");
+            
+            #line 2 "..\..\Views\Category\PartialView\_CouseHotPartialView.cshtml"
+ foreach (var item in Model)
+{
+
+            
+            #line default
+            #line hidden
+WriteLiteral("    <div");
 
 WriteLiteral(" class=\"course-card-item\"");
 
-WriteLiteral(">\r\n    <div");
+WriteLiteral(">\r\n        <div");
 
 WriteLiteral(" class=\"course-card\"");
 
-WriteLiteral(">\r\n        <a");
+WriteLiteral(">\r\n            <a");
 
-WriteLiteral(" href=\"https://edumall.vn/course/nhung-dieu-can-biet-ve-giao-duc-gioi-tinh-cho-tr" +
-"e-vi-thanh-nien\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 172), Tuple.Create("\"", 194)
+            
+            #line 6 "..\..\Views\Category\PartialView\_CouseHotPartialView.cshtml"
+, Tuple.Create(Tuple.Create("", 179), Tuple.Create<System.Object, System.Int32>(item.UrlCourse
+            
+            #line default
+            #line hidden
+, 179), false)
+);
 
-WriteLiteral(">\r\n            <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"course-info\"");
 
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"avatar\"");
-
-WriteLiteral(">\r\n                    <img");
-
-WriteLiteral(" src=\"./Category_files/avatar_avatar_avatar_130x131xuntitled-1-01.png.pagespeed.i" +
-"c.6ho20zjali.png\"");
-
-WriteLiteral(" alt=\"Avatar avatar avatar 130x131xuntitled 1 01.png.pagespeed.ic.6ho20zjali\"");
-
-WriteLiteral(">\r\n                </div>\r\n                <span>8 bài giảng</span>\r\n            " +
-"    <span>1 giờ video</span>\r\n            </div>\r\n            <div");
+WriteLiteral(">\r\n                    <span>8 bài giảng</span>\r\n                    <span>1 giờ " +
+"video</span>\r\n                </div>\r\n                <div");
 
 WriteLiteral(" class=\"course-image no-margin\"");
 
-WriteLiteral(">\r\n                <img");
+WriteLiteral(">\r\n                    <img");
 
-WriteLiteral(" src=\"./Category_files/course_image_ttal01_230x130.1.png\"");
+WriteAttribute("src", Tuple.Create(" src=\"", 435), Tuple.Create("\"", 501)
+, Tuple.Create(Tuple.Create("", 441), Tuple.Create("data:image/", 441), true)
+            
+            #line 12 "..\..\Views\Category\PartialView\_CouseHotPartialView.cshtml"
+, Tuple.Create(Tuple.Create("", 452), Tuple.Create<System.Object, System.Int32>(item.MimeTypeImage
+            
+            #line default
+            #line hidden
+, 452), false)
+, Tuple.Create(Tuple.Create("", 473), Tuple.Create(";base64,", 473), true)
+            
+            #line 12 "..\..\Views\Category\PartialView\_CouseHotPartialView.cshtml"
+, Tuple.Create(Tuple.Create("", 481), Tuple.Create<System.Object, System.Int32>(item.ThumbnailImage
+            
+            #line default
+            #line hidden
+, 481), false)
+);
 
 WriteLiteral(" alt=\"Course image ttal01 230x130.1\"");
 
-WriteLiteral(">\r\n            </div>\r\n            <div");
+WriteLiteral(">\r\n                </div>\r\n                <div");
 
 WriteLiteral(" class=\"course-card-content\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"row ellipsis-2lines course-title\"");
 
-WriteLiteral(">Giáo dục giới tính cho trẻ theo từng độ tuổi</div>\r\n                <div");
+WriteLiteral(">");
+
+            
+            #line 15 "..\..\Views\Category\PartialView\_CouseHotPartialView.cshtml"
+                                                             Write(item.CourseName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</div>\r\n                    <div");
 
 WriteLiteral(" class=\"row ellipsis-2lines course-description\"");
 
-WriteLiteral(">Trần Thị Ái Liên</div>\r\n                <div");
+WriteLiteral(">Tuan Linh</div>\r\n                    <div");
 
 WriteLiteral(" class=\"row no-margin course-rating\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"rating-container\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" class=\"pull-left\"");
 
 WriteLiteral(" id=\"percent-rating\"");
 
-WriteLiteral(">\r\n                            <i");
+WriteLiteral(">\r\n                                <i");
 
 WriteLiteral(" class=\"fa fa-star rated\"");
 
-WriteLiteral("></i>\r\n                            <i");
+WriteLiteral("></i>\r\n                                <i");
 
 WriteLiteral(" class=\"fa fa-star rated\"");
 
-WriteLiteral("></i>\r\n                            <i");
+WriteLiteral("></i>\r\n                                <i");
 
 WriteLiteral(" class=\"fa fa-star rated\"");
 
-WriteLiteral("></i>\r\n                            <span");
+WriteLiteral("></i>\r\n                                <span");
 
 WriteLiteral(" class=\"rating-percent\"");
 
-WriteLiteral(">\r\n                                <i");
+WriteLiteral(">\r\n                                    <i");
 
 WriteLiteral(" class=\"fa fa-star\"");
 
-WriteLiteral("></i>\r\n                                <i");
+WriteLiteral("></i>\r\n                                    <i");
 
 WriteLiteral(" class=\"fa fa-star percent\"");
 
 WriteLiteral(" style=\"width: 70.00000000000001%\"");
 
-WriteLiteral("></i>\r\n                            </span>\r\n                            <i");
+WriteLiteral("></i>\r\n                                </span>\r\n                                <" +
+"i");
 
 WriteLiteral(" class=\"fa fa-star\"");
 
-WriteLiteral("></i>\r\n                        </div>\r\n                    </div>\r\n              " +
-"  </div>\r\n                <div");
+WriteLiteral("></i>\r\n                            </div>\r\n                        </div>\r\n      " +
+"              </div>\r\n                    <div");
 
 WriteLiteral(" class=\"row no-margin course-price\"");
 
-WriteLiteral(">599,000đ</div>\r\n            </div>\r\n        </a>\r\n        <div");
+WriteLiteral(">");
+
+            
+            #line 31 "..\..\Views\Category\PartialView\_CouseHotPartialView.cshtml"
+                                                        Write(item.Price);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("đ</div>\r\n                </div>\r\n            </a>\r\n            <div");
 
 WriteLiteral(" class=\"course-wishlist\"");
 
-WriteLiteral(">\r\n            <a");
+WriteLiteral(">\r\n                <a");
 
 WriteLiteral(" class=\"wishlist-heart\"");
 
 WriteLiteral(" val=\"5627585fd8b7313836000002\"");
 
-WriteLiteral(">\r\n                <svg");
+WriteLiteral(">\r\n                    <svg");
 
 WriteLiteral(" height=\"18\"");
 
@@ -163,109 +203,61 @@ WriteLiteral(" xmlns:xlink=\"http://www.w3.org/1999/xlink\"");
 WriteLiteral(" xmlns=\"http://www.w3.org/2000/svg\"");
 
 WriteLiteral(@">
-                    <defs>
-                        <style>
-                            .heart {
-                                fill: #ffffff;
-                                stroke: #none;
-                                stroke-linejoin: round;
-                                stroke-width: 1px;
-                                fill-rule: evenodd;
-                            }
+                        <defs>
+                            <style>
+                                .heart {
+                                    fill: #ffffff;
+                                    stroke: # none;
+                                    stroke-linejoin: round;
+                                    stroke-width: 1px;
+                                    fill-rule: evenodd;
+                                }
 
                                 .heart:hover {
                                     fill: #ffffff;
                                 }
 
-                            .wishlist {
-                                fill: #ffffff;
-                            }
-                        </style>
-                    </defs>
-                    <path");
+                                .wishlist {
+                                    fill: #ffffff;
+                                }
+                            </style>
+                        </defs>
+                        <path");
 
 WriteLiteral(" class=\"heart\"");
 
 WriteLiteral(@" d=""M10.000,17.000 L8.740,15.783 C4.060,11.783 1.000,9.087 1.000,5.783 C1.000,3.087 3.160,1.000 5.950,1.000 C7.480,1.000 9.010,1.696 10.000,2.826 C10.990,1.696 12.520,1.000 14.050,1.000 C16.840,1.000 19.000,3.087 19.000,5.783 C19.000,9.087 15.940,11.783 11.260,15.783 L10.000,17.000 Z""");
 
-WriteLiteral("></path>\r\n                </svg>\r\n                <div");
+WriteLiteral("></path>\r\n                    </svg>\r\n                    <div");
 
 WriteLiteral(" class=\"wishlist-tooltip\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"wishlist-tooltip-bg\"");
 
-WriteLiteral(">\r\n                        <i");
+WriteLiteral(">\r\n                            <i");
 
 WriteLiteral(" class=\"fa fa-sort-asc wishlist-tooltip-arrow\"");
 
-WriteLiteral("></i>\r\n                    </div>\r\n                    <div");
+WriteLiteral("></i>\r\n                        </div>\r\n                        <div");
 
 WriteLiteral(" class=\"wishlist-tooltip-inner\"");
 
-WriteLiteral(">\r\n                        <span");
+WriteLiteral(">\r\n                            <span");
 
 WriteLiteral(" style=\"font-size: 12px;\"");
 
-WriteLiteral(">Quan tâm</span>\r\n                    </div>\r\n                </div>\r\n           " +
-" </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<script");
+WriteLiteral(">Quan tâm</span>\r\n                        </div>\r\n                    </div>\r\n   " +
+"             </a>\r\n            </div>\r\n        </div>\r\n    \r\n    </div>\r\n");
 
-WriteLiteral(" id=\"cousesHotTemplate\"");
+            
+            #line 71 "..\..\Views\Category\PartialView\_CouseHotPartialView.cshtml"
+}
 
-WriteLiteral(" type=\"text/x-jquery-tmpl\"");
-
-WriteLiteral(">\r\n    <div class=\"course-card-item\">\r\n        <div class=\"course-card\">\r\n       " +
-"     <a href=\"https://edumall.vn/course/nhung-dieu-can-biet-ve-giao-duc-gioi-tin" +
-"h-cho-tre-vi-thanh-nien\">\r\n                <div class=\"course-info\">\r\n          " +
-"          <div class=\"avatar\">\r\n                        <img src=\"./Category_fil" +
-"es/avatar_avatar_avatar_130x131xuntitled-1-01.png.pagespeed.ic.6ho20zjali.png\" a" +
-"lt=\"Avatar avatar avatar 130x131xuntitled 1 01.png.pagespeed.ic.6ho20zjali\">\r\n  " +
-"                  </div>\r\n                    <span>8 bài giảng</span>\r\n        " +
-"            <span>1 giờ video</span>\r\n                </div>\r\n                <d" +
-"iv class=\"course-image no-margin\">\r\n                    <img src=\"./Category_fil" +
-"es/course_image_ttal01_230x130.1.png\" alt=\"Course image ttal01 230x130.1\">\r\n    " +
-"            </div>\r\n                <div class=\"course-card-content\">\r\n         " +
-"           <div class=\"row ellipsis-2lines course-title\">Giáo dục giới tính cho " +
-"trẻ theo từng độ tuổi</div>\r\n                    <div class=\"row ellipsis-2lines" +
-" course-description\">Trần Thị Ái Liên</div>\r\n                    <div class=\"row" +
-" no-margin course-rating\">\r\n                        <div class=\"rating-container" +
-"\">\r\n                            <div class=\"pull-left\" id=\"percent-rating\">\r\n   " +
-"                             <i class=\"fa fa-star rated\"></i>\r\n                 " +
-"               <i class=\"fa fa-star rated\"></i>\r\n                               " +
-" <i class=\"fa fa-star rated\"></i>\r\n                                <span class=\"" +
-"rating-percent\">\r\n                                    <i class=\"fa fa-star\"></i>" +
-"\r\n                                    <i class=\"fa fa-star percent\" style=\"width" +
-": 70.00000000000001%\"></i>\r\n                                </span>\r\n           " +
-"                     <i class=\"fa fa-star\"></i>\r\n                            </d" +
-"iv>\r\n                        </div>\r\n                    </div>\r\n               " +
-"     <div class=\"row no-margin course-price\">599,000đ</div>\r\n                </d" +
-"iv>\r\n            </a>\r\n            <div class=\"course-wishlist\">\r\n              " +
-"  <a class=\"wishlist-heart\" val=\"5627585fd8b7313836000002\">\r\n                   " +
-" <svg height=\"18\" preserveAspectRatio=\"xMidYMid\" viewBox=\"0 0 20 18\" width=\"18\" " +
-"xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\">\r\n" +
-"                        <defs>\r\n                            <style>\r\n           " +
-"                     .heart {\r\n                                    fill: #ffffff" +
-";\r\n                                    stroke: #none;\r\n                         " +
-"           stroke-linejoin: round;\r\n                                    stroke-w" +
-"idth: 1px;\r\n                                    fill-rule: evenodd;\r\n           " +
-"                     }\r\n\r\n                                    .heart:hover {\r\n  " +
-"                                      fill: #ffffff;\r\n                          " +
-"          }\r\n\r\n                                .wishlist {\r\n                    " +
-"                fill: #ffffff;\r\n                                }\r\n             " +
-"               </style>\r\n                        </defs>\r\n                      " +
-"  <path class=\"heart\" d=\"M10.000,17.000 L8.740,15.783 C4.060,11.783 1.000,9.087 " +
-"1.000,5.783 C1.000,3.087 3.160,1.000 5.950,1.000 C7.480,1.000 9.010,1.696 10.000" +
-",2.826 C10.990,1.696 12.520,1.000 14.050,1.000 C16.840,1.000 19.000,3.087 19.000" +
-",5.783 C19.000,9.087 15.940,11.783 11.260,15.783 L10.000,17.000 Z\"></path>\r\n    " +
-"                </svg>\r\n                    <div class=\"wishlist-tooltip\">\r\n    " +
-"                    <div class=\"wishlist-tooltip-bg\">\r\n                         " +
-"   <i class=\"fa fa-sort-asc wishlist-tooltip-arrow\"></i>\r\n                      " +
-"  </div>\r\n                        <div class=\"wishlist-tooltip-inner\">\r\n        " +
-"                    <span style=\"font-size: 12px;\">Quan tâm</span>\r\n            " +
-"            </div>\r\n                    </div>\r\n                </a>\r\n          " +
-"  </div>\r\n        </div>\r\n    </div>\r\n</script>\r\n\r\n");
-
+            
+            #line default
+            #line hidden
         }
     }
 }

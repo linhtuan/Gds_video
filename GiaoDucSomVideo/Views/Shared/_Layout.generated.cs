@@ -70,31 +70,31 @@ Write(Styles.Render("~/Content/css"));
             #line hidden
 WriteLiteral("\r\n    ");
 
-WriteLiteral("\r\n\r\n</head>\r\n    <body");
+WriteLiteral("\r\n\r\n</head>\r\n<body");
 
 WriteLiteral(" class=\"courses_page _hasRecRequest _detail_page\"");
 
-WriteLiteral(">\r\n        <header>\r\n            <div");
+WriteLiteral(">\r\n    <header>\r\n        <div");
 
 WriteLiteral(" class=\"header-inner rel\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"container-fluid\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"header-col header-col-left\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"hd-categories pull-left\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"btn-group cats-dropdown\"");
 
-WriteLiteral(">\r\n                                <div");
+WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" aria-expanded=\"false\"");
 
@@ -108,35 +108,35 @@ WriteLiteral(" data-fixed=\"false\"");
 
 WriteLiteral(" data-toggle=\"dropdown\"");
 
-WriteLiteral(">\r\n                                    <i");
+WriteLiteral(">\r\n                                <i");
 
 WriteLiteral(" class=\"fa fa-bars\"");
 
-WriteLiteral("></i>\r\n                                    <span");
+WriteLiteral("></i>\r\n                                <span");
 
 WriteLiteral(" class=\"active-nav-text\"");
 
-WriteLiteral(">Danh sách chủ đề</span>\r\n                                </div>\r\n");
+WriteLiteral(">Danh sách chủ đề</span>\r\n                            </div>\r\n");
 
-WriteLiteral("                                ");
+WriteLiteral("                            ");
 
             
             #line 22 "..\..\Views\Shared\_Layout.cshtml"
-                           Write(Html.Partial("_MenuTopPage"));
+                       Write(Html.Partial("_MenuTopPage"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            </div>\r\n                        </div>\r\n           " +
-"             <div");
+WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n                   " +
+" <div");
 
 WriteLiteral(" class=\"hd-search pull-left\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"search-box\"");
 
-WriteLiteral(">\r\n                                <form");
+WriteLiteral(">\r\n                            <form");
 
 WriteLiteral(" action=\"https://edumall.vn/search\"");
 
@@ -144,7 +144,7 @@ WriteLiteral(" class=\"search-form\"");
 
 WriteLiteral(" method=\"GET\"");
 
-WriteLiteral(">\r\n                                    <input");
+WriteLiteral(">\r\n                                <input");
 
 WriteLiteral(" autofocus=\"\"");
 
@@ -154,21 +154,20 @@ WriteLiteral(" name=\"q\"");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(">\r\n                                    <button");
+WriteLiteral(">\r\n                                <button");
 
 WriteLiteral(" type=\"submit\"");
 
-WriteLiteral(">\r\n                                        <i");
+WriteLiteral(">\r\n                                    <i");
 
 WriteLiteral(" class=\"fa fa-search\"");
 
-WriteLiteral("></i>\r\n                                    </button>\r\n                           " +
-"     </form>\r\n                            </div>\r\n\r\n                            " +
-"<div");
+WriteLiteral("></i>\r\n                                </button>\r\n                            </f" +
+"orm>\r\n                        </div>\r\n\r\n                        <div");
 
 WriteLiteral(" class=\"btn-group search-dropdown\"");
 
-WriteLiteral(">\r\n                                <div");
+WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" aria-expanded=\"false\"");
 
@@ -180,24 +179,23 @@ WriteLiteral(" data-toggle=\"dropdown\"");
 
 WriteLiteral(" type=\"button\"");
 
-WriteLiteral(">\r\n                                    <i");
+WriteLiteral(">\r\n                                <i");
 
 WriteLiteral(" class=\"fa fa-search\"");
 
-WriteLiteral("></i>\r\n                                </div>\r\n                                <d" +
-"iv");
+WriteLiteral("></i>\r\n                            </div>\r\n                            <div");
 
 WriteLiteral(" class=\"dropdown-menu\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"search-box\"");
 
 WriteLiteral(">\r\n                                    <div");
 
 WriteLiteral(" class=\"search-box\"");
 
-WriteLiteral(">\r\n                                        <div");
-
-WriteLiteral(" class=\"search-box\"");
-
-WriteLiteral(">\r\n                                            <form");
+WriteLiteral(">\r\n                                        <form");
 
 WriteLiteral(" action=\"https://edumall.vn/search\"");
 
@@ -205,7 +203,7 @@ WriteLiteral(" class=\"search-form\"");
 
 WriteLiteral(" method=\"GET\"");
 
-WriteLiteral(">\r\n                                                <input");
+WriteLiteral(">\r\n                                            <input");
 
 WriteLiteral(" autofocus=\"\"");
 
@@ -215,37 +213,37 @@ WriteLiteral(" name=\"q\"");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(">\r\n                                                <button");
+WriteLiteral(">\r\n                                            <button");
 
 WriteLiteral(" type=\"submit\"");
 
-WriteLiteral(">\r\n                                                    <i");
+WriteLiteral(">\r\n                                                <i");
 
 WriteLiteral(" class=\"fa fa-search\"");
 
 WriteLiteral(@"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-
+                                            </button>
+                                        </form>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div");
+                </div>
+                <div");
 
 WriteLiteral(" class=\"header-col header-col-mid\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"hd-brand\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"logo\"");
 
-WriteLiteral(">\r\n                                <a");
+WriteLiteral(">\r\n                            <a");
 
 WriteLiteral(" class=\"logo-medium\"");
 
@@ -258,7 +256,7 @@ WriteLiteral(" src=\"./Dạy con tự lập_files/logo-48d3ab68d6df4a0495936bf03
 
 WriteLiteral(" alt=\"Logo 48d3ab68d6df4a0495936bf032699492618137912766d9a0e40b9dbc3d9f56f5\"");
 
-WriteLiteral("></a>\r\n                                <a");
+WriteLiteral("></a>\r\n                            <a");
 
 WriteLiteral(" class=\"logo-small\"");
 
@@ -272,254 +270,54 @@ WriteLiteral(" src=\"./Dạy con tự lập_files/logo-small-07817b98821d437f07a
 WriteLiteral(" alt=\"Logo small 07817b98821d437f07ae018f758e6c8fdfda5a3bd6908ae5810acb2838804e5f" +
 "\"");
 
-WriteLiteral("></a>\r\n                            </div>\r\n                        </div>\r\n      " +
-"              </div>\r\n                    <div");
+WriteLiteral("></a>\r\n                        </div>\r\n                    </div>\r\n              " +
+"  </div>\r\n");
 
-WriteLiteral(" class=\"header-col text-right header-col-right\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"hd-user logged_in\"");
-
-WriteLiteral(">\r\n                            <div");
-
-WriteLiteral(" class=\"btn-group notification-dropdown\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" aria-expanded=\"false\"");
-
-WriteLiteral(" class=\"dropdown-toggle read-noti\"");
-
-WriteLiteral(" data-toggle=\"dropdown\"");
-
-WriteLiteral(" type=\"button\"");
-
-WriteLiteral(">\r\n                                    <div");
-
-WriteLiteral(" class=\"notification\"");
-
-WriteLiteral(">\r\n                                        <div");
-
-WriteLiteral(" class=\"notification-button\"");
-
-WriteLiteral(">\r\n                                            <i");
-
-WriteLiteral(" class=\"fa fa-bell\"");
-
-WriteLiteral("></i>\r\n                                            <span");
-
-WriteLiteral(" class=\"badge noti-count\"");
-
-WriteLiteral("></span>\r\n                                        </div>\r\n                       " +
-"             </div>\r\n                                </div>\r\n                   " +
-"             <div");
-
-WriteLiteral(" aria-labelledby=\"dropdownNotification\"");
-
-WriteLiteral(" class=\"dropdown-menu dropdown-notification\"");
-
-WriteLiteral(">\r\n                                    <h5");
-
-WriteLiteral(" class=\"title\"");
-
-WriteLiteral(">Thông báo</h5>\r\n                                    <div");
-
-WriteLiteral(" class=\"noti-mask\"");
-
-WriteLiteral(">\r\n                                        <ul");
-
-WriteLiteral(" class=\"notifications-container\"");
-
-WriteLiteral(">\r\n                                            <li");
-
-WriteLiteral(" class=\"no-notification\"");
-
-WriteLiteral(">\r\n                                                <div");
-
-WriteLiteral(" class=\"no-notification-detail\"");
-
-WriteLiteral(@">
-                                                    <h5>Không có thêm thông báo để hiển thị tại thời điểm này</h5>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div");
-
-WriteLiteral(" class=\"btn-group user-dropdown\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" aria-expanded=\"false\"");
-
-WriteLiteral(" class=\"dropdown-toggle\"");
-
-WriteLiteral(" data-toggle=\"dropdown\"");
-
-WriteLiteral(" type=\"button\"");
-
-WriteLiteral(">\r\n                                    <img");
-
-WriteLiteral(" class=\"user-avatar-small\"");
-
-WriteLiteral(" src=\"./Dạy con tự lập_files/avatar-fa1154d755448cfcb54192341b32bea8892ede1b568dd" +
-"e11f7e825be7263e6c4.png\"");
-
-WriteLiteral(" alt=\"Avatar fa1154d755448cfcb54192341b32bea8892ede1b568dde11f7e825be7263e6c4\"");
-
-WriteLiteral(">\r\n                                </div>\r\n                                <div");
-
-WriteLiteral(" aria-labelledby=\"dropdownMenuDivider\"");
-
-WriteLiteral(" class=\"dropdown-menu dropdown-menu-right\"");
-
-WriteLiteral(">\r\n                                    <div");
-
-WriteLiteral(" class=\"user-dropdown-header\"");
-
-WriteLiteral(">\r\n                                        <div");
-
-WriteLiteral(" class=\"user-dropdown-header-left\"");
-
-WriteLiteral(">\r\n                                            <img");
-
-WriteLiteral(" class=\"user-avatar-medium\"");
-
-WriteLiteral(" src=\"./Dạy con tự lập_files/avatar-fa1154d755448cfcb54192341b32bea8892ede1b568dd" +
-"e11f7e825be7263e6c4.png\"");
-
-WriteLiteral(" alt=\"Avatar fa1154d755448cfcb54192341b32bea8892ede1b568dde11f7e825be7263e6c4\"");
-
-WriteLiteral(">\r\n                                        </div>\r\n                              " +
-"          <div");
-
-WriteLiteral(" class=\"user-dropdown-header-right\"");
-
-WriteLiteral(">\r\n                                            <p");
-
-WriteLiteral(" class=\"name\"");
-
-WriteLiteral(">NGUYEN VAN DUNG THANG</p>\r\n                                            <div");
-
-WriteLiteral(" class=\"user-icon abs\"");
-
-WriteLiteral(">\r\n                                                <a");
-
-WriteLiteral(" class=\"link\"");
-
-WriteLiteral(" href=\"https://edumall.vn/users/view_profile\"");
-
-WriteLiteral(">\r\n                                                    <i");
-
-WriteLiteral(" class=\"fa fa-user\"");
-
-WriteLiteral("></i>\r\n                                                </a>\r\n                    " +
-"                            <a");
-
-WriteLiteral(" class=\"link\"");
-
-WriteLiteral(" href=\"https://edumall.vn/users/edit_profile\"");
-
-WriteLiteral(">\r\n                                                    <i");
-
-WriteLiteral(" class=\"fa fa-pencil\"");
-
-WriteLiteral("></i>\r\n                                                </a>\r\n                    " +
-"                        </div>\r\n                                        </div>\r\n" +
-"                                    </div>\r\n                                    " +
-"<div");
-
-WriteLiteral(" class=\"user-dropdown-links\"");
-
-WriteLiteral(">\r\n                                        <a");
-
-WriteLiteral(" class=\"link\"");
-
-WriteLiteral(" href=\"https://edumall.vn/home/my-course/learning\"");
-
-WriteLiteral(">Các khoá học của tôi</a>\r\n                                        <a");
-
-WriteLiteral(" class=\"link\"");
-
-WriteLiteral(" href=\"https://edumall.vn/home/my-course/learning#wishlist\"");
-
-WriteLiteral(">Danh sách quan tâm</a>\r\n                                        <a");
-
-WriteLiteral(" class=\"link\"");
-
-WriteLiteral(" href=\"https://edumall.vn/users/payment_history\"");
-
-WriteLiteral(">Lịch sử giao dịch</a>\r\n                                    </div>\r\n             " +
-"                       <div");
-
-WriteLiteral(" class=\"user-dropdown-logout\"");
-
-WriteLiteral(">\r\n                                        <a");
-
-WriteLiteral(" class=\"btn btn-flat btn-logout\"");
-
-WriteLiteral(" data-method=\"delete\"");
-
-WriteLiteral(" href=\"https://edumall.vn/users/sign_out\"");
-
-WriteLiteral(" rel=\"nofollow\"");
-
-WriteLiteral(">\r\n                                            <i");
-
-WriteLiteral(" class=\"fa fa-power-off\"");
-
-WriteLiteral(@"></i>
-                                            Đăng xuất
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-");
-
-WriteLiteral("        ");
+WriteLiteral("                ");
 
             
-            #line 128 "..\..\Views\Shared\_Layout.cshtml"
-   Write(RenderBody());
+            #line 63 "..\..\Views\Shared\_Layout.cshtml"
+           Write(Html.Partial("_LoginPartial"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        <footer");
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </header>\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
+Write(RenderBody());
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n    <footer");
 
 WriteLiteral(" class=\"footer-wrap\"");
 
-WriteLiteral(">\r\n            <div");
+WriteLiteral(">\r\n        <div");
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"foo-top clearfix\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"pull-left signature\"");
 
-WriteLiteral(">\r\n                            <a");
+WriteLiteral(">\r\n                        <a");
 
 WriteLiteral(" href=\"http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=22565\"");
 
-WriteLiteral(">\r\n                                <img");
+WriteLiteral(">\r\n                            <img");
 
 WriteLiteral(" alt=\"\"");
 
@@ -527,12 +325,12 @@ WriteLiteral(" src=\"http://online.gov.vn/seals/BQT27R4kAS7t4HnfbMcDEA==.jpgx\""
 
 WriteLiteral(" title=\"\"");
 
-WriteLiteral(">\r\n                            </a>\r\n                        </div>\r\n            " +
-"            <div");
+WriteLiteral(">\r\n                        </a>\r\n                    </div>\r\n                    " +
+"<div");
 
 WriteLiteral(" class=\"pull-right social\"");
 
-WriteLiteral(">\r\n                            <a");
+WriteLiteral(">\r\n                        <a");
 
 WriteLiteral(" class=\"facebook\"");
 
@@ -540,14 +338,14 @@ WriteLiteral(" href=\"https://www.facebook.com/Edumall.vn\"");
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteLiteral(">\r\n                                <img");
+WriteLiteral(">\r\n                            <img");
 
 WriteLiteral(" src=\"//static.edumall.vn/assets/stencil/icon/facebook-443909c01eeab7cece5f632063" +
 "6aa31cee355643d8394db2fbd186f4ae6f8147.png\"");
 
 WriteLiteral(" alt=\"Facebook 443909c01eeab7cece5f6320636aa31cee355643d8394db2fbd186f4ae6f8147\"");
 
-WriteLiteral(">\r\n                            </a>\r\n                            <a");
+WriteLiteral(">\r\n                        </a>\r\n                        <a");
 
 WriteLiteral(" class=\"youtube\"");
 
@@ -555,189 +353,170 @@ WriteLiteral(" href=\"https://www.youtube.com/channel/UC33MQ240VzqlTHNJ5vMcZhQ\"
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteLiteral(">\r\n                                <img");
+WriteLiteral(">\r\n                            <img");
 
 WriteLiteral(" src=\"//static.edumall.vn/assets/stencil/icon/youtube-71fe620d1b39fe40608f1044d84" +
 "cc3e2100a35959341bf81056756d5bb0ab2e8.png\"");
 
 WriteLiteral(" alt=\"Youtube 71fe620d1b39fe40608f1044d84cc3e2100a35959341bf81056756d5bb0ab2e8\"");
 
-WriteLiteral(">\r\n                            </a>\r\n                        </div>\r\n            " +
-"        </div>\r\n                    <div");
+WriteLiteral(">\r\n                        </a>\r\n                    </div>\r\n                </di" +
+"v>\r\n                <div");
 
 WriteLiteral(" class=\"foo-content clearfix\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col col-md-5 col-sm-6 info\"");
 
 WriteLiteral(@">
-                            <h4>TOPICA Edumall</h4>
-                            <p>CÔNG TY CỔ PHẦN GIÁO DỤC TOPICA ENGLISH</p>
-                            <p>MST: 0106291976 do Sở Kế hoạch và Đầu tư Tp.Hà Nội</p>
-                            <p>cấp ngày 27 tháng 08 năm 2013</p>
-                            <p>Đại diện: Ông Dương Hữu Quang</p>
-                            <p>Trụ sở chính: Tầng 3 số 75 Phương Mai, Đống Đa, Hà Nội.</p>
-                            <p>© 2016 Edumall. All rights reserved</p>
-                        </div>
-                        <div");
+                        <h4>TOPICA Edumall</h4>
+                        <p>CÔNG TY CỔ PHẦN GIÁO DỤC TOPICA ENGLISH</p>
+                        <p>MST: 0106291976 do Sở Kế hoạch và Đầu tư Tp.Hà Nội</p>
+                        <p>cấp ngày 27 tháng 08 năm 2013</p>
+                        <p>Đại diện: Ông Dương Hữu Quang</p>
+                        <p>Trụ sở chính: Tầng 3 số 75 Phương Mai, Đống Đa, Hà Nội.</p>
+                        <p>© 2016 Edumall. All rights reserved</p>
+                    </div>
+                    <div");
 
 WriteLiteral(" class=\"col col-md-2 topica\"");
 
-WriteLiteral(">\r\n                            <h4>Về TOPICA</h4>\r\n                            <u" +
-"l>\r\n                                <li>\r\n                                    <p" +
-">\r\n                                        <a");
+WriteLiteral(">\r\n                        <h4>Về TOPICA</h4>\r\n                        <ul>\r\n    " +
+"                        <li>\r\n                                <p>\r\n             " +
+"                       <a");
 
 WriteLiteral(" href=\"https://topica.edu.vn/gioi-thieu.html\"");
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteLiteral(">Giới thiệu TOPICA</a>\r\n                                    </p>\r\n               " +
-"                 </li>\r\n                                <li>\r\n                  " +
-"                  <p>\r\n                                        <a");
+WriteLiteral(">Giới thiệu TOPICA</a>\r\n                                </p>\r\n                   " +
+"         </li>\r\n                            <li>\r\n                              " +
+"  <p>\r\n                                    <a");
 
 WriteLiteral(" href=\"https://topica.edu.vn/category/hoat-dong-noi-bat/\"");
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteLiteral(">Hoạt động nổi bật</a>\r\n                                    </p>\r\n               " +
-"                 </li>\r\n                                <li>\r\n                  " +
-"                  <p>\r\n                                        <a");
+WriteLiteral(">Hoạt động nổi bật</a>\r\n                                </p>\r\n                   " +
+"         </li>\r\n                            <li>\r\n                              " +
+"  <p>\r\n                                    <a");
 
 WriteLiteral(" href=\"https://topica.edu.vn/lich-su.html\"");
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteLiteral(">Lịch sử phát triển</a>\r\n                                    </p>\r\n              " +
-"                  </li>\r\n                                <li>\r\n                 " +
-"                   <p>\r\n                                        <a");
+WriteLiteral(">Lịch sử phát triển</a>\r\n                                </p>\r\n                  " +
+"          </li>\r\n                            <li>\r\n                             " +
+"   <p>\r\n                                    <a");
 
 WriteLiteral(" href=\"https://topica.edu.vn/category/cong-nghe/\"");
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteLiteral(">Công nghệ</a>\r\n                                    </p>\r\n                       " +
-"         </li>\r\n                            </ul>\r\n                        </div" +
-">\r\n                        <div");
+WriteLiteral(">Công nghệ</a>\r\n                                </p>\r\n                           " +
+" </li>\r\n                        </ul>\r\n                    </div>\r\n             " +
+"       <div");
 
 WriteLiteral(" class=\"col col-md-2 about-us\"");
 
-WriteLiteral(">\r\n                            <h4>Về Edumall</h4>\r\n                            <" +
-"ul>\r\n                                <div");
+WriteLiteral(">\r\n                        <h4>Về Edumall</h4>\r\n                        <ul>\r\n   " +
+"                         <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                                    <li>\r\n                                    " +
-"    <p>\r\n                                            <a");
+WriteLiteral(">\r\n                                <li>\r\n                                    <p>\r" +
+"\n                                        <a");
 
 WriteLiteral(" href=\"/about\"");
 
-WriteLiteral(">Giới thiệu</a>\r\n                                        </p>\r\n                  " +
-"                  </li>\r\n                                    <li>\r\n             " +
-"                           <p>\r\n                                            <a");
+WriteLiteral(">Giới thiệu</a>\r\n                                    </p>\r\n                      " +
+"          </li>\r\n                                <li>\r\n                         " +
+"           <p>\r\n                                        <a");
 
 WriteLiteral(" href=\"/faq\"");
 
-WriteLiteral(">Câu hỏi thường gặp</a>\r\n                                        </p>\r\n          " +
-"                          </li>\r\n                                    <li>\r\n     " +
-"                                   <p>\r\n                                        " +
-"    <a");
+WriteLiteral(">Câu hỏi thường gặp</a>\r\n                                    </p>\r\n              " +
+"                  </li>\r\n                                <li>\r\n                 " +
+"                   <p>\r\n                                        <a");
 
 WriteLiteral(" href=\"/terms\"");
 
-WriteLiteral(">Điều khoản sử dụng</a>\r\n                                        </p>\r\n          " +
-"                          </li>\r\n                                    <li>\r\n     " +
-"                                   <p>\r\n                                        " +
-"    <a");
+WriteLiteral(">Điều khoản sử dụng</a>\r\n                                    </p>\r\n              " +
+"                  </li>\r\n                                <li>\r\n                 " +
+"                   <p>\r\n                                        <a");
 
 WriteLiteral(" href=\"/policy\"");
 
-WriteLiteral(">Quy chế hoạt động</a>\r\n                                        </p>\r\n           " +
-"                         </li>\r\n                                    <li>\r\n      " +
-"                                  <p>\r\n                                         " +
-"   <a");
+WriteLiteral(">Quy chế hoạt động</a>\r\n                                    </p>\r\n               " +
+"                 </li>\r\n                                <li>\r\n                  " +
+"                  <p>\r\n                                        <a");
 
 WriteLiteral(" href=\"/security_policy\"");
 
-WriteLiteral(">Chính sách bảo mật</a>\r\n                                        </p>\r\n          " +
-"                          </li>\r\n                                    <li>\r\n     " +
-"                                   <p>\r\n                                        " +
-"    <a");
+WriteLiteral(">Chính sách bảo mật</a>\r\n                                    </p>\r\n              " +
+"                  </li>\r\n                                <li>\r\n                 " +
+"                   <p>\r\n                                        <a");
 
 WriteLiteral(" href=\"/dispute_solution\"");
 
-WriteLiteral(@">Cơ chế giải quyết tranh chấp</a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <a");
+WriteLiteral(">Cơ chế giải quyết tranh chấp</a>\r\n                                    </p>\r\n    " +
+"                            </li>\r\n                                <li>\r\n       " +
+"                             <p>\r\n                                        <a");
 
 WriteLiteral(" href=\"/faq#faq_no_9\"");
 
-WriteLiteral(">Chính sách hoàn học phí</a>\r\n                                        </p>\r\n     " +
-"                               </li>\r\n                                </div>\r\n  " +
-"                          </ul>\r\n                        </div>\r\n               " +
-"         <div");
+WriteLiteral(">Chính sách hoàn học phí</a>\r\n                                    </p>\r\n         " +
+"                       </li>\r\n                            </div>\r\n              " +
+"          </ul>\r\n                    </div>\r\n                    <div");
 
 WriteLiteral(" class=\"col col-md-3 col-sm-6 contact\"");
 
-WriteLiteral(">\r\n                            <h4>Liên hệ</h4>\r\n                            <p");
+WriteLiteral(">\r\n                        <h4>Liên hệ</h4>\r\n                        <p");
 
 WriteLiteral(" class=\"hotline\"");
 
-WriteLiteral(">\r\n                                <i");
+WriteLiteral(">\r\n                            <i");
 
 WriteLiteral(" class=\"fa fa-phone\"");
 
-WriteLiteral("></i>\r\n                                1800.6816 (Trong giờ hành chính)\r\n        " +
-"                    </p>\r\n                            <p");
+WriteLiteral("></i>\r\n                            1800.6816 (Trong giờ hành chính)\r\n            " +
+"            </p>\r\n                        <p");
 
 WriteLiteral(" class=\"mail\"");
 
-WriteLiteral(">\r\n                                <i");
+WriteLiteral(">\r\n                            <i");
 
 WriteLiteral(" class=\"fa fa-envelope\"");
 
 WriteLiteral(@"></i>
-                                cskh@edumall.vn
-                            </p>
-                            <p>HN - 75 Phương Mai, Đống Đa, HN</p>
-                            <p>HCM - 58/10 Thành Thái, P.12, Q.10, HCM</p>
-                        </div>
+                            cskh@edumall.vn
+                        </p>
+                        <p>HN - 75 Phương Mai, Đống Đa, HN</p>
+                        <p>HCM - 58/10 Thành Thái, P.12, Q.10, HCM</p>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 ");
 
-WriteLiteral("        ");
+WriteLiteral("    ");
 
             
-            #line 241 "..\..\Views\Shared\_Layout.cshtml"
-   Write(Scripts.Render("~/bundles/jquery"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("        ");
-
-            
-            #line 242 "..\..\Views\Shared\_Layout.cshtml"
-   Write(Scripts.Render("~/bundles/bootstrap"));
+            #line 180 "..\..\Views\Shared\_Layout.cshtml"
+Write(Scripts.Render("~/bundles/base-lib-js"));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n");
 
-WriteLiteral("        ");
+WriteLiteral("    ");
 
             
-            #line 243 "..\..\Views\Shared\_Layout.cshtml"
-   Write(RenderSection("scripts", required: false));
+            #line 181 "..\..\Views\Shared\_Layout.cshtml"
+Write(RenderSection("scripts", required: false));
 
             
             #line default

@@ -1,31 +1,11 @@
-﻿<script id="otherCategoryLeftMenu" type="text/x-jquery-tmpl">
-    <div class="row no-margin other-category-container hidden-sm">
-        <label style="color: #338abc;">Các lĩnh vực khác</label>
-        <div class="row no-margin other-category">
-            <a class="other-category-item" href="https://edumall.vn/cong-nghe-thong-tin">Công nghệ thông tin</a>
-            <a class="other-category-item" href="https://edumall.vn/nuoi-day-con">Nuôi dạy con</a>
-            <a class="other-category-item" href="https://edumall.vn/ky-nang-mem">Phát triển cá nhân</a>
-            <a class="other-category-item" href="https://edumall.vn/kinh-doanh-lam-giau">Kinh doanh và khởi nghiệp</a>
-            <a class="other-category-item" href="https://edumall.vn/tieng-anh-nghe-thuat">Tiếng Anh</a>
-            <a class="other-category-item" href="https://edumall.vn/thiet-ke">Thiết kế</a>
-            <a class="other-category-item" href="https://edumall.vn/marketing">Marketing</a>
-            <a class="other-category-item" href="https://edumall.vn/ung-dung-van-phong">Ứng dụng văn phòng</a>
-            <a class="other-category-item" href="https://edumall.vn/chu-de-khac">Chủ đề khác</a>
-        </div>
-    </div>
-</script>
+﻿@model List<GiaoDucSomVideo.Models.CategoryLeftMenuViewModel>
 
 <div class="row no-margin other-category-container hidden-sm">
     <label style="color: #338abc;">Các lĩnh vực khác</label>
     <div class="row no-margin other-category">
-        <a class="other-category-item" href="https://edumall.vn/cong-nghe-thong-tin">Công nghệ thông tin</a>
-        <a class="other-category-item" href="https://edumall.vn/nuoi-day-con">Nuôi dạy con</a>
-        <a class="other-category-item" href="https://edumall.vn/ky-nang-mem">Phát triển cá nhân</a>
-        <a class="other-category-item" href="https://edumall.vn/kinh-doanh-lam-giau">Kinh doanh và khởi nghiệp</a>
-        <a class="other-category-item" href="https://edumall.vn/tieng-anh-nghe-thuat">Tiếng Anh</a>
-        <a class="other-category-item" href="https://edumall.vn/thiet-ke">Thiết kế</a>
-        <a class="other-category-item" href="https://edumall.vn/marketing">Marketing</a>
-        <a class="other-category-item" href="https://edumall.vn/ung-dung-van-phong">Ứng dụng văn phòng</a>
-        <a class="other-category-item" href="https://edumall.vn/chu-de-khac">Chủ đề khác</a>
+        @foreach (var item in Model)
+        {
+            <a class="other-category-item" href="@item.UrlCategory">@item.CategoryName</a>
+        }
     </div>
 </div>

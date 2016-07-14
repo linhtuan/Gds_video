@@ -15,6 +15,6 @@ namespace GiaoDucSomVideo.Domain
 
         PagingResultModel<CoursesViewModel> GetCourses(string categoryName, int pageIndex, int pageSize);
 
-        List<CoursesViewModel> GetCoursesHot(string categoryName);
+        List<CoursesViewModel> GetCoursesHot(string categoryName, out string title);
     }
 }

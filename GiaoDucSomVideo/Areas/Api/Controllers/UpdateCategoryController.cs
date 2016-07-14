@@ -1,35 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Gds.Setting;
+using GiaoDucSomVideo.Domain;
 
 namespace GiaoDucSomVideo.Areas.Api.Controllers
 {
     public class UpdateCategoryController : ApiController
     {
-        // GET: api/Default
-        public IEnumerable<string> Get()
+        private readonly ICategoryService _categoryService;
+
+        public UpdateCategoryController(ICategoryService categoryService)
         {
-            return new string[] { "value1", "value2" };
+            _categoryService = categoryService;
         }
 
-        // GET: api/Default/5
-        public string Get(int id)
+        [Route("api/updatecategory/updatedategory")]
+        [HttpGet]
+        public IHttpActionResult UpdateCategory()
         {
-            return "value";
-        }
-
-        // POST: api/Default
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Default/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Default/5
-        public void Delete(int id)
-        {
+            var leftMenu = _categoryService.GetLeftMenu();
+            SessionManager.SetSessionObject(SessionObjectEnum.Categorys, leftMenu);
+            return Ok(true);
         }
     }
 }

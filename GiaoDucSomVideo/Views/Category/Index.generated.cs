@@ -31,17 +31,15 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Category/Index.cshtml")]
-    public partial class _Views_Category_Index_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class _Views_Category_Index_cshtml : System.Web.Mvc.WebViewPage<GiaoDucSomVideo.Models.CategoryViewModel>
     {
         public _Views_Category_Index_cshtml()
         {
         }
         public override void Execute()
         {
-WriteLiteral("\r\n");
-
             
-            #line 2 "..\..\Views\Category\Index.cshtml"
+            #line 1 "..\..\Views\Category\Index.cshtml"
   
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -49,7 +47,9 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<div");
+WriteLiteral("\r\n");
+
+WriteLiteral("<div");
 
 WriteLiteral(" class=\"container-wrapper\"");
 
@@ -91,13 +91,29 @@ WriteLiteral(">\r\n                        <a");
 
 WriteLiteral(" href=\"https://edumall.vn/\"");
 
-WriteLiteral(">Trang chủ</a>\r\n                    </li>\r\n                    <li>Nuôi dạy con</" +
-"li>\r\n                </ul>\r\n                <div");
+WriteLiteral(">Trang chủ</a>\r\n                    </li>\r\n                    <li>");
+
+            
+            #line 19 "..\..\Views\Category\Index.cshtml"
+                   Write(Model.Title);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</li>\r\n                </ul>\r\n                <div");
 
 WriteLiteral(" class=\"row no-margin category-header-name\"");
 
-WriteLiteral(">\r\n                    <h2>Nuôi dạy con</h2>\r\n                </div>\r\n           " +
-" </div>\r\n        </div>\r\n        <div");
+WriteLiteral(">\r\n                    <h2>");
+
+            
+            #line 22 "..\..\Views\Category\Index.cshtml"
+                   Write(Model.Title);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h2>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"row no-margin category-all-courses\"");
 
@@ -307,8 +323,8 @@ WriteLiteral(@"></span>
 WriteLiteral("                    ");
 
             
-            #line 94 "..\..\Views\Category\Index.cshtml"
-               Write(Html.Partial("~/Views/Shared/_LeftMenuContent.cshtml"));
+            #line 93 "..\..\Views\Category\Index.cshtml"
+               Write(Html.Partial("~/Views/Shared/_LeftMenuContent.cshtml", Model.LeftMenu));
 
             
             #line default
@@ -388,8 +404,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 117 "..\..\Views\Category\Index.cshtml"
-                           Write(Html.Partial("~/Views/Category/PartialView/_CouseHotPartialView.cshtml"));
+            #line 116 "..\..\Views\Category\Index.cshtml"
+                           Write(Html.Partial("~/Views/Category/PartialView/_CouseHotPartialView.cshtml", Model.CoursesHot));
 
             
             #line default
@@ -405,8 +421,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 123 "..\..\Views\Category\Index.cshtml"
-                   Write(Html.Partial("~/Views/Category/PartialView/_CouseHotSMPartialView.cshtml"));
+            #line 122 "..\..\Views\Category\Index.cshtml"
+                   Write(Html.Partial("~/Views/Category/PartialView/_CouseHotSMPartialView.cshtml", Model.CoursesHot));
 
             
             #line default
@@ -489,60 +505,75 @@ WriteLiteral(@">Giá từ cao đến thấp</a>
                             </li>
                         </ul>
                     </div>
-
                     <div");
 
 WriteLiteral(" class=\"row no-margin courses-result\"");
 
-WriteLiteral(">\r\n");
+WriteLiteral(" id=\"courses-result\"");
 
-WriteLiteral("                        ");
+WriteLiteral(">\r\n                        \r\n                    </div>\r\n                    <div" +
+"");
+
+WriteLiteral(" class=\"row no-margin courses-pagination paging-ctrl\"");
+
+WriteLiteral(">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n      " +
+"  </div>\r\n    </main>\r\n</div>\r\n");
 
             
-            #line 155 "..\..\Views\Category\Index.cshtml"
-                   Write(Html.Partial("~/Views/Category/PartialView/_CousesResult.cshtml"));
+            #line 162 "..\..\Views\Category\Index.cshtml"
+Write(Html.Partial("~/Views/Category/PartialView/_CousesResult.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                    </div>\r\n                    <div");
+WriteLiteral("\r\n");
 
-WriteLiteral(" class=\"row no-margin courses-pagination\"");
+DefineSection("scripts", () => {
 
-WriteLiteral(">\r\n                        <nav");
+WriteLiteral("\r\n    <script");
 
-WriteLiteral(" style=\"text-align: center\"");
+WriteAttribute("src", Tuple.Create(" src=\"", 9464), Tuple.Create("\"", 9494)
+, Tuple.Create(Tuple.Create("", 9470), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 9470), false)
+);
 
-WriteLiteral("><ul");
+WriteLiteral("></script>\r\n    <script");
 
-WriteLiteral(" class=\"pagination\"");
+WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(" style=\"margin: 0px\"");
+WriteLiteral(">\r\n        var categoryRouter = \'");
 
-WriteLiteral("><li");
+            
+            #line 166 "..\..\Views\Category\Index.cshtml"
+                         Write(Model.CategoryRouter);
 
-WriteLiteral(" class=\"active\"");
+            
+            #line default
+            #line hidden
+WriteLiteral("\';\r\n    </script>\r\n    <script");
 
-WriteLiteral("><a");
+WriteAttribute("src", Tuple.Create(" src=\"", 9625), Tuple.Create("\"", 9664)
+, Tuple.Create(Tuple.Create("", 9631), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/bootstrap-pagination.js")
+, 9631), false)
+);
 
-WriteLiteral(" class=\"page\"");
+WriteLiteral("></script>\r\n    <script");
 
-WriteLiteral(" href=\"https://edumall.vn/nuoi-day-con#\"");
+WriteAttribute("src", Tuple.Create(" src=\"", 9688), Tuple.Create("\"", 9729)
+, Tuple.Create(Tuple.Create("", 9694), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds/gds.paging.control.js")
+, 9694), false)
+);
 
-WriteLiteral(">1</a></li><li><a");
+WriteLiteral("></script>\r\n    <script");
 
-WriteLiteral(" href=\"https://edumall.vn/nuoi-day-con?page=2\"");
+WriteAttribute("src", Tuple.Create(" src=\"", 9753), Tuple.Create("\"", 9788)
+, Tuple.Create(Tuple.Create("", 9759), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds/gds.category.js")
+, 9759), false)
+);
 
-WriteLiteral(">2</a></li><li><a");
+WriteLiteral("></script>\r\n");
 
-WriteLiteral(" href=\"https://edumall.vn/nuoi-day-con?page=2\"");
-
-WriteLiteral("><i");
-
-WriteLiteral(" class=\"material-icons\"");
-
-WriteLiteral(">chevron_right</i></a></li></ul></nav>\r\n                    </div>\r\n             " +
-"   </div>\r\n            </div>\r\n        </div>\r\n    </main>\r\n</div>");
+});
 
         }
     }

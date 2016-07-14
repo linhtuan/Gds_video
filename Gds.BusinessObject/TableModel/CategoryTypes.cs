@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gds.BusinessObject.TableModel
 {
+    [Serializable]
     [Table("CategoryTypes")]
     public class CategoryTypes
     {

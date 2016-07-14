@@ -80,7 +80,7 @@ namespace GiaoDucSomVideo.Domain.Implement
         public PagingResultModel<CoursesViewModel> GetCourses(string categoryName, int pageIndex, int pageSize)
         {
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            var category = Repository.DoQuery<DbContextBase>(x => x.Status == 1 && x.RouterDetail == categoryName).ToList();
+            var category = Repository.DoQuery<DbContextBase>(x => x.Status == 1 && x.UrlRouter == categoryName).ToList();
             var categoryIds = category.Select(x=>x.CategoryId);
             var query = _catTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId)
                                                                        && x.CategoryTypeParentId == 0
@@ -116,9 +116,39 @@ namespace GiaoDucSomVideo.Domain.Implement
             return resultPaging;
         }
 
-        public List<CoursesViewModel> GetCoursesHot(string categoryName)
+        public List<CoursesViewModel> GetCoursesHot(string categoryName, out string title)
         {
-            throw new NotImplementedException();
+            var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            var category = Repository.DoQuery<DbContextBase>(x => x.Status == 1 && x.UrlRouter == categoryName).ToList();
+            if (!category.Any())
+            {
+                title = string.Empty;
+                return new List<CoursesViewModel>();
+            }
+            var categoryIds = category.Select(x => x.CategoryId);
+            var query = _catTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId)
+                                                                       && x.CategoryTypeParentId == 0
+                                                                       && x.CategoryTypePriceId != null
+                                                                       && x.Status == 1)
+                .Join(_catPriceRepository.Table<DbContextBase>(), x => x.CategoryTypePriceId, y => y.CategoryTypePriceId,
+                    (cat, y) => new { cat, y.Price }).OrderByDescending(x => x.cat.CreatedDate).Take(4).ToList();
+            var results = query.Select(item => new CoursesViewModel
+            {
+                CourseName = item.cat.CategoryTypeName,
+                Type = 1,
+                ThumbnailImage =
+                    !string.IsNullOrEmpty(item.cat.ThumbnailImage)
+                        ? Convert.ToBase64String(File.ReadAllBytes(item.cat.ThumbnailImage))
+                        : string.Empty,
+                MimeTypeImage =
+                    !string.IsNullOrEmpty(item.cat.ThumbnailImage)
+                        ? Regex.Replace(Path.GetExtension(item.cat.ThumbnailImage), @"\W", "")
+                        : string.Empty,
+                UrlCourse = string.Format("{0}/{1}", url.Action("index", "course"), item.cat.UrlRouter),
+                Price = item.Price.Value.ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat)
+            }).ToList();
+            title = category.First().CategoryName;
+            return results;
         }
     }
 }

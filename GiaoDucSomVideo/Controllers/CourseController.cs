@@ -1,24 +1,36 @@
-﻿using System.Web.Helpers;
+﻿using System;
 using System.Web.Mvc;
+using Gds.Setting.Cryptography;
+using GiaoDucSomVideo.Domain;
 
 namespace GiaoDucSomVideo.Controllers
 {
     public class CourseController : Controller
     {
+        private readonly ICourseService _courseService;
+
+        public CourseController(ICourseService courseService)
+        {
+            _courseService = courseService;
+        }
+
         // GET: Course
         [Route("course/{categorytype?}")]
         public ActionResult Index(string categorytype)
         {
-            return View();
+            var model = _courseService.GetCourseDetail(categorytype);
+            return View(model);
         }
 
-        public JsonResult GetSuggestCourse()
+        public JsonResult GetSuggestCourse(string courseId)
         {
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
             return Json(null);
         }
 
-        public JsonResult GetDetailCourses()
+        public JsonResult GetMoreInfoCourse(string courseId)
         {
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
             return Json(null);
         }
 
