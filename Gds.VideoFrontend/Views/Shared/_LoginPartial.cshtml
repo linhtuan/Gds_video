@@ -1,0 +1,158 @@
+﻿<div class="header-col text-right header-col-right">
+    <div class="hd-user">
+        <a class="btn-register hidden-xs hidden-sm" data-target="#register-modal" data-toggle="modal" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">Đăng ký</a>
+        <a class="btn-login" data-target="#login-modal" data-toggle="modal" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">Đăng nhập</a>
+        <!-- Make it able to disable modal to use this modal in signin page -->
+        <div class="modal fade" id="register-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                        <h3 class="modal-title">Đăng ký</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form action="https://edumall.vn/users" method="post">
+                            <p class="sub-title">Đăng ký bằng email</p>
+                            <div class="form-control-wrapper">
+                                <input class="form-control" id="name" name="user[name]" placeholder="Họ và tên" required="true" type="text" value="">
+                            </div>
+                            <div class="form-control-wrapper">
+                                <input class="form-control" id="email" name="user[email]" placeholder="Email" required="true" type="email" value="">
+                            </div>
+                            <div class="form-control-wrapper">
+                                <input class="form-control" id="password" name="user[password]" placeholder="Mật khẩu" required="true" type="password">
+                            </div>
+                            <input type="hidden" name="authenticity_token" id="authenticity_token" value="u3HrqfAr8BSYbEIF7fXyBqyaWU3V9kyFsUlxBSI/PFOfBArg9xKjjWtK/WuDPAvZ3WrBbGtJinsm0a1v0z19Zg==">
+                            <div class="form-control-wrapper">
+                                <input class="btn btn-login-submit" type="submit" value="Đăng ký">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot-password-link clearfix">
+                            <a class="btn btn-link show-social-link" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">
+                                Đăng ký với tài khoản mạng xã hội
+                                <span>
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <div class="form-control-wrapper social-area">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a class="btn-facebook" href="https://edumall.vn/users/auth/facebook">
+                                            <i class="left fa fa-facebook"></i>
+                                            <span class="left">Facebook</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="btn-google" href="https://edumall.vn/users/auth/google_oauth2">
+                                            <i class="left fa fa-google-plus"></i>
+                                            <span class="left">Google+</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="bottom-text">
+                            Đã có tài khoản?
+                            <a class="btn-link" data-dismiss="modal" data-target="#login-modal" data-toggle="modal" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">Đăng nhập</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="fogot-password-dialog" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                        <h3 class="modal-title">Lấy lại mật khẩu</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="forgot-password-content">
+                            <div class="form-control-wrapper">
+                                <input class="form-control" id="email-reset" name="email" placeholder="Email đăng nhập" required="true" type="email">
+                            </div>
+                            <div class="form-control-wrapper">
+                                <a class="btn reset-password-button">Đặt lại mật khẩu</a>
+                            </div>
+                            <div class="form-control-wrapper">
+                                <span>Hoặc</span>
+                            </div>
+                            <div class="form-control-wrapper">
+                                <a class="btn btn-link" data-dismiss="modal" data-target="#login-modal" data-toggle="modal">Đăng nhập</a>
+                            </div>
+                        </div>
+                        <div class="forgot-password-content-success" style="display: none;">
+                            <div class="form-control-wrapper">
+                                <h5 class="text-success">Vui lòng kiểm tra email để đặt lại mật khẩu</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Make it able to disable modal to use this modal in signin page -->
+        <div class="modal fade" id="login-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                        <h3 class="modal-title">Đăng nhập</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form action="https://edumall.vn/users/sign_in" method="post">
+                            <p class="sub-title">Đăng nhập bằng email</p>
+                            <div class="form-control-wrapper">
+                                <input class="form-control" id="email" name="user[email]" placeholder="Email" required="true" type="email" value="">
+                            </div>
+                            <div class="form-control-wrapper">
+                                <input class="form-control" id="password" name="user[password]" placeholder="Mật khẩu" required="true" type="password">
+                            </div>
+                            <input type="hidden" name="authenticity_token" id="authenticity_token" value="u3HrqfAr8BSYbEIF7fXyBqyaWU3V9kyFsUlxBSI/PFOfBArg9xKjjWtK/WuDPAvZ3WrBbGtJinsm0a1v0z19Zg==">
+                            <div class="form-control-wrapper">
+                                <input class="btn btn-login-submit" type="submit" value="Đăng nhập">
+                            </div>
+                        </form>
+                        <p class="forgot-password-link">
+                            <a class="btn-link" data-dismiss="modal" data-target="#fogot-password-dialog" data-toggle="modal" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#" id="forgot-password-button">Quên mật khẩu đăng nhập?</a>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot-password-link clearfix">
+                            <a class="btn btn-link show-social-link" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">
+                                Đăng nhập với tài khoản mạng xã hội
+                                <span>
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <div class="form-control-wrapper social-area">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a class="btn-facebook" href="https://edumall.vn/users/auth/facebook">
+                                            <i class="left fa fa-facebook"></i>
+                                            <span class="left">Facebook</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="btn-google" href="https://edumall.vn/users/auth/google_oauth2">
+                                            <i class="left fa fa-google-plus"></i>
+                                            <span class="left">Google+</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="bottom-text">
+                            Chưa có tài khoản?
+                            <a class="btn-link" data-dismiss="modal" data-target="#register-modal" data-toggle="modal" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">Đăng ký</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

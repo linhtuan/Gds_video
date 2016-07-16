@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Gds.VideoFrontend.Models.CategoryViewModel
+<div class="container-wrapper" style="overflow: hidden;">
+    <main class="category">
+        <div class="row no-margin category-header" style="background-color: background-color: #3a4f54;background: linear-gradient(-90deg, #577780, #36494e);">
+            <div class="row container">
+                <ul class="no-padding breadcrumb">
+                    <li>
+                        <a href="https://edumall.vn/">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-home">
+                        <a href="https://edumall.vn/">Trang chủ</a>
+                    </li>
+                    <li>@Model.Title</li>
+                </ul>
+                <div class="row no-margin category-header-name">
+                    <h2>@Model.Title</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row no-margin category-all-courses" id="parent_style">
+            <style>
+                .other-category a {
+                    color: #960075 !important;
+                }
+            </style>
+            <style>
+                .other-category a:hover {
+                    font-weight: bold !important;
+                }
+            </style>
+            <div class="container">
+                <div class="col-lg-3 col-md-3 col-sm-12 no-padding category-all-courses-left">
+                    <div class="filter hide clearfix">
+                        <form action="https://edumall.vn/nuoi-day-con" id="filter-form" method="GET" name="filter-form">
+                            <div class="row filter-category filter-budget">
+                                <span class="filter-category-title">Chi phí</span>
+                                <div class="row no-margin filter-category-content checkbox-ui">
+                                    <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 no-padding filter-category-item">
+                                        <div class="checkbox-group">
+                                            <input id="check-free" name="budget" type="checkbox" value="free">
+                                            <label for="check-free">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                                Miễn phí
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 no-padding filter-category-item">
+                                        <div class="checkbox-group">
+                                            <input id="check-pay" name="budget" type="checkbox" value="paid">
+                                            <label for="check-pay">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                                Trả phí
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row filter-category filter-feature">
+                                <span class="filter-category-title">Tính năng</span>
+                                <div class="row no-margin filter-category-content checkbox-ui">
+                                    <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 no-padding filter-category-item">
+                                        <div class="checkbox-group">
+                                            <input id="check-sub" name="feature" type="checkbox" value="sub">
+                                            <label for="check-sub">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                                Phụ đề
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 no-padding filter-category-item">
+                                        <div class="checkbox-group">
+                                            <input id="check-ex" name="feature" type="checkbox" value="exam">
+                                            <label for="check-ex">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                                Bài tập
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    @Html.Partial("~/Views/Shared/_LeftMenuContent.cshtml", Model.LeftMenu)
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 category-all-courses-main">
+                    <div class="banner">
+
+                    </div>
+                    <div class="row no-margin">
+                        <h3>Các khóa học nổi bật</h3>
+                    </div>
+                    <!-- To be showed on desktop -->
+                    <div class="clearfix">
+                        <div class="card-category" id="courses_slider" style="position:relative;overflow:hidden;height:277px;">
+                            <div class="pre-card" style="position:absolute;top:45px;left:0px;background-color:#ffffff;">
+                                <a data-slide="prev" href="https://edumall.vn/nuoi-day-con#" style="display:block;">
+                                    <i class="fa fa-chevron-left"></i>
+                                </a>
+                            </div>
+                            <div class="next-card" style="position:absolute;top:45px;right:0px;background-color:#ffffff;">
+                                <a data-slide="next" href="https://edumall.vn/nuoi-day-con#" style="display:block;">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                            <div class="category-inner clearfix" style="width:20000px;position:absolute;top:0;left:0;">
+                                @Html.Partial("~/Views/Category/PartialView/_CouseHotPartialView.cshtml", Model.CoursesHot)
+                            </div>
+                        </div>
+                    </div>
+                    <!-- To be showed on mobile -->
+                    <div class="row no-margin feature-course-in-list">
+                        @Html.Partial("~/Views/Category/PartialView/_CouseHotSMPartialView.cshtml", Model.CoursesHot)
+                    </div>
+
+                    <h3>Tất cả các khóa học</h3>
+                    <div class="row no-margin courses-sorting">
+                        <form action="https://edumall.vn/nuoi-day-con" id="sorting-form" method="GET">
+                            <input id="sorting" name="ordering" type="hidden">
+                        </form>
+                        <ul class="pull-right">
+                            <li class="courses-sorting-title">
+                                Sắp xếp
+                            </li>
+                            <li>
+                                <div class="dropdown">
+                                    <span class="courses-sorting-selected dropdown-toggle" data-target="#" data-toggle="dropdown">
+                                        Mặc định
+                                        <b class="caret"></b>
+                                    </span>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="courses-sorting-select" href="javascript:void(0)" value="price-low-to-high">Giá từ thấp đến cao</a>
+                                        </li>
+                                        <li>
+                                            <a class="courses-sorting-select" href="javascript:void(0)" value="price-high-to-low">Giá từ cao đến thấp</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row no-margin courses-result" id="courses-result">
+                        
+                    </div>
+                    <div class="row no-margin courses-pagination paging-ctrl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+@Html.Partial("~/Views/Category/PartialView/_CousesResult.cshtml")
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script type="text/javascript">
+        var categoryRouter = '@Model.CategoryRouter';
+    </script>
+    <script src="~/Scripts/bootstrap-pagination.js"></script>
+    <script src="~/Scripts/gds/gds.paging.control.js"></script>
+    <script src="~/Scripts/gds/gds.category.js"></script>
+}
