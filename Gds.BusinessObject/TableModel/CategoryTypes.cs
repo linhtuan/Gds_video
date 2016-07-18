@@ -30,5 +30,9 @@ namespace Gds.BusinessObject.TableModel
         public int Status { get; set; }
 
         public string UrlRouter { get; set; }
+
+        public int? AuthorId { get; set; }
+
+        public int? GlobalSortOrder { get; set; }
     }
 }

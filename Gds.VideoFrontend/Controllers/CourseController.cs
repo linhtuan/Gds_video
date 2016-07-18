@@ -22,6 +22,20 @@ namespace Gds.VideoFrontend.Controllers
             return View(model);
         }
 
+        [Route("course/{categorytype?}/learning")]
+        public ActionResult Learning(string categorytype)
+        {
+            var model = _courseService.GetCourseDetail(categorytype);
+            return View(model);
+        }
+
+        [Route("course/{categorytype?}/lecture")]
+        public ActionResult Lecture(string categorytype)
+        {
+            var model = _courseService.GetCourseDetail(categorytype);
+            return View(model);
+        }
+
         public JsonResult GetSuggestCourse(string courseId)
         {
             var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
