@@ -51,11 +51,18 @@
     <Compile Include="DbContext\DbContextBase.cs" />
     <Compile Include="DbContext\DbContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableModel\Author.cs" />
+    <Compile Include="TableModel\CategoryByUser.cs" />
     <Compile Include="TableModel\CategoryDetails.cs" />
+    <Compile Include="TableModel\CategoryRating.cs" />
     <Compile Include="TableModel\Categorys.cs" />
     <Compile Include="TableModel\CategoryTypePrice.cs" />
     <Compile Include="TableModel\CategoryTypes.cs" />
+    <Compile Include="TableModel\CommentByUser.cs" />
+    <Compile Include="TableModel\PaymentLog.cs" />
     <Compile Include="TableModel\PhysicalFiles.cs" />
+    <Compile Include="TableModel\Role.cs" />
+    <Compile Include="TableModel\UserManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

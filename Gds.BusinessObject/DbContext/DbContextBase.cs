@@ -13,9 +13,27 @@ namespace Gds.BusinessObject.DbContext
         }
 
         public DbSet<Categorys> Categoryses { get; set; }
+
         public DbSet<CategoryDetails> CategoryDetails { get; set; }
+
         public DbSet<CategoryTypePrice> CategoryTypePrice { get; set; }
+
         public DbSet<CategoryTypes> CategoryTypes { get; set; }
+
         public DbSet<PhysicalFiles> PhysicalFiles { get; set; }
+
+        public DbSet<Author> Author { get; set; }
+
+        public DbSet<CategoryByUser> CategoryByUser { get; set; }
+
+        public DbSet<CategoryRating> CategoryRating { get; set; }
+
+        public DbSet<CommentByUser> CommentByUser { get; set; }
+
+        public DbSet<PaymentLog> PaymentLog { get; set; }
+
+        public DbSet<Role> Role { get; set; }
+
+        public DbSet<UserManagement> UserManagement { get; set; }
     }
 }

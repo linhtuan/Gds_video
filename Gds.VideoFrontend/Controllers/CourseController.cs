@@ -38,19 +38,23 @@ namespace Gds.VideoFrontend.Controllers
 
         public JsonResult GetSuggestCourse(string courseId)
         {
-            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId, CryptographyHelper.CategoryTypeKey));
             return Json(null);
         }
 
         public JsonResult GetMoreInfoCourse(string courseId)
         {
-            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId, CryptographyHelper.CategoryTypeKey));
             return Json(null);
         }
 
-        public JsonResult GetAuthorDetail()
+        public JsonResult GetAuthorDetail(string authorId)
         {
-            return Json(null);
+             var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(authorId, CryptographyHelper.AuthorKey));
+            var result = _courseService.GetAuthor(categoryTypeId);
+            return result != null
+                ? Json(new {isSuccess = true, data = result})
+                : Json(new {isSuccess = false});
         }
 
         public JsonResult GetCommentUser()

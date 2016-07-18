@@ -16,14 +16,17 @@ namespace Gds.VideoFrontend.Domain.Implement
     public class CourseService : GenericService<CategoryTypes, DbContextBase>, ICourseService
     {
         private readonly IEntityRepository<Categorys> _catRepository;
-        private readonly IEntityRepository<CategoryTypePrice> _catPriceRepository; 
+        private readonly IEntityRepository<CategoryTypePrice> _catPriceRepository;
+        private readonly IEntityRepository<Author> _authorRepository;
 
         public CourseService(IEntityRepository<CategoryTypes> repository, 
             IEntityRepository<Categorys> catRepository, 
-            IEntityRepository<CategoryTypePrice> catPriceRepository) : base(repository)
+            IEntityRepository<CategoryTypePrice> catPriceRepository, 
+            IEntityRepository<Author> authorRepository) : base(repository)
         {
             _catRepository = catRepository;
             _catPriceRepository = catPriceRepository;
+            _authorRepository = authorRepository;
         }
 
         public List<CoursesViewModel> GetSuggestCourses(int categoryTypeId)
@@ -54,7 +57,7 @@ namespace Gds.VideoFrontend.Domain.Implement
             var result = new CourseDetailViewModel
             {
                 CategoryName = query.CategoryName,
-                CourseId = CryptographyHelper.Encrypt(query.cat.CategoryTypeId.ToString()),
+                CourseId = CryptographyHelper.Encrypt(query.cat.CategoryTypeId.ToString(), CryptographyHelper.CategoryTypeKey),
                 CourseName = query.CategoryName,
                 CourseSubTitle = string.Empty,
                 ThumbnailImage = !string.IsNullOrEmpty(query.cat.ThumbnailImage)
@@ -68,6 +71,12 @@ namespace Gds.VideoFrontend.Domain.Implement
             };
 
             return result;
+        }
+
+        public Author GetAuthor(int authorId)
+        {
+            var query = _authorRepository.DoQuery<DbContextBase>(x => x.AuthorId == authorId).FirstOrDefault();
+            return query;
         }
     }
 }
