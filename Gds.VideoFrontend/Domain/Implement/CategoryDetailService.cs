@@ -18,7 +18,7 @@ namespace Gds.VideoFrontend.Domain.Implement
         public string GetVideos(int physicalFileId)
         {
             var query = _physicalFileRepository.DoQuery<DbContextBase>(x => x.PhysicalFileId == physicalFileId).FirstOrDefault();
-            return query == null ? string.Empty : query.FileServerNamePath;
+            return query == null ? string.Empty : query.FileServerNamePath + @"\" + query.FileName;
         }
     }
 }

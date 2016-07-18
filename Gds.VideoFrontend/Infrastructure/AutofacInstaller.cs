@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Reflection;
+using System.Web.Http;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using Gds.BusinessObject.DbContext;
 using Gds.VideoFrontend.Domain;
 using Gds.VideoFrontend.Infrastructure;
@@ -27,8 +30,20 @@ namespace Gds.Video.Infrastructure
                 .AsImplementedInterfaces().InstancePerHttpRequest();
 
             builder.RegisterFilterProvider();
+
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+            builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
+
             var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            // Set the dependency resolver for Web API.
+            var webApiResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = webApiResolver;
+
+            // Set the dependency resolver for MVC.
+            var mvcResolver = new AutofacDependencyResolver(container);
+            DependencyResolver.SetResolver(mvcResolver);
         }
     }
 }

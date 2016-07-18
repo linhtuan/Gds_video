@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
+using Gds.Setting;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
+using Microsoft.Owin.Security.Google;
 using Owin;
 
 namespace Gds.VideoFrontend
@@ -19,24 +24,29 @@ namespace Gds.VideoFrontend
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseFacebookAuthentication(new FacebookAuthenticationOptions
+            {
+                AppId = AppConfig.AppIdFb,
+                AppSecret = AppConfig.AppSecretFb,
+                Scope = { "email" },
+                Provider = new FacebookAuthenticationProvider
+                {
+                    OnAuthenticated = context =>
+                    {
+                        context.Identity.AddClaim(new Claim("FacebookAccessToken", context.AccessToken));
+                        return Task.FromResult(true);
+                    }
+                }
+            });
 
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            var googleOAuth2AuthenticationOptions = new GoogleOAuth2AuthenticationOptions
+            {
+                ClientId = AppConfig.AppIdGG,
+                ClientSecret = AppConfig.AppSecretGG,
+            };
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            googleOAuth2AuthenticationOptions.Scope.Add("email");
+            app.UseGoogleAuthentication(googleOAuth2AuthenticationOptions);
         }
     }
 }
