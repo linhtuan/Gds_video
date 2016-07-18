@@ -179,5 +179,10 @@
     </footer>
     @Scripts.Render("~/bundles/base-lib-js")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $('#fogot-password-dialog').on('show.bs.modal', function(e) {
+            $('body').addClass('body-model');
+        });
+    </script>
 </body>
 </html>
