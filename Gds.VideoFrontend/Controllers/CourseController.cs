@@ -25,6 +25,7 @@ namespace Gds.VideoFrontend.Controllers
         [Route("course/{categorytype?}/learning")]
         public ActionResult Learning(string categorytype)
         {
+            return View();
             var model = _courseService.GetCourseDetail(categorytype);
             return View(model);
         }
@@ -32,6 +33,7 @@ namespace Gds.VideoFrontend.Controllers
         [Route("course/{categorytype?}/lecture")]
         public ActionResult Lecture(string categorytype)
         {
+            return View();
             var model = _courseService.GetCourseDetail(categorytype);
             return View(model);
         }

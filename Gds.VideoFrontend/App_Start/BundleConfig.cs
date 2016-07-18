@@ -14,7 +14,8 @@ namespace Gds.VideoFrontend
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/SiteAll.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/fonts/css/font-awesome.css"));
         }
     }
 }

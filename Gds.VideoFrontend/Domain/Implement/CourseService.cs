@@ -18,15 +18,26 @@ namespace Gds.VideoFrontend.Domain.Implement
         private readonly IEntityRepository<Categorys> _catRepository;
         private readonly IEntityRepository<CategoryTypePrice> _catPriceRepository;
         private readonly IEntityRepository<Author> _authorRepository;
+        private readonly IEntityRepository<CategoryRating> _ratingRepository;
+
+        #region Service
+
+        private readonly IRatingService _ratingService;
+
+        #endregion
 
         public CourseService(IEntityRepository<CategoryTypes> repository, 
             IEntityRepository<Categorys> catRepository, 
             IEntityRepository<CategoryTypePrice> catPriceRepository, 
-            IEntityRepository<Author> authorRepository) : base(repository)
+            IEntityRepository<Author> authorRepository, 
+            IEntityRepository<CategoryRating> ratingRepository, 
+            IRatingService ratingService) : base(repository)
         {
             _catRepository = catRepository;
             _catPriceRepository = catPriceRepository;
             _authorRepository = authorRepository;
+            _ratingRepository = ratingRepository;
+            _ratingService = ratingService;
         }
 
         public List<CoursesViewModel> GetSuggestCourses(int categoryTypeId)
@@ -54,6 +65,7 @@ namespace Gds.VideoFrontend.Domain.Implement
                     })
                 .FirstOrDefault();
             if (query == null) return new CourseDetailViewModel();
+            var level = _ratingService.GetRatingLevel(query.cat.CategoryTypeId);
             var result = new CourseDetailViewModel
             {
                 CategoryName = query.CategoryName,
@@ -68,6 +80,7 @@ namespace Gds.VideoFrontend.Domain.Implement
                     : string.Empty,
                 Price = query.Price.Value.ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat),
                 Content = query.cat.Content,
+                RatingLevel = level
             };
 
             return result;

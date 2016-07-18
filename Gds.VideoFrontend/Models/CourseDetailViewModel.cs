@@ -17,5 +17,7 @@
         public string Price { get; set; }
 
         public string Content { get; set; }
+
+        public double RatingLevel { get; set; }
     }
 }

@@ -200,6 +200,8 @@
     <Compile Include="Domain\Implement\CategoryDetailService.cs" />
     <Compile Include="Domain\Implement\CategoryService.cs" />
     <Compile Include="Domain\Implement\CourseService.cs" />
+    <Compile Include="Domain\Implement\RatingService.cs" />
+    <Compile Include="Domain\IRatingService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,6 +216,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\JwSite.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\SiteAll.css" />
     <Content Include="favicon.ico" />
@@ -378,6 +381,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Course\Lecture.cshtml" />
     <Content Include="Views\Course\Learning.cshtml" />
+    <Content Include="Views\Shared\_LayoutPlayVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
