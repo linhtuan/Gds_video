@@ -1,4 +1,154 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CategoryDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section style
+{
+    <link href="~/Content/Style/dropzone.css" rel="stylesheet" />
+}
+
+@section left_menu
+{
+    @Html.Partial("~/Views/PartialViews/_LeftMenuPartial.cshtml")
+}
+
+<div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="table-responsive">
+                <div class="dataTables_wrapper form-inline">
+                    <div class="clear"></div>
+                    <div class="dataTables_length">
+                        <div class="col-sm-3">
+                            <label>
+                                <select class="form-control input-sm">
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> records per page
+                            </label>
+                        </div>
+                        <div class="col-sm-3">
+                            <a data-toggle="modal" id="show-detail-box" onclick="bindingCategoryDetailFrom(this, 'add')" class="btn btn-success btn-sm" href="#add-new-category-detail">Thêm bài học</a>
+                        </div>
+                    </div>
+                    <div class="dataTables_filter">
+                        <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+                    </div>
+                    <div id="category_detail_Div">
+
+                    </div>
+                    <div class="paging_simple_numbers">
+                        <div class="col-lg-12">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4 paging-row hide">
+                                <a class="btn btn-default btn-sm prev" href="#"><i class="fa fa-angle-left"></i> Previous</a>
+                                <input type="text" class="input-mini">&nbsp;of&nbsp;<a class="total-row">0</a>
+                                <a class="btn btn-default btn-sm next" href="#">Next <i class="fa fa-angle-right"></i></a>
+                            </div>
+                            <div class="col-lg-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="add-new-category-detail" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">Thêm Chủ đề</h3>
+                        <form id="category-detail-form" class="row" role="form">
+                            <div class="form-group col-sm-12">
+                                <div class="col-sm-6">
+                                    <label>Tên chủ đề</label> <input type="text" placeholder="Tên chủ đề" class="category-detail-name form-control">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Số thử tự</label> <input type="number" placeholder="Số thử tự" class="category-detail-index form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="file-upload-container dropzone needsclick dz-clickable" style="display: none">
+                                    <div class="dz-message needsclick">
+                                        Drop files here or click to upload.<br>
+                                        <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <a id="save" class="btn btn-sm btn-primary pull-right m-t-n-xs"><strong>Save</strong></a>
+                            </div>
+                            <input type="hidden" id="category-detail-id" value="0" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/CategoryDetail/PatialView/_PhysicalFileTemplate.cshtml")
+@Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryDetailsTemplate.cshtml")
+
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script src="~/Scripts/gds.paging.control.js"></script>
+    <script src="~/Scripts/gds.categoryDetail.js"></script>
+    <script type="text/javascript" src="~/Scripts/dropzone.js"></script>
+    <script type="text/javascript">
+        var setupDropzone = function setupDropzone() {
+            if ($('.file-upload-container').length === 0) {
+                return;
+            }
+            Dropzone.autoDiscover = false;
+            var myDropzone = new Dropzone(".file-upload-container", {
+                previewTemplate: document.querySelector('#preview-template').innerHTML,
+                url: '@Url.Action("InsertUpateDetail", "CategoryDetail")',
+                method: "POST",
+                autoProcessQueue: false,
+                clickable: ['.file-upload-container'],
+                parallelUploads: 1,
+                maxFilesize: 100, // in mb
+                thumbnailWidth: 150,
+                thumbnailHeight: 150,
+                thumbnail: function(file, dataUrl) {
+                    if (file.previewElement) {
+                        $('#video-content').val(file);
+                        file.previewElement.classList.remove("dz-file-preview");
+                        var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+                        for (var i = 0; i < images.length; i++) {
+                            var thumbnailElement = images[i];
+                            thumbnailElement.alt = file.name;
+                            thumbnailElement.src = dataUrl;
+                        }
+                        setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
+                    }
+                },
+                queuecomplete: function () {
+                    $('#save').show();
+                    $('#add-new-category-detail').modal('hide');
+                    bindingCategoryDetails();
+                },
+                sending: function(file, xhr, formData) {
+                    formData.append('CategoryTypeId', parseInt(gds.getQueryVariable('categoryTypeId')));
+                    var categoryDetailId = isNaN($("#category-detail-form #category-detail-id").val())
+                        ? 0
+                        : parseInt($("#category-detail-form #category-detail-id").val());
+                    formData.append('CategoryDetailId', categoryDetailId);
+                    formData.append('LectureIndex', $("#category-detail-form .category-detail-index").val());
+                    formData.append('CategoryDetailName', $("#category-detail-form .category-detail-name").val());
+
+                }
+            });
+
+            $(document).on('click', '#save', function (event) {
+                $('#save').hide();
+                myDropzone.processQueue();
+            });
+        };
+        setupDropzone();
+    </script>
 }

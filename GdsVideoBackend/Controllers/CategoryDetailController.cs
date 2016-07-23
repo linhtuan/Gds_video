@@ -21,12 +21,7 @@ namespace GdsVideoBackend.Controllers
 
         //
         // GET: /CategoryDetail/
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult CategoryDetails(int categoryTypeId)
+        public ActionResult Index(int categoryTypeId)
         {
             return View();
         }
