@@ -59,17 +59,17 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "-controls=\"categoryDetailTemplate_Table\" rowspan=\"1\" colspan=\"1\" style=\"width: 1" +
 "15px;\"></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            " +
 "{{each Result}}\r\n            <tr class=\"odd\" role=\"row\" id=\"${$value.CategoryDet" +
-"ailId}\">\r\n                <td class=\"categorty-detail\">${$value.CategoryDetailNa" +
-"me}</td>\r\n                <td class=\"content\">${$value.Content}</td>\r\n          " +
-"      <td class=\"fileName\">${$value.FileName}</td>\r\n                <td class=\"c" +
-"reate-date\">${$value.UpdatedDate}</td>\r\n                <td class=\"actions\">\r\n  " +
-"                  <a class=\"btn btn-sm btn-success btn-rounded show-detail-box\" " +
-"onclick=\"bindingCategoryDetailFrom(this, \'edit\')\" data-id=\"${$value.CategoryDeta" +
-"ilId}\" data-toggle=\"modal\" href=\"#add-new-category-detail\">Edit</a>\r\n           " +
-"         <a class=\"btn btn-sm btn-danger btn-rounded\" onclick=\"deleteCategoryDet" +
-"ail(this)\" data-id=\"${$value.CategoryDetailId}\" href=\"#\">Delete</a>\r\n           " +
-"     </td>\r\n            </tr>\r\n            {{/each}}\r\n        </tbody>\r\n    </ta" +
-"ble>\r\n</script>\r\n\r\n");
+"ailId}\">\r\n                <td>Bài <span class=\"categorty-index\">${$value.Lecture" +
+"Index}</span></td>\r\n                <td class=\"categorty-detail\">${$value.Catego" +
+"ryDetailName}</td>\r\n                <td class=\"fileName\">${$value.FileName}</td>" +
+"\r\n                <td class=\"create-date\">${$value.UpdatedDate}</td>\r\n          " +
+"      <td class=\"actions\">\r\n                    <a class=\"btn btn-sm btn-success" +
+" btn-rounded show-detail-box\" onclick=\"bindingCategoryDetailFrom(this, \'edit\')\" " +
+"data-id=\"${$value.CategoryDetailId}\" data-toggle=\"modal\" href=\"#add-new-category" +
+"-detail\">Edit</a>\r\n                    <a class=\"btn btn-sm btn-danger btn-round" +
+"ed\" onclick=\"deleteCategoryDetail(this)\" data-id=\"${$value.CategoryDetailId}\" hr" +
+"ef=\"#\">Delete</a>\r\n                </td>\r\n            </tr>\r\n            {{/each" +
+"}}\r\n        </tbody>\r\n    </table>\r\n</script>\r\n\r\n");
 
         }
     }

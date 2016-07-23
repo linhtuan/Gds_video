@@ -1,4 +1,8 @@
-﻿<div class="header-col text-right header-col-right">
+﻿@using Microsoft.Owin.Security
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+}
+<div class="header-col text-right header-col-right">
     <div class="hd-user">
         <a class="btn-register hidden-xs hidden-sm" data-target="#register-modal" data-toggle="modal" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">Đăng ký</a>
         <a class="btn-login" data-target="#login-modal" data-toggle="modal" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#">Đăng nhập</a>
@@ -27,6 +31,7 @@
                                 <input class="btn btn-login-submit" type="submit" value="Đăng ký">
                             </div>
                         </form>
+
                     </div>
                     <div class="modal-footer">
                         <div class="forgot-password-link clearfix">
@@ -38,18 +43,18 @@
                             </a>
                             <div class="form-control-wrapper social-area">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <a class="btn-facebook" href="https://edumall.vn/users/auth/facebook">
-                                            <i class="left fa fa-facebook"></i>
-                                            <span class="left">Facebook</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a class="btn-google" href="https://edumall.vn/users/auth/google_oauth2">
-                                            <i class="left fa fa-google-plus"></i>
-                                            <span class="left">Google+</span>
-                                        </a>
-                                    </div>
+                                    @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = "" }))
+                                    {
+                                        foreach (AuthenticationDescription p in loginProviders)
+                                        {
+                                            <div class="col-md-6">
+                                                <button type="submit" class="col-md-12 btn @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "btn-google" : "btn-facebook")" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                                                    <i class="left fa @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "fa-google-plus" : "fa-facebook")"></i>
+                                                    <span class="left">@p.AuthenticationType</span>
+                                                </button>
+                                            </div>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -130,18 +135,18 @@
                             </a>
                             <div class="form-control-wrapper social-area">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <a class="btn-facebook" href="https://edumall.vn/users/auth/facebook">
-                                            <i class="left fa fa-facebook"></i>
-                                            <span class="left">Facebook</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a class="btn-google" href="https://edumall.vn/users/auth/google_oauth2">
-                                            <i class="left fa fa-google-plus"></i>
-                                            <span class="left">Google+</span>
-                                        </a>
-                                    </div>
+                                    @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = "" }))
+                                    {
+                                        foreach (AuthenticationDescription p in loginProviders)
+                                        {
+                                            <div class="col-md-6">
+                                                <button type="submit" class="col-md-12 btn @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "btn-google" : "btn-facebook")" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                                                    <i class="left fa @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "fa-google-plus" : "fa-facebook")"></i>
+                                                    <span class="left">@p.AuthenticationType</span>
+                                                </button>
+                                            </div>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>

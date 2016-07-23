@@ -2,7 +2,7 @@
 using Gds.BusinessObject.TableModel;
 using MvcCornerstone.Services;
 
-namespace Gds.VideoFrontend.Domain
+namespace Gds.VideoFrontend.BusinessService
 {
     public interface IRatingService : IGenericService<CategoryRating, DbContextBase>
     {

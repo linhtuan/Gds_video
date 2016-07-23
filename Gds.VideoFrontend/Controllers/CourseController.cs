@@ -30,12 +30,18 @@ namespace Gds.VideoFrontend.Controllers
             return View(model);
         }
 
-        [Route("course/{categorytype?}/lecture")]
-        public ActionResult Lecture(string categorytype)
+        [Route("course/{categorytype?}/lecture/{index?}")]
+        public ActionResult Lecture(string categorytype, int index)
         {
+
             return View();
             var model = _courseService.GetCourseDetail(categorytype);
             return View(model);
+        }
+
+        public JsonResult GetLectures()
+        {
+            return null;
         }
 
         public JsonResult GetSuggestCourse(string courseId)

@@ -17,8 +17,9 @@
     var insertCategoryDetail = function(model) {
         return $.ajax({
             url: '/CategoryDetail/Insert',
-            type: 'Post',
+            type: 'POST',
             dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
             data: model
         });
     };
@@ -71,15 +72,14 @@ function bindingCategoryDetails() {
 function bindingCategoryDetailFrom(obj, type) {
     $('div.dz-success').remove();
     $('.file-upload-container').removeClass('dz-started');
+    $('.file-upload-container').show();
     if (type == "add") {
-        $('.file-upload-container').hide();
         $('input').val('');
     } else {
         var rowId = $(obj).attr("data-id");
         $('#category-detail-form .category-detail-name').val($("#" + rowId + " .categorty-detail").text());
-        $('#category-detail-form .category-detail-content').val($("#" + rowId + " .content").text());
+        $('#category-detail-form .category-detail-index').val($("#" + rowId + " .categorty-index").text());
         $("#category-detail-form #category-detail-id").val(rowId);
-        $('.file-upload-container').show();
     }
 }
 
@@ -94,33 +94,34 @@ function deleteCategoryDetail(obj) {
     });
 }
 
-$(document).on('click', '#save', function (event) {
-    var model = {
-        CategoryDetailId: parseInt($("#category-detail-form #category-detail-id").val()),
-        CategoryTypeId: parseInt(gds.getQueryVariable('categoryTypeId')),
-        CategoryDetailName: $('#category-detail-form .category-detail-name').val(),
-        Content: $('#category-detail-form .category-detail-content').val(),
-    };
-    if (model.CategoryDetailId == 0) {
-        var insert = categoryDetail.insertCategoryDetail(model);
-        $.when(insert).then(function (result) {
-            if (result.isSuccess) {
-                bindingCategoryDetails();
-                $('.bfile-upload-container').show();
-            }
-        });
-    } else {
-        var update = categoryDetail.updateCategoryDetail(model);
-        $.when(update).then(function (result) {
-            if (result.isSuccess) {
-                bindingCategoryDetails();
-            }
-        });
-        $('#add-new-category-detail').modal('hide');
-    }
-});
+//$(document).on('click', '#save', function (event) {
+//    var formModel = $('#category-detail-form').serializeObject();
+//    console.log(formModel);
+//    //var model = {
+//    //    CategoryDetailId: $("#category-detail-form #category-detail-id").val(),
+//    //    CategoryTypeId: parseInt(gds.getQueryVariable('categoryTypeId')),
+//    //    CategoryDetailName: $('#category-detail-form .category-detail-name').val(),
+//    //};
+//    //var catDetailId = $("#category-detail-form #category-detail-id").val();
+//    //if (catDetailId == '' || catDetailId == 0) {
+//    //    var insert = categoryDetail.insertCategoryDetail(formModel);
+//    //    $.when(insert).then(function (result) {
+//    //        if (result.isSuccess) {
+//    //            bindingCategoryDetails();
+//    //        }
+//    //    });
+//    //} else {
+//    //    var update = categoryDetail.updateCategoryDetail(model);
+//    //    $.when(update).then(function (result) {
+//    //        if (result.isSuccess) {
+//    //            bindingCategoryDetails();
+//    //        }
+//    //    });
+//    //    $('#add-new-category-detail').modal('hide');
+//    //}
+//});
 
 
 $(document).ready(function () {
-    window.callback =bindingCategoryDetails();
+    window.callback = bindingCategoryDetails();
 });

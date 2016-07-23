@@ -275,13 +275,13 @@ WriteLiteral(">\r\n                                </div>\r\n                   
 
 WriteLiteral(" class=\"col-sm-6\"");
 
-WriteLiteral(">\r\n                                    <label>Chi tiết chủ đề</label> <input");
+WriteLiteral(">\r\n                                    <label>Số thử tự</label> <input");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" type=\"number\"");
 
-WriteLiteral(" placeholder=\"Chi tiết chủ đề\"");
+WriteLiteral(" placeholder=\"Số thử tự\"");
 
-WriteLiteral(" class=\"category-detail-content form-control\"");
+WriteLiteral(" class=\"category-detail-index form-control\"");
 
 WriteLiteral(">\r\n                                </div>\r\n                            </div>\r\n  " +
 "                          <div");
@@ -350,32 +350,32 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 4749), Tuple.Create("\"", 4779)
-, Tuple.Create(Tuple.Create("", 4755), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
-, 4755), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 4737), Tuple.Create("\"", 4767)
+, Tuple.Create(Tuple.Create("", 4743), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 4743), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 4803), Tuple.Create("\"", 4840)
-, Tuple.Create(Tuple.Create("", 4809), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 4809), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 4791), Tuple.Create("\"", 4828)
+, Tuple.Create(Tuple.Create("", 4797), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 4797), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 4864), Tuple.Create("\"", 4901)
-, Tuple.Create(Tuple.Create("", 4870), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categoryDetail.js")
-, 4870), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 4852), Tuple.Create("\"", 4889)
+, Tuple.Create(Tuple.Create("", 4858), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categoryDetail.js")
+, 4858), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 4948), Tuple.Create("\"", 4975)
-, Tuple.Create(Tuple.Create("", 4954), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/dropzone.js")
-, 4954), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 4936), Tuple.Create("\"", 4963)
+, Tuple.Create(Tuple.Create("", 4942), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/dropzone.js")
+, 4942), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
@@ -394,31 +394,40 @@ WriteLiteral(@">
 
             
             #line 109 "..\..\Views\CategoryDetail\CategoryDetails.cshtml"
-                 Write(Url.Action("UploadFile", "CategoryDetail"));
+                 Write(Url.Action("InsertUpateDetail", "CategoryDetail"));
 
             
             #line default
             #line hidden
-WriteLiteral("\',\r\n                method: \"POST\",\r\n                autoProcessQueue: true,\r\n   " +
-"             clickable: [\'.file-upload-container\'],\r\n                parallelUpl" +
-"oads: 1,\r\n                maxFilesize: 100, // in mb\r\n                thumbnailW" +
-"idth: 150,\r\n                thumbnailHeight: 150,\r\n                thumbnail: fu" +
-"nction(file, dataUrl) {\r\n                    if (file.previewElement) {\r\n       " +
-"                 file.previewElement.classList.remove(\"dz-file-preview\");\r\n     " +
-"                   var images = file.previewElement.querySelectorAll(\"[data-dz-t" +
-"humbnail]\");\r\n                        for (var i = 0; i < images.length; i++) {\r" +
-"\n                            var thumbnailElement = images[i];\r\n                " +
-"            thumbnailElement.alt = file.name;\r\n                            thumb" +
-"nailElement.src = dataUrl;\r\n                        }\r\n                        s" +
-"etTimeout(function() { file.previewElement.classList.add(\"dz-image-preview\"); }," +
-" 1);\r\n                    }\r\n                },\r\n                queuecomplete: " +
-"function() {\r\n                    $(\'#add-new-category-detail\').modal(\'hide\');\r\n" +
-"                    bindingCategoryDetails();\r\n                },\r\n             " +
-"   sending: function(file, xhr, formData) {\r\n                    formData.append" +
-"(\'categoryTypeId\', parseInt(gds.getQueryVariable(\'categoryTypeId\')));\r\n         " +
-"           formData.append(\'categoryDetailId\', parseInt($(\"#category-detail-form" +
-" #category-detail-id\").val()));\r\n                }\r\n            });\r\n\r\n        }" +
-";\r\n        setupDropzone();\r\n    </script>\r\n    ");
+WriteLiteral("\',\r\n                method: \"POST\",\r\n                autoProcessQueue: false,\r\n  " +
+"              clickable: [\'.file-upload-container\'],\r\n                parallelUp" +
+"loads: 1,\r\n                maxFilesize: 100, // in mb\r\n                thumbnail" +
+"Width: 150,\r\n                thumbnailHeight: 150,\r\n                thumbnail: f" +
+"unction(file, dataUrl) {\r\n                    if (file.previewElement) {\r\n      " +
+"                  $(\'#video-content\').val(file);\r\n                        file.p" +
+"reviewElement.classList.remove(\"dz-file-preview\");\r\n                        var " +
+"images = file.previewElement.querySelectorAll(\"[data-dz-thumbnail]\");\r\n         " +
+"               for (var i = 0; i < images.length; i++) {\r\n                      " +
+"      var thumbnailElement = images[i];\r\n                            thumbnailEl" +
+"ement.alt = file.name;\r\n                            thumbnailElement.src = dataU" +
+"rl;\r\n                        }\r\n                        setTimeout(function() { " +
+"file.previewElement.classList.add(\"dz-image-preview\"); }, 1);\r\n                 " +
+"   }\r\n                },\r\n                queuecomplete: function () {\r\n        " +
+"            $(\'#save\').show();\r\n                    $(\'#add-new-category-detail\'" +
+").modal(\'hide\');\r\n                    bindingCategoryDetails();\r\n               " +
+" },\r\n                sending: function(file, xhr, formData) {\r\n                 " +
+"   formData.append(\'CategoryTypeId\', parseInt(gds.getQueryVariable(\'categoryType" +
+"Id\')));\r\n                    var categoryDetailId = isNaN($(\"#category-detail-fo" +
+"rm #category-detail-id\").val())\r\n                        ? 0\r\n                  " +
+"      : parseInt($(\"#category-detail-form #category-detail-id\").val());\r\n       " +
+"             formData.append(\'CategoryDetailId\', categoryDetailId);\r\n           " +
+"         formData.append(\'LectureIndex\', $(\"#category-detail-form .category-deta" +
+"il-index\").val());\r\n                    formData.append(\'CategoryDetailName\', $(" +
+"\"#category-detail-form .category-detail-name\").val());\r\n                    \r\n  " +
+"              }\r\n            });\r\n\r\n            $(document).on(\'click\', \'#save\'," +
+" function (event) {\r\n                $(\'#save\').hide();\r\n                myDropz" +
+"one.processQueue();\r\n            });\r\n        };\r\n        setupDropzone();\r\n    " +
+"</script>\r\n    ");
 
 });
 

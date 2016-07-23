@@ -11,11 +11,11 @@ namespace Gds.ServiceModel.BackEndModel
 
         public int PhysicalFileId { get; set; }
 
-        public string Content { get; set; }
-
         public string UpdatedDate { get; set; }
 
         public int? Status { get; set; }
+
+        public int LectureIndex { get; set; }
 
         public string FileName { get; set; }
 

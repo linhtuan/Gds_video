@@ -7,10 +7,10 @@ namespace Gds.Setting.Cryptography
 {
     public class CryptographyHelper
     {
-        public static string AuthorKey = "gds^&(author)";
-        public static string CategoryKey = "gds^&(category)";
-        public static string CategoryTypeKey = "gds^&(categoryType)";
-        public static string VideoKey = "gds^&(video)";
+        public static string AuthorKey = "gds^&(authories)";
+        public static string CategoryKey = "gds^&(categorys)";
+        public static string CategoryTypeKey = "gds^&(catetypes)";
+        public static string VideoKey = "gds^&(videosids)";
 
         public static string Decrypt(string decrypt, string key)
         {

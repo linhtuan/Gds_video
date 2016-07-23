@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using Gds.Setting.Cryptography;
+using Gds.VideoFrontend.BusinessService;
 using Gds.VideoFrontend.Models;
 using MvcCornerstone.Data;
 using MvcCornerstone.Services;
@@ -19,6 +20,7 @@ namespace Gds.VideoFrontend.Domain.Implement
         private readonly IEntityRepository<CategoryTypePrice> _catPriceRepository;
         private readonly IEntityRepository<Author> _authorRepository;
         private readonly IEntityRepository<CategoryRating> _ratingRepository;
+        private readonly IEntityRepository<CategoryDetails> _categoryDetailRepository; 
 
         #region Service
 
@@ -31,13 +33,15 @@ namespace Gds.VideoFrontend.Domain.Implement
             IEntityRepository<CategoryTypePrice> catPriceRepository, 
             IEntityRepository<Author> authorRepository, 
             IEntityRepository<CategoryRating> ratingRepository, 
-            IRatingService ratingService) : base(repository)
+            IRatingService ratingService, 
+            IEntityRepository<CategoryDetails> categoryDetailRepository) : base(repository)
         {
             _catRepository = catRepository;
             _catPriceRepository = catPriceRepository;
             _authorRepository = authorRepository;
             _ratingRepository = ratingRepository;
             _ratingService = ratingService;
+            _categoryDetailRepository = categoryDetailRepository;
         }
 
         public List<CoursesViewModel> GetSuggestCourses(int categoryTypeId)
@@ -90,6 +94,69 @@ namespace Gds.VideoFrontend.Domain.Implement
         {
             var query = _authorRepository.DoQuery<DbContextBase>(x => x.AuthorId == authorId).FirstOrDefault();
             return query;
+        }
+
+        public CategoryDetails GetCategoryDetails(string courseRouter, int index)
+        {
+            var queryParent = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
+                                                               && x.Status == 1
+                                                               && x.CategoryTypeParentId == 0).FirstOrDefault();
+            //if (queryParent)
+            //{
+                
+            //}
+            //var queryChildrend = Repository.DoQuery<>()
+            throw new NotImplementedException();
+        }
+
+        public LearningVideoModel GetCategoryTypes(string courseRouter)
+        {
+            var model = new LearningVideoModel();
+            var parent = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
+                                                               && x.Status == 1
+                                                               && x.CategoryTypeParentId == 0).FirstOrDefault();
+            if (parent == null) return model;
+            model.CategoryTypeName = parent.CategoryTypeName;
+
+            var query = Repository.DoQuery<DbContextBase>(x => x.Status == 1 && x.CategoryTypeParentId == parent.CategoryTypeId)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+                    (catType, cateDetail) => new
+                    {
+                        catType.CategoryTypeId,
+                        catType.CategoryTypeName,
+                        CateTypeStatus = catType.Status,
+                        catType.GlobalSortOrder,
+                        cateDetail.CategoryDetailName,
+                        CategoryDetailStatus = cateDetail.Status,
+                        cateDetail.LectureIndex
+                    })
+                .Where(x => x.CateTypeStatus == 1 && x.CategoryDetailStatus == 1)
+                .ToList().OrderBy(x => x.GlobalSortOrder);
+
+            var result = query.GroupBy(x => x.CategoryTypeId).ToList();
+            model.CategoryTypesParentModel = new List<CategoryTypesParentModel>();
+            foreach (var itemKey in result)
+            {
+                var data = new CategoryTypesParentModel
+                {
+                    CategoryTypeParentName = itemKey.First().CategoryTypeName,
+                    CategoryTypeIndex = itemKey.First().GlobalSortOrder.HasValue ? itemKey.First().GlobalSortOrder.Value : 0,
+                    CategoryDetails = new List<CategoryDetailModel>()
+                };
+
+                foreach (var item in itemKey)
+                {
+                    data.CategoryDetails.Add(new CategoryDetailModel
+                    {
+                        Name = item.CategoryDetailName,
+                        UrlLecture = string.Format("/course/{0}/lecture/{1}", parent.UrlRouter, item.LectureIndex)
+                    });
+                }
+
+                model.CategoryTypesParentModel.Add(data);
+            }
+
+            return model;
         }
     }
 }

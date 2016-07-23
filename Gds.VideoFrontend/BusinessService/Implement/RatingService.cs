@@ -2,10 +2,11 @@
 using System.Linq;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
+using Gds.VideoFrontend.Domain;
 using MvcCornerstone.Data;
 using MvcCornerstone.Services;
 
-namespace Gds.VideoFrontend.Domain.Implement
+namespace Gds.VideoFrontend.BusinessService.Implement
 {
     public class RatingService : GenericService<CategoryRating, DbContextBase>, IRatingService
     {
@@ -16,8 +17,8 @@ namespace Gds.VideoFrontend.Domain.Implement
         public double GetRatingLevel(int categoryTypeId)
         {
             var query = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeId == categoryTypeId)
-                                  .Select(x => x.Level).Average();
-            return query >= 4 ? query : 4;
+                                  .Select(x => x.Level);
+            return query.Any() ? query.Average() : 4;
         }
 
         public int SetRatingLevel(int level, int categoryTypeId)

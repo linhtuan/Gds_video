@@ -17,12 +17,12 @@ namespace Gds.BusinessObject.TableModel
 
         public int PhysicalFileId { get; set; }
 
-        public string Content { get; set; }
-
         public DateTime? CreatedDate { get; set; }
 
         public DateTime? UpdatedDate { get; set; }
 
         public int? Status { get; set; }
+
+        public int LectureIndex { get; set; }
     }
 }

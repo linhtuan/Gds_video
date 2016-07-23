@@ -190,6 +190,8 @@
     <Compile Include="Areas\ApiService\Domain\VideoStream.cs" />
     <Compile Include="Areas\Demo\Controllers\DemoController.cs" />
     <Compile Include="Areas\Demo\DemoAreaRegistration.cs" />
+    <Compile Include="BusinessService\Implement\RatingService.cs" />
+    <Compile Include="BusinessService\IRatingService.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -200,8 +202,6 @@
     <Compile Include="Domain\Implement\CategoryDetailService.cs" />
     <Compile Include="Domain\Implement\CategoryService.cs" />
     <Compile Include="Domain\Implement\CourseService.cs" />
-    <Compile Include="Domain\Implement\RatingService.cs" />
-    <Compile Include="Domain\IRatingService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,9 +209,11 @@
     <Compile Include="Infrastructure\BaseController.cs" />
     <Compile Include="Models\CategoryHomeViewModel.cs" />
     <Compile Include="Models\CategoryLeftMenuViewModel.cs" />
+    <Compile Include="Models\CategoryTypesModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\CourseDetailViewModel.cs" />
     <Compile Include="Models\CoursesViewModel.cs" />
+    <Compile Include="Models\LearningVideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -360,6 +362,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\ApiService\Views\web.config" />
+    <None Include="Properties\PublishProfiles\gds-video.pubxml" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\jquery.tmpl.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

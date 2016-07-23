@@ -12,8 +12,8 @@
         <tbody>
             {{each Result}}
             <tr class="odd" role="row" id="${$value.CategoryDetailId}">
+                <td>Bài <span class="categorty-index">${$value.LectureIndex}</span></td>
                 <td class="categorty-detail">${$value.CategoryDetailName}</td>
-                <td class="content">${$value.Content}</td>
                 <td class="fileName">${$value.FileName}</td>
                 <td class="create-date">${$value.UpdatedDate}</td>
                 <td class="actions">

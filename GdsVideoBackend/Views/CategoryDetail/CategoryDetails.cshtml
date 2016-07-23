@@ -67,7 +67,7 @@
                                     <label>Tên chủ đề</label> <input type="text" placeholder="Tên chủ đề" class="category-detail-name form-control">
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>Chi tiết chủ đề</label> <input type="text" placeholder="Chi tiết chủ đề" class="category-detail-content form-control">
+                                    <label>Số thử tự</label> <input type="number" placeholder="Số thử tự" class="category-detail-index form-control">
                                 </div>
                             </div>
                             <div class="form-group col-sm-12">
@@ -106,9 +106,9 @@
             Dropzone.autoDiscover = false;
             var myDropzone = new Dropzone(".file-upload-container", {
                 previewTemplate: document.querySelector('#preview-template').innerHTML,
-                url: '@Url.Action("UploadFile", "CategoryDetail")',
+                url: '@Url.Action("InsertUpateDetail", "CategoryDetail")',
                 method: "POST",
-                autoProcessQueue: true,
+                autoProcessQueue: false,
                 clickable: ['.file-upload-container'],
                 parallelUploads: 1,
                 maxFilesize: 100, // in mb
@@ -116,6 +116,7 @@
                 thumbnailHeight: 150,
                 thumbnail: function(file, dataUrl) {
                     if (file.previewElement) {
+                        $('#video-content').val(file);
                         file.previewElement.classList.remove("dz-file-preview");
                         var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
                         for (var i = 0; i < images.length; i++) {
@@ -126,16 +127,27 @@
                         setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
                     }
                 },
-                queuecomplete: function() {
+                queuecomplete: function () {
+                    $('#save').show();
                     $('#add-new-category-detail').modal('hide');
                     bindingCategoryDetails();
                 },
                 sending: function(file, xhr, formData) {
-                    formData.append('categoryTypeId', parseInt(gds.getQueryVariable('categoryTypeId')));
-                    formData.append('categoryDetailId', parseInt($("#category-detail-form #category-detail-id").val()));
+                    formData.append('CategoryTypeId', parseInt(gds.getQueryVariable('categoryTypeId')));
+                    var categoryDetailId = isNaN($("#category-detail-form #category-detail-id").val())
+                        ? 0
+                        : parseInt($("#category-detail-form #category-detail-id").val());
+                    formData.append('CategoryDetailId', categoryDetailId);
+                    formData.append('LectureIndex', $("#category-detail-form .category-detail-index").val());
+                    formData.append('CategoryDetailName', $("#category-detail-form .category-detail-name").val());
+                    
                 }
             });
 
+            $(document).on('click', '#save', function (event) {
+                $('#save').hide();
+                myDropzone.processQueue();
+            });
         };
         setupDropzone();
     </script>

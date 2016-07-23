@@ -32,7 +32,7 @@ namespace Gds.VideoFrontend.Domain.Implement
         public List<CategoryHomeViewModel> GetCategoryHomePage()
         {
             var category = Repository.DoQuery<DbContextBase>(x => x.Status == 1).ToList();
-            var categoryIds = category.Select(x=>x.CategoryId);
+            var categoryIds = category.Select(x => x.CategoryId);
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
             var query = _catTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId)
                                                                        && x.CategoryTypeParentId == 0

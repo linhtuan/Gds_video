@@ -57,14 +57,14 @@ namespace GdsVideoBackend.Domain.Implement
                         CategoryDetailId = item.CategoryDetailId,
                         CategoryTypeId = item.CategoryTypeId,
                         CategoryDetailName = item.CategoryDetailName,
-                        Content = item.Content,
                         UpdatedDate = item.UpdatedDate.Value.ToString("dd-MM-yyyy HH:mm"),
                         FileName = fileInfo != null ? fileInfo.FileName : string.Empty,
                         PhysicalFile = new PhysicalFileModel
                         {
                             PhysicalFileId = item.PhysicalFileId,
                             FileName = fileInfo != null ? fileInfo.FileName : string.Empty,
-                        }
+                        },
+                        LectureIndex = item.LectureIndex
                     };
                 }).ToList();
 
@@ -85,7 +85,7 @@ namespace GdsVideoBackend.Domain.Implement
             }
         }
 
-        public bool Insert(CategoryDetailModel model)
+        public int Insert(CategoryDetailModel model)
         {
             try
             {
@@ -93,36 +93,36 @@ namespace GdsVideoBackend.Domain.Implement
                 {
                     CategoryTypeId = model.CategoryTypeId,
                     CategoryDetailName = model.CategoryDetailName,
-                    Content = model.Content,
                     CreatedDate = DateTime.UtcNow,
                     UpdatedDate = DateTime.UtcNow,
                     Status = 1,
+                    LectureIndex = model.LectureIndex
                 };
                 Repository.Insert<DbContextBase>(detail);
                 Repository.Commit<DbContextBase>();
-                return true;
+                return detail.CategoryDetailId;
             }
             catch (Exception)
             {
-                return false;
+                return 0;
             }
         }
 
-        public bool Update(CategoryDetailModel model)
+        public int Update(CategoryDetailModel model)
         {
             try
             {
                 Repository.UpdateMany<DbContextBase>(x => x.CategoryDetailId == model.CategoryDetailId, x => new CategoryDetails
                 {
                     CategoryDetailName = model.CategoryDetailName,
-                    Content = model.Content,
-                    UpdatedDate = DateTime.UtcNow
+                    UpdatedDate = DateTime.UtcNow,
+                    LectureIndex = model.LectureIndex
                 });
-                return true;
+                return model.CategoryDetailId;
             }
             catch (Exception)
             {
-                return false;
+                return 0;
             }
         }
 
@@ -148,14 +148,14 @@ namespace GdsVideoBackend.Domain.Implement
             return query != null ? query.CategoryId : 0;
         }
 
-        public bool UpdateFileInfo(PhysicalFiles model, int categoryDetailId)
+        public bool UpdateFileInfo(PhysicalFiles model, int? categoryDetailId)
         {
             try
             {
-                var detail = Repository.GetById<DbContextBase>(categoryDetailId);
-                _physicalFileRepository.DeleteMany<DbContextBase>(x => x.PhysicalFileId == detail.PhysicalFileId);
                 _physicalFileRepository.Insert<DbContextBase>(model);
                 _physicalFileRepository.Commit<DbContextBase>();
+                var detail = Repository.GetById<DbContextBase>(categoryDetailId);
+                _physicalFileRepository.DeleteMany<DbContextBase>(x => x.PhysicalFileId == detail.PhysicalFileId);
                 detail.PhysicalFileId = model.PhysicalFileId;
                 Repository.Update<DbContextBase>(detail);
                 _physicalFileRepository.Commit<DbContextBase>();

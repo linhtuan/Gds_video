@@ -13,5 +13,9 @@ namespace Gds.VideoFrontend.Domain
         CourseDetailViewModel GetCourseDetail(string courseRouter);
 
         Author GetAuthor(int authorId);
+
+        CategoryDetails GetCategoryDetails(string courseRouter, int index);
+
+        LearningVideoModel GetCategoryTypes(string courseRouter);
     }
 }
