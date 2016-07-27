@@ -35,5 +35,7 @@ namespace Gds.BusinessObject.DbContext
         public DbSet<Role> Role { get; set; }
 
         public DbSet<UserManagement> UserManagement { get; set; }
+
+        public DbSet<AgeOrder> AgeOrders { get; set; }
     }
 }

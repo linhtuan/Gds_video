@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -24,7 +25,25 @@ namespace GdsVideoBackend.Controllers
         // GET: /CategoryType/
         public ActionResult Index(int categoryId)
         {
-            return View();
+            var prices = _categoryTypeService.GetPrices().Select(x => new PriceSetting
+            {
+                Id = x.CategoryTypePriceId,
+                Price = x.Price
+            }).ToList();
+
+            var ageOrder = _categoryTypeService.GetAgeOrders().Select(x => new AgeOrderSetting
+            {
+                Id = x.AgeOrderId,
+                Name = x.AgeOrderName
+            }).ToList();
+            var model = new CategoryTypeFromViewModel
+            {
+                PriceSetting = new List<PriceSetting>(),
+                AgeOrderSetting = new List<AgeOrderSetting>()
+            };
+            model.PriceSetting.AddRange(prices);
+            model.AgeOrderSetting.AddRange(ageOrder);
+            return View(model);
         }
 
         public JsonResult GetPrices()
@@ -119,38 +138,39 @@ namespace GdsVideoBackend.Controllers
                 CategoryTypeId = Convert.ToInt32(request["CategoryTypeId"]),
                 CategoryTypeName = request["CategoryTypeName"],
                 Content = request["Content"],
-                CategoryTypePriceId = Convert.ToInt32(request["Price"])
+                CategoryTypePriceId = Convert.ToInt32(request["Price"]),
+                AgeOrderId = Convert.ToInt32(request["AgeOrder"])
             };
             return item;
         }
 
         private CategoryTypeViewModel UploadThumbnailImage(CategoryTypeViewModel model, HttpRequestBase request)
         {
-            if (request.Files.AllKeys.Any() && request.Files[0] != null)
-            {
-                var fileThumbnail = request.Files[0];
-                var fileName = string.Empty;
-                var uploadFilesDir = string.Format(@"{0}\thumbnailImage\{1}\{2}", AppConfig.UploadFolder, model.CategoryId, model.CategoryTypeId);
-                if (!Directory.Exists(uploadFilesDir))
-                {
-                    Directory.CreateDirectory(uploadFilesDir);
-                }
-                else
-                {
-                    var folder = new DirectoryInfo(uploadFilesDir);
-                    foreach (var file in folder.GetFiles())
-                    {
-                        if (string.IsNullOrEmpty(fileThumbnail.FileName))
-                            fileName = file.Name;
-                        else
-                            file.Delete();
-                    }
-                }
-                var fileSavePath = Path.Combine(uploadFilesDir, !string.IsNullOrEmpty(fileThumbnail.FileName) ? fileThumbnail.FileName : fileName);
+            if (!request.Files.AllKeys.Any() || request.Files[0] == null) return model;
 
-                fileThumbnail.SaveAs(fileSavePath);
-                model.FileThumbnail = string.Format("{0}\\{1}", uploadFilesDir, fileThumbnail.FileName);
+            var fileThumbnail = request.Files[0];
+            var fileName = string.Empty;
+            var uploadFilesDir = string.Format(@"{0}\thumbnailImage\{1}\{2}", AppConfig.UploadFolder, model.CategoryId, model.CategoryTypeId);
+            if (!Directory.Exists(uploadFilesDir))
+            {
+                Directory.CreateDirectory(uploadFilesDir);
             }
+            else
+            {
+                var folder = new DirectoryInfo(uploadFilesDir);
+                foreach (var file in folder.GetFiles())
+                {
+                    if (string.IsNullOrEmpty(fileThumbnail.FileName))
+                        fileName = file.Name;
+                    else
+                        file.Delete();
+                }
+            }
+            var fileSavePath = Path.Combine(uploadFilesDir, !string.IsNullOrEmpty(fileThumbnail.FileName) ? fileThumbnail.FileName : fileName);
+            if (!string.IsNullOrEmpty(fileThumbnail.FileName))
+                fileThumbnail.SaveAs(fileSavePath);
+
+            model.FileThumbnail = string.Format("{0}\\{1}", uploadFilesDir, !string.IsNullOrEmpty(fileThumbnail.FileName) ? fileThumbnail.FileName : fileName);
             return model;
         }
 	}

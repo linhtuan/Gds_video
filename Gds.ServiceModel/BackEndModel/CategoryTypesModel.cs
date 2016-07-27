@@ -23,5 +23,9 @@
         public string ThumbnailImage { get; set; }
 
         public string MimeTypeImage { get; set; }
+
+        public int? AgeOrderId { get; set; }
+
+        public string AgeOrderName { get; set; }
     }
 }

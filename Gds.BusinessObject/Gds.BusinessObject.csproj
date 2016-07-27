@@ -51,6 +51,7 @@
     <Compile Include="DbContext\DbContextBase.cs" />
     <Compile Include="DbContext\DbContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableModel\AgeOrder.cs" />
     <Compile Include="TableModel\Author.cs" />
     <Compile Include="TableModel\CategoryByUser.cs" />
     <Compile Include="TableModel\CategoryDetails.cs" />

@@ -20,10 +20,14 @@ namespace GdsVideoBackend.Domain.Implement
     {
         private readonly IEntityRepository<CategoryTypePrice> _priceRepository;
 
+        private readonly IEntityRepository<AgeOrder> _ageOrderRepository;
+
         public CategoryTypeService(IEntityRepository<CategoryTypes> repository, 
-            IEntityRepository<CategoryTypePrice> priceRepository) : base(repository)
+            IEntityRepository<CategoryTypePrice> priceRepository, 
+            IEntityRepository<AgeOrder> ageOrderRepository) : base(repository)
         {
             _priceRepository = priceRepository;
+            _ageOrderRepository = ageOrderRepository;
         }
 
         public PagingResultModel<CategoryTypesModel> GetParentCategoryTypes(int categoryId, int pageIndex, int pageSize)
@@ -35,6 +39,8 @@ namespace GdsVideoBackend.Domain.Implement
                         (cat, price) => new { cat, price.CategoryTypePriceId, price.Price, price.SalePrice, price.SaleTime }).OrderByDescending(x => x.cat.CreatedDate);
                 var totalCount = query.Count();
                 var dataResult = query.ToPagedQueryable(pageIndex, pageSize, totalCount);
+                var ageOrderIds = query.Select(x => x.cat.AgeOrderId).ToList();
+                var ageOrder = _ageOrderRepository.DoQuery<DbContextBase>(x => ageOrderIds.Contains(x.AgeOrderId)).ToList();
                 var results = dataResult.Select(item => new CategoryTypesModel
                 {
                     CategoryId = item.cat.CategoryId,
@@ -49,6 +55,10 @@ namespace GdsVideoBackend.Domain.Implement
                         : string.Empty,
                     MimeTypeImage = !string.IsNullOrEmpty(item.cat.ThumbnailImage)
                         ? Regex.Replace(Path.GetExtension(item.cat.ThumbnailImage), @"\W", "")
+                        : string.Empty,
+                    AgeOrderId = item.cat.AgeOrderId,
+                    AgeOrderName = item.cat.AgeOrderId.HasValue
+                        ? ageOrder.First(x => x.AgeOrderId == item.cat.AgeOrderId).AgeOrderName
                         : string.Empty
                 }).ToList();
 
@@ -132,7 +142,8 @@ namespace GdsVideoBackend.Domain.Implement
                     Content = model.Content,
                     CreatedDate = DateTime.UtcNow,
                     Status = 1,
-                    UrlRouter = urlRouter
+                    UrlRouter = urlRouter,
+                    AgeOrderId = model.AgeOrderId
                 };
                 if (model.ParentId != 0)
                 {
@@ -178,7 +189,8 @@ namespace GdsVideoBackend.Domain.Implement
                     CategoryTypePriceId = model.CategoryTypePriceId == 0 || model.CategoryTypePriceId == null ? null : model.CategoryTypePriceId,
                     Status = 1,
                     ThumbnailImage = model.FileThumbnail,
-                    UrlRouter = urlRouter
+                    UrlRouter = urlRouter,
+                    AgeOrderId = model.AgeOrderId
                 });
                 Repository.Commit<DbContextBase>();
                 return true;
@@ -213,6 +225,12 @@ namespace GdsVideoBackend.Domain.Implement
                 .Select(x => new {x.CategoryTypeId, x.CategoryTypeName})
                 .ToList();
             return query.ToDictionary(x => x.CategoryTypeId, x => x.CategoryTypeName);
+        }
+
+        public List<AgeOrder> GetAgeOrders()
+        {
+            var query = _ageOrderRepository.Table<DbContextBase>().ToList();
+            return query;
         }
     }
 }

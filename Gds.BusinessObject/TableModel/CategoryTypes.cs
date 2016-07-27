@@ -34,5 +34,7 @@ namespace Gds.BusinessObject.TableModel
         public int? AuthorId { get; set; }
 
         public int? GlobalSortOrder { get; set; }
+
+        public int? AgeOrderId { get; set; }
     }
 }

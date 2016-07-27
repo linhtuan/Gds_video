@@ -2,6 +2,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model GdsVideoBackend.Models.CategoryTypeFromViewModel
 @section style
 {
     <link href="~/Content/css/plugins/summernote/summernote.css" rel="stylesheet" />
@@ -110,14 +111,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>div>
     </div>
 </div>
 
 @Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.cshtml")
 @Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplate.cshtml")
-@Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml")
+@Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml", Model)
 @Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentTemplate.cshtml")
 
 @section scripts{

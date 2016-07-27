@@ -31,14 +31,14 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml")]
-    public partial class _Views_CategoryType_PatialView__CategoryTypeParentDialog_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class _Views_CategoryType_PatialView__CategoryTypeParentDialog_cshtml : System.Web.Mvc.WebViewPage<GdsVideoBackend.Models.CategoryTypeFromViewModel>
     {
         public _Views_CategoryType_PatialView__CategoryTypeParentDialog_cshtml()
         {
         }
         public override void Execute()
         {
-WriteLiteral("\r\n<div");
+WriteLiteral("<div");
 
 WriteLiteral(" id=\"add-new-category-type-parent\"");
 
@@ -78,21 +78,21 @@ WriteLiteral(" id=\"category-type-parent-form\"");
 
 WriteLiteral(" role=\"form\"");
 
-WriteAttribute("action", Tuple.Create(" action=\"", 426), Tuple.Create("\"", 472)
+WriteAttribute("action", Tuple.Create(" action=\"", 483), Tuple.Create("\"", 529)
             
-            #line 9 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
-  , Tuple.Create(Tuple.Create("", 435), Tuple.Create<System.Object, System.Int32>(Url.Action("Insert", "CategoryType")
+            #line 10 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+  , Tuple.Create(Tuple.Create("", 492), Tuple.Create<System.Object, System.Int32>(Url.Action("Insert", "CategoryType")
             
             #line default
             #line hidden
-, 435), false)
+, 492), false)
 );
 
 WriteLiteral(" enctype=\"multipart/form-data\"");
 
 WriteLiteral(">\r\n                            <div");
 
-WriteLiteral(" class=\"form-group\"");
+WriteLiteral(" class=\"form-group row\"");
 
 WriteLiteral(">\r\n                                <div");
 
@@ -119,10 +119,137 @@ WriteLiteral(" class=\"form-control m-b price\"");
 
 WriteLiteral(" name=\"Price\"");
 
-WriteLiteral("></select>\r\n                                </div>\r\n                            <" +
-"/div>\r\n                            <div");
+WriteLiteral(">\r\n");
 
-WriteLiteral(" class=\"form-group\"");
+            
+            #line 18 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                        
+            
+            #line default
+            #line hidden
+            
+            #line 18 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                         foreach (var item in Model.PriceSetting)
+                                        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                            <option");
+
+WriteAttribute("value", Tuple.Create(" value=\"", 1267), Tuple.Create("\"", 1283)
+            
+            #line 20 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+, Tuple.Create(Tuple.Create("", 1275), Tuple.Create<System.Object, System.Int32>(item.Id
+            
+            #line default
+            #line hidden
+, 1275), false)
+);
+
+WriteLiteral(" ");
+
+            
+            #line 20 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                                                 Write(Model.PriceSetting.First() == item ? "selected='selected'" : "");
+
+            
+            #line default
+            #line hidden
+WriteLiteral(">");
+
+            
+            #line 20 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                                                                                                                   Write(item.Price);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</option>\r\n");
+
+            
+            #line 21 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    </select>\r\n                                </" +
+"div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-6\"");
+
+WriteLiteral(">\r\n                                    <label>Giá tiền</label>\r\n                 " +
+"                   <select");
+
+WriteLiteral(" class=\"form-control m-b age-order\"");
+
+WriteLiteral(" name=\"AgeOrder\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 27 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                        
+            
+            #line default
+            #line hidden
+            
+            #line 27 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                         foreach (var item in Model.AgeOrderSetting)
+                                        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                            <option");
+
+WriteAttribute("value", Tuple.Create(" value=\"", 1898), Tuple.Create("\"", 1914)
+            
+            #line 29 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+, Tuple.Create(Tuple.Create("", 1906), Tuple.Create<System.Object, System.Int32>(item.Id
+            
+            #line default
+            #line hidden
+, 1906), false)
+);
+
+WriteLiteral(" ");
+
+            
+            #line 29 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                                                 Write(Model.AgeOrderSetting.First() == item ? "selected='selected'" : "");
+
+            
+            #line default
+            #line hidden
+WriteLiteral(">");
+
+            
+            #line 29 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                                                                                                                      Write(item.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</option>\r\n");
+
+            
+            #line 30 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    </select>\r\n                                </" +
+"div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-6\"");
+
+WriteLiteral(">\r\n                                </div>\r\n                            </div>\r\n  " +
+"                          <div");
+
+WriteLiteral(" class=\"form-group row\"");
 
 WriteLiteral(">\r\n                                <div");
 

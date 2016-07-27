@@ -38,13 +38,6 @@ var categoryTypeCtrl = function () {
         });
     };
     
-    var getPrice = function () {
-        return $.ajax({
-            url: '/categorytype/getprices',
-            type: 'GET',
-        });
-    };
-
     var getParentPage = function () {
         return parentPage;
     };
@@ -134,9 +127,6 @@ var categoryTypeCtrl = function () {
         getCategoryTypeChildren: function() {
             return getCategoryTypeChildren();
         },
-        getPrice: function () {
-            return getPrice();
-        },
         getParentCategoryTypeSelect: function () {
             return getParentCategoryTypeSelect();
         },
@@ -169,19 +159,6 @@ var categoryTypeCtrl = function () {
         },
     };
 }(categoryTypeCtrl);
-
-function getPrice() {
-    var prices = categoryTypeCtrl.getPrice();
-    $.when(prices).then(function (result) {
-
-        var html = '';
-        for (var i = 0; i < result.data.length; i++) {
-            var item = result.data[i];
-            html += '<option value="' + item.Id + '">' + item.Price + '</option>';
-        }
-        $('.modal-body .price').html(html);
-    });
-}
 
 function getParentCategoryTypeSelect() {
     var prices = categoryTypeCtrl.getParentCategoryTypeSelect();
@@ -243,6 +220,7 @@ function bindingCategoryTypeDetail(obj) {
         $('#category-type-parent-form .category-type-id').val(rowId);
         $('#category-type-parent-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
         $('#category-type-parent-form .price').val($("#" + rowId + " .price").attr('data-priceid'));
+        $('#category-type-parent-form .age-order').val($("#" + rowId + " .age").attr('data-age'));
         $('#category-type-parent-form .cateogry-type-content').html($("#" + rowId + " .content-detail").html());
         var fileType = $("#" + rowId + " .category-type-name").attr('data-filetype');
         var file = $("#" + rowId + " .category-type-name").attr('data-file');
@@ -391,8 +369,8 @@ $(document).on('click', '#category-type-parent .category-type-box', function (ev
     $('#category-type-parent-form .content').val('');
     $('#category-type-parent-form .category-type-id').val(''),
     $('#category-type-parent-form .category-type-name').val(''),
-    $("#category-type-parent-form .category-type-name option:first").attr('selected', 'selected');
     $("#category-type-parent-form .price option:first").attr('selected', 'selected');
+    $("#category-type-parent-form .age-order option:first").attr('selected', 'selected');
     $('#category-type-parent-form .cateogry-type-content').html('');
     $('#category-type-parent-form #image-photo').attr('src', '');
 });
@@ -405,7 +383,6 @@ $(document).on('click', '#category-type-children .category-type-box', function (
 });
 
 $(document).ready(function () {
-    getPrice();
     categoryTypeCtrl.setParentPage(pageSetting);
     categoryTypeCtrl.setChildrenPage(pageSetting);
     window.callback = bindingParent();

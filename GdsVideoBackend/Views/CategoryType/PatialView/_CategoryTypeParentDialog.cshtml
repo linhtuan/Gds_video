@@ -1,4 +1,5 @@
-﻿
+﻿@model GdsVideoBackend.Models.CategoryTypeFromViewModel
+
 <div id="add-new-category-type-parent" class="modal fade" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -7,16 +8,32 @@
                     <div class="col-sm-12">
                         <h3 class="m-t-none m-b">Sign in</h3>
                         <form id="category-type-parent-form" role="form" action="@Url.Action("Insert", "CategoryType")" enctype="multipart/form-data">
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <div class="col-sm-6">
                                     <label>Tên gói</label> <input name="CategoryTypeName" type="text" placeholder="Tên gói" class="category-type-name form-control">
                                 </div>
                                 <div class="col-sm-6">
                                     <label>Giá tiền</label>
-                                    <select class="form-control m-b price" name="Price"></select>
+                                    <select class="form-control m-b price" name="Price">
+                                        @foreach (var item in Model.PriceSetting)
+                                        {
+                                            <option value="@item.Id" @(Model.PriceSetting.First() == item ? "selected='selected'" : "")>@item.Price</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Giá tiền</label>
+                                    <select class="form-control m-b age-order" name="AgeOrder">
+                                        @foreach (var item in Model.AgeOrderSetting)
+                                        {
+                                            <option value="@item.Id" @(Model.AgeOrderSetting.First() == item ? "selected='selected'" : "")>@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <div class="col-sm-6">
                                     <div class="col-sm-8"><label>Ảnh đại diện</label></div>
                                     <div class="col-sm-4"><button id="replace-photo" class="btn btn-success btn-sm">Thêm ảnh</button></div>

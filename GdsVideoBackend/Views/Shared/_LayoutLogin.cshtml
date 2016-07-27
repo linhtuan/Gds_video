@@ -1,0 +1,21 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/inspinia")
+    </head>
+<body class="gray-bg">
+    <div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/base-lib-js")
+    @Scripts.Render("~/bundles/inspinia")
+    @Scripts.Render("~/bundles/base-inspinia")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

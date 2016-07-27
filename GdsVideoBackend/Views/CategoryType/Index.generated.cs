@@ -31,7 +31,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/CategoryType/Index.cshtml")]
-    public partial class _Views_CategoryType_Index_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class _Views_CategoryType_Index_cshtml : System.Web.Mvc.WebViewPage<GdsVideoBackend.Models.CategoryTypeFromViewModel>
     {
         public _Views_CategoryType_Index_cshtml()
         {
@@ -53,18 +53,18 @@ DefineSection("style", () => {
 
 WriteLiteral("\r\n    <link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 112), Tuple.Create("\"", 166)
-, Tuple.Create(Tuple.Create("", 119), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote.css")
-, 119), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 169), Tuple.Create("\"", 223)
+, Tuple.Create(Tuple.Create("", 176), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote.css")
+, 176), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 198), Tuple.Create("\"", 256)
-, Tuple.Create(Tuple.Create("", 205), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote-bs3.css")
-, 205), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 255), Tuple.Create("\"", 313)
+, Tuple.Create(Tuple.Create("", 262), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/plugins/summernote/summernote-bs3.css")
+, 262), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
@@ -82,7 +82,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 13 "..\..\Views\CategoryType\Index.cshtml"
+            #line 14 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/PartialViews/_LeftMenuPartial.cshtml"));
 
             
@@ -429,8 +429,7 @@ WriteLiteral(@"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>div>
     </div>
 </div>
 
@@ -456,7 +455,7 @@ WriteLiteral("\r\n");
 
             
             #line 120 "..\..\Views\CategoryType\Index.cshtml"
-Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml"));
+Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml", Model));
 
             
             #line default
@@ -476,30 +475,30 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7243), Tuple.Create("\"", 7273)
-, Tuple.Create(Tuple.Create("", 7249), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
-, 7249), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7295), Tuple.Create("\"", 7325)
+, Tuple.Create(Tuple.Create("", 7301), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 7301), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7297), Tuple.Create("\"", 7334)
-, Tuple.Create(Tuple.Create("", 7303), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 7303), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7349), Tuple.Create("\"", 7386)
+, Tuple.Create(Tuple.Create("", 7355), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 7355), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7358), Tuple.Create("\"", 7393)
-, Tuple.Create(Tuple.Create("", 7364), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
-, 7364), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7410), Tuple.Create("\"", 7445)
+, Tuple.Create(Tuple.Create("", 7416), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
+, 7416), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7417), Tuple.Create("\"", 7472)
-, Tuple.Create(Tuple.Create("", 7423), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
-, 7423), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7469), Tuple.Create("\"", 7524)
+, Tuple.Create(Tuple.Create("", 7475), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
+, 7475), false)
 );
 
 WriteLiteral(@"></script>

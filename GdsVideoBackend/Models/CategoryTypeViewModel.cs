@@ -15,6 +15,8 @@ namespace GdsVideoBackend.Models
 
         public string FileThumbnail { get; set; }
 
-        public string Content { get; set; } 
+        public string Content { get; set; }
+
+        public int AgeOrderId { get; set; }
     }
 }

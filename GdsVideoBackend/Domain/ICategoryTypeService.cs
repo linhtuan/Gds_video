@@ -23,5 +23,7 @@ namespace GdsVideoBackend.Domain
         List<CategoryTypePrice> GetPrices();
 
         Dictionary<int, string> GetParentCategoryType();
+
+        List<AgeOrder> GetAgeOrders();
     }
 }
