@@ -136,7 +136,27 @@ WriteLiteral("></i> <span");
 
 WriteLiteral(" class=\"nav-label\"");
 
-WriteLiteral(">Category</span></a>\r\n    </li>\r\n    \r\n</ul>");
+WriteLiteral(">Category</span></a>\r\n    </li>\r\n    <li>\r\n        <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 1235), Tuple.Create("\"", 1272)
+            
+            #line 31 "..\..\Views\PartialViews\_LeftMenuPartial.cshtml"
+, Tuple.Create(Tuple.Create("", 1242), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Author")
+            
+            #line default
+            #line hidden
+, 1242), false)
+);
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-diamond\"");
+
+WriteLiteral("></i> <span");
+
+WriteLiteral(" class=\"nav-label\"");
+
+WriteLiteral(">Author</span></a>\r\n    </li>\r\n</ul>");
 
         }
     }

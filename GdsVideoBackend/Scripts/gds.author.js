@@ -88,7 +88,7 @@ $(document).on('click', '#save', function (event) {
             }
         });
     }
-    $('#add-new-category').modal('hide');
+    $('#add-new-author').modal('hide');
 });
 
 $(document).on('click', '.author-type-box', function (event) {
@@ -96,6 +96,23 @@ $(document).on('click', '.author-type-box', function (event) {
     $('#author-form .author-id').val('');
     $('#author-form .author-content').html('');
     $('#author-form #image-photo').attr('src', '');
+});
+
+$('#replace-photo').on('click', function (event) {
+    event.preventDefault();
+    $('#replace-photo-tag').click();
+});
+
+$('#author-form').on('change', '#replace-photo-tag', function () {
+    var thisUrl = this;
+    if (thisUrl.files && thisUrl.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image-photo').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(thisUrl.files[0]);
+    }
 });
 
 $(document).ready(function () {

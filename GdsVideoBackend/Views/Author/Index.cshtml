@@ -59,19 +59,22 @@
     </div>
 </div>
 
+@Html.Partial("~/Views/Author/PatialView/_AuthorDialog.cshtml")
+@Html.Partial("~/Views/Author/PatialView/_AuthorTemplate.cshtml")
+
 @section scripts{
     <script src="~/Scripts/jquery.tmpl.js"></script>
     <script src="~/Scripts/gds.paging.control.js"></script>
-    <script src="~/Scripts/gds.categorytype.js"></script>
+    <script src="~/Scripts/gds.author.js"></script>
     <script src="~/Content/js/plugins/summernote/summernote.min.js"></script>
     <script>
-        $(document).on('click', '#category-type-parent-form #edit', function (event) {
-            $('#category-type-parent-form .cateogry-type-content').summernote({ focus: true });
+        $(document).on('click', '#author-form #edit', function (event) {
+            $('#author-form .author-content').summernote({ focus: true });
         });
 
-        $(document).on('click', '#category-type-parent-form #save', function (event) {
+        $(document).on('click', '#author-form #save', function (event) {
             //var aHTML = $('.cateogry-type-content').code(); //save HTML If you need(aHTML: array).
-            $('#category-type-parent-form .cateogry-type-content').destroy();
+            $('#author-form .author-content').destroy();
         });
     </script>
 }

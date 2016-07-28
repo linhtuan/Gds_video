@@ -911,6 +911,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Author\Index.cshtml" />
+    <Content Include="Views\Author\PatialView\_AuthorDialog.cshtml" />
+    <Content Include="Views\Author\PatialView\_AuthorTemplate.cshtml" />
+    <Content Include="Scripts\gds.author.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">
