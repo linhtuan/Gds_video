@@ -23,12 +23,16 @@ namespace GdsVideoBackend.Domain.Implement
 
         private readonly IEntityRepository<AgeOrder> _ageOrderRepository;
 
+        private readonly IEntityRepository<Author> _authorRepository;
+
         public CategoryTypeService(IEntityRepository<CategoryTypes> repository, 
             IEntityRepository<CategoryTypePrice> priceRepository, 
-            IEntityRepository<AgeOrder> ageOrderRepository) : base(repository)
+            IEntityRepository<AgeOrder> ageOrderRepository, 
+            IEntityRepository<Author> authorRepository) : base(repository)
         {
             _priceRepository = priceRepository;
             _ageOrderRepository = ageOrderRepository;
+            _authorRepository = authorRepository;
         }
 
         public PagingResultModel<CategoryTypesModel> GetParentCategoryTypes(int categoryId, int pageIndex, int pageSize)
@@ -40,8 +44,10 @@ namespace GdsVideoBackend.Domain.Implement
                         (cat, price) => new { cat, price.CategoryTypePriceId, price.Price, price.SalePrice, price.SaleTime }).OrderByDescending(x => x.cat.CreatedDate);
                 var totalCount = query.Count();
                 var dataResult = query.ToPagedQueryable(pageIndex, pageSize, totalCount);
-                var ageOrderIds = query.Select(x => x.cat.AgeOrderId).ToList();
+                var ageOrderIds = query.Select(x => x.cat.AgeOrderId).Distinct().ToList();
+                var authorIds = query.Select(x => x.cat.AuthorId).Distinct().ToList();
                 var ageOrder = _ageOrderRepository.DoQuery<DbContextBase>(x => ageOrderIds.Contains(x.AgeOrderId)).ToList();
+                var authors = _authorRepository.DoQuery<DbContextBase>(x => authorIds.Contains(x.AuthorId)).ToList();
                 var results = dataResult.Select(item => new CategoryTypesModel
                 {
                     CategoryId = item.cat.CategoryId,
@@ -61,7 +67,11 @@ namespace GdsVideoBackend.Domain.Implement
                     AgeOrderName = item.cat.AgeOrderId.HasValue
                         ? ageOrder.First(x => x.AgeOrderId == item.cat.AgeOrderId).AgeOrderName
                         : string.Empty,
-                    CategoryTpyeOrder = item.cat.GlobalSortOrder.HasValue ? item.cat.GlobalSortOrder.Value : 0
+                    CategoryTpyeOrder = item.cat.GlobalSortOrder.HasValue ? item.cat.GlobalSortOrder.Value : 0,
+                    AuthorId = item.cat.AuthorId.HasValue ? item.cat.AuthorId.Value : 0,
+                    AuthorName = item.cat.AuthorId.HasValue
+                        ? authors.First(x => x.AuthorId == item.cat.AuthorId.Value).AuthorName
+                        : string.Empty
                 }).ToList();
 
                 var resultPaging = new PagingResultModel<CategoryTypesModel>
@@ -148,7 +158,8 @@ namespace GdsVideoBackend.Domain.Implement
                     AgeOrderId = model.AgeOrderId,
                     GlobalSortOrder = model.CategoryTypeOrderId == 0
                         ? (int) CategoryTypeOrderEnum.Normal
-                        : model.CategoryTypeOrderId
+                        : model.CategoryTypeOrderId,
+                    AuthorId = model.AuthorId
                 };
                 if (model.ParentId != 0)
                 {
@@ -191,14 +202,17 @@ namespace GdsVideoBackend.Domain.Implement
                     CategoryTypeName = model.CategoryTypeName,
                     Content = model.Content,
                     CreatedDate = DateTime.UtcNow,
-                    CategoryTypePriceId = model.CategoryTypePriceId == 0 || model.CategoryTypePriceId == null ? null : model.CategoryTypePriceId,
+                    CategoryTypePriceId = model.CategoryTypePriceId == 0 || model.CategoryTypePriceId == null
+                        ? null
+                        : model.CategoryTypePriceId,
                     Status = 1,
                     ThumbnailImage = model.FileThumbnail,
                     UrlRouter = urlRouter,
                     AgeOrderId = model.AgeOrderId,
                     GlobalSortOrder = model.CategoryTypeOrderId == 0
-                        ? (int)CategoryTypeOrderEnum.Normal
-                        : model.CategoryTypeOrderId
+                        ? (int) CategoryTypeOrderEnum.Normal
+                        : model.CategoryTypeOrderId,
+                    AuthorId = model.AuthorId
                 });
                 Repository.Commit<DbContextBase>();
                 return true;
@@ -239,6 +253,21 @@ namespace GdsVideoBackend.Domain.Implement
         {
             var query = _ageOrderRepository.Table<DbContextBase>().ToList();
             return query;
+        }
+
+        public List<Author> GetAuthors()
+        {
+            var query = _authorRepository.Table<DbContextBase>().Select(x => new
+            {
+                x.AuthorId,
+                x.AuthorName,
+            }).ToList();
+            var result = query.Select(x => new Author
+            {
+                AuthorId = x.AuthorId,
+                AuthorName = x.AuthorName
+            }).ToList();
+            return result;
         }
     }
 }

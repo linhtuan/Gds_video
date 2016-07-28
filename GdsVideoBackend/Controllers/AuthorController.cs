@@ -33,7 +33,7 @@ namespace GdsVideoBackend.Controllers
                 : Json(new { isSuccess = false, data = new PagingResultModel<Author>() }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public JsonResult Insert()
         {
             var item = GetValueInFrom(Request);
@@ -43,7 +43,7 @@ namespace GdsVideoBackend.Controllers
             return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public JsonResult Update()
         {
             var item = GetValueInFrom(Request);
@@ -85,9 +85,9 @@ namespace GdsVideoBackend.Controllers
         {
             var model = new Author
             {
-                AuthorId = Convert.ToInt32(request["AuthorId"]),
+                AuthorId = string.IsNullOrEmpty(request["AuthorId"]) ? 0 : Convert.ToInt32(request["AuthorId"]),
                 AuthorName = request["AuthorName"],
-                AuthorDetail = request["AuthorDetail"],
+                AuthorDetail = request["Content"],
             };
 
             return model;

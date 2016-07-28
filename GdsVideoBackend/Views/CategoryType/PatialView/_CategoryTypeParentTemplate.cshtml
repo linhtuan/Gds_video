@@ -6,6 +6,7 @@
                 <th class="sorting_asc" tabindex="0" aria-controls="categoryTypeParent_Table" rowspan="1" colspan="1" aria-sort="ascending" style="width: 189px;">Tên gói</th>
                 <th class="sorting" tabindex="0" aria-controls="categoryTypeParent_Table" rowspan="1" colspan="1" style="width: 253px;">Độ tuổi</th>
                 <th class="sorting" tabindex="0" aria-controls="categoryTypeParent_Table" rowspan="1" colspan="1" style="width: 253px;">Nội dung</th>
+                <th class="sorting" tabindex="0" aria-controls="categoryTypeParent_Table" rowspan="1" colspan="1" style="width: 253px;">Tác giả</th>
                 <th class="sorting" tabindex="0" aria-controls="categoryTypeParent_Table" rowspan="1" colspan="1" style="width: 229px;">Giá tiền</th>
                 <th class="sorting" tabindex="0" aria-controls="categoryTypeParent_Table" rowspan="1" colspan="1" style="width: 162px;">Ngày tạo</th>
                 <th tabindex="0" aria-controls="categoryTypeParent_Table" rowspan="1" colspan="1" style="width: 115px;"></th>
@@ -17,6 +18,7 @@
                 <td class="category-type-name" data-filetype="${$value.MimeTypeImage}" data-file="${$value.ThumbnailImage}" data-childrenid="${$value.ChildrenId}">${$value.ChildrenName}</td>
                 <td class="age" data-age="${$value.AgeOrderId}">${$value.AgeOrderName}</td>
                 <td class="content-detail">{{html $value.Content}}</td>
+                <td class="author" data-authorid="${$value.AuthorId}">${$value.AuthorName}</td>
                 <td class="price" data-priceId="${$value.PriceId}">${$value.Price}</td>
                 <td>${$value.DateTime}</td>
                 <td>

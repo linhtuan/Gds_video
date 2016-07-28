@@ -54,26 +54,29 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "</th>\r\n                <th class=\"sorting\" tabindex=\"0\" aria-controls=\"categoryT" +
 "ypeParent_Table\" rowspan=\"1\" colspan=\"1\" style=\"width: 253px;\">Nội dung</th>\r\n  " +
 "              <th class=\"sorting\" tabindex=\"0\" aria-controls=\"categoryTypeParent" +
-"_Table\" rowspan=\"1\" colspan=\"1\" style=\"width: 229px;\">Giá tiền</th>\r\n           " +
-"     <th class=\"sorting\" tabindex=\"0\" aria-controls=\"categoryTypeParent_Table\" r" +
-"owspan=\"1\" colspan=\"1\" style=\"width: 162px;\">Ngày tạo</th>\r\n                <th " +
-"tabindex=\"0\" aria-controls=\"categoryTypeParent_Table\" rowspan=\"1\" colspan=\"1\" st" +
-"yle=\"width: 115px;\"></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r" +
-"\n            {{each Result}}\r\n            <tr class=\"gradeA odd\" role=\"row\" id=\"" +
-"${$value.ChildrenId}\">\r\n                <td class=\"category-type-name\" data-file" +
-"type=\"${$value.MimeTypeImage}\" data-file=\"${$value.ThumbnailImage}\" data-childre" +
-"nid=\"${$value.ChildrenId}\">${$value.ChildrenName}</td>\r\n                <td clas" +
-"s=\"age\" data-age=\"${$value.AgeOrderId}\">${$value.AgeOrderName}</td>\r\n           " +
-"     <td class=\"content-detail\">{{html $value.Content}}</td>\r\n                <t" +
-"d class=\"price\" data-priceId=\"${$value.PriceId}\">${$value.Price}</td>\r\n         " +
-"       <td>${$value.DateTime}</td>\r\n                <td>\r\n                    <a" +
-" class=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryTypeDetail(t" +
-"his)\" data-type=\"parent\" data-categorytype-order=\"${$value.CategoryTpyeOrder}\" d" +
-"ata-id=\"${$value.ChildrenId}\" data-toggle=\"modal\" href=\"#add-new-category-type-p" +
-"arent\">Edit</a>\r\n                    <a class=\"btn btn-sm btn-danger btn-rounded" +
-"\" onclick=\"deleteCategoryType(this)\" data-type=\"parent\" data-id=\"${$value.Childr" +
-"enId}\" href=\"#\">Delete</a>\r\n                </td>\r\n            </tr>\r\n          " +
-"  {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>\r\n");
+"_Table\" rowspan=\"1\" colspan=\"1\" style=\"width: 253px;\">Tác giả</th>\r\n            " +
+"    <th class=\"sorting\" tabindex=\"0\" aria-controls=\"categoryTypeParent_Table\" ro" +
+"wspan=\"1\" colspan=\"1\" style=\"width: 229px;\">Giá tiền</th>\r\n                <th c" +
+"lass=\"sorting\" tabindex=\"0\" aria-controls=\"categoryTypeParent_Table\" rowspan=\"1\"" +
+" colspan=\"1\" style=\"width: 162px;\">Ngày tạo</th>\r\n                <th tabindex=\"" +
+"0\" aria-controls=\"categoryTypeParent_Table\" rowspan=\"1\" colspan=\"1\" style=\"width" +
+": 115px;\"></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n         " +
+"   {{each Result}}\r\n            <tr class=\"gradeA odd\" role=\"row\" id=\"${$value.C" +
+"hildrenId}\">\r\n                <td class=\"category-type-name\" data-filetype=\"${$v" +
+"alue.MimeTypeImage}\" data-file=\"${$value.ThumbnailImage}\" data-childrenid=\"${$va" +
+"lue.ChildrenId}\">${$value.ChildrenName}</td>\r\n                <td class=\"age\" da" +
+"ta-age=\"${$value.AgeOrderId}\">${$value.AgeOrderName}</td>\r\n                <td c" +
+"lass=\"content-detail\">{{html $value.Content}}</td>\r\n                <td class=\"a" +
+"uthor\" data-authorid=\"${$value.AuthorId}\">${$value.AuthorName}</td>\r\n           " +
+"     <td class=\"price\" data-priceId=\"${$value.PriceId}\">${$value.Price}</td>\r\n  " +
+"              <td>${$value.DateTime}</td>\r\n                <td>\r\n               " +
+"     <a class=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryTypeD" +
+"etail(this)\" data-type=\"parent\" data-categorytype-order=\"${$value.CategoryTpyeOr" +
+"der}\" data-id=\"${$value.ChildrenId}\" data-toggle=\"modal\" href=\"#add-new-category" +
+"-type-parent\">Edit</a>\r\n                    <a class=\"btn btn-sm btn-danger btn-" +
+"rounded\" onclick=\"deleteCategoryType(this)\" data-type=\"parent\" data-id=\"${$value" +
+".ChildrenId}\" href=\"#\">Delete</a>\r\n                </td>\r\n            </tr>\r\n   " +
+"         {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>\r\n");
 
         }
     }

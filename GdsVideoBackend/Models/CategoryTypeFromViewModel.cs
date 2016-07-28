@@ -10,6 +10,8 @@ namespace GdsVideoBackend.Models
         public List<PriceSetting> PriceSetting { get; set; }
 
         public List<AgeOrderSetting> AgeOrderSetting { get; set; }
+
+        public List<AuthorSetting> AuthorSettings { get; set; }
     }
 
     public class PriceSetting
@@ -20,6 +22,13 @@ namespace GdsVideoBackend.Models
     }
 
     public class AgeOrderSetting
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+    }
+
+    public class AuthorSetting
     {
         public int Id { get; set; }
 

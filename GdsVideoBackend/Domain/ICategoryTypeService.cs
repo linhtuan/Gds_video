@@ -25,5 +25,7 @@ namespace GdsVideoBackend.Domain
         Dictionary<int, string> GetParentCategoryType();
 
         List<AgeOrder> GetAgeOrders();
+
+        List<Author> GetAuthors();
     }
 }

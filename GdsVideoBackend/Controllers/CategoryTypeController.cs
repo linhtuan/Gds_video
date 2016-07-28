@@ -36,13 +36,21 @@ namespace GdsVideoBackend.Controllers
                 Id = x.AgeOrderId,
                 Name = x.AgeOrderName
             }).ToList();
+
+            var authors = _categoryTypeService.GetAuthors().Select(x => new AuthorSetting
+            {
+                Id = x.AuthorId,
+                Name = x.AuthorName,
+            });
             var model = new CategoryTypeFromViewModel
             {
                 PriceSetting = new List<PriceSetting>(),
-                AgeOrderSetting = new List<AgeOrderSetting>()
+                AgeOrderSetting = new List<AgeOrderSetting>(),
+                AuthorSettings = new List<AuthorSetting>()
             };
             model.PriceSetting.AddRange(prices);
             model.AgeOrderSetting.AddRange(ageOrder);
+            model.AuthorSettings.AddRange(authors);
             return View(model);
         }
 
@@ -141,6 +149,7 @@ namespace GdsVideoBackend.Controllers
                 CategoryTypePriceId = Convert.ToInt32(request["Price"]),
                 AgeOrderId = Convert.ToInt32(request["AgeOrder"]),
                 CategoryTypeOrderId = Convert.ToInt32(request["CategoryTypeOrder"]),
+                AuthorId = Convert.ToInt32(request["Author"])
             };
             return item;
         }

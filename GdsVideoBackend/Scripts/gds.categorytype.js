@@ -221,6 +221,7 @@ function bindingCategoryTypeDetail(obj) {
         $('#category-type-parent-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
         $('#category-type-parent-form .price').val($("#" + rowId + " .price").attr('data-priceid'));
         $('#category-type-parent-form .age-order').val($("#" + rowId + " .age").attr('data-age'));
+        $('#category-type-parent-form .author').val($("#" + rowId + " .author").attr('data-authorid'));
         $('#category-type-parent-form .categorytype-order').val($(obj).attr("data-categorytype-order"));
         $('#category-type-parent-form .cateogry-type-content').html($("#" + rowId + " .content-detail").html());
         var fileType = $("#" + rowId + " .category-type-name").attr('data-filetype');
@@ -263,9 +264,9 @@ $(document).on('click', '#children-tab', function (event) {
 });
 
 $(document).on('click', '#save-parent', function (event) {
-    var form = $('#category-type-parent-form');
     $('#category-type-parent-form .category-id').val(parseInt(gds.getQueryVariable('categoryId')));
     $('#category-type-parent-form .content').val($('#category-type-parent-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, ""));
+    var form = $('#category-type-parent-form');
     if ($('#category-type-parent-form .category-type-id').val() == 0) {
         var saveCategoryType = categoryTypeCtrl.saveCategoryType(form);
         $.when(saveCategoryType).then(function(result) {
@@ -373,6 +374,7 @@ $(document).on('click', '#category-type-parent .category-type-box', function (ev
     $("#category-type-parent-form .price option:first").attr('selected', 'selected');
     $("#category-type-parent-form .age-order option:first").attr('selected', 'selected');
     $("#category-type-parent-form .categorytype-order option:first").attr('selected', 'selected');
+    $("#category-type-parent-form .author option:first").attr('selected', 'selected');
     $('#category-type-parent-form .cateogry-type-content').html('');
     $('#category-type-parent-form #image-photo').attr('src', '');
 });

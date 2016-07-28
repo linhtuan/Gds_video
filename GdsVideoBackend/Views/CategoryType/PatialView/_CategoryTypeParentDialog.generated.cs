@@ -270,8 +270,74 @@ WriteLiteral(">Trung bình</option>\r\n                                        <
 WriteLiteral(" value=\"300\"");
 
 WriteLiteral(">Cao</option>\r\n                                    </select>\r\n                   " +
-"             </div>\r\n                            </div>\r\n                       " +
-"     <div");
+"             </div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-6\"");
+
+WriteLiteral(">\r\n                                    <label>Tên tác giả</label>\r\n              " +
+"                      <select");
+
+WriteLiteral(" class=\"form-control m-b author\"");
+
+WriteLiteral(" name=\"Author\"");
+
+WriteLiteral(">\r\n                                        <option");
+
+WriteLiteral(" value=\"0\"");
+
+WriteLiteral(">-- Chọn tác giả --</option>\r\n");
+
+            
+            #line 46 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                        
+            
+            #line default
+            #line hidden
+            
+            #line 46 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                         foreach (var item in Model.AuthorSettings)
+                                        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                            <option");
+
+WriteAttribute("value", Tuple.Create(" value=\"", 3249), Tuple.Create("\"", 3265)
+            
+            #line 48 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+, Tuple.Create(Tuple.Create("", 3257), Tuple.Create<System.Object, System.Int32>(item.Id
+            
+            #line default
+            #line hidden
+, 3257), false)
+);
+
+WriteLiteral(">");
+
+            
+            #line 48 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                                                Write(item.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</option>\r\n");
+
+            
+            #line 49 "..\..\Views\CategoryType\PatialView\_CategoryTypeParentDialog.cshtml"
+                                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    </select>\r\n\r\n                                " +
+"</div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-6\"");
+
+WriteLiteral(">\r\n                                </div>\r\n                            </div>\r\n  " +
+"                          <div");
 
 WriteLiteral(" class=\"form-group row\"");
 

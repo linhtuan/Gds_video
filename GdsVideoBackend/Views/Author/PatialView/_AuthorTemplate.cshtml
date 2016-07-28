@@ -11,7 +11,7 @@
             {{each Result}}
             <tr class="gradeA odd" role="row" id="${$value.AuthorId}">
                 <td class="author_name" data-filetype="${$value.MimeTypeImage}" data-file="${$value.ThumbnailImage}">${$value.AuthorName}</td>
-                <td class="author-detail">${$value.AuthorDetail}</td>
+                <td class="author-detail">{{html $value.AuthorDetail}}</td>
                 <td class="center">
                     <a class="btn btn-sm btn-success btn-rounded" onclick="bindingAuthorFrom(this)" data-id="${$value.AuthorId}" data-toggle="modal" href="#add-new-author">Edit</a>
                 </td>

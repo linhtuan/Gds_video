@@ -29,5 +29,9 @@
         public string AgeOrderName { get; set; }
 
         public int CategoryTpyeOrder { get; set; }
+
+        public int AuthorId { get; set; }
+
+        public string AuthorName { get; set; }
     }
 }

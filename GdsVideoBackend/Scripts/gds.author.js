@@ -50,7 +50,7 @@
 }(author);
 
 function bindingAuthor() {
-    var binding = category.getCategory();
+    var binding = author.getAuthor();
     $.when(binding).then(function (result) {
         if (result.isSuccess) {
             $('#author-div').html('');
@@ -70,10 +70,10 @@ function bindingAuthorFrom(obj) {
     document.getElementById("image-photo").src = "data:image/" + fileType + ";base64," + file;
 }
 
-$(document).on('click', '#save', function (event) {
-    var form = $('#author-form');
+$(document).on('click', '#save-author', function (event) {
     $('#author-form .content').val($('#author-form .author-content').code().replace(/^\s+|\s+$/g, ""));
-    if (model.CategoryId == 0) {
+    var form = $('#author-form');
+    if ($('#author-form .author-id').val() == 0) {
         var insert = author.insertAuthor(form);
         $.when(insert).then(function (result) {
             if (result.isSuccess) {
@@ -81,7 +81,7 @@ $(document).on('click', '#save', function (event) {
             }
         });
     } else {
-        var update = author.updateAuthor(model);
+        var update = author.updateAuthor(form);
         $.when(update).then(function (result) {
             if (result.isSuccess) {
                 bindingAuthor();
