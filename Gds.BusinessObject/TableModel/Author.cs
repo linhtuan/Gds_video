@@ -16,5 +16,11 @@ namespace Gds.BusinessObject.TableModel
         public string AuthorDetail { get; set; }
 
         public string AuthorImage { get; set; }
+
+        [NotMapped]
+        public string ThumbnailImage { get; set; }
+
+        [NotMapped]
+        public string MimeTypeImage { get; set; }
     }
 }

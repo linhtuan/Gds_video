@@ -110,6 +110,12 @@ $(document).on('click', '#save', function (event) {
 });
 
 
+$(document).on('click', '.category-box', function (event) {
+    $('#category-form .category-name').val('');
+    $('#category-form .category-detail').val('');
+    $("#category-form #category-id").val('');
+});
+
 $(document).ready(function () {
     window.callback = bindingCategory();
 });

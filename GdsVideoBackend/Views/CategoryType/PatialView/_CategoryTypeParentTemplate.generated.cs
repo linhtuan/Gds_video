@@ -68,12 +68,12 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "d class=\"price\" data-priceId=\"${$value.PriceId}\">${$value.Price}</td>\r\n         " +
 "       <td>${$value.DateTime}</td>\r\n                <td>\r\n                    <a" +
 " class=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryTypeDetail(t" +
-"his)\" data-type=\"parent\" data-id=\"${$value.ChildrenId}\" data-toggle=\"modal\" href" +
-"=\"#add-new-category-type-parent\">Edit</a>\r\n                    <a class=\"btn btn" +
-"-sm btn-danger btn-rounded\" onclick=\"deleteCategoryType(this)\" data-type=\"parent" +
-"\" data-id=\"${$value.ChildrenId}\" href=\"#\">Delete</a>\r\n                </td>\r\n   " +
-"         </tr>\r\n            {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>" +
-"\r\n");
+"his)\" data-type=\"parent\" data-categorytype-order=\"${$value.CategoryTpyeOrder}\" d" +
+"ata-id=\"${$value.ChildrenId}\" data-toggle=\"modal\" href=\"#add-new-category-type-p" +
+"arent\">Edit</a>\r\n                    <a class=\"btn btn-sm btn-danger btn-rounded" +
+"\" onclick=\"deleteCategoryType(this)\" data-type=\"parent\" data-id=\"${$value.Childr" +
+"enId}\" href=\"#\">Delete</a>\r\n                </td>\r\n            </tr>\r\n          " +
+"  {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>\r\n");
 
         }
     }

@@ -8,6 +8,7 @@ using Gds.BusinessObject.TableModel;
 using Gds.ServiceModel.BackEndModel;
 using Gds.ServiceModel.ControlObject;
 using Gds.Setting;
+using Gds.Setting.Enum;
 using GdsVideoBackend.Models;
 using MvcCornerstone.Data;
 using MvcCornerstone.Extension;
@@ -59,7 +60,8 @@ namespace GdsVideoBackend.Domain.Implement
                     AgeOrderId = item.cat.AgeOrderId,
                     AgeOrderName = item.cat.AgeOrderId.HasValue
                         ? ageOrder.First(x => x.AgeOrderId == item.cat.AgeOrderId).AgeOrderName
-                        : string.Empty
+                        : string.Empty,
+                    CategoryTpyeOrder = item.cat.GlobalSortOrder.HasValue ? item.cat.GlobalSortOrder.Value : 0
                 }).ToList();
 
                 var resultPaging = new PagingResultModel<CategoryTypesModel>
@@ -143,7 +145,10 @@ namespace GdsVideoBackend.Domain.Implement
                     CreatedDate = DateTime.UtcNow,
                     Status = 1,
                     UrlRouter = urlRouter,
-                    AgeOrderId = model.AgeOrderId
+                    AgeOrderId = model.AgeOrderId,
+                    GlobalSortOrder = model.CategoryTypeOrderId == 0
+                        ? (int) CategoryTypeOrderEnum.Normal
+                        : model.CategoryTypeOrderId
                 };
                 if (model.ParentId != 0)
                 {
@@ -190,7 +195,10 @@ namespace GdsVideoBackend.Domain.Implement
                     Status = 1,
                     ThumbnailImage = model.FileThumbnail,
                     UrlRouter = urlRouter,
-                    AgeOrderId = model.AgeOrderId
+                    AgeOrderId = model.AgeOrderId,
+                    GlobalSortOrder = model.CategoryTypeOrderId == 0
+                        ? (int)CategoryTypeOrderEnum.Normal
+                        : model.CategoryTypeOrderId
                 });
                 Repository.Commit<DbContextBase>();
                 return true;

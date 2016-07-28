@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section style
+{
+    <link href="~/Content/css/plugins/summernote/summernote.css" rel="stylesheet" />
+    <link href="~/Content/css/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+}
+
+@section left_menu
+{
+    @Html.Partial("~/Views/PartialViews/_LeftMenuPartial.cshtml")
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="table-responsive">
+                    <div class="dataTables_wrapper form-inline">
+                        <div class="clear"></div>
+                        <div class="dataTables_length">
+                            <div class="col-sm-3">
+                                <label>
+                                    <select class="form-control input-sm page-size">
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> records per page
+                                </label>
+                            </div>
+                            <div class="col-sm-3">
+                                <a data-toggle="modal" class="btn btn-success btn-sm author-type-box" href="#add-new-author">Thêm tác giả</a>
+                            </div>
+                        </div>
+                        <div class="dataTables_filter">
+                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+                        </div>
+                        <div id="author-div">
+
+                        </div>
+                        <div class="paging_simple_numbers">
+                            <div class="col-lg-12">
+                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4 paging-row hide">
+                                    <a class="btn btn-default btn-sm prev" href="#"><i class="fa fa-angle-left"></i> Previous</a>
+                                    <input type="text" class="input-mini">&nbsp;of&nbsp;<a class="total-row">0</a>
+                                    <a class="btn btn-default btn-sm next" href="#">Next <i class="fa fa-angle-right"></i></a>
+                                </div>
+                                <div class="col-lg-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script src="~/Scripts/gds.paging.control.js"></script>
+    <script src="~/Scripts/gds.categorytype.js"></script>
+    <script src="~/Content/js/plugins/summernote/summernote.min.js"></script>
+    <script>
+        $(document).on('click', '#category-type-parent-form #edit', function (event) {
+            $('#category-type-parent-form .cateogry-type-content').summernote({ focus: true });
+        });
+
+        $(document).on('click', '#category-type-parent-form #save', function (event) {
+            //var aHTML = $('.cateogry-type-content').code(); //save HTML If you need(aHTML: array).
+            $('#category-type-parent-form .cateogry-type-content').destroy();
+        });
+    </script>
+}

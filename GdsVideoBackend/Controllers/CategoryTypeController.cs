@@ -139,7 +139,8 @@ namespace GdsVideoBackend.Controllers
                 CategoryTypeName = request["CategoryTypeName"],
                 Content = request["Content"],
                 CategoryTypePriceId = Convert.ToInt32(request["Price"]),
-                AgeOrderId = Convert.ToInt32(request["AgeOrder"])
+                AgeOrderId = Convert.ToInt32(request["AgeOrder"]),
+                CategoryTypeOrderId = Convert.ToInt32(request["CategoryTypeOrder"]),
             };
             return item;
         }

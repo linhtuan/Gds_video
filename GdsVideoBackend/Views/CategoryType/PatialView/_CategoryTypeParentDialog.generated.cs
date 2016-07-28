@@ -246,8 +246,32 @@ WriteLiteral("                                    </select>\r\n                 
 
 WriteLiteral(" class=\"col-sm-6\"");
 
-WriteLiteral(">\r\n                                </div>\r\n                            </div>\r\n  " +
-"                          <div");
+WriteLiteral(">\r\n                                    <label>Thứ tự gói</label>\r\n               " +
+"                     <select");
+
+WriteLiteral(" class=\"form-control m-b categorytype-order\"");
+
+WriteLiteral(" name=\"CategoryTypeOrder\"");
+
+WriteLiteral(">\r\n                                        <option");
+
+WriteLiteral(" value=\"0\"");
+
+WriteLiteral(">-- Mắc định --</option>\r\n                                        <option");
+
+WriteLiteral(" value=\"100\"");
+
+WriteLiteral(">Thấp</option>\r\n                                        <option");
+
+WriteLiteral(" value=\"200\"");
+
+WriteLiteral(">Trung bình</option>\r\n                                        <option");
+
+WriteLiteral(" value=\"300\"");
+
+WriteLiteral(">Cao</option>\r\n                                    </select>\r\n                   " +
+"             </div>\r\n                            </div>\r\n                       " +
+"     <div");
 
 WriteLiteral(" class=\"form-group row\"");
 

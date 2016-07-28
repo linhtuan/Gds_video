@@ -135,9 +135,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhysicalFilesController.cs" />
     <Compile Include="Controllers\PriceSettingController.cs" />
+    <Compile Include="Domain\IAuthorService.cs" />
     <Compile Include="Domain\ICategoryDetailService.cs" />
     <Compile Include="Domain\ICategorysService.cs" />
     <Compile Include="Domain\ICategoryTypeService.cs" />
+    <Compile Include="Domain\Implement\AuthorService.cs" />
     <Compile Include="Domain\Implement\CategoryDetailService.cs" />
     <Compile Include="Domain\Implement\CategorysService.cs" />
     <Compile Include="Domain\Implement\CategoryTypeService.cs" />
@@ -789,7 +791,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
-    <Folder Include="Views\Author\" />
     <Folder Include="Views\CategorySearch\" />
     <Folder Include="Views\PriceSetting\" />
   </ItemGroup>
@@ -909,6 +910,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Author\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">

@@ -18,5 +18,7 @@ namespace GdsVideoBackend.Models
         public string Content { get; set; }
 
         public int AgeOrderId { get; set; }
+
+        public int CategoryTypeOrderId { get; set; }
     }
 }

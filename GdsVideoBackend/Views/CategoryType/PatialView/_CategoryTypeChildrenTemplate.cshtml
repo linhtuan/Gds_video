@@ -19,7 +19,7 @@
                 <td class="price" data-priceid="${$value.PriceId}">${$value.Price}</td>
                 <td class="center">${$value.DateTime}</td>
                 <td class="center">
-                    <a class="btn btn-sm btn-success btn-rounded" href="#">Video</a>
+                    <a class="btn btn-sm btn-success btn-rounded" href="categorydetail?categoryTypeId=${$value.ChildrenId}">Bài học</a>
                     <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryTypeDetail(this)" data-type="children" data-id="${$value.ChildrenId}" data-toggle="modal" href="#add-new-category-type-children">Edit</a>
                     <a class="btn btn-sm btn-danger btn-rounded" onclick="deleteCategoryType(this)" data-type="children" data-id="${$value.ChildrenId}" href="#">Delete</a>
                 </td>

@@ -20,7 +20,7 @@
                 <td class="price" data-priceId="${$value.PriceId}">${$value.Price}</td>
                 <td>${$value.DateTime}</td>
                 <td>
-                    <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryTypeDetail(this)" data-type="parent" data-id="${$value.ChildrenId}" data-toggle="modal" href="#add-new-category-type-parent">Edit</a>
+                    <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryTypeDetail(this)" data-type="parent" data-categorytype-order="${$value.CategoryTpyeOrder}" data-id="${$value.ChildrenId}" data-toggle="modal" href="#add-new-category-type-parent">Edit</a>
                     <a class="btn btn-sm btn-danger btn-rounded" onclick="deleteCategoryType(this)" data-type="parent" data-id="${$value.ChildrenId}" href="#">Delete</a>
                 </td>
             </tr>

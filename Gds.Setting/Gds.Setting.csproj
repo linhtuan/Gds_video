@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
     <Compile Include="Cryptography\CryptographyHelper.cs" />
+    <Compile Include="Enum\CategoryTypeOrderEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionManager.cs" />
   </ItemGroup>

@@ -67,14 +67,15 @@ WriteLiteral(">\r\n    <table class=\"table table-striped table-bordered table-h
 "=\"content-detail\">{{html $value.Content}}</td>\r\n                <td class=\"price" +
 "\" data-priceid=\"${$value.PriceId}\">${$value.Price}</td>\r\n                <td cla" +
 "ss=\"center\">${$value.DateTime}</td>\r\n                <td class=\"center\">\r\n      " +
-"              <a class=\"btn btn-sm btn-success btn-rounded\" href=\"#\">Video</a>\r\n" +
-"                    <a class=\"btn btn-sm btn-success btn-rounded\" onclick=\"bindi" +
-"ngCategoryTypeDetail(this)\" data-type=\"children\" data-id=\"${$value.ChildrenId}\" " +
-"data-toggle=\"modal\" href=\"#add-new-category-type-children\">Edit</a>\r\n           " +
-"         <a class=\"btn btn-sm btn-danger btn-rounded\" onclick=\"deleteCategoryTyp" +
-"e(this)\" data-type=\"children\" data-id=\"${$value.ChildrenId}\" href=\"#\">Delete</a>" +
-"\r\n                </td>\r\n            </tr>\r\n            {{/each}}\r\n        </tbo" +
-"dy>\r\n    </table>\r\n</script>\r\n");
+"              <a class=\"btn btn-sm btn-success btn-rounded\" href=\"categorydetail" +
+"?categoryTypeId=${$value.ChildrenId}\">Bài học</a>\r\n                    <a class=" +
+"\"btn btn-sm btn-success btn-rounded\" onclick=\"bindingCategoryTypeDetail(this)\" d" +
+"ata-type=\"children\" data-id=\"${$value.ChildrenId}\" data-toggle=\"modal\" href=\"#ad" +
+"d-new-category-type-children\">Edit</a>\r\n                    <a class=\"btn btn-sm" +
+" btn-danger btn-rounded\" onclick=\"deleteCategoryType(this)\" data-type=\"children\"" +
+" data-id=\"${$value.ChildrenId}\" href=\"#\">Delete</a>\r\n                </td>\r\n    " +
+"        </tr>\r\n            {{/each}}\r\n        </tbody>\r\n    </table>\r\n</script>\r" +
+"\n");
 
         }
     }

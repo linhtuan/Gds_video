@@ -122,7 +122,7 @@ WriteLiteral(">\r\n                            <a");
 
 WriteLiteral(" data-toggle=\"modal\"");
 
-WriteLiteral(" class=\"btn btn-success btn-sm\"");
+WriteLiteral(" class=\"btn btn-success btn-sm category-box\"");
 
 WriteLiteral(" href=\"#add-new-category\"");
 
@@ -300,23 +300,23 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3802), Tuple.Create("\"", 3832)
-, Tuple.Create(Tuple.Create("", 3808), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
-, 3808), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3815), Tuple.Create("\"", 3845)
+, Tuple.Create(Tuple.Create("", 3821), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 3821), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3856), Tuple.Create("\"", 3893)
-, Tuple.Create(Tuple.Create("", 3862), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 3862), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3869), Tuple.Create("\"", 3906)
+, Tuple.Create(Tuple.Create("", 3875), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 3875), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3917), Tuple.Create("\"", 3948)
-, Tuple.Create(Tuple.Create("", 3923), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.category.js")
-, 3923), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3930), Tuple.Create("\"", 3961)
+, Tuple.Create(Tuple.Create("", 3936), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.category.js")
+, 3936), false)
 );
 
 WriteLiteral("></script>\r\n");

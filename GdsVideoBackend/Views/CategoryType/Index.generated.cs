@@ -429,14 +429,15 @@ WriteLiteral(@"></div>
                         </div>
                     </div>
                 </div>
-            </div>div>
+            </div>
+        </div>
     </div>
 </div>
 
 ");
 
             
-            #line 118 "..\..\Views\CategoryType\Index.cshtml"
+            #line 119 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.cshtml"));
 
             
@@ -445,7 +446,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.
 WriteLiteral("\r\n");
 
             
-            #line 119 "..\..\Views\CategoryType\Index.cshtml"
+            #line 120 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplate.cshtml"));
 
             
@@ -454,7 +455,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplat
 WriteLiteral("\r\n");
 
             
-            #line 120 "..\..\Views\CategoryType\Index.cshtml"
+            #line 121 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml", Model));
 
             
@@ -463,7 +464,7 @@ Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cs
 WriteLiteral("\r\n");
 
             
-            #line 121 "..\..\Views\CategoryType\Index.cshtml"
+            #line 122 "..\..\Views\CategoryType\Index.cshtml"
 Write(Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentTemplate.cshtml"));
 
             
@@ -475,30 +476,30 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7295), Tuple.Create("\"", 7325)
-, Tuple.Create(Tuple.Create("", 7301), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
-, 7301), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7307), Tuple.Create("\"", 7337)
+, Tuple.Create(Tuple.Create("", 7313), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/jquery.tmpl.js")
+, 7313), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7349), Tuple.Create("\"", 7386)
-, Tuple.Create(Tuple.Create("", 7355), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
-, 7355), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7361), Tuple.Create("\"", 7398)
+, Tuple.Create(Tuple.Create("", 7367), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.paging.control.js")
+, 7367), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7410), Tuple.Create("\"", 7445)
-, Tuple.Create(Tuple.Create("", 7416), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
-, 7416), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7422), Tuple.Create("\"", 7457)
+, Tuple.Create(Tuple.Create("", 7428), Tuple.Create<System.Object, System.Int32>(Href("~/Scripts/gds.categorytype.js")
+, 7428), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7469), Tuple.Create("\"", 7524)
-, Tuple.Create(Tuple.Create("", 7475), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
-, 7475), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 7481), Tuple.Create("\"", 7536)
+, Tuple.Create(Tuple.Create("", 7487), Tuple.Create<System.Object, System.Int32>(Href("~/Content/js/plugins/summernote/summernote.min.js")
+, 7487), false)
 );
 
 WriteLiteral(@"></script>

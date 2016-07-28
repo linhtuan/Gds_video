@@ -27,5 +27,7 @@
         public int? AgeOrderId { get; set; }
 
         public string AgeOrderName { get; set; }
+
+        public int CategoryTpyeOrder { get; set; }
     }
 }
