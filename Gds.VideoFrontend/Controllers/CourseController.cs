@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Gds.Setting.Cryptography;
 using Gds.VideoFrontend.Domain;
@@ -19,46 +20,64 @@ namespace Gds.VideoFrontend.Controllers
         public ActionResult Index(string categorytype)
         {
             var model = _courseService.GetCourseDetail(categorytype);
+            model.CourseRouter = categorytype;
             return View(model);
         }
 
         [Route("course/{categorytype?}/learning")]
         public ActionResult Learning(string categorytype)
         {
-            return View();
-            var model = _courseService.GetCourseDetail(categorytype);
+            //check user da mua goi chua
+
+            var model = _courseService.GetLearning(categorytype);
             return View(model);
         }
 
         [Route("course/{categorytype?}/lecture/{index?}")]
         public ActionResult Lecture(string categorytype, int index)
         {
+            //check user da mua goi chua
+            var model = _courseService.GetLecture(categorytype, index);
+            if (string.IsNullOrEmpty(model.CourseId)) return null;
 
-            return View();
-            var model = _courseService.GetCourseDetail(categorytype);
             return View(model);
         }
 
-        public JsonResult GetLectures()
+        [HttpPost]
+        [Route("course/lectures/info")]
+        public JsonResult GetLectures(bool hasUrl, string courseId, string urlRouter)
         {
-            return null;
+            //check user da mua goi chua
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
+            var result = _courseService.GetLectures(categoryTypeId, hasUrl, urlRouter);
+            return result.Any() 
+                ? Json(new {isSuccess = true, data = result})
+                : Json(new { isSuccess = false });
         }
 
+        [HttpPost]
+        [Route("course/suggest/info")]
         public JsonResult GetSuggestCourse(string courseId)
         {
-            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId, CryptographyHelper.CategoryTypeKey));
-            return Json(null);
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
+
+            var result = _courseService.GetSuggestCourses(categoryTypeId);
+            return result.Any()
+                ? Json(new { isSuccess = true, data = result })
+                : Json(new { isSuccess = false });
         }
 
         public JsonResult GetMoreInfoCourse(string courseId)
         {
-            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId, CryptographyHelper.CategoryTypeKey));
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
             return Json(null);
         }
 
+        [HttpPost]
+        [Route("course/getauthor/info")]
         public JsonResult GetAuthorDetail(string authorId)
         {
-             var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(authorId, CryptographyHelper.AuthorKey));
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(authorId));
             var result = _courseService.GetAuthor(categoryTypeId);
             return result != null
                 ? Json(new {isSuccess = true, data = result})

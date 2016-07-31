@@ -133,6 +133,7 @@
     <Compile Include="Controllers\CategorySearchController.cs" />
     <Compile Include="Controllers\CategoryTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentHistoryController.cs" />
     <Compile Include="Controllers\PhysicalFilesController.cs" />
     <Compile Include="Controllers\PriceSettingController.cs" />
     <Compile Include="Domain\IAuthorService.cs" />
@@ -792,6 +793,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
     <Folder Include="Views\CategorySearch\" />
+    <Folder Include="Views\PaymentHistory\" />
     <Folder Include="Views\PriceSetting\" />
   </ItemGroup>
   <ItemGroup>

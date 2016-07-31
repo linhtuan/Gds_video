@@ -213,7 +213,9 @@
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\CourseDetailViewModel.cs" />
     <Compile Include="Models\CoursesViewModel.cs" />
-    <Compile Include="Models\LearningVideoModel.cs" />
+    <Compile Include="Models\LearningViewModel.cs" />
+    <Compile Include="Models\LectureGroupViewModel.cs" />
+    <Compile Include="Models\LectureViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -230,7 +232,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\gds\gds.category.js" />
+    <Content Include="Scripts\gds\gds.course.js" />
+    <Content Include="Scripts\gds\gds.course.learning.js" />
+    <Content Include="Scripts\gds\gds.course.lecture.js" />
     <Content Include="Scripts\gds\gds.home.js" />
+    <Content Include="Scripts\gds\gds.js" />
     <Content Include="Scripts\gds\gds.paging.control.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
@@ -385,6 +391,9 @@
     <Content Include="Views\Course\Lecture.cshtml" />
     <Content Include="Views\Course\Learning.cshtml" />
     <Content Include="Views\Shared\_LayoutPlayVideo.cshtml" />
+    <Content Include="Views\Course\PartialView\_AuthorTemplate.cshtml" />
+    <Content Include="Views\Course\PartialView\_LectureContainerTemplate.cshtml" />
+    <Content Include="Views\Course\PartialView\_CommentContainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

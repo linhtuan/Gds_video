@@ -11,6 +11,8 @@
         <!-- + Get user and course information -->
         <input class="course_id" type="hidden" value="@Model.CourseId">
         <input class="course_name" type="hidden" value="@Model.CourseName">
+        <input class="author_id" type="hidden" value="@Model.AuthorId">
+        <input class="course_router" type="hidden" value="@Model.CourseRouter">
         <!-- + Report modal -->
         <div class="modal fade" id="complete-dialog" tabindex="-1">
             <div class="modal-dialog">
@@ -100,7 +102,7 @@
                     </div>
                     <div class="course-author">
                         Giảng dạy bởi
-                        <a class="link-text normal-text" href="#" style="cursor: default">Tuan Linh</a>
+                        <a id="author-name" class="link-text normal-text" href="#" style="cursor: default">Tuan Linh</a>
                     </div>
                     <div class="course-detail">
                         <div class="course-player">
@@ -154,20 +156,20 @@
                                     </div>
                                     <div class="course-info-right">
                                         <h5 class="bold">
-                                            31
+                                            @Model.NumberLecture
                                         </h5>
                                         <h5 class="bold">
-                                            <span>3h46p</span>
+                                            <span>@Model.TotalTimeLear</span>
                                         </h5>
                                     </div>
                                 </div>
                                 <div class="course-wishlist">
-                                    <a class="btn btn-raised btn-lg wishlist-button wishlisted-bg">
+                                    @*<a class="btn btn-raised btn-lg wishlist-button wishlisted-bg">
                                         <div class="round">
                                             <i class="fa fa-heart"></i>
                                         </div>
                                         <span>Quan tâm</span>
-                                    </a>
+                                    </a>*@
                                     <a class="btn social-button" href="#" id="facebook-share-button" style="font-size:48px;">
                                         <i class="fa fa-facebook-square"></i>
                                     </a>
@@ -191,30 +193,12 @@
                     </div>
                     <div id="curiculums">
                         <div class="curiculums-title">Giáo trình</div>
-                        @Html.Partial("~/Views/Course/PartialView/_CourseChildrenTemplate.cshtml")
+                        <div id="childred-template">
+                            
+                        </div>
                     </div>
                     <div id="author">
-                        <div class="author-title">Tiểu sử tác giả</div>
-                        <div class="author-content">
-                            <div class="author-avatar">
-                                <img style="width: 100%" src="./Làm chủ Excel 2010 trong 4 giờ_files/nguyen-danh-tu.png" alt="Nguyen danh tu">
-                            </div>
-                            <div class="author-description">
-                                <div class="no-margin"></div>
-                                <a class="author-title" href="#" style="color: #464646;">
-                                    <span style="font-size:14px">Thạc sỹ</span>
-                                    <span>Tuan Linh</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="author-information">
-                            <h5 class="information-text">Nguyên Giám đốc tài chính cho Doanh nghiệp có hơn 600 nhân viên</h5>
-                            <h5 class="information-text">15+ năm kinh nghiệm giảng dạy tại Đại học Bách Khoa Hà Nội và BKIndex</h5>
-                            <h5 class="information-text">5+ năm kinh nghiệm trong lĩnh vực sư phạm và đào tạo trên môi trường trực tuyến E-learning.</h5>
-                            <h5 class="information-text">12+ năm kinh nghiệm trong lĩnh vực Tin học văn phòng trong công việc và cải tiến quy trình</h5>
-                            <h5 class="information-text">20+ khóa học dành riêng cho người đi làm với chuyên đề Excel.</h5>
-                            <h5 class="information-text">100+ khóa giảng dạy chuyên đề, kỹ năng về ứng dụng CNTT trong làm việc</h5>
-                        </div>
+                        
                     </div>
                     @*<div id="rating" style="display: none">
                             <div class="rating-title">Đánh giá</div>
@@ -240,11 +224,19 @@
                 <div class="bottom-right">
                     <div class="also-viewed-container">
                         <h3 class="view-title">Khóa học gợi ý cho bạn</h3>
-                        @Html.Partial("~/Views/Course/PartialView/_OtherCoursesTemplate.cshtml")
+                        <ul class="also-viewed" id="also-viewed"></ul>
+                        
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
+@Html.Partial("~/Views/Course/PartialView/_OtherCoursesTemplate.cshtml")
+@Html.Partial("~/Views/Course/PartialView/_CourseChildrenTemplate.cshtml")
+@Html.Partial("~/Views/Course/PartialView/_AuthorTemplate.cshtml")
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script src="~/Scripts/gds/gds.js"></script>
+    <script src="~/Scripts/gds/gds.course.js"></script>
+}

@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Web.Http;
+using Gds.Setting.Cryptography;
 using Gds.VideoFrontend.Domain;
 
 namespace Gds.VideoFrontend.Areas.ApiService.Controllers
@@ -49,12 +50,12 @@ namespace Gds.VideoFrontend.Areas.ApiService.Controllers
 
         [Route("api/videostream/fromvideo")]
         [HttpGet]
-        public HttpResponseMessage FromVideo(int physicalFile)
+        public HttpResponseMessage FromVideo(string physicalFile)
         {
-            //int physicalFileId;
-            //if (!int.TryParse(CryptographyHelper.Decrypt(physicalFile), out physicalFileId)) return null;
+            int physicalFileId;
+            if (!int.TryParse(CryptographyHelper.Decrypt(physicalFile), out physicalFileId)) return null;
 
-            var fileName = _categoryDetailService.GetVideos(physicalFile);
+            var fileName = _categoryDetailService.GetVideos(physicalFileId);
             if (fileName == null) return null;
             var fileInfo = new FileInfo(Path.Combine(fileName));
 

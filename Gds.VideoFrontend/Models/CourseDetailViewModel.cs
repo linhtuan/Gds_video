@@ -19,5 +19,13 @@
         public string Content { get; set; }
 
         public double RatingLevel { get; set; }
+
+        public string AuthorId { get; set; }
+
+        public int NumberLecture { get; set; }
+
+        public string TotalTimeLear { get; set; }
+
+        public string CourseRouter { get; set; }
     }
 }

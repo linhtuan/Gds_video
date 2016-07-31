@@ -7,12 +7,9 @@ namespace Gds.Setting.Cryptography
 {
     public class CryptographyHelper
     {
-        public static string AuthorKey = "gds^&(authories)";
-        public static string CategoryKey = "gds^&(categorys)";
-        public static string CategoryTypeKey = "gds^&(catetypes)";
-        public static string VideoKey = "gds^&(videosids)";
+        public static string KeySetting = "gds^&(backgrund)";
 
-        public static string Decrypt(string decrypt, string key)
+        public static string Decrypt(string decrypt)
         {
             decrypt = decrypt.Replace(" ", "+");
             int mode = decrypt.Length % 4;
@@ -20,15 +17,15 @@ namespace Gds.Setting.Cryptography
                 decrypt = decrypt.Substring(0, decrypt.Length - mode);
 
             const string vector = "1597836#";
-            string value = CryptographyEngine.Decrypt(Convert.FromBase64String(decrypt), Encoding.UTF8.GetBytes(key),
+            string value = CryptographyEngine.Decrypt(Convert.FromBase64String(decrypt), Encoding.UTF8.GetBytes(KeySetting),
                                                       Encoding.UTF8.GetBytes(vector));
             return value.Replace("\0", "");
         }
 
-        public static string Encrypt(string encrypt, string key)
+        public static string Encrypt(string encrypt)
         {
             const string vector = "1597836#";
-            byte[] value = CryptographyEngine.Encrypt(encrypt, Encoding.UTF8.GetBytes(key), Encoding.UTF8.GetBytes(vector));
+            byte[] value = CryptographyEngine.Encrypt(encrypt, Encoding.UTF8.GetBytes(KeySetting), Encoding.UTF8.GetBytes(vector));
             return Convert.ToBase64String(value);
         }
 

@@ -1,31 +1,43 @@
-﻿<div class="curiculum">
-    <div class="row no-margin curiculum-title">
-        <a class="normal-text" href="https://edumall.vn/courses/lam-chu-excel-2010-trong-4-gio/detail#" style="pointer-events: none; margin: 15px 0; color: #464646;">
-            <b>Phần 1: Nội dung khóa học</b>
-        </a>
-    </div>
-</div>
-<div class="curiculum">
-    <div class="row no-margin curiculum-list">
-        <div class="col-xs-12 no-padding">
-            <div class="row no-margin curiculum-content">
-                <div class="col-xs-12">
-                    <div class="detail-curi-type pull-left" style="margin-right:10px">
-                        <i class="fa fa-play-circle"></i>
-                    </div>
-                    <div class="detail-curi-lecture pull-left">
-                        <h5 class="normal-text no-margin" style="line-height:1.5; color: #777777">Bài số 1</h5>
-                    </div>
-                    <div class="detail-curi-title pull-left">
-                        <h5 class="normal-text no-margin" style="line-height:1.5; color: #777777">Giới thiệu</h5>
-                    </div>
-                    <div class="detail-curi-leacture pull-right">
-                        <h5 class="normal-text no-margin">
-                            <b>03:55</b>
-                        </h5>
-                    </div>
+﻿
+<script id="lectureTemplate" type="text/x-jquery-tmpl">
+    {{each Lectures}}
+    <div class="col-xs-12 no-padding">
+        <div class="row no-margin curiculum-content">
+            <div class="col-xs-12">
+                <div class="detail-curi-type pull-left" style="margin-right:10px">
+                    <i class="fa fa-play-circle"></i>
+                </div>
+                <div class="detail-curi-lecture pull-left">
+                    <h5 class="normal-text no-margin" style="line-height:1.5; color: #777777">Bài số ${$value.LectureNumberIndex}</h5>
+                </div>
+                <div class="detail-curi-title pull-left">
+                    <h5 class="normal-text no-margin" style="line-height:1.5; color: #777777">${$value.LectureName}</h5>
+                </div>
+                <div class="detail-curi-leacture pull-right">
+                    <h5 class="normal-text no-margin">
+                        <b>${$value.LectureTime}</b>
+                    </h5>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    {{/each}}
+</script>
+
+<script id="lectureGroupTemplate" type="text/x-jquery-tmpl">
+    {{each data}}
+    <div class="curiculum">
+        <div class="row no-margin curiculum-title">
+            <a class="normal-text" href="#" style="pointer-events: none; margin: 15px 0; color: #464646;">
+                <b>Phần ${$value.LectureGroupIndex}: ${$value.LectureGroupName}</b>
+            </a>
+        </div>
+    </div>
+    <div class="curiculum">
+        <div class="row no-margin curiculum-list">
+            {{tmpl($value) "#lectureTemplate"}}
+        </div>
+    </div>
+    {{/each}}
+
+</script>

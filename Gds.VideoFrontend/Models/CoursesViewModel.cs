@@ -13,5 +13,7 @@
         public string UrlCourse { get; set; }
 
         public string Price { get; set; }
+
+        public string RatingLevel { get; set; }
     }
 }

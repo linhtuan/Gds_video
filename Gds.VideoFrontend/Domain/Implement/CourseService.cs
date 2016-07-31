@@ -4,9 +4,12 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
+using System.Web.Mvc;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using Gds.Setting.Cryptography;
+using Gds.Setting.Helper;
 using Gds.VideoFrontend.BusinessService;
 using Gds.VideoFrontend.Models;
 using MvcCornerstone.Data;
@@ -19,8 +22,8 @@ namespace Gds.VideoFrontend.Domain.Implement
         private readonly IEntityRepository<Categorys> _catRepository;
         private readonly IEntityRepository<CategoryTypePrice> _catPriceRepository;
         private readonly IEntityRepository<Author> _authorRepository;
-        private readonly IEntityRepository<CategoryRating> _ratingRepository;
-        private readonly IEntityRepository<CategoryDetails> _categoryDetailRepository; 
+        private readonly IEntityRepository<CategoryDetails> _categoryDetailRepository;
+        private readonly IEntityRepository<PhysicalFiles> _physicalRepository;
 
         #region Service
 
@@ -32,21 +35,56 @@ namespace Gds.VideoFrontend.Domain.Implement
             IEntityRepository<Categorys> catRepository, 
             IEntityRepository<CategoryTypePrice> catPriceRepository, 
             IEntityRepository<Author> authorRepository, 
-            IEntityRepository<CategoryRating> ratingRepository, 
             IRatingService ratingService, 
-            IEntityRepository<CategoryDetails> categoryDetailRepository) : base(repository)
+            IEntityRepository<CategoryDetails> categoryDetailRepository, 
+            IEntityRepository<PhysicalFiles> physicalRepository) : base(repository)
         {
             _catRepository = catRepository;
             _catPriceRepository = catPriceRepository;
             _authorRepository = authorRepository;
-            _ratingRepository = ratingRepository;
             _ratingService = ratingService;
             _categoryDetailRepository = categoryDetailRepository;
+            _physicalRepository = physicalRepository;
+        }
+
+        public CategoryTypes GetCategoryType(string courseRouter)
+        {
+            return Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
+                                                          && x.Status == 1
+                                                          && x.CategoryTypeParentId == 0).FirstOrDefault();
         }
 
         public List<CoursesViewModel> GetSuggestCourses(int categoryTypeId)
         {
-            throw new System.NotImplementedException();
+            var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            var categoryId = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeId == categoryTypeId
+                                                                    && x.Status == 1)
+                .Select(x => x.CategoryId);
+
+            var query = Repository.DoQuery<DbContextBase>(x => categoryId.Contains(x.CategoryId)
+                                                               && x.Status == 1
+                                                               && x.CategoryTypeParentId == 0
+                                                               && x.CategoryTypeId != categoryTypeId)
+                .Join(_catPriceRepository.Table<DbContextBase>(), x => x.CategoryTypePriceId, y => y.CategoryTypePriceId,
+                    (cat, y) => new {cat, y.Price}).OrderByDescending(x => x.cat.CreatedDate).Take(5).ToList();
+
+            var levels = _ratingService.GetRatingLevels(query.Select(x => x.cat.CategoryTypeId).ToList());
+
+            var result = query.Select(x => new CoursesViewModel
+            {
+                Type = 0,
+                CourseName = x.cat.CategoryTypeName,
+                ThumbnailImage = !string.IsNullOrEmpty(x.cat.ThumbnailImage)
+                    ? Convert.ToBase64String(File.ReadAllBytes(x.cat.ThumbnailImage))
+                    : string.Empty,
+                MimeTypeImage = !string.IsNullOrEmpty(x.cat.ThumbnailImage)
+                    ? Regex.Replace(Path.GetExtension(x.cat.ThumbnailImage), @"\W", "")
+                    : string.Empty,
+                UrlCourse = string.Format("{0}/{1}", url.Action("index", "course"), x.cat.UrlRouter),
+                Price = x.Price.Value.ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat),
+                RatingLevel = levels[x.cat.CategoryTypeId].BindingRating()
+            }).ToList();
+            return result;
         }
 
         public CourseDetailViewModel GetCourseDetail(string courseRouter)
@@ -70,10 +108,24 @@ namespace Gds.VideoFrontend.Domain.Implement
                 .FirstOrDefault();
             if (query == null) return new CourseDetailViewModel();
             var level = _ratingService.GetRatingLevel(query.cat.CategoryTypeId);
+
+            var lecture = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == query.cat.CategoryTypeId)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+                    (cateType, cateDetail) => new
+                    {
+                        cateDetail
+                    })
+                .Join(_physicalRepository.Table<DbContextBase>(), x => x.cateDetail.PhysicalFileId, y => y.PhysicalFileId,
+                    (cateDetail, physical) => new
+                    {
+                        physical
+                    })
+                .Select(x => x.physical.FileTime);
+
             var result = new CourseDetailViewModel
             {
                 CategoryName = query.CategoryName,
-                CourseId = CryptographyHelper.Encrypt(query.cat.CategoryTypeId.ToString(), CryptographyHelper.CategoryTypeKey),
+                CourseId = CryptographyHelper.Encrypt(query.cat.CategoryTypeId.ToString()),
                 CourseName = query.CategoryName,
                 CourseSubTitle = string.Empty,
                 ThumbnailImage = !string.IsNullOrEmpty(query.cat.ThumbnailImage)
@@ -84,7 +136,10 @@ namespace Gds.VideoFrontend.Domain.Implement
                     : string.Empty,
                 Price = query.Price.Value.ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat),
                 Content = query.cat.Content,
-                RatingLevel = level
+                RatingLevel = level,
+                AuthorId = CryptographyHelper.Encrypt(query.cat.AuthorId.ToString()),
+                NumberLecture = lecture.Count(),
+                TotalTimeLear = lecture.Sum().ConvertTime()
             };
 
             return result;
@@ -93,6 +148,14 @@ namespace Gds.VideoFrontend.Domain.Implement
         public Author GetAuthor(int authorId)
         {
             var query = _authorRepository.DoQuery<DbContextBase>(x => x.AuthorId == authorId).FirstOrDefault();
+            if (query == null) return new Author();
+            query.AuthorId = 0;
+            query.ThumbnailImage = !string.IsNullOrEmpty(query.AuthorImage)
+                    ? Convert.ToBase64String(File.ReadAllBytes(query.AuthorImage))
+                    : string.Empty;
+            query.MimeTypeImage = !string.IsNullOrEmpty(query.AuthorImage)
+                ? Regex.Replace(Path.GetExtension(query.AuthorImage), @"\W", "")
+                : string.Empty;
             return query;
         }
 
@@ -109,53 +172,127 @@ namespace Gds.VideoFrontend.Domain.Implement
             throw new NotImplementedException();
         }
 
-        public LearningVideoModel GetCategoryTypes(string courseRouter)
+        public List<LectureGroupViewModel> GetLectures(int categoryTypeId, bool hasUrl, string urlRouter)
         {
-            var model = new LearningVideoModel();
-            var parent = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
-                                                               && x.Status == 1
-                                                               && x.CategoryTypeParentId == 0).FirstOrDefault();
-            if (parent == null) return model;
-            model.CategoryTypeName = parent.CategoryTypeName;
-
-            var query = Repository.DoQuery<DbContextBase>(x => x.Status == 1 && x.CategoryTypeParentId == parent.CategoryTypeId)
+            var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            var query = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == categoryTypeId && x.Status == 1)
                 .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
-                    (catType, cateDetail) => new
+                    (cateType, cateDetail) => new
                     {
-                        catType.CategoryTypeId,
-                        catType.CategoryTypeName,
-                        CateTypeStatus = catType.Status,
-                        catType.GlobalSortOrder,
+                        cateType.ChildrenIndex,
+                        cateType.CategoryTypeName,
                         cateDetail.CategoryDetailName,
-                        CategoryDetailStatus = cateDetail.Status,
-                        cateDetail.LectureIndex
+                        cateDetail.PhysicalFileId,
+                        cateDetail.LectureIndex,
                     })
-                .Where(x => x.CateTypeStatus == 1 && x.CategoryDetailStatus == 1)
-                .ToList().OrderBy(x => x.GlobalSortOrder);
-
-            var result = query.GroupBy(x => x.CategoryTypeId).ToList();
-            model.CategoryTypesParentModel = new List<CategoryTypesParentModel>();
-            foreach (var itemKey in result)
-            {
-                var data = new CategoryTypesParentModel
-                {
-                    CategoryTypeParentName = itemKey.First().CategoryTypeName,
-                    CategoryTypeIndex = itemKey.First().GlobalSortOrder.HasValue ? itemKey.First().GlobalSortOrder.Value : 0,
-                    CategoryDetails = new List<CategoryDetailModel>()
-                };
-
-                foreach (var item in itemKey)
-                {
-                    data.CategoryDetails.Add(new CategoryDetailModel
+                .Join(_physicalRepository.Table<DbContextBase>(), x => x.PhysicalFileId, y => y.PhysicalFileId,
+                    (cateDetail, physical) => new
                     {
-                        Name = item.CategoryDetailName,
-                        UrlLecture = string.Format("/course/{0}/lecture/{1}", parent.UrlRouter, item.LectureIndex)
+                        detail = cateDetail,
+                        physical.FileTime
+                    })
+                .OrderBy(x => x.detail.ChildrenIndex).ThenBy(x => x.detail.LectureIndex)
+                .ToList()
+                .GroupBy(x => new
+                {
+                    x.detail.CategoryTypeName,
+                    x.detail.ChildrenIndex
+                });
+            var result = new List<LectureGroupViewModel>();
+
+            foreach (var itemGroup in query)
+            {
+                var model = new LectureGroupViewModel
+                {
+                    LectureGroupName = itemGroup.Key.CategoryTypeName,
+                    LectureGroupIndex = itemGroup.Key.ChildrenIndex.Value,
+                    Lectures = new List<LectureContainerViewModel>()
+                };
+                foreach (var item in itemGroup)
+                {
+                    model.Lectures.Add(new LectureContainerViewModel
+                    {
+                        LectureNumberIndex = item.detail.LectureIndex,
+                        LectureName = item.detail.CategoryDetailName,
+                        LectureTime = item.FileTime.ConvertTime(),
+                        LectureUrl = hasUrl
+                            ? url.Action("Lecture", "Course", new {categorytype = urlRouter, index = item.detail.LectureIndex})
+                            : string.Empty,
                     });
                 }
-
-                model.CategoryTypesParentModel.Add(data);
+                result.Add(model);
             }
+            return result;
+        }
 
+        public LearningViewModel GetLearning(string courseRouter)
+        {
+            var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            var query = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
+                                                               && x.CategoryTypeParentId == 0
+                                                               && x.Status == 1).FirstOrDefault();
+            if (query == null) return new LearningViewModel();
+
+            var lectureFirst = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == query.CategoryTypeId
+                                                                      && x.ChildrenIndex == 1
+                                                                      && x.Status == 1)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+                    (cat, detail) => new
+                    {
+                        detail.LectureIndex,
+                        detail.CategoryDetailName,
+                        detail.PhysicalFileId,
+                    })
+                    .Join(_physicalRepository.Table<DbContextBase>(), x => x.PhysicalFileId, y => y.PhysicalFileId,
+                    (detail, physical) => new
+                    {
+                        detail.LectureIndex,
+                        detail.CategoryDetailName,
+                        detail.PhysicalFileId,
+                        physical.FileTime
+                    }).FirstOrDefault();
+
+            if (lectureFirst == null) return new LearningViewModel();
+            var level = _ratingService.GetRatingLevel(query.CategoryTypeId);
+            var model = new LearningViewModel
+            {
+                CourseId = CryptographyHelper.Encrypt(query.CategoryTypeId.ToString()),
+                CourseName = query.CategoryTypeName,
+                RatingLevel = level,
+                LectureFirstIndex = lectureFirst.LectureIndex,
+                LectureFirstName = lectureFirst.CategoryDetailName,
+                LectureFirstTime = lectureFirst.FileTime.ConvertTimeOneVideo(),
+                LectureFirstUrl = url.Action("Lecture", "Course", new { categorytype = courseRouter, index = lectureFirst.LectureIndex }),
+                CourseRouter = courseRouter
+            };
+            return model;
+        }
+
+        public LectureViewModel GetLecture(string courseRouter, int index)
+        {
+            var categoryType = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
+                                                               && x.CategoryTypeParentId == 0
+                                                               && x.Status == 1).FirstOrDefault();
+            if (categoryType == null) return new LectureViewModel();
+
+            var query = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == categoryType.CategoryTypeId)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+                    (cate, detail) => new
+                    {
+                        detail.CategoryDetailId,
+                        detail.LectureIndex,
+                        detail.PhysicalFileId
+                    }).FirstOrDefault(x => x.LectureIndex == index);
+
+            if (query == null) return new LectureViewModel();
+
+            var model = new LectureViewModel
+            {
+                CourseId = CryptographyHelper.Encrypt(categoryType.CategoryTypeId.ToString()),
+                CourseRouter = courseRouter,
+                LectureId = CryptographyHelper.Encrypt(query.CategoryDetailId.ToString()),
+                PhysicalFileId = CryptographyHelper.Encrypt(query.PhysicalFileId.ToString())
+            };
             return model;
         }
     }

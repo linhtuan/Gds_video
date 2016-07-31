@@ -8,6 +8,8 @@ namespace Gds.VideoFrontend.Domain
 {
     public interface ICourseService : IGenericService<CategoryTypes, DbContextBase>
     {
+        CategoryTypes GetCategoryType(string courseRouter);
+
         List<CoursesViewModel> GetSuggestCourses(int categoryTypeId);
 
         CourseDetailViewModel GetCourseDetail(string courseRouter);
@@ -16,6 +18,10 @@ namespace Gds.VideoFrontend.Domain
 
         CategoryDetails GetCategoryDetails(string courseRouter, int index);
 
-        LearningVideoModel GetCategoryTypes(string courseRouter);
+        List<LectureGroupViewModel> GetLectures(int categoryTypeId, bool hasUrl, string urlRouter);
+
+        LearningViewModel GetLearning(string courseRouter);
+
+        LectureViewModel GetLecture(string courseRouter, int index);
     }
 }
