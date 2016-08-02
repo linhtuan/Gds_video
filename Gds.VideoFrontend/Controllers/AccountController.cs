@@ -85,6 +85,7 @@ namespace Gds.VideoFrontend.Controllers
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+
             switch (info.Login.LoginProvider.ToUpper())
             {
                 case "FACEBOOK":
