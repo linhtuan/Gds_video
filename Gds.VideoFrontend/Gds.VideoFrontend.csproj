@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0CA7423A-08F6-4B8B-B34E-7260C9677A8D}</ProjectGuid>
+    <ProjectGuid>{FD6344D0-3C2A-4A10-96DA-CCBB6E534E7C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gds.Frontend</RootNamespace>
-    <AssemblyName>Gds.Frontend</AssemblyName>
+    <RootNamespace>Gds.VideoFrontend</RootNamespace>
+    <AssemblyName>Gds.VideoFrontend</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -67,10 +67,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -192,9 +188,6 @@
     <Compile Include="BusinessService\Implement\RatingService.cs" />
     <Compile Include="BusinessService\IRatingService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\CourseController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domain\ICategoryDetailService.cs" />
     <Compile Include="Domain\ICategoryService.cs" />
     <Compile Include="Domain\IContactApiService.cs" />
@@ -208,6 +201,7 @@
     </Compile>
     <Compile Include="Infrastructure\AutofacInstaller.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryHomeViewModel.cs" />
     <Compile Include="Models\CategoryLeftMenuViewModel.cs" />
     <Compile Include="Models\CategoryTypesModel.cs" />
@@ -224,155 +218,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\JwSite.css" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Content\SiteAll.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\css\font-awesome.css" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\less\animated.less" />
-    <Content Include="fonts\less\bordered-pulled.less" />
-    <Content Include="fonts\less\core.less" />
-    <Content Include="fonts\less\fixed-width.less" />
-    <Content Include="fonts\less\font-awesome.less" />
-    <Content Include="fonts\less\icons.less" />
-    <Content Include="fonts\less\larger.less" />
-    <Content Include="fonts\less\list.less" />
-    <Content Include="fonts\less\mixins.less" />
-    <Content Include="fonts\less\path.less" />
-    <Content Include="fonts\less\rotated-flipped.less" />
-    <Content Include="fonts\less\stacked.less" />
-    <Content Include="fonts\less\variables.less" />
-    <Content Include="fonts\scss\_animated.scss" />
-    <Content Include="fonts\scss\_bordered-pulled.scss" />
-    <Content Include="fonts\scss\_core.scss" />
-    <Content Include="fonts\scss\_fixed-width.scss" />
-    <Content Include="fonts\scss\_icons.scss" />
-    <Content Include="fonts\scss\_larger.scss" />
-    <Content Include="fonts\scss\_list.scss" />
-    <Content Include="fonts\scss\_mixins.scss" />
-    <Content Include="fonts\scss\_path.scss" />
-    <Content Include="fonts\scss\_rotated-flipped.scss" />
-    <Content Include="fonts\scss\_stacked.scss" />
-    <Content Include="fonts\scss\_variables.scss" />
-    <Content Include="fonts\scss\font-awesome.scss" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Scripts\_references.js" />
-    <Content Include="Scripts\bootstrap-pagination.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\gds\gds.category.js" />
-    <Content Include="Scripts\gds\gds.course.js" />
-    <Content Include="Scripts\gds\gds.course.learning.js" />
-    <Content Include="Scripts\gds\gds.course.lecture.js" />
-    <Content Include="Scripts\gds\gds.home.js" />
-    <Content Include="Scripts\gds\gds.js" />
-    <Content Include="Scripts\gds\gds.paging.control.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
-    <Content Include="Scripts\jquery-ui.custom.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery-ui-i18n.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-af.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ar-DZ.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ar.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-az.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-be.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-bg.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-bs.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ca.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-cs.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-cy-GB.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-da.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-de.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-el.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-en-AU.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-en-GB.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-en-NZ.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-eo.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-es.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-et.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-eu.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-fa.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-fi.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-fo.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-fr-CA.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-fr-CH.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-fr.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-gl.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-he.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-hi.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-hr.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-hu.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-hy.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-id.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-is.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-it.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ja.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ka.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-kk.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-km.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ko.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ky.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-lb.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-lt.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-lv.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-mk.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ml.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ms.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-nb.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-nl-BE.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-nl.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-nn.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-no.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-pl.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-pt-BR.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-pt.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-rm.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ro.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ru.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-sk.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-sl.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-sq.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-sr-SR.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-sr.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-sv.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-ta.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-th.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-tj.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-tr.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-uk.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-vi.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-zh-CN.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-zh-HK.min.js" />
-    <Content Include="Scripts\jquery-ui\i18n\jquery.ui.datepicker-zh-TW.min.js" />
-    <Content Include="Scripts\jquery-ui\images\animated-overlay.gif" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-icons_222222_256x240.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-icons_454545_256x240.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-icons_888888_256x240.png" />
-    <Content Include="Scripts\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Scripts\jquery-ui\jquery-ui.css" />
-    <Content Include="Scripts\jquery-ui\jquery-ui.js" />
-    <Content Include="Scripts\jquery-ui\jquery-ui.min.css" />
-    <Content Include="Scripts\jquery-ui\jquery-ui.min.js" />
-    <Content Include="Scripts\jquery.tmpl.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -381,6 +237,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -392,38 +249,29 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_LayoutHome.cshtml" />
-    <Content Include="Views\Shared\_LayoutPlayVideo.cshtml" />
-    <Content Include="Views\Shared\_LeftMenuContent.cshtml" />
-    <Content Include="Views\Shared\_MenuTopPage.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Category\PartialView\_CouseHotPartialView.cshtml" />
-    <Content Include="Views\Category\PartialView\_CouseHotSMPartialView.cshtml" />
-    <Content Include="Views\Category\PartialView\_CousesResult.cshtml" />
-    <Content Include="Views\Course\Index.cshtml" />
-    <Content Include="Views\Course\Learning.cshtml" />
-    <Content Include="Views\Course\Lecture.cshtml" />
-    <Content Include="Views\Course\PartialView\_AuthorTemplate.cshtml" />
-    <Content Include="Views\Course\PartialView\_CommentContainer.cshtml" />
-    <Content Include="Views\Course\PartialView\_CourseChildrenTemplate.cshtml" />
-    <Content Include="Views\Course\PartialView\_LectureContainerTemplate.cshtml" />
-    <Content Include="Views\Course\PartialView\_OtherCoursesTemplate.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\PartialView\_BannerPartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_CoursesTemplatePartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_CoursesTemplateSMPartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_FeaturedPartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_ListCategorysTemplatePartial.cshtml" />
-    <Content Include="Views\Home\PartialView\_ListCategorysTemplateSMPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
@@ -461,9 +309,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>41261</DevelopmentServerPort>
+          <DevelopmentServerPort>50072</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:40721/</IISUrl>
+          <IISUrl>http://localhost:8402/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
