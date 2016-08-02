@@ -6,12 +6,11 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Gds.BusinessObject.DbContext;
 using Gds.VideoFrontend.Domain;
-using Gds.VideoFrontend.Infrastructure;
 using MvcCornerstone.Data;
 using MvcCornerstone.Data.Entity;
 using MvcCornerstone.Factory;
 
-namespace Gds.Video.Infrastructure
+namespace Gds.VideoFrontend.Infrastructure
 {
     public class AutofacInstaller
     {

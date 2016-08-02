@@ -1,0 +1,187 @@
+﻿@model Gds.VideoFrontend.Models.LectureViewModel
+@{
+    ViewBag.Title = "Lecture";
+    Layout = "~/Views/Shared/_LayoutPlayVideo.cshtml";
+}
+<input class="course_id" type="hidden" value="@Model.CourseId">
+<input class="course_router" type="hidden" value="@Model.CourseRouter">
+<input class="lecture_id" type="hidden" value="@Model.LectureId">
+<div class="row no-margin lecture">
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9 lecture-player">
+        <div class="row lecture-player-header no-margin">
+            <a class="lecture-back" href="@Url.Action("Learning", "Course", new { categorytype = Model.CourseRouter})">
+                <i class="fa fa-play-circle"></i>
+                <span>Quay lại</span>
+            </a>
+            <ul class="no-padding lecture-tools">
+                <li>
+                    <a class="link-text" data-target="#complete-dialog" data-toggle="modal" style="cursor: pointer; padding-right: 20px;">
+                        <span class="btn-report-error">
+                            Báo lỗi
+                        </span>
+                    </a>
+                </li>
+                <li class="full-screen">
+                    <i class="fa fa-chevron-right"></i>
+                </li>
+            </ul>
+        </div>
+        <div class="row lecture-player-main no-margin">
+            <div id="video-container" class="" tabindex="0" style="width: 100%; height: 100%;">
+                <video class="" tabindex="0" style="width: 100%; height: 100%;" controls="" autoplay="autoplay" preload="auto" name="media">
+                    <source src="http://gds-video.com/api/videostream/fromvideo?physicalFile=@Model.PhysicalFileId" type="video/webm">
+                </video>
+            </div>
+        </div>
+        <div class="row lecture-player-footer no-margin">
+            <a class="lecture-autoplay">
+                <!-- %span.autoplay.open Bật -->
+                <label>
+                    Tự động chạy
+                    <input class="ios-switch red tinyswitch" id="autoplay" type="checkbox">
+                    <div>
+                        <div></div>
+                    </div>
+                </label>
+            </a>
+            <ul class="no-padding lecture-tools">
+                <li>
+                    <a class="player-navigation-next" href="https://edumall.vn/courses/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong/lecture/1">
+                        <span class="text">Bài tiếp</span>
+                        <span class="icon">
+                            <i class="fa fa-step-forward"></i>
+                        </span>
+                    </a>
+                </li>
+                <li style="display:none">
+                    <span>
+                        <i class="fa fa-check-circle fa-4 mark-as" data-original-title="Đánh dấu hoàn thành" data-placement="top" data-toggle="tooltip" data-url="{&quot;alias_name&quot;:&quot;noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong&quot;,&quot;lecture_index&quot;:&quot;0&quot;}"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-0 col-sm-5 col-md-4 col-lg-3 lecture-container no-padding">
+        <ul class="nav nav-tabs lecture-container-header">
+            <li class="active">
+                <a data-toggle="tab" href="#lecture-tab-list">
+                    <i class="fa fa-list"></i>
+                    Giáo trình
+                </a>
+            </li>
+            @*<li>
+                <a data-toggle="tab" href="https://edumall.vn/courses/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong/lecture/0#lecture-tab-download">
+                    <i class="fa fa-download"></i>
+                    Tài liệu
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="https://edumall.vn/courses/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong/lecture/0#lecture-tab-discussion">
+                    <i class="fa fa-comments"></i>
+                    Thảo luận
+                </a>
+            </li>*@
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="lecture-tab-list">
+                <div class="row no-margin list-lecture-container" id="list-lecture-container">
+
+                </div>
+            </div>
+            @*<div class="tab-pane fade" id="lecture-tab-download">
+                <h5 class="empty-document">Bài học không có tài liệu để tải</h5>
+            </div>*@
+            @*<div class="tab-pane fade" id="lecture-tab-discussion">
+                <form>
+                    <input class="course_id" type="hidden" value="56010a07fc32e004ca000000">
+                    <input class="lecture_id" type="hidden" value="5646f071bcb77a4d930000bf">
+                    <li style="list-style: none">
+                        <textarea class="discussion-title" placeholder="Nhập tiêu đề" value="title"></textarea>
+                    </li>
+                    <li style="list-style: none">
+                        <textarea class="form-control discussion-content" placeholder="Nhập nội dung thảo luận" value="discription"></textarea>
+                    </li>
+                    <li style="list-style: none">
+                        <a class="btn btn-primary lecture-discussion-submit" href="https://edumall.vn/courses/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong/lecture/0#" type="submit">Đăng thảo luận</a>
+                    </li>
+                </form>
+                <div class="row no-margin">
+                    <label class="discussion-noti"></label>
+                </div>
+                <div class="row list-discussion">
+                    <div class="col-xs-12 col-sm-12 no-padding discussions-list" >
+                        <div class="574d22dde7e9dd168600a8f0 discussion-parent no-margin row" style="display: block">
+                            <div class="left">
+                                <img class="discussion-avatar" src="./Nói thoả thích 8 tiếng mỗi ngày mà không lo mất giọng_files/discussion-avatar-5b6a4291f20fa4fa743b500d2832d2a91934ad9a9d34a36a5e0e2b54817d8124.png" alt="Discussion avatar 5b6a4291f20fa4fa743b500d2832d2a91934ad9a9d34a36a5e0e2b54817d8124">
+                            </div>
+                            <div class="right">
+                                <div class="col-xs-12 col-sm-12 no-padding">
+                                    <label class="name">ĐẶNG QUỲNH TRÂN</label>
+                                    <label class="lecture_index" style="font-weight: normal"> đăng thảo luận tại </label>
+                                    <a href="https://edumall.vn/courses/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong/lecture/0" style="font-weight: bold; text-decoration: underline; color: #167ac6">Bài giảng 1</a>
+                                    <label class="created_at">- khoảng 2 tháng trước</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 no-padding">
+                                    <label class="title">cách phát âm chuẩn và nói chậm</label>
+                                    <div class="content">
+                                        thầy ơi em bị loại diễn đạt nói ng khác khó hiểu với em nói không kiểm soát được tốc độ. em nên tập bài tâp nào thêm ạ?
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 no-padding">
+                                    <label class="reply" discussion-id="574d22dde7e9dd168600a8f0"> Phản hồi </label>
+                                    <div class="row no-margin discussion-parent-options" id="574d22dde7e9dd168600a8f0">
+                                        <div class="row no-margin discussion-child-list">
+                                        </div>
+                                        <div class="row no-margin discussion-reply">
+                                            <label class="reply-noti"></label>
+                                            <textarea class="574d22dde7e9dd168600a8f0 reply-content" id="reply-content-editor" placeholder="Phản hồi của bạn" row="5"></textarea>
+                                            <span class="btn pull-right submit-reply" discussion-id="574d22dde7e9dd168600a8f0">Gửi phản hồi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>*@
+            @*<div class="tab-pane fade" id="lecture-tab-note">
+                <div class="row no-margin">
+                    <form class="note">
+                        <input class="lecture_id" type="hidden" value="5646f071bcb77a4d930000bf">
+                        <input class="owned_course_id" type="hidden" value="57676b55e7e9dd2da80006bb">
+                        <input class="owned_lecture_id" type="hidden" value="57676b55e7e9dd2da80006bc">
+                        <textarea class="form-control input-note-content" placeholder="Nhập ghi chú của bạn" value="note-content"></textarea>
+                        <ul class="list-note"></ul>
+                    </form>
+                </div>
+                <div class="row no-margin wrap-btn-note" style="position:absolute;bottom:0">
+                    <a class="btn btn-default no-margin btn-down-note" href="https://edumall.vn/users/note/download?owned_course_id=57676b55e7e9dd2da80006bb&amp;owned_lecture_id=57676b55e7e9dd2da80006bc" style="width:100%">Tải ghi chú</a>
+                </div>
+            </div>*@
+        </div>
+    </div>
+    <!-- + Report modal -->
+    @*<div class="modal fade" id="complete-dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Báo lỗi</h4>
+                    <form>
+                        <textarea class="txt-report-content" placeholder="Nội dung báo lỗi" rows="5" style="border: 1px solid #ccc; height: 100%; width: 100%;"></textarea>
+                    </form>
+                    <button class="btn btn-primary btn-submit-report" data-dismiss="modal">Gửi</button>
+                    <button class="btn" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+</div>
+
+@Html.Partial("~/Views/Course/PartialView/_LectureContainerTemplate.cshtml")
+
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script src="~/Scripts/gds/gds.js"></script>
+    <script src="~/Scripts/gds/gds.course.learning.js"></script>
+}

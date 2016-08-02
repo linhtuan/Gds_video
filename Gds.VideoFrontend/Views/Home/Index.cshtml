@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@Html.Partial("~/Views/Home/PartialView/_BannerPartial.cshtml")
+<maim class="home-page">
+    <div class="container">
+        <div class="row">
+            <div class="featured-courses row">
+                <div class="wrapper clearfix">
+                    <div class="col-md-3 wow fadeInLeft">
+                        <div class="search-box">
+                            <form action="https://edumall.vn/courses/search" mehod="get">
+                                <input name="q" placeholder="Tìm khóa học" type="text">
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="list-categories">
+                            <ul id="list-categories"></ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 no-padding-left" style="position:relative;">
+                        <div class="row" id="wrap_courses_append">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-courses-sm">
+                <div class="list" id="detect_swipe" role="toolbar">
+                    @*<ul class="clearfix slick-initialized slick-slider">
+                        <button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: inline-block;">Previous</button>
+                        <div aria-live="polite" class="slick-list draggable">
+                            <div class="slick-track" role="listbox" style="opacity: 1; width: 50000px; left: 0px;">
+                                
+                            </div>
+                        </div>
+                        <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;" aria-disabled="false">Next</button>
+                        <ul class="slick-dots" style="display: block;" role="tablist"><li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation00" id="slick-slide00"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">1</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation01" id="slick-slide01"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">2</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation02" id="slick-slide02"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">3</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation03" id="slick-slide03"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">4</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation04" id="slick-slide04"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">5</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation05" id="slick-slide05"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">6</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation06" id="slick-slide06"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">7</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation07" id="slick-slide07"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">8</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation08" id="slick-slide08"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">9</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation09" id="slick-slide09"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">10</button></li></ul>
+                    </ul>*@
+                </div>
+                <span class="bottom_line"></span>
+                <div class="courses clearfix slick-initialized slick-slider" id="courses_swipe" role="toolbar">
+                    <button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: inline-block;">Previous</button>
+                    <div aria-live="polite" class="slick-list draggable" style="height: 100px;">
+                        <div id="wrap_courses_sm_append" class="slick-track" role="listbox" style="opacity: 1; width: 0px; left: 0px;">
+
+                        </div>
+                    </div>
+                    <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;" aria-disabled="false">Next</button><ul class="slick-dots" style="display: block;" role="tablist"><li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation10" id="slick-slide10"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">1</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation11" id="slick-slide11"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">2</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation12" id="slick-slide12"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">3</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation13" id="slick-slide13"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">4</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation14" id="slick-slide14"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">5</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation15" id="slick-slide15"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">6</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation16" id="slick-slide16"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">7</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation17" id="slick-slide17"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">8</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation18" id="slick-slide18"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">9</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation19" id="slick-slide19"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">10</button></li></ul>
+                </div>
+            </div>
+            <div class="explore-sm">
+                <a class="btn btn-danger" href="https://edumall.vn/courses">Khám phá ngay</a>
+                <p>Còn rất nhiều khóa học bổ ích</p>
+            </div>
+
+
+            <div class="line-break">
+                <div class="img-wrap">
+                    @*<img src="./Edumall_files/icon1-c360f9b7a073720ca8f26edd58e88028a73f265ebddf147f5b91d4244fc776ca.png" alt="Icon1 c360f9b7a073720ca8f26edd58e88028a73f265ebddf147f5b91d4244fc776ca">*@
+                </div>
+                <span></span>
+            </div>
+            
+            @*@Html.Partial("~/Views/Home/PartialView/_FeaturedPartial.cshtml")*@
+        </div>
+    </div>
+</maim>
+@Html.Partial("~/Views/Home/PartialView/_CoursesTemplatePartial.cshtml")
+@Html.Partial("~/Views/Home/PartialView/_ListCategorysTemplatePartial.cshtml")
+@Html.Partial("~/Views/Home/PartialView/_CoursesTemplateSMPartial.cshtml")
+@Html.Partial("~/Views/Home/PartialView/_ListCategorysTemplateSMPartial.cshtml")
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script src="~/Scripts/gds/gds.js"></script>
+    <script src="~/Scripts/gds/gds.home.js"></script>
+}
+
+
