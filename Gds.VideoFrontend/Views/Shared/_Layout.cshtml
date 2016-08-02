@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-
+    @Styles.Render("~/Content/css")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,6 +17,12 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
+    @Scripts.Render("~/bundles/base-lib-js")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $('#fogot-password-dialog').on('show.bs.modal', function(e) {
+            $('body').addClass('body-model');
+        });
+    </script>
 </body>
 </html>

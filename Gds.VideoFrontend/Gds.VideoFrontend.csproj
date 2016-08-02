@@ -194,6 +194,9 @@
     <Compile Include="BusinessService\Implement\RatingService.cs" />
     <Compile Include="BusinessService\IRatingService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domain\ICategoryDetailService.cs" />
     <Compile Include="Domain\ICategoryService.cs" />
     <Compile Include="Domain\IContactApiService.cs" />
@@ -216,7 +219,6 @@
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\CourseDetailViewModel.cs" />
     <Compile Include="Models\CoursesViewModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\LectureGroupViewModel.cs" />
     <Compile Include="Models\LectureViewModel.cs" />
@@ -262,6 +264,29 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\PartialView\_CouseHotPartialView.cshtml" />
+    <Content Include="Views\Category\PartialView\_CouseHotSMPartialView.cshtml" />
+    <Content Include="Views\Category\PartialView\_CousesResult.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\Learning.cshtml" />
+    <Content Include="Views\Course\Lecture.cshtml" />
+    <Content Include="Views\Course\PartialView\_AuthorTemplate.cshtml" />
+    <Content Include="Views\Course\PartialView\_CommentContainer.cshtml" />
+    <Content Include="Views\Course\PartialView\_CourseChildrenTemplate.cshtml" />
+    <Content Include="Views\Course\PartialView\_LectureContainerTemplate.cshtml" />
+    <Content Include="Views\Course\PartialView\_OtherCoursesTemplate.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\PartialView\_BannerPartial.cshtml" />
+    <Content Include="Views\Home\PartialView\_CoursesTemplatePartial.cshtml" />
+    <Content Include="Views\Home\PartialView\_CoursesTemplateSMPartial.cshtml" />
+    <Content Include="Views\Home\PartialView\_FeaturedPartial.cshtml" />
+    <Content Include="Views\Home\PartialView\_ListCategorysTemplatePartial.cshtml" />
+    <Content Include="Views\Home\PartialView\_ListCategorysTemplateSMPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\Shared\_LayoutPlayVideo.cshtml" />
+    <Content Include="Views\Shared\_LeftMenuContent.cshtml" />
+    <Content Include="Views\Shared\_MenuTopPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
