@@ -1,20 +1,40 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Facebook;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using Gds.Frontend.Models;
 
 namespace Gds.Frontend.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController()
+
+        private string _provider = string.Empty;
+
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
         }
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
 
         //
         // POST: /Account/ExternalLogin
@@ -24,6 +44,7 @@ namespace Gds.Frontend.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
+            _provider = provider;
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
@@ -37,7 +58,7 @@ namespace Gds.Frontend.Controllers
             {
                 case "FACEBOOK":
                     var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
-                    //var email = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+                    var email = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
                     var accessToken = identity.FindFirstValue("FacebookAccessToken");
                     var fb = new FacebookClient(accessToken);
                     dynamic myInfo = fb.Get("/me?fields=email,first_name,last_name,gender"); // specify the email field
@@ -54,6 +75,16 @@ namespace Gds.Frontend.Controllers
             return null;
         }
 
+        //
+        // POST: /Account/LinkLogin
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LinkLogin(string provider)
+        {
+            // Request a redirect to the external login provider to link a login for the current user
+            return new ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
+        }
+
 
         //
         // POST: /Account/LogOff
@@ -61,8 +92,14 @@ namespace Gds.Frontend.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
         }
 
         #region Helpers
@@ -77,12 +114,13 @@ namespace Gds.Frontend.Controllers
             }
         }
 
-        private void AddErrors(IdentityResult result)
+
+        public enum ManageMessageId
         {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
+            ChangePasswordSuccess,
+            SetPasswordSuccess,
+            RemoveLoginSuccess,
+            Error
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
@@ -91,10 +129,13 @@ namespace Gds.Frontend.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
-        internal class ChallengeResult : HttpUnauthorizedResult
+        private class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri)
                 : this(provider, redirectUri, null)
@@ -114,7 +155,7 @@ namespace Gds.Frontend.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+                var properties = new AuthenticationProperties() { RedirectUri = RedirectUri };
                 if (UserId != null)
                 {
                     properties.Dictionary[XsrfKey] = UserId;
