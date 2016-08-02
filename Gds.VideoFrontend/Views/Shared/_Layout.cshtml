@@ -6,21 +6,186 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+<body class="courses_page _hasRecRequest _detail_page">
+    <header>
+        <div class="header-inner rel">
+            <div class="container-fluid">
+                <div class="header-col header-col-left">
+                    <div class="hd-categories pull-left">
+                        <div class="btn-group cats-dropdown">
+                            <div aria-expanded="false" aria-haspopup="true" class="dropdown-toggle active-nav-2 active-nav-with-text" data-dropdown-container=".slider-sidebar-wrapper.slider-sidebar-mobile" data-fixed="false" data-toggle="dropdown">
+                                <i class="fa fa-bars"></i>
+                                <span class="active-nav-text">Danh sách chủ đề</span>
+                            </div>
+                            @Html.Partial("_MenuTopPage")
+                        </div>
+                    </div>
+                    <div class="hd-search pull-left">
+                        <div class="search-box">
+                            <form action="https://edumall.vn/search" class="search-form" method="GET">
+                                <input autofocus="" class="course-search" name="q" type="text">
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="btn-group search-dropdown">
+                            <div aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" type="button">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="dropdown-menu">
+                                <div class="search-box">
+                                    <div class="search-box">
+                                        <form action="https://edumall.vn/search" class="search-form" method="GET">
+                                            <input autofocus="" class="course-search" name="q" type="text">
+                                            <button type="submit">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-col header-col-mid">
+                    <div class="hd-brand">
+                        <div class="logo">
+                            <a class="logo-medium" href="https://edumall.vn/courses"><img src="./Dạy con tự lập_files/logo-48d3ab68d6df4a0495936bf032699492618137912766d9a0e40b9dbc3d9f56f5.svg" alt="Logo 48d3ab68d6df4a0495936bf032699492618137912766d9a0e40b9dbc3d9f56f5"></a>
+                            <a class="logo-small" href="https://edumall.vn/courses"><img src="./Dạy con tự lập_files/logo-small-07817b98821d437f07ae018f758e6c8fdfda5a3bd6908ae5810acb2838804e5f.svg" alt="Logo small 07817b98821d437f07ae018f758e6c8fdfda5a3bd6908ae5810acb2838804e5f"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-col text-right header-col-right">
+                    <div class="hd-user">
+                        <a class="btn-register hidden-xs hidden-sm" data-target="#register-modal" data-toggle="modal" href="#">Đăng ký</a>
+                        <a class="btn-login" data-target="#login-modal" data-toggle="modal" href="#">Đăng nhập</a>
+
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer class="footer-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="foo-top clearfix">
+                    <div class="pull-left signature">
+                        <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=22565">
+                            <img alt="" src="http://online.gov.vn/seals/BQT27R4kAS7t4HnfbMcDEA==.jpgx" title="">
+                        </a>
+                    </div>
+                    <div class="pull-right social">
+                        <a class="facebook" href="https://www.facebook.com/Edumall.vn" target="_blank">
+                            <img src="//static.edumall.vn/assets/stencil/icon/facebook-443909c01eeab7cece5f6320636aa31cee355643d8394db2fbd186f4ae6f8147.png" alt="Facebook 443909c01eeab7cece5f6320636aa31cee355643d8394db2fbd186f4ae6f8147">
+                        </a>
+                        <a class="youtube" href="https://www.youtube.com/channel/UC33MQ240VzqlTHNJ5vMcZhQ" target="_blank">
+                            <img src="//static.edumall.vn/assets/stencil/icon/youtube-71fe620d1b39fe40608f1044d84cc3e2100a35959341bf81056756d5bb0ab2e8.png" alt="Youtube 71fe620d1b39fe40608f1044d84cc3e2100a35959341bf81056756d5bb0ab2e8">
+                        </a>
+                    </div>
+                </div>
+                <div class="foo-content clearfix">
+                    <div class="col col-md-5 col-sm-6 info">
+                        <h4>TOPICA Edumall</h4>
+                        <p>CÔNG TY CỔ PHẦN GIÁO DỤC TOPICA ENGLISH</p>
+                        <p>MST: 0106291976 do Sở Kế hoạch và Đầu tư Tp.Hà Nội</p>
+                        <p>cấp ngày 27 tháng 08 năm 2013</p>
+                        <p>Đại diện: Ông Dương Hữu Quang</p>
+                        <p>Trụ sở chính: Tầng 3 số 75 Phương Mai, Đống Đa, Hà Nội.</p>
+                        <p>© 2016 Edumall. All rights reserved</p>
+                    </div>
+                    <div class="col col-md-2 topica">
+                        <h4>Về TOPICA</h4>
+                        <ul>
+                            <li>
+                                <p>
+                                    <a href="https://topica.edu.vn/gioi-thieu.html" target="_blank">Giới thiệu TOPICA</a>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a href="https://topica.edu.vn/category/hoat-dong-noi-bat/" target="_blank">Hoạt động nổi bật</a>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a href="https://topica.edu.vn/lich-su.html" target="_blank">Lịch sử phát triển</a>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a href="https://topica.edu.vn/category/cong-nghe/" target="_blank">Công nghệ</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col col-md-2 about-us">
+                        <h4>Về Edumall</h4>
+                        <ul>
+                            <div class="row">
+                                <li>
+                                    <p>
+                                        <a href="/about">Giới thiệu</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="/faq">Câu hỏi thường gặp</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="/terms">Điều khoản sử dụng</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="/policy">Quy chế hoạt động</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="/security_policy">Chính sách bảo mật</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="/dispute_solution">Cơ chế giải quyết tranh chấp</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="/faq#faq_no_9">Chính sách hoàn học phí</a>
+                                    </p>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col col-md-3 col-sm-6 contact">
+                        <h4>Liên hệ</h4>
+                        <p class="hotline">
+                            <i class="fa fa-phone"></i>
+                            1800.6816 (Trong giờ hành chính)
+                        </p>
+                        <p class="mail">
+                            <i class="fa fa-envelope"></i>
+                            cskh@edumall.vn
+                        </p>
+                        <p>HN - 75 Phương Mai, Đống Đa, HN</p>
+                        <p>HCM - 58/10 Thành Thái, P.12, Q.10, HCM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/base-lib-js")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
-        $('#fogot-password-dialog').on('show.bs.modal', function(e) {
+        $('#fogot-password-dialog').on('show.bs.modal', function (e) {
             $('body').addClass('body-model');
         });
     </script>

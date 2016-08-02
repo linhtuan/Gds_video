@@ -1,24 +1,21 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    margin:0;
+}
+.body-model[style] {
+    padding-right:0 !important;
+}
+.body-model.modal-open {
+    overflow: auto;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+#login-modal .social-area button, #register-modal .social-area button, #fogot-password-dialog .social-area button {
+    padding: 15px 50px !important;
+    margin: 10px 0px  !important;
+    text-align: center  !important;
+    display: block  !important;
+    color: #ffffff  !important;
+    border-radius: 25px  !important;
+    -webkit-border-radius: 25px !important;
+    -moz-border-radius: 25px  !important;
+    -o-border-radius: 25px  !important;
 }

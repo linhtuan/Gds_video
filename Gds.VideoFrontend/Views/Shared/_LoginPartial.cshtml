@@ -1,22 +1,159 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
+﻿@using Microsoft.Owin.Security
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+}
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
-    }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+
+<!-- Make it able to disable modal to use this modal in signin page -->
+<div class="modal fade" id="register-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                <h3 class="modal-title">Đăng ký</h3>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <p class="sub-title">Đăng ký bằng email</p>
+                    <div class="form-control-wrapper">
+                        <input class="form-control" id="name" name="user[name]" placeholder="Họ và tên" required="true" type="text" value="">
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input class="form-control" id="email" name="user[email]" placeholder="Email" required="true" type="email" value="">
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input class="form-control" id="password" name="user[password]" placeholder="Mật khẩu" required="true" type="password">
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input class="btn btn-login-submit" type="submit" value="Đăng ký">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <div class="forgot-password-link clearfix">
+                    <a class="btn btn-link show-social-link" href="#" data-toggle="down">
+                        Đăng ký với tài khoản mạng xã hội
+                        <span>
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                    <div class="form-control-wrapper social-area">
+                        <div class="row">
+                            @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = "" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                foreach (AuthenticationDescription p in loginProviders)
+                                {
+                                    <div class="col-md-6">
+                                        <button type="submit" class="col-md-12 btn @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "btn-google" : "btn-facebook")" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                                            <i class="left fa @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "fa-google-plus" : "fa-facebook")"></i>
+                                            <span class="left">@p.AuthenticationType</span>
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <p class="bottom-text">
+                    Đã có tài khoản?
+                    <a class="btn-link" data-dismiss="modal" data-target="#login-modal" data-toggle="modal" href="#">Đăng nhập</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="fogot-password-dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                <h3 class="modal-title">Lấy lại mật khẩu</h3>
+            </div>
+            <div class="modal-body">
+                <div class="forgot-password-content">
+                    <div class="form-control-wrapper">
+                        <input class="form-control" id="email-reset" name="email" placeholder="Email đăng nhập" required="true" type="email">
+                    </div>
+                    <div class="form-control-wrapper">
+                        <a class="btn reset-password-button">Đặt lại mật khẩu</a>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <span>Hoặc</span>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <a class="btn btn-link" data-dismiss="modal" data-target="#login-modal" data-toggle="modal">Đăng nhập</a>
+                    </div>
+                </div>
+                <div class="forgot-password-content-success" style="display: none;">
+                    <div class="form-control-wrapper">
+                        <h5 class="text-success">Vui lòng kiểm tra email để đặt lại mật khẩu</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Make it able to disable modal to use this modal in signin page -->
+<div class="modal fade" id="login-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                <h3 class="modal-title">Đăng nhập</h3>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <p class="sub-title">Đăng nhập bằng email</p>
+                    <div class="form-control-wrapper">
+                        <input class="form-control" id="email" name="user[email]" placeholder="Email" required="true" type="email" value="">
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input class="form-control" id="password" name="user[password]" placeholder="Mật khẩu" required="true" type="password">
+                    </div>
+                    <input type="hidden" name="authenticity_token" id="authenticity_token" value="u3HrqfAr8BSYbEIF7fXyBqyaWU3V9kyFsUlxBSI/PFOfBArg9xKjjWtK/WuDPAvZ3WrBbGtJinsm0a1v0z19Zg==">
+                    <div class="form-control-wrapper">
+                        <input class="btn btn-login-submit" type="submit" value="Đăng nhập">
+                    </div>
+                </form>
+                <p class="forgot-password-link">
+                    <a class="btn-link" data-dismiss="modal" data-target="#fogot-password-dialog" data-toggle="modal" href="#" id="forgot-password-button">Quên mật khẩu đăng nhập?</a>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot-password-link clearfix">
+                    <a class="btn btn-link show-social-link login-authen" href="#" data-toggle="down">
+                        Đăng nhập với tài khoản mạng xã hội
+                        <span>
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                    <div class="form-control-wrapper social-area" id="login-form-authen">
+                        <div class="row">
+                            @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = "" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                foreach (AuthenticationDescription p in loginProviders)
+                                {
+                                    <div class="col-md-6">
+                                        <button type="submit" class="col-md-12 btn @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "btn-google" : "btn-facebook")" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                                            <i class="left fa @(p.AuthenticationType.ToUpper() == "GOOGLE" ? "fa-google-plus" : "fa-facebook")"></i>
+                                            <span class="left">@p.AuthenticationType</span>
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <p class="bottom-text">
+                    Chưa có tài khoản?
+                    <a class="btn-link" data-dismiss="modal" data-target="#register-modal" data-toggle="modal" href="#">Đăng ký</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
