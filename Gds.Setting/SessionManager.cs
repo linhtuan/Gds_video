@@ -35,6 +35,8 @@ namespace Gds.Setting
     }
     public enum SessionObjectEnum
     {
-        Categorys
+        Categorys,
+        ContactId,
+        ContactName,
     }
 }

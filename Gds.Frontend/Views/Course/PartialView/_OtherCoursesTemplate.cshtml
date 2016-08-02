@@ -1,0 +1,24 @@
+﻿<script id="lectureHotTemplate" type="text/x-jquery-tmpl">
+    <li class="also-viewed-item">
+        <div class="row">
+            <div class="col-md-6 course-image">
+                <a href="${UrlCourse}" title="${CourseName}">
+                    <img alt="${CourseName}" class="img-responsive" src="data:image/${MimeTypeImage};base64,${ThumbnailImage}">
+                </a>
+            </div>
+            <div class="col-md-6 course-description">
+                <div>
+                    <a href="${UrlCourse}" title="${CourseName}">${CourseName}</a>
+                </div>
+                <div class="price">${Price} đ</div>
+                <div class="row no-margin course-rating">
+                    <div class="rating-container">
+                        <div class="pull-left" id="percent-rating">
+                            @*${html RatingLevel}*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>

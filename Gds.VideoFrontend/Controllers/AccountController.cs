@@ -11,7 +11,7 @@ namespace Gds.VideoFrontend.Controllers
 {
     public class AccountController : Controller
     {
-
+        private string ApplicationKey = "WIN-KLA07HQ3T9N";
         private string _provider = string.Empty;
         // GET: User
         public ActionResult Index()

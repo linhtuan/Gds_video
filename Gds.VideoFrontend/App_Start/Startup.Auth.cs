@@ -26,8 +26,8 @@ namespace Gds.VideoFrontend
 
             app.UseFacebookAuthentication(new FacebookAuthenticationOptions
             {
-                AppId = AppConfig.AppIdFb,
-                AppSecret = AppConfig.AppSecretFb,
+                AppId = "866483453480629",
+                AppSecret = "35a32fe9a777a7ef3a28adff41a1625d",
                 Scope = { "email" },
                 Provider = new FacebookAuthenticationProvider
                 {
@@ -47,6 +47,7 @@ namespace Gds.VideoFrontend
 
             googleOAuth2AuthenticationOptions.Scope.Add("email");
             app.UseGoogleAuthentication(googleOAuth2AuthenticationOptions);
+
         }
     }
 }

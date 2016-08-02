@@ -1,0 +1,65 @@
+﻿@model Gds.Frontend.Models.LearningViewModel
+@{
+    ViewBag.Title = "Learning";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input class="course_id" type="hidden" value="@Model.CourseId">
+<input class="course_router" type="hidden" value="@Model.CourseRouter">
+<div class="container-wrapper" style="overflow: hidden;">
+    <div class="banner">
+    </div>
+    <div class="row learning no-margin">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding no-margin learning-header">
+            <div class="container no-padding">
+                <div class="row learning-header-container">
+                    <span class="course-name">@Model.CourseName</span>
+                    <div class="rating-container">
+                        <ul class="rating rating-active" course_id="56010a07fc32e004ca000000" data-description="" data-rate="4" data-title="">
+                            @for (var i = 0; i < Convert.ToInt32(Model.RatingLevel); i++)
+                            {
+                                <i class="fa fa-star rated"></i>
+                            }
+                            @for (var i = 0; i < 5 - Convert.ToInt32(Model.RatingLevel); i++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding no-margin">
+            <div class="row learning-container">
+                <div class="col-lg-6 col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 list-lecture">
+                    <div class="row no-margin lecture-header">
+                        <a href="@Model.LectureFirstUrl">
+                            <ul>
+                                <li class="play-circle-lecture">
+                                    <i class="fa fa-play-circle"></i>
+                                </li>
+                                <li class="first-lecture">
+                                    <div class="lecture-header-content">
+                                        <p class="no-margin lecture-header-index">Bài giảng @Model.LectureFirstIndex:</p>
+                                        <p class="no-margin lecture-header-name">@Model.LectureFirstName</p>
+                                        <p class="no-margin lecture-header-time">@Model.LectureFirstTime</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </a>
+                    </div>
+                    <div class="row no-margin list-lecture-container" id="list-lecture-container">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Course/PartialView/_LectureContainerTemplate.cshtml")
+
+@section scripts{
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+    <script src="~/Scripts/gds/gds.js"></script>
+    <script src="~/Scripts/gds/gds.course.learning.js"></script>
+}

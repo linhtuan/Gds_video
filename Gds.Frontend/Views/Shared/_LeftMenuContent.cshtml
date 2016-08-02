@@ -1,0 +1,11 @@
+﻿@model List<Gds.Frontend.Models.CategoryLeftMenuViewModel>
+
+<div class="row no-margin other-category-container hidden-sm">
+    <label style="color: #338abc;">Các lĩnh vực khác</label>
+    <div class="row no-margin other-category">
+        @foreach (var item in Model)
+        {
+            <a class="other-category-item" href="@item.UrlCategory">@item.CategoryName</a>
+        }
+    </div>
+</div>

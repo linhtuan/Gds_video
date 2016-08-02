@@ -1,0 +1,11 @@
+﻿
+<script id="menuCoursesTemplate" type="text/x-jquery-tmpl">
+    {{each data}}
+    <li class="active slick-slide slick-current slick-active" data-slick-index="${$value.CategoryId}" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00">
+        <a data-slug="hot_courses" href="#" tabindex="0">
+            ${$value.CategoryName}
+            <span class="active_line"></span>
+        </a>
+    </li>
+    {{/each}}
+</script>

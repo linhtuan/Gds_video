@@ -1,0 +1,18 @@
+﻿
+<script id="coursesTemplateSM" type="text/x-jquery-tmpl">
+    <div class="course-item-sm slick-slide slick-current slick-active" id="wrap_sm_hot_courses" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide10" style="width: 0px;">
+        {{each CategoryTypes}}
+        <div class="col-md-12">
+            <a href="${$value.CategoryTypeUrl}" title="${$value.CategoryTypeName}" tabindex="0">
+                <div class="item clearfix">
+                    <img class="img-responsive pull-left" src="${$value.ThumbnailImage}">
+                    <div class="info">
+                        <h3 style="font-size: 16px;font-weight: 400">${$value.CategoryTypeName}</h3>
+                        <p style="font-size: 14px;font-weight: 300">Demo</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</script>

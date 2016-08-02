@@ -8,8 +8,6 @@ namespace Gds.BusinessObject.DbContext
         public DbContextBase()
             : base("name=DefaultConnection")
         {
-            //Configuration.AutoDetectChangesEnabled = false;
-            //Configuration.ValidateOnSaveEnabled = false;
         }
 
         public DbSet<Categorys> Categoryses { get; set; }
@@ -37,5 +35,8 @@ namespace Gds.BusinessObject.DbContext
         public DbSet<UserManagement> UserManagement { get; set; }
 
         public DbSet<AgeOrder> AgeOrders { get; set; }
+
+        public DbSet<FeedbackComment> FeedbackComments { get; set; }
+
     }
 }
