@@ -59,12 +59,7 @@
                     </div>
                 </div>
                 <div class="header-col text-right header-col-right">
-                    <div class="hd-user">
-                        <a class="btn-register hidden-xs hidden-sm" data-target="#register-modal" data-toggle="modal" href="#">Đăng ký</a>
-                        <a class="btn-login" data-target="#login-modal" data-toggle="modal" href="#">Đăng nhập</a>
-
-                        @Html.Partial("_LoginPartial")
-                    </div>
+                    @Html.Action("MiniAccountProfile", "Account", new { pageIndex = 2 })
                 </div>
             </div>
         </div>

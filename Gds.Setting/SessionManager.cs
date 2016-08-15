@@ -33,10 +33,14 @@ namespace Gds.Setting
             HttpContext.Current.Session.Add(key.ToString(), value);
         }
     }
+
     public enum SessionObjectEnum
     {
         Categorys,
+        SecurityCode,
+        TokenUser,
         ContactId,
-        ContactName,
+        ContactFullName,
+        ContactImage,
     }
 }

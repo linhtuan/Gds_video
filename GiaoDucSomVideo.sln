@@ -20,8 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{295BE6
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gds.Frontend", "Gds.Frontend\Gds.Frontend.csproj", "{0CA7423A-08F6-4B8B-B34E-7260C9677A8D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gds.VideoFrontend", "Gds.VideoFrontend\Gds.VideoFrontend.csproj", "{FD6344D0-3C2A-4A10-96DA-CCBB6E534E7C}"
 EndProject
 Global
@@ -50,10 +48,6 @@ Global
 		{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8B2CFDF-196E-460E-B9C5-E7D2F8911CE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CA7423A-08F6-4B8B-B34E-7260C9677A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CA7423A-08F6-4B8B-B34E-7260C9677A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CA7423A-08F6-4B8B-B34E-7260C9677A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CA7423A-08F6-4B8B-B34E-7260C9677A8D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD6344D0-3C2A-4A10-96DA-CCBB6E534E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD6344D0-3C2A-4A10-96DA-CCBB6E534E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD6344D0-3C2A-4A10-96DA-CCBB6E534E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU

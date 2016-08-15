@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,6 +60,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
@@ -219,6 +221,7 @@
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\CourseDetailViewModel.cs" />
     <Compile Include="Models\CoursesViewModel.cs" />
+    <Compile Include="Models\IdentityUserModel.cs" />
     <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\LectureGroupViewModel.cs" />
     <Compile Include="Models\LectureViewModel.cs" />
@@ -280,6 +283,7 @@
     <Content Include="Scripts\gds\gds.home.js" />
     <Content Include="Scripts\gds\gds.js" />
     <Content Include="Scripts\gds\gds.paging.control.js" />
+    <Content Include="Scripts\gds\gds.user.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\jquery-ui.custom.min.js" />
@@ -375,6 +379,7 @@
     <Content Include="Scripts\jquery-ui\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui.min.css" />
     <Content Include="Scripts\jquery-ui\jquery-ui.min.js" />
+    <None Include="Properties\PublishProfiles\video_frontend.pubxml" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\jquery.tmpl.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -396,8 +401,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
@@ -423,6 +426,16 @@
     <Content Include="Views\Shared\_LayoutPlayVideo.cshtml" />
     <Content Include="Views\Shared\_LeftMenuContent.cshtml" />
     <Content Include="Views\Shared\_MenuTopPage.cshtml" />
+    <Content Include="Views\Account\MiniUserProfilePartialView.cshtml" />
+    <Content Include="Views\Account\PartialView\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\PartialView\_RegisterPartial.cshtml" />
+    <Content Include="Views\Account\PartialView\_FogotPasswordPatial.cshtml" />
+    <Content Include="Views\Account\PartialView\_UserDetailPartial.cshtml" />
+    <Content Include="Views\Account\ProfileDetail.cshtml" />
+    <Content Include="Views\Account\EditProfile.cshtml" />
+    <Content Include="Views\Account\UserCouse.cshtml" />
+    <Content Include="Views\Account\UserPaymentHistory.cshtml" />
+    <Content Include="Views\Account\UserPaymentBill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

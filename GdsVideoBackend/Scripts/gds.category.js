@@ -91,7 +91,7 @@ $(document).on('click', '#save', function (event) {
         CategoryName: $('#category-form .category-name').val(),
         CategoryDetail: $('#category-form .category-detail').val(),
     };
-    if (model.CategoryId == 0) {
+    if (model.CategoryId == 0 || isNaN(model.CategoryId)) {
         var insert = category.insertCategory(model);
         $.when(insert).then(function (result) {
             if (result.isSuccess) {

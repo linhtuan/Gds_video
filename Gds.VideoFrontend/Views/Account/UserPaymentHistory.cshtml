@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "UserPaymentHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-wrapper payment-page" style="overflow: hidden;">
+    <div class="banner">
+    </div>
+    <div class="row no-margin payment-history">
+        <div class="row no-margin payment-history-header">
+            <div class="container">
+                <label class="title">Lịch sử thanh toán</label>
+            </div>
+        </div>
+        <div class="row no-margin payment-history-container">
+            <div class="container">
+                <div class="row no-margin account-balance">
+                    <div class="col-xs-12 no-padding">
+                        <span class="blance-detail">
+                            Số dư còn lại từ thẻ cào:
+                            <b class="warning-text">0 VNĐ</b>
+                        </span>
+                    </div>
+                </div>
+                <div class="row no-margin payments-list">
+                    <div class="row payment-item-header">
+                        <div class="col-xs-4 col-sm-4">
+                            <span class="normal-text">Khóa học</span>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text">Số tiền</span>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text">Phương thức</span>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text">Trạng thái</span>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text">Kích hoạt</span>
+                        </div>
+                    </div>
+                    <div class="row payment-item">
+                        <div class="col-xs-4 col-sm-4">
+                            <a class="course-name" href="https://edumall.vn/home/payment/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong/payment_bill">Nói thoả thích 8 tiếng mỗi ngày mà không lo mất giọng</a>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text">299,000 VNĐ</span>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text bold-text">COD</span>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text">Thành công</span>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 no-padding">
+                            <span class="normal-text">11:01 21/06/2016</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

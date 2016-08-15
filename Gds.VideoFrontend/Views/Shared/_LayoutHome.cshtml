@@ -25,11 +25,9 @@
                         1800.6816
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 actions act-hd">
-                    <a data-target="#register-modal" data-toggle="modal" href="https://edumall.vn/#">Đăng ký</a>
-                    <a class="btn-login" data-target="#login-modal" data-toggle="modal" href="https://edumall.vn/#" id="login_btn">Đăng nhập</a>
+                <div class="col-md-3 col-sm-6 col-xs-6 actions act-hd"> 
                     <!-- Make it able to disable modal to use this modal in signin page -->
-                    @Html.Partial("_LoginPartial")
+                    @Html.Action("MiniAccountProfile", "Account", new { pageIndex = 1 })
                 </div>
             </div>
         </div>

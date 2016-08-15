@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="profile">
+    <div class="main-profile">
+        <div class="container">
+            <ul class="col-lg-12 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                <li class="active col-sm-3 col-xs-6 profile-item-nav" role="presentation">
+                    <a href="/users/edit_profile">Thông tin cá nhân</a>
+                </li>
+                <li class="profile-item-nav col-sm-3 col-xs-6" role="presentation">
+                    <a href="/users/edit_account">Tài khoản</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background: #fff; padding-bottom: 50px;">
+            <div class="row profile-right tab-pane fade active in" id="profile">
+                <div class="profile-form">
+                    <div class="col-lg-3 col-md-3 col-lg-offset-1 col-md-offset-1 col-sm-4 col-xs-12 xs-center">
+                        <div class="dn" id="current__user">57676b53e7e9dd2da80006b9</div>
+                        <div class="profile-avatar">
+                            <div class="avatar-action-choose text-center">
+                                <div class="file-upload btn btn-default" id="file-upload" onclick="trigger_input()" style="background-image: url(//staticedm.r.worldssl.net/assets/avatar-87cb35c123fe2ae0f47eb6cb3726c3563a36807557a5c23801092e336e5b2e57.png);">
+                                    <div class="overflow">
+                                        <span id="select_img" style="font-size:14px">Thay đổi ảnh đại diện</span>
+                                    </div>
+                                    <input accept=".png, .jpg" class="upload" id="edit__avatar" name="user[new_avatar]" style="display: none;" type="file">
+                                </div>
+                            </div>
+                            <div class="avatar-action">
+                                <input disabled="" id="file-path" style="width: 100%; display: none;" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12">
+                        <div class="row">
+                            <form accept-charset="UTF-8" action="/users/edit_profile" class="col-xs-12" method="post">
+                                <input type="hidden" name="authenticity_token" id="authenticity_token" value="vyUDlDQtX4mrNzpanfUglPTsfmrvuyd/HYh0U2xRqg18oINFxV1QonOhuNBNuONV5fq4S5GweZA7DOwZ0dM6Xw==">
+                                <input type="hidden" name="_method" id="_method" value="patch">
+                                <div class="row info-title">
+                                    Thông tin cơ bản
+                                </div>
+                                <div class="row info-data" style="margin-top: 10px;">
+                                    <label class="col-md-3 col-sm-3 col-xs-5">Họ tên đầy đủ</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-7 info-content">
+                                        <input name="user[name]" type="text" value="NGUYEN VAN DUNG THANG">
+                                    </div>
+                                </div>
+                                <div class="row info-data" style="margin-top: 10px;">
+                                    <label class="col-md-3 col-sm-3 col-xs-5">Nghề nghiệp</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-7 info-content">
+                                        <input name="user[job]" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="row info-data" style="margin-top: 20px;">
+                                    <label class="col-md-5 col-sm-5 col-xs-6">Giới thiệu bản thân</label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                                        <textarea name="user[biography]" placeholder="Đôi dòng giới thiệu về bản thân bạn" rows="3" value=""></textarea>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 20px;">
+                                    <input class="btn btn-default profile-button-save pull-right" type="submit" value="Lưu thay đổi">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background: #fff; padding-bottom: 50px;">
+            <div class="profile-right tab-pane active in" id="account">
+                <div class="profile-account">
+                    <form accept-charset="UTF-8" action="/users/edit_account" class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 col-xs-12 form-horizontal" id="change-password-form" method="post" novalidate="novalidate">
+                        <input type="hidden" name="authenticity_token" id="authenticity_token" value="0hm8EwyjXjJjyBSj7eibFItglaJo1wMBQfw/FNwO33oRnDzC/dNRGbtelik9pVjVmnZTgxbcXe5neKdeYYxPKA==">
+                        <input type="hidden" name="_method" id="_method" value="patch">
+                        <div class="row info-title">
+                            Thay đổi Email và mật khẩu
+                        </div>
+                        <div class="row info-data">
+                            <label class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-5">Email</label>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                <span>dungthang@vvn.vn</span>
+                            </div>
+                        </div>
+                        <div class="row info-data">
+                            <label class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-5">Mật khẩu hiện tại</label>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                <input name="user[current_password]" type="password">
+                            </div>
+                        </div>
+                        <div class="row info-data">
+                            <label class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-5">Mật khẩu mới</label>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                <input id="user_password" name="user[password]" type="password">
+                            </div>
+                        </div>
+                        <div class="row info-data">
+                            <label class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-5">Xác nhận mật khẩu mới</label>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                <input name="user[password_confirmation]" type="password">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="password-save col-lg-11 col-md-11 col-sm-11">
+                                <input class="btn btn-default" type="submit" value="Lưu thay đổi">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -17,6 +17,9 @@ namespace Gds.VideoFrontend
                       "~/Content/SiteAll.css",
                       "~/Content/site.css",
                       "~/fonts/css/font-awesome.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate*"));
         }
     }
 }

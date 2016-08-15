@@ -14,6 +14,11 @@ namespace Gds.VideoFrontend.Infrastructure
             get { return (List<string>)SessionManager.GetSessionObject(SessionObjectEnum.Categorys); }
         }
 
+        protected int? ContactId
+        {
+            get { return (int?)SessionManager.GetSessionObject(SessionObjectEnum.ContactId); }
+        }
+
         public List<CategoryLeftMenuViewModel> GetLeftMenu()
         {
             var leftMenu = new List<CategoryLeftMenuViewModel>();

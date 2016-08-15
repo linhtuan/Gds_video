@@ -1,0 +1,28 @@
+﻿@using Gds.Setting.Authorize
+@model Gds.VideoFrontend.Models.ContactViewModel
+
+@if (Model != null)
+{
+    @Html.Partial("~/Views/Account/PartialView/_UserDetailPartial.cshtml", Model)
+}
+else
+{
+    if (ViewBag.PageIndex == 1)
+    {
+        <a data-target="#register-modal" data-toggle="modal" href="https://edumall.vn/#">Đăng ký</a>
+        <a class="btn-login" data-target="#login-modal" data-toggle="modal" href="https://edumall.vn/#" id="login_btn">Đăng nhập</a>
+        @Html.Partial("~/Views/Account/PartialView/_RegisterPartial.cshtml")
+        @Html.Partial("~/Views/Account/PartialView/_FogotPasswordPatial.cshtml")
+        @Html.Partial("~/Views/Account/PartialView/_LoginPartial.cshtml")
+    }
+    else
+    {
+        <div class="hd-user">
+            <a data-target="#register-modal" data-toggle="modal" href="https://edumall.vn/#">Đăng ký</a>
+            <a class="btn-login" data-target="#login-modal" data-toggle="modal" href="https://edumall.vn/#" id="login_btn">Đăng nhập</a>
+            @Html.Partial("~/Views/Account/PartialView/_RegisterPartial.cshtml")
+            @Html.Partial("~/Views/Account/PartialView/_FogotPasswordPatial.cshtml")
+            @Html.Partial("~/Views/Account/PartialView/_LoginPartial.cshtml")
+        </div>
+    }
+}

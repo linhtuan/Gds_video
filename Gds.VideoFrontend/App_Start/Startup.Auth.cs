@@ -2,13 +2,11 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Gds.VideoFrontend.Models;
 
 namespace Gds.VideoFrontend
 {
@@ -21,7 +19,8 @@ namespace Gds.VideoFrontend
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login")
+                LoginPath = new PathString("/Account/Login"),
+                ExpireTimeSpan = TimeSpan.FromMinutes(30)
             });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -39,16 +38,27 @@ namespace Gds.VideoFrontend
                         context.Identity.AddClaim(new Claim("FacebookAccessToken", context.AccessToken));
                         return Task.FromResult(true);
                     }
-                }
+                },
+                BackchannelTimeout = TimeSpan.FromMinutes(30)
             });
 
             var googleOAuth2AuthenticationOptions = new GoogleOAuth2AuthenticationOptions
             {
-                ClientId = "343491644981-u6un8q6r1r739i2elnug7cj81ljmmvdi.apps.googleusercontent.com",
-                ClientSecret = "k7IQxZk1Eh1yhz2Pd-Mqf_aA",
+                ClientId = "725371161805-u7bjg329mk61n30gavg9o09hutppb8a5.apps.googleusercontent.com",
+                ClientSecret = "kClgGaoXD32LmamkF5vXKEQ3",
+                Provider = new GoogleOAuth2AuthenticationProvider
+                {
+                    OnAuthenticated = context =>
+                    {
+                        context.Identity.AddClaim(new Claim("Google_AccessToken", context.AccessToken));
+                        return Task.FromResult(true);
+                    }
+                },
+                BackchannelTimeout = TimeSpan.FromMinutes(30),
             };
 
             googleOAuth2AuthenticationOptions.Scope.Add("email");
+            googleOAuth2AuthenticationOptions.Scope.Add("profile");
             app.UseGoogleAuthentication(googleOAuth2AuthenticationOptions);
         }
     }

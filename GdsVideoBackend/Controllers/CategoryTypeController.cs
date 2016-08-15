@@ -140,17 +140,15 @@ namespace GdsVideoBackend.Controllers
 
         private CategoryTypeViewModel GetValueInFrom(HttpRequestBase request)
         {
-            var item = new CategoryTypeViewModel
-            {
-                CategoryId = Convert.ToInt32(request["CategoryId"]),
-                CategoryTypeId = Convert.ToInt32(request["CategoryTypeId"]),
-                CategoryTypeName = request["CategoryTypeName"],
-                Content = request["Content"],
-                CategoryTypePriceId = Convert.ToInt32(request["Price"]),
-                AgeOrderId = Convert.ToInt32(request["AgeOrder"]),
-                CategoryTypeOrderId = Convert.ToInt32(request["CategoryTypeOrder"]),
-                AuthorId = Convert.ToInt32(request["Author"])
-            };
+            var item = new CategoryTypeViewModel();
+            item.CategoryId = Convert.ToInt32(request["CategoryId"]);
+            item.CategoryTypeId = string.IsNullOrEmpty(request["CategoryTypeId"]) ? 0 : Convert.ToInt32(request["CategoryTypeId"]);
+            item.CategoryTypeName = request["CategoryTypeName"];
+            item.Content = request["Content"];
+            item.CategoryTypePriceId = Convert.ToInt32(request["Price"]);
+            item.AgeOrderId = Convert.ToInt32(request["AgeOrder"]);
+            item.CategoryTypeOrderId = Convert.ToInt32(request["CategoryTypeOrder"]);
+            item.AuthorId = Convert.ToInt32(request["Author"]);
             return item;
         }
 

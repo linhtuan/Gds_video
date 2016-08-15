@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
+    <Compile Include="Authorize\CustomAuthorize.cs" />
     <Compile Include="Cryptography\CryptographyHelper.cs" />
     <Compile Include="Enum\CategoryType.cs" />
     <Compile Include="Enum\CategoryTypeOrderEnum.cs" />
@@ -82,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gds.ServiceModel\Gds.ServiceModel.csproj">
+      <Project>{e8b2cfdf-196e-460e-b9c5-e7d2f8911ce9}</Project>
+      <Name>Gds.ServiceModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
