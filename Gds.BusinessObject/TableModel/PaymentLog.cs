@@ -13,6 +13,8 @@ namespace Gds.BusinessObject.TableModel
 
         public int UserId { get; set; }
 
+        public string UserName { get; set; }
+
         public int CategoryTypeId { get; set; }
 
         public decimal NumberPrice { get; set; }

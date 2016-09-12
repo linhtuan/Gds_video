@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Gds.BusinessObject.DbContext;
+using Gds.BusinessObject.TableModel;
+using MvcCornerstone.Data;
+using MvcCornerstone.Services;
 
 namespace Gds.VideoFrontend.Domain.Implement
 {
-    public class ContactService
+    public class ContactService : GenericService<PaymentLog, DbContextBase>, IContactService
     {
+
+        public ContactService(IEntityRepository<PaymentLog> repository)
+            : base(repository)
+        {
+        }
     }
 }

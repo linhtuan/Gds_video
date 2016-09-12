@@ -16,17 +16,17 @@ namespace Gds.VideoFrontend.Controllers
         }
 
         // GET: Category
-        [Route("category/{categorytype?}")]
-        public ActionResult Index(string categorytype)
+        [Route("category/{cateId?}")]
+        public ActionResult Index(string cateId)
         {
             string title;
-            var courseHot = _categoryService.GetCoursesHot(categorytype, out title);
+            var courseHot = _categoryService.GetCoursesHot(cateId, out title);
             var model = new CategoryViewModel
             {
                 Title = title,
                 LeftMenu = GetLeftMenu(),
                 CoursesHot = courseHot,
-                CategoryRouter = categorytype
+                CategoryRouter = cateId
             };
             return View(model);
         }

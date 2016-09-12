@@ -1,9 +1,11 @@
-﻿using Gds.BusinessObject.TableModel;
-using MvcCornerstone.Data;
+﻿using Gds.BusinessObject.DbContext;
+using Gds.BusinessObject.TableModel;
+using MvcCornerstone.Services;
 
 namespace Gds.VideoFrontend.Domain
 {
-    public interface IContactService : IEntityRepository<PaymentLog>
+    public interface IContactService : IGenericService<PaymentLog, DbContextBase>
     {
+
     }
 }

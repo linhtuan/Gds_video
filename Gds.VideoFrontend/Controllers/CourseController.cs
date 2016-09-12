@@ -16,28 +16,28 @@ namespace Gds.VideoFrontend.Controllers
         }
 
         // GET: Course
-        [Route("course/{categorytype?}")]
-        public ActionResult Index(string categorytype)
+        [Route("course/{cateType?}")]
+        public ActionResult Index(string cateType)
         {
-            var model = _courseService.GetCourseDetail(categorytype);
-            model.CourseRouter = categorytype;
+            var model = _courseService.GetCourseDetail(cateType);
+            model.CourseRouter = cateType;
             return View(model);
         }
 
-        [Route("course/{categorytype?}/learning")]
-        public ActionResult Learning(string categorytype)
+        [Route("course/{cateType?}/learning")]
+        public ActionResult Learning(string cateType)
         {
             //check user da mua goi chua
 
-            var model = _courseService.GetLearning(categorytype);
+            var model = _courseService.GetLearning(cateType);
             return View(model);
         }
 
-        [Route("course/{categorytype?}/lecture/{index?}")]
-        public ActionResult Lecture(string categorytype, int index)
+        [Route("course/{cateType?}/lecture/{index?}")]
+        public ActionResult Lecture(string cateType, int index)
         {
             //check user da mua goi chua
-            var model = _courseService.GetLecture(categorytype, index);
+            var model = _courseService.GetLecture(cateType, index);
             if (string.IsNullOrEmpty(model.CourseId)) return null;
 
             return View(model);
@@ -47,13 +47,13 @@ namespace Gds.VideoFrontend.Controllers
         #region GET
 
         [Route("course/getcomment/learning")]
-        public JsonResult GetCommentLearning(string courseId)
+        public JsonResult GetCommentLearning(string cateId)
         {
             return Json(null);
         }
 
         [Route("course/getcomment/lecture")]
-        public JsonResult GetCommentlecture(string learningId)
+        public JsonResult GetCommentlecture(string categoryTypeId)
         {
             return Json(null);
         }
@@ -64,10 +64,10 @@ namespace Gds.VideoFrontend.Controllers
 
         [HttpPost]
         [Route("course/lectures/info")]
-        public JsonResult GetLectures(bool hasUrl, string courseId, string urlRouter)
+        public JsonResult GetLectures(bool hasUrl, string cateId, string urlRouter)
         {
             //check user da mua goi chua
-            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(cateId));
             var result = _courseService.GetLectures(categoryTypeId, hasUrl, urlRouter);
             return result.Any()
                 ? Json(new { isSuccess = true, data = result })
@@ -76,9 +76,9 @@ namespace Gds.VideoFrontend.Controllers
 
         [HttpPost]
         [Route("course/suggest/info")]
-        public JsonResult GetSuggestCourse(string courseId)
+        public JsonResult GetSuggestCourse(string cateId)
         {
-            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(courseId));
+            var categoryTypeId = Convert.ToInt32(CryptographyHelper.Decrypt(cateId));
 
             var result = _courseService.GetSuggestCourses(categoryTypeId);
             return result.Any()
@@ -99,14 +99,14 @@ namespace Gds.VideoFrontend.Controllers
 
         [HttpPost]
         [Route("course/addcomment/learning")]
-        public JsonResult AddCommentForLearning(string courseId, string comment)
+        public JsonResult AddCommentForLearning(string cateId, string comment)
         {
             return null;
         }
 
         [HttpPost]
         [Route("course/addcomment/lecture")]
-        public JsonResult AddCommentForLecture(string lectureId, int courseId, string comment)
+        public JsonResult AddCommentForLecture(string cateTypeId, int cateId, string comment)
         {
             return null;
         }

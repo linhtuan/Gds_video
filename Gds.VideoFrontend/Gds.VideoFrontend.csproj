@@ -220,6 +220,7 @@
     <Compile Include="Models\CategoryTypesModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
+    <Compile Include="Models\ContactPaymentLogViewModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\CourseDetailViewModel.cs" />
     <Compile Include="Models\CoursesViewModel.cs" />
