@@ -26,7 +26,6 @@ namespace Gds.VideoFrontend.Controllers
         {
             if (ContactId != null)
             {
-
                 var model = new ContactViewModel();
                 model.ContactId = ContactId.Value;
                 return PartialView("MiniUserProfilePartialView", model);

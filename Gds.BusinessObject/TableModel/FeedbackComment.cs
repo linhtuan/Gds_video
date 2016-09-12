@@ -15,6 +15,8 @@ namespace Gds.BusinessObject.TableModel
 
         public int UserId { get; set; }
 
+        public string UserName { get; set; }
+
         public string CommentContent { get; set; }
 
         public DateTime? CreatedDate { get; set; }

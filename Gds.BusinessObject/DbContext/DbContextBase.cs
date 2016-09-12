@@ -26,7 +26,7 @@ namespace Gds.BusinessObject.DbContext
 
         public DbSet<CategoryRating> CategoryRating { get; set; }
 
-        public DbSet<CommentByUser> CommentByUser { get; set; }
+        public DbSet<Comment> CommentByUser { get; set; }
 
         public DbSet<PaymentLog> PaymentLog { get; set; }
 

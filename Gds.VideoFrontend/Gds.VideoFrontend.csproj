@@ -202,10 +202,12 @@
     <Compile Include="Domain\ICategoryDetailService.cs" />
     <Compile Include="Domain\ICategoryService.cs" />
     <Compile Include="Domain\IContactApiService.cs" />
+    <Compile Include="Domain\IContactService.cs" />
     <Compile Include="Domain\ICourseService.cs" />
     <Compile Include="Domain\Implement\CategoryDetailService.cs" />
     <Compile Include="Domain\Implement\CategoryService.cs" />
     <Compile Include="Domain\Implement\ContactApiService.cs" />
+    <Compile Include="Domain\Implement\ContactService.cs" />
     <Compile Include="Domain\Implement\CourseService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
