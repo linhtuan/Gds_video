@@ -43,7 +43,6 @@ namespace Gds.VideoFrontend.Controllers
             return View(model);
         }
 
-
         #region GET
 
         [Route("course/getcomment/learning")]

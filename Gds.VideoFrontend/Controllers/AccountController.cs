@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -34,11 +35,63 @@ namespace Gds.VideoFrontend.Controllers
             return PartialView("MiniUserProfilePartialView", null);
         }
 
+
+        #region GET
+
+        [Route("users/view_profile")]
+        public ActionResult ProfileDetail()
+        {
+            if (!ContactId.HasValue)
+                return RedirectToLocal(string.Empty);
+
+            return View();
+        }
+
+        [Route("users/edit_profile")]
+        public ActionResult EditProfile()
+        {
+            if (!ContactId.HasValue)
+                return RedirectToLocal(string.Empty);
+
+            return View();
+        }
+
+        [Route("users/learning")]
+        public ActionResult UserCouse()
+        {
+            if (!ContactId.HasValue)
+                return RedirectToLocal(string.Empty);
+
+            return View();
+        }
+
+        [Route("users/payment_history")]
+        public ActionResult UserPaymentHistory()
+        {
+            if (!ContactId.HasValue)
+                return RedirectToLocal(string.Empty);
+
+            return View();
+        }
+
+        [Route("users/payment/{cateType?}/payment_bill")]
+        public ActionResult UserPaymentBill(string cateType)
+        {
+            if (!ContactId.HasValue)
+                return RedirectToLocal(string.Empty);
+
+            return View();
+        }
+
+        #endregion
+
+        #region Post
+
         [HttpPost]
         public JsonResult Login(string userName, string passwords)
         {
             var modelResult = _contactApiService.LoginAction(userName, passwords);
-            if(modelResult.ContactId != 0)
+            if (modelResult.ContactId != 0)
             {
                 SessionManager.SetSessionObject(SessionObjectEnum.TokenUser, modelResult.TokenUser);
                 SessionManager.SetSessionObject(SessionObjectEnum.SecurityCode, modelResult.SecurityCode);
@@ -69,11 +122,13 @@ namespace Gds.VideoFrontend.Controllers
         {
             var info = await AuthenticationManager.GetExternalLoginInfoAsync();
             var model = new IdentityUserModel();
+            ClaimsIdentity identity;
+            string accessToken;
             switch (info.Login.LoginProvider.ToUpper())
             {
                 case "FACEBOOK":
-                    var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
-                    var accessToken = identity.FindFirstValue("FacebookAccessToken");
+                    identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
+                    accessToken = identity.FindFirstValue("FacebookAccessToken");
                     var fb = new FacebookClient(accessToken);
                     var myInfo = fb.Get("/me?fields=email,first_name,last_name,gender") as JsonObject; // specify the email field
                     if (myInfo != null)
@@ -86,16 +141,16 @@ namespace Gds.VideoFrontend.Controllers
                     }
                     break;
                 case "GOOGLE":
-                    var identityGG = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
-                    var emailGG = identityGG.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
-                    var name = identityGG.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
-                    var id = identityGG.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
-                    var accessTokenGG = identityGG.FindFirstValue("Google_AccessToken");
+                    identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
+                    var email = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+                    var name = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
+                    var id = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+                    accessToken = identity.FindFirstValue("Google_AccessToken");
                     model.Type = info.Login.LoginProvider.ToUpper();
-                    if (emailGG != null) model.Email = emailGG.Value;
+                    if (email != null) model.Email = email.Value;
                     if (name != null) model.Name = name.Value;
                     if (name != null) model.Id = id.Value;
-                    model.Token = accessTokenGG;
+                    model.Token = accessToken;
                     break;
             }
 
@@ -120,7 +175,7 @@ namespace Gds.VideoFrontend.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
             }
             var modelResult = _contactApiService.LoginAuthentication(model);
             SessionManager.SetSessionObject(SessionObjectEnum.TokenUser, modelResult.TokenUser);
@@ -128,7 +183,7 @@ namespace Gds.VideoFrontend.Controllers
             SessionManager.SetSessionObject(SessionObjectEnum.ContactId, modelResult.ContactId);
 
             return RedirectToAction("Courses", "Category");
-        } 
+        }
 
         //
         // POST: /Account/LogOff
@@ -139,6 +194,8 @@ namespace Gds.VideoFrontend.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {
@@ -177,36 +234,6 @@ namespace Gds.VideoFrontend.Controllers
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Home");
-        }
-
-        [Route("users/view_profile")]
-        public ActionResult ProfileDetail()
-        {
-            return View();
-        }
-
-        [Route("users/edit_profile")]
-        public ActionResult EditProfile()
-        {
-            return View();
-        }
-
-        [Route("users/learning")]
-        public ActionResult UserCouse()
-        {
-            return View();
-        }
-
-        [Route("users/payment_history")]
-        public ActionResult UserPaymentHistory()
-        {
-            return View();
-        }
-
-        [Route("users/payment/{categorytype?}/payment_bill")]
-        public ActionResult UserPaymentBill(string categorytype)
-        {
-            return View();
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
