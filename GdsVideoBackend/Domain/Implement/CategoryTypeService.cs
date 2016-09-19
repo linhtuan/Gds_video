@@ -122,6 +122,7 @@ namespace GdsVideoBackend.Domain.Implement
                         Content = item.Content,
                         DateTime = item.CreatedDate.HasValue ? item.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
                         Price = thisParent.Price.Value,
+                        ChildrenIndex = item.ChildrenIndex
                     });
                 }
                 var resultPaging = new PagingResultModel<CategoryTypesModel>
@@ -159,7 +160,8 @@ namespace GdsVideoBackend.Domain.Implement
                     GlobalSortOrder = model.CategoryTypeOrderId == 0
                         ? (int) CategoryTypeOrderEnum.Normal
                         : model.CategoryTypeOrderId,
-                    AuthorId = model.AuthorId
+                    AuthorId = model.AuthorId,
+                    ChildrenIndex = model.ChildrenIndex
                 };
                 if (model.ParentId != 0)
                 {
@@ -212,7 +214,8 @@ namespace GdsVideoBackend.Domain.Implement
                     GlobalSortOrder = model.CategoryTypeOrderId == 0
                         ? (int) CategoryTypeOrderEnum.Normal
                         : model.CategoryTypeOrderId,
-                    AuthorId = model.AuthorId
+                    AuthorId = model.AuthorId,
+                    ChildrenIndex = model.ChildrenIndex
                 });
                 Repository.Commit<DbContextBase>();
                 return true;

@@ -62,6 +62,8 @@ function bindingAuthor() {
 
 function bindingAuthorFrom(obj) {
     var rowId = $(obj).attr("data-id");
+    $('#author-form .ibox-content').html('<div class="wrapper p-md author-content"></div>');
+    $('#author-form #image-photo').attr('src', '');
     $('#author-form .author_name').val($("#" + rowId + " .author_name").text());
     $('#author-form .author-id').val(rowId);
     $('#author-form .author-content').html($("#" + rowId + " .author-detail").html());
@@ -94,7 +96,8 @@ $(document).on('click', '#save-author', function (event) {
 $(document).on('click', '.author-type-box', function (event) {
     $('#author-form .author_name').val('');
     $('#author-form .author-id').val('');
-    $('#author-form .author-content').html('');
+    $('#author-form .ibox-content').html('');
+    $('#author-form .ibox-content').html('<div class="wrapper p-md author-content"></div>');
     $('#author-form #image-photo').attr('src', '');
 });
 

@@ -22,5 +22,7 @@ namespace GdsVideoBackend.Models
         public int CategoryTypeOrderId { get; set; }
 
         public int AuthorId { get; set; }
+
+        public int ChildrenIndex { get; set; }
     }
 }

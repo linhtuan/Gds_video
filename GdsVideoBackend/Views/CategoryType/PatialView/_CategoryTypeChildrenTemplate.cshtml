@@ -6,6 +6,7 @@
                 <th class="sorting_asc" tabindex="0" aria-controls="categoryTypeChildren_Table" rowspan="1" colspan="1" aria-sort="ascending" style="width: 189px;">Tên khóa học kèm theo</th>
                 <th class="sorting" tabindex="0" aria-controls="categoryTypeChildren_Table" rowspan="1" colspan="1" style="width: 253px;">Nội dung</th>
                 <th class="sorting" tabindex="0" aria-controls="categoryTypeChildren_Table" rowspan="1" colspan="1" style="width: 229px;">Giá tiền</th>
+                <th class="sorting" tabindex="0" aria-controls="categoryTypeChildren_Table" rowspan="1" colspan="1" style="width: 229px;">Số thứ tự</th>
                 <th class="sorting" tabindex="0" aria-controls="categoryTypeChildren_Table" rowspan="1" colspan="1" style="width: 162px;">Ngày tạo</th>
                 <th tabindex="0" aria-controls="categoryTypeChildren_Table" rowspan="1" colspan="1" style="width: 115px;"></th>
             </tr>
@@ -17,6 +18,7 @@
                 <td class="category-type-name" data-childrenid="${$value.ChildrenId}">${$value.ChildrenName}</td>
                 <td class="content-detail">{{html $value.Content}}</td>
                 <td class="price" data-priceid="${$value.PriceId}">${$value.Price}</td>
+                <td class="children-index">${$value.ChildrenIndex}</td>
                 <td class="center">${$value.DateTime}</td>
                 <td class="center">
                     <a class="btn btn-sm btn-success btn-rounded" href="categorydetail?categoryTypeId=${$value.ChildrenId}">Bài học</a>

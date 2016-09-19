@@ -18,6 +18,8 @@
 
         public decimal Price { get; set; }
 
+        public int? ChildrenIndex { get; set; }
+
         public string DateTime { get; set; }
 
         public string ThumbnailImage { get; set; }

@@ -149,6 +149,7 @@ namespace GdsVideoBackend.Controllers
             item.AgeOrderId = Convert.ToInt32(request["AgeOrder"]);
             item.CategoryTypeOrderId = Convert.ToInt32(request["CategoryTypeOrder"]);
             item.AuthorId = Convert.ToInt32(request["Author"]);
+            item.ChildrenIndex = Convert.ToInt32(request["ChildrenIndex"]);
             return item;
         }
 

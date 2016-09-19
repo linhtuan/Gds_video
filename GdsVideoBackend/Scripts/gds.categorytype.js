@@ -217,6 +217,8 @@ function bindingCategoryTypeDetail(obj) {
     var rowId = $(obj).attr("data-id");
     var typeTable = $(obj).attr("data-type");
     if (typeTable == "parent") {
+        $('#category-type-parent-form .ibox-content').html('');
+        $('#category-type-parent-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
         $('#category-type-parent-form .category-type-id').val(rowId);
         $('#category-type-parent-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
         $('#category-type-parent-form .price').val($("#" + rowId + " .price").attr('data-priceid'));
@@ -228,8 +230,11 @@ function bindingCategoryTypeDetail(obj) {
         var file = $("#" + rowId + " .category-type-name").attr('data-file');
         document.getElementById("image-photo").src = "data:image/" + fileType + ";base64," + file;
     } else {
+        $('#category-type-children-form .ibox-content').html('');
+        $('#category-type-children-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
         $('#category-type-children-form .category-type-id').val(rowId);
         $('#category-type-children-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
+        $('#category-type-children-form .children-index').val($("#" + rowId + " .children-index").text());
         $('#category-type-children-form .cateogry-type-content').html($("#" + rowId + " .content-detail").html());
     }
 }
@@ -303,6 +308,7 @@ $(document).on('click', '#save-children', function (event) {
         CategoryTypeId: $('#category-type-children-form .category-type-id').val(),
         CategoryId: parseInt(gds.getQueryVariable('categoryId')),
         CategoryTypeName: $('#category-type-children-form .category-type-name').val(),
+        ChildrenIndex: $('#category-type-children-form .category-type-index').val(),
         Content: $('#category-type-children-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, ""),
     };
     if (model.CategoryTypeId == 0) {
@@ -369,21 +375,24 @@ $('#category-type-parent-form').on('change', '#replace-photo-tag', function () {
 $(document).on('click', '#category-type-parent .category-type-box', function (event) {
     $('#category-type-parent-form .category-id').val('');
     $('#category-type-parent-form .content').val('');
-    $('#category-type-parent-form .category-type-id').val(''),
-    $('#category-type-parent-form .category-type-name').val(''),
+    $('#category-type-parent-form .category-type-id').val('');
+    $('#category-type-parent-form .category-type-name').val('');
     $("#category-type-parent-form .price option:first").attr('selected', 'selected');
     $("#category-type-parent-form .age-order option:first").attr('selected', 'selected');
     $("#category-type-parent-form .categorytype-order option:first").attr('selected', 'selected');
     $("#category-type-parent-form .author option:first").attr('selected', 'selected');
-    $('#category-type-parent-form .cateogry-type-content').html('');
+    $('#category-type-parent-form .ibox-content').html('');
+    $('#category-type-parent-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
     $('#category-type-parent-form #image-photo').attr('src', '');
 });
 
 $(document).on('click', '#category-type-children .category-type-box', function (event) {
     $('#category-type-children-form .category-type-name').val('');
-    $('#category-type-children-form .category-type-id').val('0'),
+    $('#category-type-children-form .category-type-id').val('0');
+    $('#category-type-children-form .category-type-index').val('');
     $("#category-type-children-form .parent-category-type-select option:first").attr('selected', 'selected');
-    $('#category-type-children-form .cateogry-type-content').html('');
+    $('#category-type-children-form .ibox-content').html('');
+    $('#category-type-children-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
 });
 
 $(document).ready(function () {
