@@ -39,7 +39,7 @@ namespace GdsVideoBackend.Domain.Implement
         {
             try
             {
-                var query = Repository.DoQuery<DbContextBase>(x => x.CategoryId == categoryId && x.CategoryTypeParentId == 0)
+                var query = Repository.DoQuery<DbContextBase>(x => x.CategoryId == categoryId)
                      .Join(_priceRepository.Table<DbContextBase>(), x => x.CategoryTypePriceId, y => y.CategoryTypePriceId,
                         (cat, price) => new { cat, price.CategoryTypePriceId, price.Price, price.SalePrice, price.SaleTime }).OrderByDescending(x => x.cat.CreatedDate);
                 var totalCount = query.Count();
@@ -51,7 +51,7 @@ namespace GdsVideoBackend.Domain.Implement
                 var results = dataResult.Select(item => new CategoryTypesModel
                 {
                     CategoryId = item.cat.CategoryId,
-                    ChildrenId = item.cat.CategoryTypeId,
+                    CategoryTypeId = item.cat.CategoryTypeId,
                     ChildrenName = item.cat.CategoryTypeName,
                     Content = item.cat.Content,
                     DateTime = item.cat.CreatedDate.HasValue ? item.cat.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
@@ -91,57 +91,6 @@ namespace GdsVideoBackend.Domain.Implement
             }
         }
 
-        public PagingResultModel<CategoryTypesModel> GetCategoryTypesByCategoryId(int categoryId, int pageIndex, int pageSize)
-        {
-            try
-            {
-                var query = Repository.DoQuery<DbContextBase>(x => x.CategoryId == categoryId && x.CategoryTypeParentId != 0)
-                                  .OrderByDescending(x => x.CreatedDate)
-                                  .ThenBy(x => x.CategoryTypeParentId);
-                var totalCount = query.Count();
-                var dataResult = query.ToPagedQueryable(pageIndex, pageSize, totalCount);
-                var parentIds = dataResult.Select(x => x.CategoryTypeParentId).Distinct().ToList();
-
-                var parentQuery = Repository.DoQuery<DbContextBase>(x => parentIds.Contains(x.CategoryTypeId))
-                    .Join(_priceRepository.Table<DbContextBase>(), x => x.CategoryTypePriceId, y => y.CategoryTypePriceId,
-                        (x, y) => new { x.CategoryTypeId, x.CategoryTypeName, y.Price, y.SalePrice, y.SaleTime }).ToList();
-
-                var results = new List<CategoryTypesModel>();
-
-                foreach (var item in dataResult)
-                {
-                    var thisParent = parentQuery.FirstOrDefault(y => y.CategoryTypeId == item.CategoryTypeParentId);
-                    if (thisParent == null) continue;
-                    results.Add(new CategoryTypesModel
-                    {
-                        CategoryId = thisParent.CategoryTypeId,
-                        ParentId = item.CategoryTypeParentId,
-                        ParentName = thisParent.CategoryTypeName,
-                        ChildrenId = item.CategoryTypeId,
-                        ChildrenName = item.CategoryTypeName,
-                        Content = item.Content,
-                        DateTime = item.CreatedDate.HasValue ? item.CreatedDate.Value.ToString("dd/MM/yyyy") : string.Empty,
-                        Price = thisParent.Price.Value,
-                        ChildrenIndex = item.ChildrenIndex
-                    });
-                }
-                var resultPaging = new PagingResultModel<CategoryTypesModel>
-                {
-                    Result = results,
-                    PageIndex = dataResult.PageIndex,
-                    PageSize = dataResult.PageSize,
-                    ItemCount = dataResult.ItemCount,
-                    PageCount = dataResult.PageCount
-                };
-
-                return resultPaging;
-            }
-            catch (Exception ex)
-            {
-                return new PagingResultModel<CategoryTypesModel>();
-            }
-        }
-
         public bool InsertCategoryType(CategoryTypeViewModel model, string fileName, out int categoryTypeId)
         {
             try
@@ -161,26 +110,16 @@ namespace GdsVideoBackend.Domain.Implement
                         ? (int) CategoryTypeOrderEnum.Normal
                         : model.CategoryTypeOrderId,
                     AuthorId = model.AuthorId,
-                    ChildrenIndex = model.ChildrenIndex
                 };
-                if (model.ParentId != 0)
-                {
-                    categoryType.CategoryTypeParentId = model.ParentId;
-                }
-                else
-                {
-                    categoryType.CategoryTypePriceId = model.CategoryTypePriceId;
-                }
+                categoryType.CategoryTypePriceId = model.CategoryTypePriceId;
                 Repository.Insert<DbContextBase>(categoryType);
                 Repository.Commit<DbContextBase>();
-                if (categoryType.CategoryTypeParentId == 0)
+
+                var uploadFilesDir = string.Format(@"{0}\thumbnailImage\{1}\{2}", AppConfig.UploadFolder, model.CategoryId, categoryType.CategoryTypeId);
+                Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeId == categoryType.CategoryTypeId, x => new CategoryTypes
                 {
-                    var uploadFilesDir = string.Format(@"{0}\thumbnailImage\{1}\{2}", AppConfig.UploadFolder, model.CategoryId, categoryType.CategoryTypeId);
-                    Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeId == categoryType.CategoryTypeId, x => new CategoryTypes
-                    {
-                        ThumbnailImage = string.Format("{0}\\{1}", uploadFilesDir, fileName)
-                    });
-                }
+                    ThumbnailImage = string.Format("{0}\\{1}", uploadFilesDir, fileName)
+                });
                 categoryTypeId = categoryType.CategoryTypeId;
                 return true;
             }
@@ -199,7 +138,6 @@ namespace GdsVideoBackend.Domain.Implement
                 urlRouter = Regex.Replace(urlRouter, @"\W", "-").ToLower();
                 Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeId == model.CategoryTypeId, x => new CategoryTypes
                 {
-                    CategoryTypeParentId = model.ParentId,
                     CategoryId = model.CategoryId,
                     CategoryTypeName = model.CategoryTypeName,
                     Content = model.Content,
@@ -215,7 +153,6 @@ namespace GdsVideoBackend.Domain.Implement
                         ? (int) CategoryTypeOrderEnum.Normal
                         : model.CategoryTypeOrderId,
                     AuthorId = model.AuthorId,
-                    ChildrenIndex = model.ChildrenIndex
                 });
                 Repository.Commit<DbContextBase>();
                 return true;
@@ -244,13 +181,6 @@ namespace GdsVideoBackend.Domain.Implement
             return _priceRepository.Table<DbContextBase>().ToList();
         }
 
-        public Dictionary<int, string> GetParentCategoryType()
-        {
-            var query = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == 0 && x.Status == 1)
-                .Select(x => new {x.CategoryTypeId, x.CategoryTypeName})
-                .ToList();
-            return query.ToDictionary(x => x.CategoryTypeId, x => x.CategoryTypeName);
-        }
 
         public List<AgeOrder> GetAgeOrders()
         {

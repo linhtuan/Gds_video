@@ -64,30 +64,12 @@ namespace GdsVideoBackend.Controllers
             return Json(new { isSuccess = false, data = result }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetParentCategoryType()
-        {
-            var result = _categoryTypeService.GetParentCategoryType().Select(x => new
-            {
-                Id = x.Key,
-                Name = x.Value
-            });
-            return Json(new { isSuccess = false, data = result }, JsonRequestBehavior.AllowGet);
-        }
-
         [HttpPost]
         public JsonResult GetParent(int categoryId, int pageIndex, int pageSize)
         {
             var result = _categoryTypeService.GetParentCategoryTypes(categoryId, pageIndex, pageSize);
             return result.Result.Any() ? Json(new { isSuccess = true, data = result }, JsonRequestBehavior.AllowGet)
                 : Json(new { isSuccess = false, data = new PagingResultModel<CategoryTypesModel>() }, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public JsonResult GetChildren(int categoryId, int pageIndex, int pageSize)
-        {
-            var result = _categoryTypeService.GetCategoryTypesByCategoryId(categoryId, pageIndex, pageSize);
-            return result.Result.Any() ? Json(new {isSuccess = true, data = result}, JsonRequestBehavior.AllowGet)
-                : Json(new {isSuccess = false, data = new PagingResultModel<CategoryTypesModel>()}, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost, ValidateInput(false)]
@@ -116,21 +98,6 @@ namespace GdsVideoBackend.Controllers
             return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost, ValidateInput(false)]
-        public JsonResult UpdateChildren(CategoryTypeViewModel item)
-        {
-            var result = _categoryTypeService.UpdateCategoryType(item);
-            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost, ValidateInput(false)]
-        public JsonResult InsertChildren(CategoryTypeViewModel item)
-        {
-            var categoryType = 0;
-            var result = _categoryTypeService.InsertCategoryType(item, string.Empty, out categoryType);
-            return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
-        }
-
         [HttpPost]
         public JsonResult Delete(int categoryTypeId, string type)
         {
@@ -149,7 +116,6 @@ namespace GdsVideoBackend.Controllers
             item.AgeOrderId = Convert.ToInt32(request["AgeOrder"]);
             item.CategoryTypeOrderId = Convert.ToInt32(request["CategoryTypeOrder"]);
             item.AuthorId = Convert.ToInt32(request["Author"]);
-            item.ChildrenIndex = Convert.ToInt32(request["ChildrenIndex"]);
             return item;
         }
 

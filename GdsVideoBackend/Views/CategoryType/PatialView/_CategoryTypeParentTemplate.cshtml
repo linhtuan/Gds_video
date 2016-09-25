@@ -14,16 +14,17 @@
         </thead>
         <tbody>
             {{each Result}}
-            <tr class="gradeA odd" role="row" id="${$value.ChildrenId}">
-                <td class="category-type-name" data-filetype="${$value.MimeTypeImage}" data-file="${$value.ThumbnailImage}" data-childrenid="${$value.ChildrenId}">${$value.ChildrenName}</td>
+            <tr class="gradeA odd" role="row" id="${$value.CategoryTypeId}">
+                <td class="category-type-name" data-filetype="${$value.MimeTypeImage}" data-file="${$value.ThumbnailImage}" data-childrenid="${$value.CategoryTypeId}">${$value.ChildrenName}</td>
                 <td class="age" data-age="${$value.AgeOrderId}">${$value.AgeOrderName}</td>
                 <td class="content-detail">{{html $value.Content}}</td>
                 <td class="author" data-authorid="${$value.AuthorId}">${$value.AuthorName}</td>
-                <td class="price" data-priceId="${$value.PriceId}">${$value.Price}</td>
+                <td class="price" data-priceid="${$value.PriceId}">${$value.Price}</td>
                 <td>${$value.DateTime}</td>
                 <td>
-                    <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryTypeDetail(this)" data-type="parent" data-categorytype-order="${$value.CategoryTpyeOrder}" data-id="${$value.ChildrenId}" data-toggle="modal" href="#add-new-category-type-parent">Edit</a>
-                    <a class="btn btn-sm btn-danger btn-rounded" onclick="deleteCategoryType(this)" data-type="parent" data-id="${$value.ChildrenId}" href="#">Delete</a>
+                    <a class="btn btn-sm btn-default btn-rounded" href="categorydetail?categoryTypeId=${$value.CategoryTypeId}" target="_blank">Chi tiết</a>
+                    <a class="btn btn-sm btn-success btn-rounded" onclick="bindingCategoryTypeDetail(this)" data-type="parent" data-categorytype-order="${$value.CategoryTpyeOrder}" data-id="${$value.CategoryTypeId}" data-toggle="modal" href="#add-new-category-type-parent">Edit</a>
+                    <a class="btn btn-sm btn-danger btn-rounded" onclick="deleteCategoryType(this)" data-type="parent" data-id="${$value.CategoryTypeId}" href="#">Delete</a>
                 </td>
             </tr>
             {{/each}}

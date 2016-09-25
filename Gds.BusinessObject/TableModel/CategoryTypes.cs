@@ -11,8 +11,6 @@ namespace Gds.BusinessObject.TableModel
         [Key]
         public int CategoryTypeId { get; set; }
 
-        public int CategoryTypeParentId { get; set; }
-
         public int CategoryId { get; set; }
 
         public string CategoryTypeName { get; set; }
@@ -36,7 +34,5 @@ namespace Gds.BusinessObject.TableModel
         public int? GlobalSortOrder { get; set; }
 
         public int? AgeOrderId { get; set; }
-
-        public int? ChildrenIndex { get; set; }
     }
 }

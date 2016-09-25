@@ -12,8 +12,6 @@ namespace GdsVideoBackend.Domain
     {
         PagingResultModel<CategoryTypesModel> GetParentCategoryTypes(int categoryId, int pageIndex, int pageSize);
 
-        PagingResultModel<CategoryTypesModel> GetCategoryTypesByCategoryId(int categoryId, int pageIndex, int pageSize);
-
         bool InsertCategoryType(CategoryTypeViewModel model, string fileName, out int categoryTypeId);
 
         bool UpdateCategoryType(CategoryTypeViewModel model);
@@ -21,8 +19,6 @@ namespace GdsVideoBackend.Domain
         bool DeleteCategoryType(int categoryTypeId);
 
         List<CategoryTypePrice> GetPrices();
-
-        Dictionary<int, string> GetParentCategoryType();
 
         List<AgeOrder> GetAgeOrders();
 

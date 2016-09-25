@@ -15,97 +15,41 @@
 }
 
 <div class="col-lg-12">
-    <div class="tabs-container">
-        <ul class="nav nav-tabs">
-            <li id="parent-tab" class="active"><a data-toggle="tab">Khóa học</a></li>
-            <li id="children-tab" class=""><a data-toggle="tab">Chi tiết khóa học</a></li>
-        </ul>
-        <div class="tab-content">
-            <div id="category-type-parent" class="tab-pane active">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-content">
-                                <div class="table-responsive">
-                                    <div class="dataTables_wrapper form-inline">
-                                        <div class="clear"></div>
-                                        <div class="dataTables_length">
-                                            <div class="col-sm-3">
-                                                <label>
-                                                    <select class="form-control input-sm page-size">
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    </select> records per page
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a data-toggle="modal" class="btn btn-success btn-sm category-type-box" href="#add-new-category-type-parent">Thêm khóa học</a>
-                                            </div>
-                                        </div>
-                                        <div class="dataTables_filter">
-                                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
-                                        </div>
-                                        <div id="categoryTypeParent_Div">
-
-                                        </div>
-                                        <div class="paging_simple_numbers">
-                                            <div class="col-lg-12">
-                                                <div class="col-lg-4"></div>
-                                                <div class="col-lg-4 paging-row hide">
-                                                    <a class="btn btn-default btn-sm prev" href="#"><i class="fa fa-angle-left"></i> Previous</a>
-                                                    <input type="text" class="input-mini">&nbsp;of&nbsp;<a class="total-row">0</a>
-                                                    <a class="btn btn-default btn-sm next" href="#">Next <i class="fa fa-angle-right"></i></a>
-                                                </div>
-                                                <div class="col-lg-4"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <div class="dataTables_wrapper form-inline">
+                            <div class="clear"></div>
+                            <div class="dataTables_length">
+                                <div class="col-sm-3">
+                                    <label>
+                                        <select class="form-control input-sm page-size">
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select> records per page
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <a data-toggle="modal" class="btn btn-success btn-sm category-type-box" href="#add-new-category-type-parent">Thêm khóa học</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="category-type-children" class="tab-pane">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-content">
-                                <div class="table-responsive">
-                                    <div class="dataTables_wrapper form-inline">
-                                        <div class="clear"></div>
-                                        <div class="dataTables_length">
-                                            <div class="col-sm-3">
-                                                <label>
-                                                    <select class="form-control input-sm page-size">
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    </select> records per page
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a data-toggle="modal" class="btn btn-success btn-sm category-type-box" href="#add-new-category-type-children">Thêm khóa học con</a>
-                                            </div>
-                                        </div>
+                            <div class="dataTables_filter">
+                                <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+                            </div>
+                            <div id="categoryTypeParent_Div">
 
-                                        <div class="dataTables_filter">
-                                            <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
-                                        </div>
-                                        <div id="categoryTypeChildren_Div">
-
-                                        </div>
-                                        <div class="paging_simple_numbers">
-                                            <div class="col-lg-12">
-                                                <div class="col-lg-4"></div>
-                                                <div class="col-lg-4 paging-row hide">
-                                                    <a class="btn btn-default btn-sm prev" href="#"><i class="fa fa-angle-left"></i> Previous</a>
-                                                    <input type="text" class="input-mini">&nbsp;of&nbsp;<a class="total-row">0</a>
-                                                    <a class="btn btn-default btn-sm next" href="#">Next <i class="fa fa-angle-right"></i></a>
-                                                </div>
-                                                <div class="col-lg-4"></div>
-                                            </div>
-                                        </div>
+                            </div>
+                            <div class="paging_simple_numbers">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-4"></div>
+                                    <div class="col-lg-4 paging-row hide">
+                                        <a class="btn btn-default btn-sm prev" href="#"><i class="fa fa-angle-left"></i> Previous</a>
+                                        <input type="text" class="input-mini">&nbsp;of&nbsp;<a class="total-row">0</a>
+                                        <a class="btn btn-default btn-sm next" href="#">Next <i class="fa fa-angle-right"></i></a>
                                     </div>
+                                    <div class="col-lg-4"></div>
                                 </div>
                             </div>
                         </div>
@@ -116,8 +60,6 @@
     </div>
 </div>
 
-@Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenDialog.cshtml")
-@Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeChildrenTemplate.cshtml")
 @Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentDialog.cshtml", Model)
 @Html.Partial("~/Views/CategoryType/PatialView/_CategoryTypeParentTemplate.cshtml")
 
@@ -134,15 +76,6 @@
         $(document).on('click', '#category-type-parent-form #save', function (event) {
             //var aHTML = $('.cateogry-type-content').code(); //save HTML If you need(aHTML: array).
             $('#category-type-parent-form .cateogry-type-content').destroy();
-        });
-
-        $(document).on('click', '#category-type-children-form #edit', function (event) {
-            $('#category-type-children-form .cateogry-type-content').summernote({ focus: true });
-        });
-
-        $(document).on('click', '#category-type-children-form #save', function (event) {
-            //var aHTML = $('.cateogry-type-content').code(); //save HTML If you need(aHTML: array).
-            $('#category-type-children-form .cateogry-type-content').destroy();
         });
     </script>
 }

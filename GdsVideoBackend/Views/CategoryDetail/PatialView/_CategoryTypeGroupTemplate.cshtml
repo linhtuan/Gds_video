@@ -1,0 +1,55 @@
+﻿<script id="categoryGroupTemplate" type="text/x-jquery-tmpl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-5 m-b-xs">
+                            <div class="ibox-title">
+                                <h5>${CategoryGroupName}</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-b-xs">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <a data-toggle="modal" id="show-detail-box" onclick="bindingCategoryDetailFrom(this, 'add')" class="btn btn-success btn-sm" href="#add-new-category-detail">Thêm bài học</a>
+                                @*<button type="button" class="btn btn-sm btn-primary" data-group-id="${CategoryGroupId}">Thêm mới bài học</button>*@
+                                <button type="button" class="btn btn-sm btn-primary" data-group-id="${CategoryGroupId}">Sửa nhóm</button>
+                                <button type="button" class="btn btn-sm btn-primary" data-group-id="${CategoryGroupId}">Xóa nhóm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="categoryDetailTemplate_Table" role="grid">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="categoryDetailTemplate_Table" rowspan="1" colspan="1" aria-sort="ascending" style="width: 189px;">Tên bài</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="categoryDetailTemplate_Table" rowspan="1" colspan="1" aria-sort="ascending" style="width: 189px;">Nội dung</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="categoryDetailTemplate_Table" rowspan="1" colspan="1" aria-sort="ascending" style="width: 189px;">Tên file</th>
+                                    <th class="sorting" tabindex="0" aria-controls="categoryDetailTemplate_Table" rowspan="1" colspan="1" style="width: 162px;">Ngày tạo</th>
+                                    <th tabindex="0" aria-controls="categoryDetailTemplate_Table" rowspan="1" colspan="1" style="width: 115px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{each CategoryDetails}}
+                                <tr role="row" id="${$value.CategoryDetailId}">
+                                    <td>Bài <span class="categorty-index">${$value.LectureIndex}</span></td>
+                                    <td class="categorty-detail">${$value.CategoryDetailName}</td>
+                                    <td class="fileName">${$value.FileName}</td>
+                                    <td class="create-date">${$value.UpdatedDate}</td>
+                                    <td class="actions">
+                                        <a class="btn btn-sm btn-success btn-rounded show-detail-box" onclick="bindingCategoryDetailFrom(this, 'edit')"  data-id="${$value.CategoryDetailId}" data-toggle="modal" href="#add-new-category-detail">Edit</a>
+                                        <a class="btn btn-sm btn-danger btn-rounded" onclick="deleteCategoryDetail(this)" data-id="${$value.CategoryDetailId}" href="#">Delete</a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+

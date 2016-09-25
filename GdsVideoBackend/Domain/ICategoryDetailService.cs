@@ -1,8 +1,8 @@
 ﻿using System;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
-using Gds.ServiceModel.BackEndModel;
 using Gds.ServiceModel.ControlObject;
+using GdsVideoBackend.Models;
 using MvcCornerstone.Services;
 
 namespace GdsVideoBackend.Domain

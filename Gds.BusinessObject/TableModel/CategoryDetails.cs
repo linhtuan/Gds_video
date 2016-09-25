@@ -13,6 +13,8 @@ namespace Gds.BusinessObject.TableModel
 
         public int CategoryTypeId { get; set; }
 
+        public int CategoryTypeGroupId { get; set; }
+
         public string CategoryDetailName { get; set; }
 
         public int PhysicalFileId { get; set; }

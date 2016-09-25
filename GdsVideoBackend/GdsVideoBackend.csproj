@@ -140,10 +140,12 @@
     <Compile Include="Controllers\PriceSettingController.cs" />
     <Compile Include="Domain\IAuthorService.cs" />
     <Compile Include="Domain\ICategoryDetailService.cs" />
+    <Compile Include="Domain\ICategoryGroupService.cs" />
     <Compile Include="Domain\ICategorysService.cs" />
     <Compile Include="Domain\ICategoryTypeService.cs" />
     <Compile Include="Domain\Implement\AuthorService.cs" />
     <Compile Include="Domain\Implement\CategoryDetailService.cs" />
+    <Compile Include="Domain\Implement\CategoryGroupService.cs" />
     <Compile Include="Domain\Implement\CategorysService.cs" />
     <Compile Include="Domain\Implement\CategoryTypeService.cs" />
     <Compile Include="Global.asax.cs">
@@ -151,8 +153,13 @@
     </Compile>
     <Compile Include="Infrastructure\AutofacInstaller.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Models\CategoryDetailModel.cs" />
+    <Compile Include="Models\CategoryGroupViewModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CategoryTypeFromViewModel.cs" />
+    <Compile Include="Models\CategoryTypesModel.cs" />
     <Compile Include="Models\CategoryTypeViewModel.cs" />
+    <Compile Include="Models\PhysicalFileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Account\Index.generated.cs">
       <AutoGen>True</AutoGen>
@@ -193,16 +200,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CategoryType\PatialView\_CategoryTypeChildrenDialog.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_CategoryTypeChildrenDialog.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CategoryType\PatialView\_CategoryTypeChildrenTemplate.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_CategoryTypeChildrenTemplate.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\CategoryType\PatialView\_CategoryTypeParentDialog.generated.cs">
       <AutoGen>True</AutoGen>
@@ -769,6 +766,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\gds.category.js" />
     <Content Include="Scripts\gds.categoryDetail.js" />
+    <Content Include="Scripts\gds.categoryGroup.js" />
     <Content Include="Scripts\gds.js" />
     <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\mydropUpload.js" />
@@ -869,20 +867,12 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTypeParentDialog.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenTemplate.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>_CategoryTypeChildrenTemplate.generated.cs</LastGenOutput>
-    </Content>
     <None Include="Properties\PublishProfiles\gds-backend.pubxml" />
     <None Include="Properties\PublishProfiles\gds-video.pubxml" />
     <None Include="Properties\PublishProfiles\gds.backend.pubxml" />
     <Content Include="Views\Categorys\PatialView\_CategoryTemplate.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CategoryTemplate.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\CategoryType\PatialView\_CategoryTypeChildrenDialog.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>_CategoryTypeChildrenDialog.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Views\CategoryType\PatialView\_CategoryTypeParentTemplate.cshtml">
       <Generator>RazorGenerator</Generator>
@@ -918,6 +908,8 @@
     <Content Include="Views\Author\PatialView\_AuthorDialog.cshtml" />
     <Content Include="Views\Author\PatialView\_AuthorTemplate.cshtml" />
     <Content Include="Scripts\gds.author.js" />
+    <Content Include="Views\CategoryDetail\PatialView\_CategoryTypeGroupPartial.cshtml" />
+    <Content Include="Views\CategoryDetail\PatialView\_CategoryTypeGroupTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gds.BusinessObject\Gds.BusinessObject.csproj">

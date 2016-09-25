@@ -2,8 +2,8 @@
 using System.Linq.Expressions;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
-using Gds.ServiceModel.BackEndModel;
 using Gds.ServiceModel.ControlObject;
+using GdsVideoBackend.Models;
 using MvcCornerstone.Data;
 using MvcCornerstone.Generic.Paging;
 using MvcCornerstone.Services;
@@ -57,7 +57,9 @@ namespace GdsVideoBackend.Domain.Implement
                         CategoryDetailId = item.CategoryDetailId,
                         CategoryTypeId = item.CategoryTypeId,
                         CategoryDetailName = item.CategoryDetailName,
-                        UpdatedDate = item.UpdatedDate.Value.ToString("dd-MM-yyyy HH:mm"),
+                        UpdatedDate = item.UpdatedDate.HasValue 
+                            ? item.UpdatedDate.Value.ToString("dd-MM-yyyy HH:mm") 
+                            : DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm"),
                         FileName = fileInfo != null ? fileInfo.FileName : string.Empty,
                         PhysicalFile = new PhysicalFileModel
                         {

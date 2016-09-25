@@ -13,44 +13,8 @@
 }
 
 <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-content">
-            <div class="table-responsive">
-                <div class="dataTables_wrapper form-inline">
-                    <div class="clear"></div>
-                    <div class="dataTables_length">
-                        <div class="col-sm-3">
-                            <label>
-                                <select class="form-control input-sm">
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> records per page
-                            </label>
-                        </div>
-                        <div class="col-sm-3">
-                            <a data-toggle="modal" id="show-detail-box" onclick="bindingCategoryDetailFrom(this, 'add')" class="btn btn-success btn-sm" href="#add-new-category-detail">Thêm bài học</a>
-                        </div>
-                    </div>
-                    <div class="dataTables_filter">
-                        <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
-                    </div>
-                    <div id="category_detail_Div">
+    <div id="category_detail_Div">
 
-                    </div>
-                    <div class="paging_simple_numbers">
-                        <div class="col-lg-12">
-                            <div class="col-lg-4"></div>
-                            <div class="col-lg-4 paging-row hide">
-                                <a class="btn btn-default btn-sm prev" href="#"><i class="fa fa-angle-left"></i> Previous</a>
-                                <input type="text" class="input-mini">&nbsp;of&nbsp;<a class="total-row">0</a>
-                                <a class="btn btn-default btn-sm next" href="#">Next <i class="fa fa-angle-right"></i></a>
-                            </div>
-                            <div class="col-lg-4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -82,6 +46,7 @@
                                 <a id="save" class="btn btn-sm btn-primary pull-right m-t-n-xs"><strong>Save</strong></a>
                             </div>
                             <input type="hidden" id="category-detail-id" value="0" />
+                            <input type="hidden" id="category-group-id" value="0" />
                         </form>
                     </div>
                 </div>
@@ -90,6 +55,8 @@
     </div>
 </div>
 
+@Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryTypeGroupPartial.cshtml")
+@Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryTypeGroupTemplate.cshtml")
 @Html.Partial("~/Views/CategoryDetail/PatialView/_PhysicalFileTemplate.cshtml")
 @Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryDetailsTemplate.cshtml")
 
@@ -138,9 +105,9 @@
                         ? 0
                         : parseInt($("#category-detail-form #category-detail-id").val());
                     formData.append('CategoryDetailId', categoryDetailId);
+                    formData.append('CategoryGroupId', $("#category-detail-form #category-group-id").val());
                     formData.append('LectureIndex', $("#category-detail-form .category-detail-index").val());
                     formData.append('CategoryDetailName', $("#category-detail-form .category-detail-name").val());
-
                 }
             });
 

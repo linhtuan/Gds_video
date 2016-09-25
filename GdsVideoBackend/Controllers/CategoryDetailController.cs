@@ -4,19 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gds.BusinessObject.TableModel;
-using Gds.ServiceModel.BackEndModel;
 using Gds.Setting;
 using GdsVideoBackend.Domain;
+using GdsVideoBackend.Models;
 
 namespace GdsVideoBackend.Controllers
 {
     public class CategoryDetailController : Controller
     {
         private readonly ICategoryDetailService _categoryDetailService;
+        private readonly ICategoryGroupService _categoryGroupService;
 
-        public CategoryDetailController(ICategoryDetailService categoryDetailService)
+        public CategoryDetailController(ICategoryDetailService categoryDetailService, 
+            ICategoryGroupService categoryGroupService)
         {
             _categoryDetailService = categoryDetailService;
+            _categoryGroupService = categoryGroupService;
         }
 
         //
@@ -27,11 +30,29 @@ namespace GdsVideoBackend.Controllers
         }
 
         [HttpPost]
+        public JsonResult GetCategoryGroup(int categoryTypeId)
+        {
+            var result = _categoryGroupService.GetCategoryGroups(categoryTypeId);
+            return result.Any()
+                ? Json(new { isSuccess = true, data = result })
+                : Json(new { isSuccess = false });
+        }
+
+        [HttpPost]
+        public ActionResult InsertCategoryGroup(CategoryTypeGroup model)
+        {
+            var result = _categoryGroupService.Insert(model);
+            return result > 0
+                ? Json(new { isSuccess = true, data = result })
+                : Json(new { isSuccess = false });
+        }
+
+        [HttpPost]
         public JsonResult GetCategoryDetails(int pageIndex, int pageSize, int categoryTypeId)
         {
-            var datas = _categoryDetailService.GetCategoryDetails(categoryTypeId, pageIndex, pageSize);
-            return datas.Result.Any()
-                ? Json(new {isSuccess = true, data = datas})
+            var result = _categoryDetailService.GetCategoryDetails(categoryTypeId, pageIndex, pageSize);
+            return result.Result.Any()
+                ? Json(new {isSuccess = true, data = result})
                 : Json(new {isSuccess = false});
         }
 

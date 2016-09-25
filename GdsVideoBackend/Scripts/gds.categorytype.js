@@ -5,11 +5,6 @@ var categoryTypeCtrl = function () {
         page: 1,
         pageSize: 50,
     };
-    var childrenPage = {        
-        total: 0,
-        page: 1,
-        pageSize: 50,
-    };
     
     var getCategoryTypeParent = function () {
         var model = {
@@ -19,19 +14,6 @@ var categoryTypeCtrl = function () {
         };
         return $.ajax({
             url: '/categorytype/getparent',
-            type: 'Post',
-            dataType: 'json',
-            data: model
-        });
-    };
-    var getCategoryTypeChildren = function () {
-        var model = {
-            categoryId: parseInt(gds.getQueryVariable('categoryId')),
-            pageIndex: childrenPage.page,
-            pageSize: childrenPage.pageSize,
-        };
-        return $.ajax({
-            url: '/categorytype/getchildren',
             type: 'Post',
             dataType: 'json',
             data: model
@@ -50,25 +32,6 @@ var categoryTypeCtrl = function () {
         };
     };
 
-    var getChildrenPage = function () {
-        return childrenPage;
-    };
-
-    var setChildrenPage = function (thisPage) {
-        childrenPage = {
-            total: thisPage.total,
-            page: thisPage.page,
-            pageSize: thisPage.pageSize,
-        };
-    };
-
-    var getParentCategoryTypeSelect = function () {
-        return $.ajax({
-            url: '/categorytype/getparentcategorytype',
-            type: 'GET',
-        });
-    };
-    
     var saveCategoryType = function (form) {
         var formData = new FormData(form[0]);
         return $.ajax({
@@ -92,24 +55,6 @@ var categoryTypeCtrl = function () {
             type: 'POST',
         });
     };
-    
-    var saveCategoryTypeChildren = function (model) {
-        return $.ajax({
-            url: '/categorytype/InsertChildren',
-            type: 'POST',
-            dataType: "json",
-            data: model
-        });
-    };
-
-    var updateCategoryTypeChildren = function (model) {
-        return $.ajax({
-            url: '/categorytype/UpdateChildren',
-            type: 'POST',
-            dataType: "json",
-            data: model
-        });
-    };
 
     var deleteCategoryType = function(model) {
         return $.ajax({
@@ -124,23 +69,12 @@ var categoryTypeCtrl = function () {
         getCategoryTypeParent: function() {
             return getCategoryTypeParent();
         },
-        getCategoryTypeChildren: function() {
-            return getCategoryTypeChildren();
-        },
-        getParentCategoryTypeSelect: function () {
-            return getParentCategoryTypeSelect();
-        },
+
         getParentPage: function () {
             return getParentPage();
         },
         setParentPage: function (thisPage) {
             return setParentPage(thisPage);
-        },
-        getChildrenPage: function () {
-            return getChildrenPage();
-        },
-        setChildrenPage: function (thisPage) {
-            return setChildrenPage(thisPage);
         },
         saveCategoryType: function (form) {
             return saveCategoryType(form);
@@ -148,29 +82,12 @@ var categoryTypeCtrl = function () {
         updateCategoryType: function (form) {
             return updateCategoryType(form);
         },
-        saveCategoryTypeChildren: function (model) {
-            return saveCategoryTypeChildren(model);
-        },
-        updateCategoryTypeChildren: function (model) {
-            return updateCategoryTypeChildren(model);
-        },
         deleteCategoryType: function (model) {
             return deleteCategoryType(model);
         },
     };
 }(categoryTypeCtrl);
 
-function getParentCategoryTypeSelect() {
-    var prices = categoryTypeCtrl.getParentCategoryTypeSelect();
-    $.when(prices).then(function (result) {
-        var html = '';
-        for (var i = 0; i < result.data.length; i++) {
-            var item = result.data[i];
-            html += '<option value="' + item.Id + '">' + item.Name + '</option>';
-        }
-        $('#category-type-children-form #parent-category-type-select').html(html);
-    });
-}
 
 function bindingParent() {
     var parent = categoryTypeCtrl.getCategoryTypeParent();
@@ -183,16 +100,6 @@ function bindingParent() {
     });
 }
 
-function bindingChildren() {
-    var children = categoryTypeCtrl.getCategoryTypeChildren();
-    $.when(children).then(function (result) {
-        if (result.isSuccess) {
-            $('#categoryTypeChildren_Div').html('');
-            callBackController.renderPaging(result.data.PageIndex, result.data.ItemCount);
-            $('#categoryTypeChildrenTemplate').tmpl(result.data).appendTo('#categoryTypeChildren_Div');
-        }
-    });
-}
 
 function deleteCategoryType(obj) {
     var rowId = $(obj).attr("data-id");
@@ -206,8 +113,6 @@ function deleteCategoryType(obj) {
         if (result.isSuccess) {
             if (result.type == "parent") {
                 bindingParent();
-            } else {
-                bindingChildren();
             }
         }
     });
@@ -215,58 +120,19 @@ function deleteCategoryType(obj) {
 
 function bindingCategoryTypeDetail(obj) {
     var rowId = $(obj).attr("data-id");
-    var typeTable = $(obj).attr("data-type");
-    if (typeTable == "parent") {
-        $('#category-type-parent-form .ibox-content').html('');
-        $('#category-type-parent-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
-        $('#category-type-parent-form .category-type-id').val(rowId);
-        $('#category-type-parent-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
-        $('#category-type-parent-form .price').val($("#" + rowId + " .price").attr('data-priceid'));
-        $('#category-type-parent-form .age-order').val($("#" + rowId + " .age").attr('data-age'));
-        $('#category-type-parent-form .author').val($("#" + rowId + " .author").attr('data-authorid'));
-        $('#category-type-parent-form .categorytype-order').val($(obj).attr("data-categorytype-order"));
-        $('#category-type-parent-form .cateogry-type-content').html($("#" + rowId + " .content-detail").html());
-        var fileType = $("#" + rowId + " .category-type-name").attr('data-filetype');
-        var file = $("#" + rowId + " .category-type-name").attr('data-file');
-        document.getElementById("image-photo").src = "data:image/" + fileType + ";base64," + file;
-    } else {
-        $('#category-type-children-form .ibox-content').html('');
-        $('#category-type-children-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
-        $('#category-type-children-form .category-type-id').val(rowId);
-        $('#category-type-children-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
-        $('#category-type-children-form .children-index').val($("#" + rowId + " .children-index").text());
-        $('#category-type-children-form .cateogry-type-content').html($("#" + rowId + " .content-detail").html());
-    }
+    $('#category-type-parent-form .ibox-content').html('');
+    $('#category-type-parent-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
+    $('#category-type-parent-form .category-type-id').val(rowId);
+    $('#category-type-parent-form .category-type-name').val($("#" + rowId + " .category-type-name").text());
+    $('#category-type-parent-form .price').val($("#" + rowId + " .price").attr('data-priceid'));
+    $('#category-type-parent-form .age-order').val($("#" + rowId + " .age").attr('data-age'));
+    $('#category-type-parent-form .author').val($("#" + rowId + " .author").attr('data-authorid'));
+    $('#category-type-parent-form .categorytype-order').val($(obj).attr("data-categorytype-order"));
+    $('#category-type-parent-form .cateogry-type-content').html($("#" + rowId + " .content-detail").html());
+    var fileType = $("#" + rowId + " .category-type-name").attr('data-filetype');
+    var file = $("#" + rowId + " .category-type-name").attr('data-file');
+    document.getElementById("image-photo").src = "data:image/" + fileType + ";base64," + file;
 }
-
-$(document).on('click', '#parent-tab', function (event) {
-    if ($("#category-type-parent").hasClass('active')) return;
-    window.pageSetting = {
-        total: 0,
-        page: 1,
-        pageSize: 50,
-    };
-    categoryTypeCtrl.setParentPage(pageSetting);
-    $("#category-type-parent").addClass('active');
-    $("#category-type-children").removeClass('active');
-    window.callback = bindingParent();
-    bindingParent();
-});
-
-$(document).on('click', '#children-tab', function (event) {
-    if ($("#category-type-children").hasClass('active')) return;
-    getParentCategoryTypeSelect();
-    window.pageSetting = {
-        total: 0,
-        page: 1,
-        pageSize: 50,
-    };
-    categoryTypeCtrl.setParentPage(pageSetting);
-    $("#category-type-parent").removeClass('active');
-    $("#category-type-children").addClass('active');
-    window.callback = bindingChildren();
-    bindingChildren();
-});
 
 $(document).on('click', '#save-parent', function (event) {
     $('#category-type-parent-form .category-id').val(parseInt(gds.getQueryVariable('categoryId')));
@@ -302,45 +168,6 @@ $(document).on('click', '#save-parent', function (event) {
     $('#add-new-category-type-parent').modal('hide');
 });
 
-$(document).on('click', '#save-children', function (event) {
-    var model = {
-        ParentId: $('#category-type-children-form .parent-category-type-select').val(),
-        CategoryTypeId: $('#category-type-children-form .category-type-id').val(),
-        CategoryId: parseInt(gds.getQueryVariable('categoryId')),
-        CategoryTypeName: $('#category-type-children-form .category-type-name').val(),
-        ChildrenIndex: $('#category-type-children-form .category-type-index').val(),
-        Content: $('#category-type-children-form .cateogry-type-content').code().replace(/^\s+|\s+$/g, ""),
-    };
-    if (model.CategoryTypeId == 0) {
-        var saveCategoryType = categoryTypeCtrl.saveCategoryTypeChildren(model);
-        $.when(saveCategoryType).then(function(result) {
-            if (result.isSuccess) {
-                window.pageSetting = {
-                    total: 0,
-                    page: 1,
-                    pageSize: 50,
-                };
-                categoryTypeCtrl.setChildrenPage(pageSetting);
-                bindingChildren();
-            }
-        });
-    } else {
-        var upateCategoryType = categoryTypeCtrl.updateCategoryTypeChildren(model);
-        $.when(upateCategoryType).then(function (result) {
-            if (result.isSuccess) {
-                window.pageSetting = {
-                    total: 0,
-                    page: 1,
-                    pageSize: 50,
-                };
-                categoryTypeCtrl.setChildrenPage(pageSetting);
-                bindingChildren();
-            }
-        });
-    }
-    $('#add-new-category-type-children').modal('hide');
-});
-
 $(document).on('click', '#category-type-parent .page-size', function (event) {
     var pageInfo = categoryTypeCtrl.getParentPage();
     pageInfo.pageSize = parseInt($(this).val());
@@ -348,12 +175,6 @@ $(document).on('click', '#category-type-parent .page-size', function (event) {
     bindingParent();
 });
 
-$(document).on('click', '#category-type-children .page-size', function (event) {
-    var pageInfo = categoryTypeCtrl.getChildrenPage();
-    pageInfo.pageSize = parseInt($(this).val());
-    categoryTypeCtrl.setChildrenPage(pageInfo);
-    bindingChildren();
-});
 
 $('#replace-photo').on('click', function (event) {
     event.preventDefault();
@@ -372,7 +193,7 @@ $('#category-type-parent-form').on('change', '#replace-photo-tag', function () {
     }
 });
 
-$(document).on('click', '#category-type-parent .category-type-box', function (event) {
+$(document).on('click', '.category-type-box', function (event) {
     $('#category-type-parent-form .category-id').val('');
     $('#category-type-parent-form .content').val('');
     $('#category-type-parent-form .category-type-id').val('');
@@ -386,17 +207,7 @@ $(document).on('click', '#category-type-parent .category-type-box', function (ev
     $('#category-type-parent-form #image-photo').attr('src', '');
 });
 
-$(document).on('click', '#category-type-children .category-type-box', function (event) {
-    $('#category-type-children-form .category-type-name').val('');
-    $('#category-type-children-form .category-type-id').val('0');
-    $('#category-type-children-form .category-type-index').val('');
-    $("#category-type-children-form .parent-category-type-select option:first").attr('selected', 'selected');
-    $('#category-type-children-form .ibox-content').html('');
-    $('#category-type-children-form .ibox-content').html('<div class="click2edit wrapper p-md cateogry-type-content"></div>');
-});
-
 $(document).ready(function () {
     categoryTypeCtrl.setParentPage(pageSetting);
-    categoryTypeCtrl.setChildrenPage(pageSetting);
     window.callback = bindingParent();
 });

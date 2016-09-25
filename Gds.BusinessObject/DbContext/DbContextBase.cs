@@ -18,6 +18,8 @@ namespace Gds.BusinessObject.DbContext
 
         public DbSet<CategoryTypes> CategoryTypes { get; set; }
 
+        public DbSet<CategoryTypeGroup> CategoryTypeGroups { get; set; }
+
         public DbSet<PhysicalFiles> PhysicalFiles { get; set; }
 
         public DbSet<Author> Author { get; set; }

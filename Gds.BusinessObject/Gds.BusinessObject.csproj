@@ -60,6 +60,7 @@
     <Compile Include="TableModel\CategoryDetails.cs" />
     <Compile Include="TableModel\CategoryRating.cs" />
     <Compile Include="TableModel\Categorys.cs" />
+    <Compile Include="TableModel\CategoryTypeGroup.cs" />
     <Compile Include="TableModel\CategoryTypePrice.cs" />
     <Compile Include="TableModel\CategoryTypes.cs" />
     <Compile Include="TableModel\CommentByUser.cs" />
