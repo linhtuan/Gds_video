@@ -10,9 +10,9 @@ namespace GdsVideoBackend.Domain
     {
         List<CategoryGroupViewModel> GetCategoryGroups(int categoryTypeId);
 
-        int Insert(CategoryTypeGroup model);
+        CategoryTypeGroup Insert(CategoryTypeGroup model);
 
-        int Update(CategoryTypeGroup model);
+        CategoryTypeGroup Update(CategoryTypeGroup model);
 
         bool Delete(int cateGroupId);
     }

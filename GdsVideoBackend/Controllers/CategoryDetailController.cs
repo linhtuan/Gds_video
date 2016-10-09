@@ -7,6 +7,7 @@ using Gds.BusinessObject.TableModel;
 using Gds.Setting;
 using GdsVideoBackend.Domain;
 using GdsVideoBackend.Models;
+using System.Web.Script.Serialization;
 
 namespace GdsVideoBackend.Controllers
 {
@@ -41,20 +42,45 @@ namespace GdsVideoBackend.Controllers
         [HttpPost]
         public ActionResult InsertCategoryGroup(CategoryTypeGroup model)
         {
+            if (string.IsNullOrEmpty(model.CreateDateStr))
+                model.CreatedDate = DateTime.UtcNow;
+            else
+                model.CreatedDate = Convert.ToDateTime(model.CreateDateStr);
+
             var result = _categoryGroupService.Insert(model);
-            return result > 0
+            return result != null
                 ? Json(new { isSuccess = true, data = result })
                 : Json(new { isSuccess = false });
         }
 
         [HttpPost]
-        public JsonResult GetCategoryDetails(int pageIndex, int pageSize, int categoryTypeId)
+        public ActionResult UpdateCategoryGroup(CategoryTypeGroup model)
         {
-            var result = _categoryDetailService.GetCategoryDetails(categoryTypeId, pageIndex, pageSize);
-            return result.Result.Any()
-                ? Json(new {isSuccess = true, data = result})
-                : Json(new {isSuccess = false});
+            if (string.IsNullOrEmpty(model.CreateDateStr))
+                model.CreatedDate = DateTime.UtcNow;
+            else
+                model.CreatedDate = Convert.ToDateTime(model.CreateDateStr);
+
+            var result = _categoryGroupService.Update(model);
+            return result != null
+                ? Json(new { isSuccess = true, data = result })
+                : Json(new { isSuccess = false });
         }
+
+        [HttpPost]
+        public ActionResult DeleteCategoryGroup(int categoryGroupId)
+        {
+            return null;
+        }
+
+        //[HttpPost]
+        //public JsonResult GetCategoryDetails(int pageIndex, int pageSize, int categoryTypeId)
+        //{
+        //    var result = _categoryDetailService.GetCategoryDetails(categoryTypeId, pageIndex, pageSize);
+        //    return result.Result.Any()
+        //        ? Json(new {isSuccess = true, data = result})
+        //        : Json(new {isSuccess = false});
+        //}
 
         [HttpPost]
         public ActionResult InsertUpateDetail()
@@ -91,6 +117,18 @@ namespace GdsVideoBackend.Controllers
         {
             var result = _categoryDetailService.Delete(categoryId);
             return result ? Json(new { isSuccess = true }) : Json(new { isSuccess = false });
+        }
+
+        private int InsertGroup(CategoryDetailModel model)
+        {
+            var result = _categoryDetailService.Insert(model);
+            return result;
+        }
+
+        private int UpdateGroup(CategoryDetailModel model)
+        {
+            var result = _categoryDetailService.Update(model);
+            return result;
         }
 
         private int Insert(CategoryDetailModel model)

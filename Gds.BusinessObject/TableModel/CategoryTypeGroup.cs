@@ -15,8 +15,11 @@ namespace Gds.BusinessObject.TableModel
 
         public string CategoryTypeGroupName { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public int Index { get; set; }
+
+        [NotMapped]
+        public string CreateDateStr { get; set; }
     }
 }

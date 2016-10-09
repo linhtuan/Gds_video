@@ -25,48 +25,55 @@ namespace GdsVideoBackend.Domain.Implement
 
         public List<CategoryGroupViewModel> GetCategoryGroups(int categoryTypeId)
         {
-            var query = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeId == categoryTypeId)
-                .Join(_detailRepository.Table<DbContextBase>(), x => x.CategoryTypeGroupId, y => y.CategoryTypeGroupId,
-                    (groups, details) => new {groups, details}).ToList();
+            var query = (from groups in Repository.Table<DbContextBase>()
+                        join detail in _detailRepository.Table<DbContextBase>()
+                        on groups.CategoryTypeGroupId equals detail.CategoryTypeGroupId into detail
+                        from details in detail.DefaultIfEmpty()
+                        where groups.CategoryTypeId == categoryTypeId
+                        select new
+                        {
+                            groups,
+                            details
+                        }).ToList();
 
-            var physicalFileIds = query.Select(x => x.details.PhysicalFileId).ToList();
+            var physicalFileIds = query.Where(x => x.details != null).Select(x => x.details.PhysicalFileId).ToList();
             var physicalFiles = _physicalFileRepository.DoQuery<DbContextBase>(x => physicalFileIds.Contains(x.PhysicalFileId)).Select(x => new
             {
                 x.PhysicalFileId,
                 x.FileName,
             });
 
-            var result = query.GroupBy(x => new {x.groups.CategoryTypeGroupId, x.groups.CategoryTypeGroupName})
+            var result = query.GroupBy(x => new { x.groups.CategoryTypeGroupId, x.groups.CategoryTypeGroupName })
                 .Select(x => new CategoryGroupViewModel
                 {
                     CategoryGroupId = x.Key.CategoryTypeGroupId,
                     CategoryGroupName = x.Key.CategoryTypeGroupName,
-                    CategoryDetails = x.Select(item =>
-                    {
-                        var fileInfo = physicalFiles.FirstOrDefault(y => y.PhysicalFileId == item.details.PhysicalFileId);
-                        return new CategoryDetailModel
-                        {
-                            CategoryDetailId = item.details.CategoryDetailId,
-                            CategoryTypeId = item.details.CategoryTypeId,
-                            CategoryDetailName = item.details.CategoryDetailName,
-                            UpdatedDate = item.details.UpdatedDate.HasValue
-                                ? item.details.UpdatedDate.Value.ToString("dd-MM-yyyy HH:mm")
-                                : DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm"),
-                            FileName = fileInfo != null ? fileInfo.FileName : string.Empty,
-                            PhysicalFile = new PhysicalFileModel
-                            {
-                                PhysicalFileId = item.details.PhysicalFileId,
-                                FileName = fileInfo != null ? fileInfo.FileName : string.Empty,
-                            },
-                            LectureIndex = item.details.LectureIndex
-                        };
-                    }).ToList()
+                    CategoryDetails = x.Where(y => y.details != null).ToList().Select(item =>
+                      {
+                          var fileInfo = physicalFiles.FirstOrDefault(y => y.PhysicalFileId == item.details.PhysicalFileId);
+                          return new CategoryDetailModel
+                          {
+                              CategoryDetailId = item.details.CategoryDetailId,
+                              CategoryTypeId = item.details.CategoryTypeId,
+                              CategoryDetailName = item.details.CategoryDetailName,
+                              UpdatedDate = item.details.UpdatedDate.HasValue
+                                  ? item.details.UpdatedDate.Value.ToString("dd-MM-yyyy HH:mm")
+                                  : DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm"),
+                              FileName = fileInfo != null ? fileInfo.FileName : string.Empty,
+                              PhysicalFile = new PhysicalFileModel
+                              {
+                                  PhysicalFileId = item.details.PhysicalFileId,
+                                  FileName = fileInfo != null ? fileInfo.FileName : string.Empty,
+                              },
+                              LectureIndex = item.details.LectureIndex
+                          };
+                      }).ToList()
                 }).ToList();
 
             return result;
         }
 
-        public int Insert(CategoryTypeGroup model)
+        public CategoryTypeGroup Insert(CategoryTypeGroup model)
         {
             try
             {
@@ -79,29 +86,31 @@ namespace GdsVideoBackend.Domain.Implement
                 };
                 Repository.Insert<DbContextBase>(detail);
                 Repository.Commit<DbContextBase>();
-                return detail.CategoryTypeGroupId;
+                return detail;
             }
             catch (Exception ex)
             {
-                return 0;
+                return null;
             }
         }
 
-        public int Update(CategoryTypeGroup model)
+        public CategoryTypeGroup Update(CategoryTypeGroup model)
         {
             try
             {
+                model.CreatedDate = DateTime.UtcNow;
                 Repository.UpdateMany<DbContextBase>(x => x.CategoryTypeGroupId == model.CategoryTypeGroupId, x => new CategoryTypeGroup
                 {
                     CategoryTypeGroupName = model.CategoryTypeGroupName,
                     Index = model.Index,
-                    CreatedDate = DateTime.UtcNow,
+                    CreatedDate = model.CreatedDate,
                 });
-                return model.CategoryTypeGroupId;
+                
+                return model;
             }
             catch (Exception ex)
             {
-                return 0;
+                return null;
             }
         }
 

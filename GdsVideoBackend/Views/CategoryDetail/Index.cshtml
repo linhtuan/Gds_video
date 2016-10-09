@@ -13,6 +13,9 @@
 }
 
 <div class="col-lg-12">
+    <div class="col-lg-12">
+        <a  data-toggle="modal" class="btn btn-sm btn-primary" onclick="bindingCategoryTypoeGroupFrom(this, 'add')" href="#add-new-category-group">Thêm nhóm</a>
+    </div>
     <div id="category_detail_Div">
 
     </div>
@@ -24,7 +27,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="m-t-none m-b">Thêm Chủ đề</h3>
+                        <h3 class="m-t-none m-b">Thêm bài học</h3>
                         <form id="category-detail-form" class="row" role="form">
                             <div class="form-group col-sm-12">
                                 <div class="col-sm-6">
@@ -43,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-12">
-                                <a id="save" class="btn btn-sm btn-primary pull-right m-t-n-xs"><strong>Save</strong></a>
+                                <a id="detail-save" class="btn btn-sm btn-primary pull-right m-t-n-xs"><strong>Save</strong></a>
                             </div>
                             <input type="hidden" id="category-detail-id" value="0" />
                             <input type="hidden" id="category-group-id" value="0" />
@@ -55,14 +58,42 @@
     </div>
 </div>
 
+<div id="add-new-category-group" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">Thêm nhóm</h3>
+                        <form id="category-group-form" class="row" role="form">
+                            <div class="form-group col-sm-12">
+                                <div class="col-sm-6">
+                                    <label>Tên nhóm</label> <input type="text" placeholder="Tên chủ đề" class="category-group-name form-control">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Số thử tự</label> <input type="number" placeholder="Số thử tự" class="category-group-index form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <a id="group-save" class="btn btn-sm btn-primary pull-right m-t-n-xs"><strong>Save</strong></a>
+                            </div>
+                            <input type="hidden" id="category-type-group-create-date" value="" />
+                            <input type="hidden" id="category-type-group-id" value="0" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryTypeGroupPartial.cshtml")
 @Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryTypeGroupTemplate.cshtml")
 @Html.Partial("~/Views/CategoryDetail/PatialView/_PhysicalFileTemplate.cshtml")
-@Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryDetailsTemplate.cshtml")
+@*@Html.Partial("~/Views/CategoryDetail/PatialView/_CategoryDetailsTemplate.cshtml")*@
 
 @section scripts{
     <script src="~/Scripts/jquery.tmpl.js"></script>
-    <script src="~/Scripts/gds.paging.control.js"></script>
     <script src="~/Scripts/gds.categoryDetail.js"></script>
     <script type="text/javascript" src="~/Scripts/dropzone.js"></script>
     <script type="text/javascript">
