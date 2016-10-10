@@ -8,6 +8,7 @@ using Gds.Setting;
 using GdsVideoBackend.Domain;
 using GdsVideoBackend.Models;
 using System.Web.Script.Serialization;
+using System.Collections.Generic;
 
 namespace GdsVideoBackend.Controllers
 {
@@ -48,8 +49,17 @@ namespace GdsVideoBackend.Controllers
                 model.CreatedDate = Convert.ToDateTime(model.CreateDateStr);
 
             var result = _categoryGroupService.Insert(model);
+            var modelResult = new List<CategoryGroupViewModel>()
+            {
+                new CategoryGroupViewModel
+                {
+                    CategoryGroupName = result.CategoryTypeGroupName,
+                    CategoryGroupId = result.CategoryTypeGroupId,
+                    CategoryDetails = new List<CategoryDetailModel>()
+                }
+            };
             return result != null
-                ? Json(new { isSuccess = true, data = result })
+                ? Json(new { isSuccess = true, data = modelResult })
                 : Json(new { isSuccess = false });
         }
 
@@ -62,8 +72,16 @@ namespace GdsVideoBackend.Controllers
                 model.CreatedDate = Convert.ToDateTime(model.CreateDateStr);
 
             var result = _categoryGroupService.Update(model);
+            var modelResult = new List<CategoryGroupViewModel>()
+            {
+                new CategoryGroupViewModel
+                {
+                    CategoryGroupName = result.CategoryTypeGroupName,
+                    CategoryGroupId = result.CategoryTypeGroupId,
+                }
+            };
             return result != null
-                ? Json(new { isSuccess = true, data = result })
+                ? Json(new { isSuccess = true, data = modelResult })
                 : Json(new { isSuccess = false });
         }
 
@@ -73,24 +91,17 @@ namespace GdsVideoBackend.Controllers
             return null;
         }
 
-        //[HttpPost]
-        //public JsonResult GetCategoryDetails(int pageIndex, int pageSize, int categoryTypeId)
-        //{
-        //    var result = _categoryDetailService.GetCategoryDetails(categoryTypeId, pageIndex, pageSize);
-        //    return result.Result.Any()
-        //        ? Json(new {isSuccess = true, data = result})
-        //        : Json(new {isSuccess = false});
-        //}
-
         [HttpPost]
         public ActionResult InsertUpateDetail()
         {
+            var categoryGroupId = Request["CategoryGroupId"];
             var categoryTypeId = Request["CategoryTypeId"];
             var categoryDetailId = Request["CategoryDetailId"];
             var lectureIndex = Request["LectureIndex"];
             var categoryDetailName = Request["CategoryDetailName"];
             var model = new CategoryDetailModel
             {
+                CategoryGroupId = Convert.ToInt32(categoryGroupId),
                 CategoryTypeId = Convert.ToInt32(categoryTypeId),
                 CategoryDetailName = categoryDetailName,
                 LectureIndex = Convert.ToInt32(lectureIndex)

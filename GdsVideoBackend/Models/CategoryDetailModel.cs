@@ -2,6 +2,8 @@
 {
     public class CategoryDetailModel
     {
+        public int CategoryGroupId { get; set; }
+
         public int CategoryDetailId { get; set; }
 
         public int CategoryTypeId { get; set; }

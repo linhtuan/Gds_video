@@ -93,6 +93,7 @@ namespace GdsVideoBackend.Domain.Implement
             {
                 var detail = new CategoryDetails
                 {
+                    CategoryTypeGroupId = model.CategoryGroupId,
                     CategoryTypeId = model.CategoryTypeId,
                     CategoryDetailName = model.CategoryDetailName,
                     CreatedDate = DateTime.UtcNow,
