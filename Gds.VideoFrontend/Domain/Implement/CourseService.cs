@@ -24,6 +24,8 @@ namespace Gds.VideoFrontend.Domain.Implement
         private readonly IEntityRepository<Author> _authorRepository;
         private readonly IEntityRepository<CategoryDetails> _categoryDetailRepository;
         private readonly IEntityRepository<PhysicalFiles> _physicalRepository;
+        private readonly IEntityRepository<CategoryTypeGroup> _categoryTypeGroupRepository;
+        private readonly IEntityRepository<Comment> _commentRepository;
 
         #region Service
 
@@ -37,7 +39,9 @@ namespace Gds.VideoFrontend.Domain.Implement
             IEntityRepository<Author> authorRepository, 
             IRatingService ratingService, 
             IEntityRepository<CategoryDetails> categoryDetailRepository, 
-            IEntityRepository<PhysicalFiles> physicalRepository) : base(repository)
+            IEntityRepository<PhysicalFiles> physicalRepository,
+            IEntityRepository<CategoryTypeGroup> categoryTypeGroupRepository,
+            IEntityRepository<Comment> commentRepository) : base(repository)
         {
             _catRepository = catRepository;
             _catPriceRepository = catPriceRepository;
@@ -45,13 +49,14 @@ namespace Gds.VideoFrontend.Domain.Implement
             _ratingService = ratingService;
             _categoryDetailRepository = categoryDetailRepository;
             _physicalRepository = physicalRepository;
+            _categoryTypeGroupRepository = categoryTypeGroupRepository;
+            _commentRepository = commentRepository;
         }
 
         public CategoryTypes GetCategoryType(string courseRouter)
         {
             return Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
-                                                          && x.Status == 1
-                                                          && x.CategoryTypeParentId == 0).FirstOrDefault();
+                                                          && x.Status == 1).FirstOrDefault();
         }
 
         public List<CoursesViewModel> GetSuggestCourses(int categoryTypeId)
@@ -63,7 +68,6 @@ namespace Gds.VideoFrontend.Domain.Implement
 
             var query = Repository.DoQuery<DbContextBase>(x => categoryId.Contains(x.CategoryId)
                                                                && x.Status == 1
-                                                               && x.CategoryTypeParentId == 0
                                                                && x.CategoryTypeId != categoryTypeId)
                 .Join(_catPriceRepository.Table<DbContextBase>(), x => x.CategoryTypePriceId, y => y.CategoryTypePriceId,
                     (cat, y) => new {cat, y.Price}).OrderByDescending(x => x.cat.CreatedDate).Take(5).ToList();
@@ -90,8 +94,7 @@ namespace Gds.VideoFrontend.Domain.Implement
         public CourseDetailViewModel GetCourseDetail(string courseRouter)
         {
             var query = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
-                                                               && x.Status == 1
-                                                               && x.CategoryTypeParentId == 0)
+                                                               && x.Status == 1)
                 .Join(_catRepository.Table<DbContextBase>(),
                     x => x.CategoryId, y => y.CategoryId, (cateType, cate) => new
                     {
@@ -109,8 +112,8 @@ namespace Gds.VideoFrontend.Domain.Implement
             if (query == null) return new CourseDetailViewModel();
             var level = _ratingService.GetRatingLevel(query.cat.CategoryTypeId);
 
-            var lecture = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == query.cat.CategoryTypeId)
-                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+            var lecture = _categoryTypeGroupRepository.DoQuery<DbContextBase>(x => x.CategoryTypeId == query.cat.CategoryTypeId)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeGroupId, y => y.CategoryTypeGroupId,
                     (cateType, cateDetail) => new
                     {
                         cateDetail
@@ -162,8 +165,7 @@ namespace Gds.VideoFrontend.Domain.Implement
         public CategoryDetails GetCategoryDetails(string courseRouter, int index)
         {
             var queryParent = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
-                                                               && x.Status == 1
-                                                               && x.CategoryTypeParentId == 0).FirstOrDefault();
+                                                               && x.Status == 1).FirstOrDefault();
             //if (queryParent)
             //{
                 
@@ -175,12 +177,12 @@ namespace Gds.VideoFrontend.Domain.Implement
         public List<LectureGroupViewModel> GetLectures(int categoryTypeId, bool hasUrl, string urlRouter)
         {
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            var query = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == categoryTypeId && x.Status == 1)
-                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+            var query = _categoryTypeGroupRepository.DoQuery<DbContextBase>(x => x.CategoryTypeId == categoryTypeId)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeGroupId, y => y.CategoryTypeGroupId,
                     (cateType, cateDetail) => new
                     {
-                        cateType.ChildrenIndex,
-                        cateType.CategoryTypeName,
+                        cateType.Index,
+                        cateType.CategoryTypeGroupName,
                         cateDetail.CategoryDetailName,
                         cateDetail.PhysicalFileId,
                         cateDetail.LectureIndex,
@@ -191,12 +193,12 @@ namespace Gds.VideoFrontend.Domain.Implement
                         detail = cateDetail,
                         physical.FileTime
                     })
-                .OrderBy(x => x.detail.ChildrenIndex).ThenBy(x => x.detail.LectureIndex)
+                .OrderBy(x => x.detail.Index).ThenBy(x => x.detail.LectureIndex)
                 .ToList()
                 .GroupBy(x => new
                 {
-                    x.detail.CategoryTypeName,
-                    x.detail.ChildrenIndex
+                    x.detail.CategoryTypeGroupName,
+                    x.detail.Index
                 });
             var result = new List<LectureGroupViewModel>();
 
@@ -204,8 +206,8 @@ namespace Gds.VideoFrontend.Domain.Implement
             {
                 var model = new LectureGroupViewModel
                 {
-                    LectureGroupName = itemGroup.Key.CategoryTypeName,
-                    LectureGroupIndex = itemGroup.Key.ChildrenIndex.Value,
+                    LectureGroupName = itemGroup.Key.CategoryTypeGroupName,
+                    LectureGroupIndex = itemGroup.Key.Index,
                     Lectures = new List<LectureContainerViewModel>()
                 };
                 foreach (var item in itemGroup)
@@ -216,7 +218,7 @@ namespace Gds.VideoFrontend.Domain.Implement
                         LectureName = item.detail.CategoryDetailName,
                         LectureTime = item.FileTime.ConvertTime(),
                         LectureUrl = hasUrl
-                            ? url.Action("Lecture", "Course", new {categorytype = urlRouter, index = item.detail.LectureIndex})
+                            ? string.Format("/course/{0}/lecture/{1}", urlRouter, item.detail.LectureIndex)
                             : string.Empty,
                     });
                 }
@@ -229,14 +231,12 @@ namespace Gds.VideoFrontend.Domain.Implement
         {
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
             var query = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
-                                                               && x.CategoryTypeParentId == 0
                                                                && x.Status == 1).FirstOrDefault();
             if (query == null) return new LearningViewModel();
 
-            var lectureFirst = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == query.CategoryTypeId
-                                                                      && x.ChildrenIndex == 1
-                                                                      && x.Status == 1)
-                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+            var lectureFirst = _categoryTypeGroupRepository.DoQuery<DbContextBase>(x => x.CategoryTypeId == query.CategoryTypeId
+                                                                      && x.Index == 1)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeGroupId, y => y.CategoryTypeGroupId,
                     (cat, detail) => new
                     {
                         detail.LectureIndex,
@@ -262,7 +262,7 @@ namespace Gds.VideoFrontend.Domain.Implement
                 LectureFirstIndex = lectureFirst.LectureIndex,
                 LectureFirstName = lectureFirst.CategoryDetailName,
                 LectureFirstTime = lectureFirst.FileTime.ConvertTimeOneVideo(),
-                LectureFirstUrl = url.Action("Lecture", "Course", new { categorytype = courseRouter, index = lectureFirst.LectureIndex }),
+                LectureFirstUrl = string.Format("/course/{0}/lecture/{1}", courseRouter, lectureFirst.LectureIndex),
                 CourseRouter = courseRouter
             };
             return model;
@@ -271,12 +271,11 @@ namespace Gds.VideoFrontend.Domain.Implement
         public LectureViewModel GetLecture(string courseRouter, int index)
         {
             var categoryType = Repository.DoQuery<DbContextBase>(x => x.UrlRouter == courseRouter
-                                                               && x.CategoryTypeParentId == 0
                                                                && x.Status == 1).FirstOrDefault();
             if (categoryType == null) return new LectureViewModel();
 
-            var query = Repository.DoQuery<DbContextBase>(x => x.CategoryTypeParentId == categoryType.CategoryTypeId)
-                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeId, y => y.CategoryTypeId,
+            var query = _categoryTypeGroupRepository.DoQuery<DbContextBase>(x => x.CategoryTypeId == categoryType.CategoryTypeId)
+                .Join(_categoryDetailRepository.Table<DbContextBase>(), x => x.CategoryTypeGroupId, y => y.CategoryTypeGroupId,
                     (cate, detail) => new
                     {
                         detail.CategoryDetailId,
@@ -294,6 +293,51 @@ namespace Gds.VideoFrontend.Domain.Implement
                 PhysicalFileId = CryptographyHelper.Encrypt(query.PhysicalFileId.ToString())
             };
             return model;
+        }
+
+        public List<CommentViewModel> GetComments(int entityId, int commentType, int index)
+        {
+            var query = _commentRepository.DoQuery<DbContextBase>(x => x.EntityId == entityId && x.Type == commentType)
+                                          .Skip((index - 1) * 5).Take(5).ToList();
+
+            var result = new List<CommentViewModel>();
+
+            foreach(var item in query)
+            {
+                var model = new CommentViewModel
+                {
+                    CommentId = item.CommentId,
+                    UserName = item.UserName,
+                    CommentContent = item.CommentContent,
+                    CommentTime = item.CreatedDate.Value.ToString("dd/MM/yyyy"),
+                };
+                result.Add(model);
+            }
+
+            return result;
+        }
+
+        public CommentViewModel AddComment(int entityId, int contactId, string contactName, string comment, int type)
+        {
+            var model = new Comment
+            {
+                EntityId = entityId,
+                Type = type,
+                UserId = contactId,
+                UserName = contactName,
+                CommentContent = comment,
+                CreatedDate = DateTime.UtcNow
+            };
+            _commentRepository.Insert<DbContextBase>(model);
+            _commentRepository.Commit<DbContextBase>();
+            var result = new CommentViewModel
+            {
+                CommentId = model.CommentId,
+                UserName = model.UserName,
+                CommentContent = model.CommentContent,
+                CommentTime = model.CreatedDate.Value.ToString("dd/MM/yyyy"),
+            };
+            return result;
         }
     }
 }

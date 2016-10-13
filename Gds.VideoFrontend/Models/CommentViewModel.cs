@@ -13,8 +13,6 @@ namespace Gds.VideoFrontend.Models
 
         public string CommentContent { get; set; }
 
-        public string CommentInLecture { get; set; }
-
         public string CommentTime { get; set; }
 
         public List<FeedbackComment> FeedbackComments { get; set; } 

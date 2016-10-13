@@ -24,7 +24,9 @@ namespace Gds.VideoFrontend.Domain
 
         LectureViewModel GetLecture(string courseRouter, int index);
 
-        //bool AddCommentLecture(string lectureId, int courseId, string comment);
+        List<CommentViewModel> GetComments(int entityId, int commentType, int index);
+
+        CommentViewModel AddComment(int entityId, int contactId, string contactName, string comment, int type);
 
         //bool AddCommentLearning()
     }

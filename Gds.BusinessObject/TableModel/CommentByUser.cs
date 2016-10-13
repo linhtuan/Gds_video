@@ -11,9 +11,9 @@ namespace Gds.BusinessObject.TableModel
         [Key]
         public int CommentId { get; set; }
 
-        public int? CategoryTypeId { get; set; }
+        public int? EntityId { get; set; }
 
-        public int? CategoryDetailId { get; set; }
+        public int? Type { get; set; }
 
         public int UserId { get; set; }
 

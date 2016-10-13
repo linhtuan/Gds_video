@@ -19,6 +19,11 @@ namespace Gds.VideoFrontend.Controllers
             return View();
         }
 
+        public PartialViewResult MenuTopPage()
+        {
+            return PartialView("_MenuTopPage");
+        }
+
         public JsonResult GetCategorys()
         {
             var result = _categoryService.GetCategoryHomePage();

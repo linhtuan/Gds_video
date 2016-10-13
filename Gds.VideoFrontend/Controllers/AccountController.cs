@@ -153,7 +153,6 @@ namespace Gds.VideoFrontend.Controllers
                     model.Token = accessToken;
                     break;
             }
-
             if (!string.IsNullOrEmpty(model.Email))
             {
                 var modelResult = _contactApiService.LoginAuthentication(model);
@@ -171,7 +170,7 @@ namespace Gds.VideoFrontend.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(IdentityUserModel model)
+        public ActionResult ExternalLoginConfirmation(IdentityUserModel model)
         {
             if (ModelState.IsValid)
             {

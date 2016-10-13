@@ -13,7 +13,7 @@
             url: '/course/suggest/info',
             type: 'POST',
             dataType: 'json',
-            data: { courseId: $('.course_id').val() }
+            data: { cateId: $('.course_id').val() }
         });
     };
 

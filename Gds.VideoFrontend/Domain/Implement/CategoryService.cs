@@ -35,7 +35,6 @@ namespace Gds.VideoFrontend.Domain.Implement
             var categoryIds = category.Select(x => x.CategoryId);
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
             var query = _catTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId)
-                                                                       && x.CategoryTypeParentId == 0
                                                                        && x.CategoryTypePriceId != null
                                                                        && x.Status == 1)
                 .GroupBy(x => x.CategoryId)
@@ -83,7 +82,6 @@ namespace Gds.VideoFrontend.Domain.Implement
             var category = Repository.DoQuery<DbContextBase>(x => x.Status == 1 && x.UrlRouter == categoryName).ToList();
             var categoryIds = category.Select(x=>x.CategoryId);
             var query = _catTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId)
-                                                                       && x.CategoryTypeParentId == 0
                                                                        && x.CategoryTypePriceId != null
                                                                        && x.Status == 1)
                 .Join(_catPriceRepository.Table<DbContextBase>(), x => x.CategoryTypePriceId, y => y.CategoryTypePriceId,
@@ -127,7 +125,6 @@ namespace Gds.VideoFrontend.Domain.Implement
             }
             var categoryIds = category.Select(x => x.CategoryId);
             var query = _catTypeRepository.DoQuery<DbContextBase>(x => categoryIds.Contains(x.CategoryId)
-                                                                       && x.CategoryTypeParentId == 0
                                                                        && x.CategoryTypePriceId != null
                                                                        && x.Status == 1)
                 .Join(_catPriceRepository.Table<DbContextBase>(), x => x.CategoryTypePriceId, y => y.CategoryTypePriceId,

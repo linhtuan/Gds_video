@@ -19,7 +19,7 @@
 function getLectureHasUrl() {
     var model = {
         hasUrl: true,
-        courseId: $('.course_id').val(),
+        categoryTypeId: $('.course_id').val(),
         urlRouter: $('.course_router').val(),
     };
     var lectures = gds.getLecture(model);
@@ -35,7 +35,7 @@ function getLectureHasUrl() {
 function getLectureNotUrl() {
     var model = {
         hasUrl: false,
-        courseId: $('.course_id').val(),
+        categoryTypeId: $('.course_id').val(),
         urlRouter: $('.course_router').val(),
     };
     var lectures = gds.getLecture(model);

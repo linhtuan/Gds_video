@@ -8,6 +8,8 @@ namespace Gds.VideoFrontend.Domain
 {
     public interface IContactService : IGenericService<PaymentLog, DbContextBase>
     {
+        bool ContactPaymentCategory(int contactId, string categoryRouter);
+
         PagingResultModel<ContactPaymentLogViewModel> GetPaymentLogByContactId(int contactId, int pageIndex, int pageSize);
     }
 }

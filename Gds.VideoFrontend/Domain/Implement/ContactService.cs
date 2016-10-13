@@ -1,4 +1,5 @@
-﻿using Gds.BusinessObject.DbContext;
+﻿using System.Linq;
+using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using Gds.ServiceModel.ControlObject;
 using Gds.VideoFrontend.Models;
@@ -9,10 +10,21 @@ namespace Gds.VideoFrontend.Domain.Implement
 {
     public class ContactService : GenericService<PaymentLog, DbContextBase>, IContactService
     {
+        private readonly IEntityRepository<CategoryTypes> _categoryTypeRepository;
 
-        public ContactService(IEntityRepository<PaymentLog> repository)
+        public ContactService(IEntityRepository<PaymentLog> repository,
+            IEntityRepository<CategoryTypes> categoryTypeRepository)
             : base(repository)
         {
+            _categoryTypeRepository = categoryTypeRepository;
+        }
+
+        public bool ContactPaymentCategory(int contactId, string categoryRouter)
+        {
+            var cate = _categoryTypeRepository.DoQuery<DbContextBase>(x => x.UrlRouter == categoryRouter).FirstOrDefault();
+            if (cate == null) return false;
+            var query = Repository.DoQuery<DbContextBase>(x => x.UserId == contactId && cate.CategoryTypeId == x.CategoryTypeId).FirstOrDefault();
+            return query != null;
         }
 
         public PagingResultModel<ContactPaymentLogViewModel> GetPaymentLogByContactId(int contactId, int pageIndex, int pageSize)
