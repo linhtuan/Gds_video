@@ -428,7 +428,6 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Shared\_LayoutPlayVideo.cshtml" />
     <Content Include="Views\Shared\_LeftMenuContent.cshtml" />
-    <Content Include="Views\Shared\_MenuTopPage.cshtml" />
     <Content Include="Views\Account\MiniUserProfilePartialView.cshtml" />
     <Content Include="Views\Account\PartialView\_LoginPartial.cshtml" />
     <Content Include="Views\Account\PartialView\_RegisterPartial.cshtml" />
@@ -439,6 +438,7 @@
     <Content Include="Views\Account\UserCouse.cshtml" />
     <Content Include="Views\Account\UserPaymentHistory.cshtml" />
     <Content Include="Views\Account\UserPaymentBill.cshtml" />
+    <Content Include="Views\Home\PartialView\_MenuTopPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
