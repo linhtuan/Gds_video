@@ -5,5 +5,7 @@
         public string UrlCategory { get; set; }
 
         public string CategoryName { get; set; }
+
+        public string TabClass { get; set; }
     }
 }

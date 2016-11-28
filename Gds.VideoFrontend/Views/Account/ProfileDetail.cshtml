@@ -1,4 +1,4 @@
-﻿
+﻿@model  Gds.VideoFrontend.Models.ContactViewModel
 @{
     ViewBag.Title = "ProfileDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,20 +11,20 @@
                 <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 no-padding">
                     <div class="row no-margin profile-detail">
                         <div class="profile-avatar">
-                            <img class="image-profile img-circle" src="./Edumall_files/avatar-87cb35c123fe2ae0f47eb6cb3726c3563a36807557a5c23801092e336e5b2e57.png" alt="Avatar 87cb35c123fe2ae0f47eb6cb3726c3563a36807557a5c23801092e336e5b2e57">
+                            <img class="image-profile img-circle" src="@Model.ContactImage" alt="Avatar">
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 no-padding">
                     <div class="profile-description">
                         <div class="row no-margin">
-                            <span class="description-item name">NGUYEN VAN DUNG THANG</span>
+                            <span class="description-item name">@Model.ContactFullName</span>
                         </div>
                         <div class="row no-margin">
-                            <span class="description-item">dungthang@vvn.vn</span>
+                            <span class="description-item">@Model.ContactEmail</span>
                         </div>
                         <div class="row no-margin">
-                            <span class="description-item hidden-xs">2 khoá học</span>
+                            <span class="description-item hidden-xs">@Model.TotalCourse khoá học</span>
                         </div>
                     </div>
                 </div>
@@ -36,10 +36,10 @@
             <div class="row no-margin">
                 <ul class="nav nav-tabs profile-tab">
                     <li class="active" id="learning-tab">
-                        <a data-toggle="tab" href="https://edumall.vn/users/view_profile#profile-studying">Đang học</a>
+                        <a data-toggle="tab" href="#">Đang học</a>
                     </li>
                     <li id="wishlist-tab">
-                        <a data-toggle="tab" href="https://edumall.vn/users/view_profile#profile-favorite">Danh sách quan tâm</a>
+                        <a data-toggle="tab" href="#">Danh sách quan tâm</a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +101,7 @@
                                                             stroke-linejoin: round;
                                                             stroke-width: 1px;
                                                             fill-rule: evenodd;
-                                                        }
+                                                            }
 
                                                             .heart:hover {
                                                                 fill: #ffffff;
@@ -145,97 +145,7 @@
                                             </div>
                                         </a>
                                     </div>
-
                                 </div>
-
-                            </div>
-                            <div class="course-learning-card">
-                                <div class="learning-card hidden-xs" style="">
-                                    <a href="https://edumall.vn/course/nhap-mon-lap-trinh-web">
-                                        <div class="course-info">
-                                            <div class="avatar">
-                                                <img src="./Edumall_files/dang-minh-tuan.png" alt="Dang minh tuan">
-                                            </div>
-                                            <span>3 bài giảng</span>
-                                            <span>1 giờ video</span>
-                                        </div>
-                                        <div class="course-image no-margin">
-                                            <img src="./Edumall_files/nhap-mon-lap-trinh-web.png" alt="Nhap mon lap trinh web">
-                                        </div>
-                                        <div class="learning-card-content">
-                                            <div class="row ellipsis-2lines course-title">Nhập môn lập trình Web</div>
-                                            <div class="row ellipsis-2lines course-author">Đặng Minh Tuấn</div>
-                                            <div class="row no-margin course-rating">
-                                                <div class="circle-progress" data-fill="{&quot;color&quot;:&quot;#3fbcef&quot;}" data-value="0.0">
-                                                    <canvas width="50" height="50"></canvas><canvas width="50" height="50"></canvas>
-                                                    <div class="progress-container">
-                                                        <span class="content">0%</span>
-                                                    </div>
-                                                </div>
-                                                <div class="rating-container">
-                                                    <span class="learn-now">Bắt đầu học ngay</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="course-wishlist">
-                                        <a class="wishlist-heart" val="562ee227d8b7312497000061">
-                                            <svg height="18" preserveAspectRatio="xMidYMid" viewBox="0 0 20 18" width="18" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
-                                                <defs>
-                                                    <style>
-                                                        .heart {
-                                                            fill: #ffffff;
-                                                            stroke: #none;
-                                                            stroke-linejoin: round;
-                                                            stroke-width: 1px;
-                                                            fill-rule: evenodd;
-                                                        }
-
-                                                            .heart:hover {
-                                                                fill: #ffffff;
-                                                            }
-
-                                                        .wishlist {
-                                                            fill: #ffffff;
-                                                        }
-                                                    </style>
-                                                </defs>
-                                                <path class="heart" d="M10.000,17.000 L8.740,15.783 C4.060,11.783 1.000,9.087 1.000,5.783 C1.000,3.087 3.160,1.000 5.950,1.000 C7.480,1.000 9.010,1.696 10.000,2.826 C10.990,1.696 12.520,1.000 14.050,1.000 C16.840,1.000 19.000,3.087 19.000,5.783 C19.000,9.087 15.940,11.783 11.260,15.783 L10.000,17.000 Z"></path>
-                                            </svg>
-                                            <div class="wishlist-tooltip">
-                                                <div class="wishlist-tooltip-bg">
-                                                    <i class="fa fa-sort-asc wishlist-tooltip-arrow"></i>
-                                                </div>
-                                                <div class="wishlist-tooltip-inner">
-                                                    <span style="font-size: 12px;">Quan tâm</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="hidden-sm hidden-md hidden-lg">
-                                    <div class="list-card">
-                                        <a href="https://edumall.vn/course/nhap-mon-lap-trinh-web">
-                                            <div class="course-image no-margin">
-                                                <img src="./Edumall_files/nhap-mon-lap-trinh-web.png" alt="Nhap mon lap trinh web">
-                                            </div>
-                                            <div class="list-card-content">
-                                                <div class="row ellipsis-2lines course-title no-margin">Nhập môn lập trình Web</div>
-                                                <div class="row ellipsis-2lines course-description">Hãy bắt đầu lập trình Web từ những vấn đề cơ bản nhất</div>
-                                                <div class="row no-margin course-author">Đặng Minh Tuấn</div>
-                                                <div class="row no-margin course-bottom">
-                                                    <div class="rating-container">
-                                                        <i class="fa fa-star rated"></i>
-                                                        <span class="course-people-rating"> 3.9</span>
-                                                    </div>
-                                                    <span class="pull-right course-price">Miễn phí</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                </div>
-
                             </div>
                         </div>
                         <div class="row no-margin list-480">
@@ -258,36 +168,14 @@
                                     </div>
                                 </a>
                             </div>
-
-                            <div class="list-card">
-                                <a href="https://edumall.vn/course/nhap-mon-lap-trinh-web">
-                                    <div class="course-image no-margin">
-                                        <img src="./Edumall_files/nhap-mon-lap-trinh-web.png" alt="Nhap mon lap trinh web">
-                                    </div>
-                                    <div class="list-card-content">
-                                        <div class="row ellipsis-2lines course-title no-margin">Nhập môn lập trình Web</div>
-                                        <div class="row ellipsis-2lines course-description">Hãy bắt đầu lập trình Web từ những vấn đề cơ bản nhất</div>
-                                        <div class="row no-margin course-author">Đặng Minh Tuấn</div>
-                                        <div class="row no-margin course-bottom">
-                                            <div class="rating-container">
-                                                <i class="fa fa-star rated"></i>
-                                                <span class="course-people-rating"> 3.9</span>
-                                            </div>
-                                            <span class="pull-right course-price">Miễn phí</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
                         </div>
                     </div>
-                </div>
-                <div class="row no-margin tab-pane fade" id="profile-favorite">
-                    <div class="list-course">
+                    <div class="row no-margin tab-pane fade" id="profile-favorite">
+                        <div class="list-course">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </main>

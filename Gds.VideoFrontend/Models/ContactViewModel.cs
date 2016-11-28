@@ -23,5 +23,7 @@
         public string ContactBirthday { get; set; }
 
         public string Message { get; set; }
+
+        public int TotalCourse { get; set; }
     }
 }

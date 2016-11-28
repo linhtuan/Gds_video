@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Gds.BusinessObject.DbContext;
 using Gds.BusinessObject.TableModel;
 using Gds.ServiceModel.ControlObject;
@@ -31,6 +32,12 @@ namespace Gds.VideoFrontend.Domain.Implement
         {
 
             throw new System.NotImplementedException();
+        }
+
+        public int TotalCourseByContact(int contactId)
+        {
+            var query = Repository.DoQuery<DbContextBase>(x => x.UserId == contactId).Count();
+            return query;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿var userCtrl = function () {
 
     var userLogin = function () {
-        var model = { userName: $('#email').val(), passwords: $('#password').val() };
+        var model = { userName: $('#login-modal .email').val(), passwords: $('#login-modal .password').val() };
         return $.ajax({
             url: '/account/login',
             type: 'POST',
@@ -17,6 +17,18 @@
     };
 
 }(userCtrl);
+
+$('.btn-login-submit').on("click", function () {
+    var status = userCtrl.userLogin();
+    $.when(status).then(function () {
+        if (status == true) {
+            $('#login-modal').modal('hide');
+        }
+        else {
+
+        }
+    });
+});
 
 function onSignInCallback(response) {
     $(".login-error").empty();

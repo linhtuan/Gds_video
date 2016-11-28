@@ -1,0 +1,16 @@
+﻿@model Gds.VideoFrontend.Models.MenuTopPageViewModel
+
+<ul class="dropdown-menu sidebar-category">
+    @if ((bool)Model.IsHasContact)
+    {
+        <li class="btn btn-flat category-item my-course">
+            <a href="https://edumall.vn/home/my-course/learning">Khóa học của tôi</a>
+        </li>
+    }
+    @foreach (var item in Model.LeftMenu)
+    {
+        <li class="btn btn-flat category-item personal">
+            <a href="@item.UrlCategory">@item.CategoryName</a>
+        </li>
+    }
+</ul>

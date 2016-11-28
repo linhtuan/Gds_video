@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -17,34 +16,49 @@ namespace Gds.VideoFrontend.Controllers
     public class AccountController : BaseController
     {
         private readonly IContactApiService _contactApiService;
+        private readonly IContactService _contactService;
 
-        public AccountController(IContactApiService contactApiService)
+        public AccountController(IContactApiService contactApiService, IContactService contactService)
         {
             _contactApiService = contactApiService;
+            _contactService = contactService;
         }
 
         public PartialViewResult MiniAccountProfile(int pageIndex)
         {
-            if (ContactId != null)
+            var contactId = ContactId;
+            if (contactId != null)
             {
-                var model = new ContactViewModel();
-                model.ContactId = ContactId.Value;
+                var model = new ContactViewModel
+                {
+                    ContactId = contactId.Value,
+                    ContactFullName = (string)SessionManager.GetSessionObject(SessionObjectEnum.ContactFullName),
+                    ContactImage = (string)SessionManager.GetSessionObject(SessionObjectEnum.ContactImage),
+                };
                 return PartialView("MiniUserProfilePartialView", model);
             }
             ViewBag.PageIndex = pageIndex;
             return PartialView("MiniUserProfilePartialView", null);
         }
 
-
         #region GET
 
         [Route("users/view_profile")]
         public ActionResult ProfileDetail()
         {
-            if (!ContactId.HasValue)
+            var contactId = ContactId;
+            if (!contactId.HasValue)
                 return RedirectToLocal(string.Empty);
+            var model = new ContactViewModel
+            {
+                ContactId = contactId.Value,
+                ContactFullName = (string)SessionManager.GetSessionObject(SessionObjectEnum.ContactFullName),
+                ContactImage = (string)SessionManager.GetSessionObject(SessionObjectEnum.ContactImage),
+                ContactEmail = (string)SessionManager.GetSessionObject(SessionObjectEnum.ContactEmail),
+                TotalCourse = _contactService.TotalCourseByContact(contactId.Value)
+            };
 
-            return View();
+            return View(model);
         }
 
         [Route("users/edit_profile")]
@@ -98,6 +112,7 @@ namespace Gds.VideoFrontend.Controllers
                 SessionManager.SetSessionObject(SessionObjectEnum.ContactId, modelResult.ContactId);
                 SessionManager.SetSessionObject(SessionObjectEnum.ContactFullName, modelResult.ContactFullName);
                 SessionManager.SetSessionObject(SessionObjectEnum.ContactImage, modelResult.ContactImage);
+                SessionManager.SetSessionObject(SessionObjectEnum.ContactEmail, modelResult.ContactEmail);
             }
             return modelResult.ContactId != 0
                 ? Json(new { isSuccess = true, action = Url.Action("Courses", "Category"), data = modelResult })

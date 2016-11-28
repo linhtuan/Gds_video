@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Gds.VideoFrontend.Domain;
 using Gds.VideoFrontend.Infrastructure;
+using Gds.VideoFrontend.Models;
 
 namespace Gds.VideoFrontend.Controllers
 {
@@ -21,7 +22,15 @@ namespace Gds.VideoFrontend.Controllers
 
         public PartialViewResult MenuTopPage()
         {
-            return PartialView("_MenuTopPage");
+            var hasContactId = false;
+            if (ContactId.HasValue) hasContactId = true;
+            var leftMenu = _categoryService.GetLeftMenu();
+            var model = new MenuTopPageViewModel
+            {
+                IsHasContact = hasContactId,
+                LeftMenu = leftMenu
+            };
+            return PartialView("LeftMenuTopPage", model);
         }
 
         public JsonResult GetCategorys()

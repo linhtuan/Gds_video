@@ -11,6 +11,7 @@ namespace Gds.VideoFrontend.Domain.Implement
 {
     public class ContactApiService : IContactApiService
     {
+
         public ContactViewModel LoginAction(string userName, string password)
         {
             var request = (HttpWebRequest)WebRequest.Create("http://api.bibook.vn/api/oauth");

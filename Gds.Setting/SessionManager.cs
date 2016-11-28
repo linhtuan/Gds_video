@@ -42,5 +42,6 @@ namespace Gds.Setting
         ContactId,
         ContactFullName,
         ContactImage,
+        ContactEmail,
     }
 }

@@ -11,5 +11,7 @@ namespace Gds.VideoFrontend.Domain
         bool ContactPaymentCategory(int contactId, string categoryRouter);
 
         PagingResultModel<ContactPaymentLogViewModel> GetPaymentLogByContactId(int contactId, int pageIndex, int pageSize);
+
+        int TotalCourseByContact(int contactId);
     }
 }

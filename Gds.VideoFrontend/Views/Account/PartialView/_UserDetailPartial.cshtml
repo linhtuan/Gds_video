@@ -24,7 +24,6 @@
                 <ul class="notifications-container">
                     <li class="no-notification">
                         <div class="all-notification-detail">
-                            <!-- %a{:href => '#'} Xem tất cả -->
                             <a href="#">Xem tất cả</a>
                         </div>
                     </li>
@@ -33,31 +32,45 @@
         </div>
     </div>
 
-    <div class="btn-group user-dropdown open">
+    <div class="btn-group user-dropdown">
         <div aria-expanded="true" class="dropdown-toggle" data-toggle="dropdown" type="button">
-            <img class="user-avatar-small" src="./DetailLogin_files/avatar-87cb35c123fe2ae0f47eb6cb3726c3563a36807557a5c23801092e336e5b2e57.png" alt="Avatar 87cb35c123fe2ae0f47eb6cb3726c3563a36807557a5c23801092e336e5b2e57">
+            @if (Model.ContactImage != null)
+            {
+                <img class="user-avatar-small" src="@Model.ContactImage" alt="Avatar">
+            }
+            else
+            {
+                <img class="user-avatar-small" src="~/Content/Image/avata.png" alt="Avatar">
+            }
         </div>
         <div aria-labelledby="dropdownMenuDivider" class="dropdown-menu dropdown-menu-right">
             <div class="user-dropdown-header">
                 <div class="user-dropdown-header-left">
-                    <img class="user-avatar-medium" src="./DetailLogin_files/avatar-87cb35c123fe2ae0f47eb6cb3726c3563a36807557a5c23801092e336e5b2e57.png" alt="Avatar 87cb35c123fe2ae0f47eb6cb3726c3563a36807557a5c23801092e336e5b2e57">
+                    @if (Model.ContactImage != null)
+                    {
+                        <img class="user-avatar-small" src="@Model.ContactImage" alt="Avatar">
+                    }
+                    else
+                    {
+                        <img class="user-avatar-medium" src="~/Content/Image/avata.png" alt="Avatar">
+                    }
                 </div>
                 <div class="user-dropdown-header-right">
-                    <p class="name">NGUYEN VAN DUNG THANG</p>
+                    <p class="name">@Model.ContactFullName</p>
                     <div class="user-icon abs">
-                        <a class="link" href="#">
+                        <a class="link" href="/users/view_profile">
                             <i class="fa fa-user"></i>
                         </a>
-                        <a class="link" href="#">
+                        <a class="link" href="/users/edit_profile">
                             <i class="fa fa-pencil"></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="user-dropdown-links">
-                <a class="link" href="#">Các khoá học của tôi</a>
+                <a class="link" href="/users/learning">Các khoá học của tôi</a>
                 <a class="link" href="#">Danh sách quan tâm</a>
-                <a class="link" href="#">Lịch sử giao dịch</a>
+                <a class="link" href="/users/payment_history">Lịch sử giao dịch</a>
             </div>
             <div class="user-dropdown-logout">
                 <a class="btn btn-flat btn-logout" data-method="delete" href="#" rel="nofollow">
@@ -67,5 +80,4 @@
             </div>
         </div>
     </div>
-
 </div>

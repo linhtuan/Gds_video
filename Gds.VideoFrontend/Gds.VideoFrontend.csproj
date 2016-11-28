@@ -228,10 +228,12 @@
     <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\LectureGroupViewModel.cs" />
     <Compile Include="Models\LectureViewModel.cs" />
+    <Compile Include="Models\MenuTopPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Image\avata.png" />
     <Content Include="Content\JwSite.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\SiteAll.css" />
@@ -405,7 +407,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\PartialView\_CouseHotPartialView.cshtml" />
     <Content Include="Views\Category\PartialView\_CouseHotSMPartialView.cshtml" />
@@ -438,7 +439,7 @@
     <Content Include="Views\Account\UserCouse.cshtml" />
     <Content Include="Views\Account\UserPaymentHistory.cshtml" />
     <Content Include="Views\Account\UserPaymentBill.cshtml" />
-    <Content Include="Views\Home\PartialView\_MenuTopPage.cshtml" />
+    <Content Include="Views\Home\LeftMenuTopPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
